@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>vscode上传笔记到印象 | 第三世界</title>
+    <title>nodejs搭建 | 第三世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="sun, java, Web, 数据库, 集群">
     <meta name="description" content="sun bo">
@@ -55,19 +55,19 @@
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-                <li rel="/blog/2019/06/03/技术/WEB/工具/印象笔记/vscode上传笔记到印象/index.html" class="item ">
+                <li rel="/blog/2019/06/03/技术/WEB/工具/nodejs/nodejs搭建/index.html" class="item ">
                     <a href="/blog/" title="首页" class="icon-home">&nbsp;首页</a>
                 </li>
                 
-                <li rel="/blog/2019/06/03/技术/WEB/工具/印象笔记/vscode上传笔记到印象/index.html" class="item ">
+                <li rel="/blog/2019/06/03/技术/WEB/工具/nodejs/nodejs搭建/index.html" class="item ">
                     <a href="/blog/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
                 </li>
                 
-                <li rel="/blog/2019/06/03/技术/WEB/工具/印象笔记/vscode上传笔记到印象/index.html" class="item ">
+                <li rel="/blog/2019/06/03/技术/WEB/工具/nodejs/nodejs搭建/index.html" class="item ">
                     <a href="/blog/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
-                <li rel="/blog/2019/06/03/技术/WEB/工具/印象笔记/vscode上传笔记到印象/index.html" class="item ">
+                <li rel="/blog/2019/06/03/技术/WEB/工具/nodejs/nodejs搭建/index.html" class="item ">
                     <a href="/blog/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
                 </li>
                 
@@ -121,49 +121,29 @@
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>vscode上传笔记到印象</span></h3>
+        <h3 class="post-title"><span>nodejs搭建</span></h3>
     </header>
     <p class="post-meta text-center">
-        sunbo 发表于
-            <time datetime="2019-06-03T15:12:17.603Z">2019-06-03</time>
+        sun bo 发表于
+            <time datetime="2019-06-03T15:50:21.000Z">2019-06-03</time>
     </p>
     <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="获取印象笔记Token"><a href="#获取印象笔记Token" class="headerlink" title="获取印象笔记Token"></a>获取印象笔记Token</h3><p>印象笔记Developer Token地址</p>
-<p><a href="https://app.yinxiang.com/api/DeveloperToken.action" target="_blank" rel="noopener">Developer Token</a></p>
-<a id="more"></a>
-<p>申请获取token</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Notice：如果你的页面显示无法申请Develooper Tokens，只需要使用帐户注册邮箱直接发送邮件到 online-help@yinxiang.com ，并说明需要开启Token即可，会有印象笔记的工作人员帮你开放。</span><br></pre></td></tr></table></figure>
-<p>我的token</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Developer Token</span><br><span class="line">S=s2:U=10f9900:E=16b2c283d3f:C=16b081bb8f8:P=1cd:A=en-devtoken:V=2:H=3e537a834099f687b57746ef594238b1</span><br><span class="line"></span><br><span class="line">NoteStore URL:</span><br><span class="line">https://app.yinxiang.com/shard/s2/notestore</span><br><span class="line"></span><br><span class="line">有效期</span><br><span class="line">06 June 2019, 09:39</span><br></pre></td></tr></table></figure>
-<h3 id="vscode下载插件"><a href="#vscode下载插件" class="headerlink" title="vscode下载插件"></a>vscode下载插件</h3><p>EverMonkey</p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>以下打开控制面板 <code>crtl + shift +p</code>中执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">设置token</span><br><span class="line">&gt;ever token</span><br><span class="line">创建一个md文件</span><br><span class="line">&gt;ever new</span><br><span class="line"></span><br><span class="line">将最新编辑的内容发布到印象笔记</span><br><span class="line">&gt;ever publish</span><br></pre></td></tr></table></figure>
-<p>md头模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 题目</span><br><span class="line">tags: 标签（多个,分开）</span><br><span class="line">notebook: 保存到那个笔记本下</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="出现EVernote-Error-5-Note-title"><a href="#出现EVernote-Error-5-Note-title" class="headerlink" title="出现EVernote Error:5-Note.title"></a>出现EVernote Error:5-Note.title</h4><p>说明是换行符有问题,将vc code 右下角的换行符 <strong>CRLF</strong>换成 <strong>LF</strong>,然后在重新发布就就成功了</p>
-<p>注意：不支持 <code>notebook:  - 常用</code> 这种格式 上传到印象笔记上时一定记得把头部 这种hexo中 一级二级… 的这种写法先去掉 在ever public到印象笔记</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>​    文章</p>
-<ul>
-<li><p><a href="https://www.jianshu.com/p/fe2efe1aa6d4" target="_blank" rel="noopener">https://www.jianshu.com/p/fe2efe1aa6d4</a></p>
-<p>插件</p>
-</li>
-<li><p><a href="https://github.com/michalyao/evermonkey/blob/master/docs/zh-Hans/README.md" target="_blank" rel="noopener">https://github.com/michalyao/evermonkey/blob/master/docs/zh-Hans/README.md</a></p>
-<p>印象笔记开发者</p>
-</li>
-<li><p><a href="https://dev.yinxiang.com/doc/articles/dev_tokens.php" target="_blank" rel="noopener">https://dev.yinxiang.com/doc/articles/dev_tokens.php</a></p>
-</li>
-</ul>
+        <script src="\blog\assets\js\APlayer.min.js"> </script><p>NODE_HOME</p>
+<p>D:\UnInstallSoft\node-v10.15.3-win-x64</p>
+<p>NODE_PATH</p>
+<p>%NODE_HOME%\node_modules\node_global\node_modules</p>
+<p>%NODE_HOME%;%NODE_HOME%\node_modules\node_global;</p>
 
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
-            <a class="cat-link" href="/blog/categories/技术-WEB-工具/">技术 - WEB - 工具</a>
+            <a class="cat-link" href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
         </span>
         <span class="post-tags">
             标签：
             
     
-        <a href="/blog/tags/vscode/" title="vscode">vscode</a>
+        <a href="/blog/tags/nodejs/" title="nodejs">nodejs</a>
     
 
         </span>
@@ -189,9 +169,9 @@
     
     <span class="prev fl">
         上一篇<br>
-        <a href="/blog/2019/06/03/日志/任务/idea/eclipse/">
+        <a href="/blog/2019/06/03/hello-world/">
             
-                无标题
+                hello-world
             
         </a>
     </span>
@@ -200,9 +180,9 @@
     
     <span class="next fr">
         下一篇<br>
-        <a href="/blog/2019/06/03/技术/服务器/nginx/nginx配置文件/">
+        <a href="/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/">
             
-                nginx配置文件
+                vscode上传笔记到印象
             
         </a>
     </span>
@@ -279,7 +259,7 @@
         <script>
             JELON.Comment({
                 container: 'comments',
-                label: '技术/WEB/工具/印象笔记/vscode上传笔记到印象' || '2019/06/03/技术/WEB/工具/印象笔记/vscode上传笔记到印象/',
+                label: '技术/WEB/工具/nodejs/nodejs搭建' || '2019/06/03/技术/WEB/工具/nodejs/nodejs搭建/',
                 owner: 'your_github_id',
                 repo: 'your_blog_comments',
                 clientId: 'your_client_id',
@@ -325,6 +305,11 @@
 <ul class="widget-bd">
     
     <li>
+        <a href="/blog/categories/默认/">默认</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
         <a href="/blog/categories/常用/">常用</a>
         <span class="badge">(1)</span>
     </li>
@@ -335,8 +320,8 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/日志/">日志</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
@@ -355,8 +340,18 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-工具/">技术 - WEB - 工具</a>
-        <span class="badge">(3)</span>
+        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -365,8 +360,13 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-工具-typora/">技术 - WEB - 工具 - typora</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
@@ -375,17 +375,12 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/技术-WEB-建站/">技术 - WEB - 建站</a>
+        <a href="/blog/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术-建站/">技术 - 建站</a>
+        <a href="/blog/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -398,6 +393,8 @@
             <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
+    <a class="tag-item" href="/blog/tags/nodejs/" title="nodejs">nodejs (2)</a>
+  
     <a class="tag-item" href="/blog/tags/nginx-php-wordpress/" title="nginx,php,wordpress">nginx,php,wordpress (1)</a>
   
     <a class="tag-item" href="/blog/tags/git/" title="git">git (1)</a>
@@ -405,6 +402,8 @@
     <a class="tag-item" href="/blog/tags/vscode-typora/" title="vscode,typora">vscode,typora (1)</a>
   
     <a class="tag-item" href="/blog/tags/vscode/" title="vscode">vscode (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/wordpress/" title="wordpress">wordpress (1)</a>
   
 </div>
         </section>
