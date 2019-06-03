@@ -151,10 +151,6 @@
         <span class="post-tags">
             标签：
             
-    
-        <a href="/blog/tags/nodejs/" title="nodejs">nodejs</a>
-    
-
         </span>
     </p>
 
@@ -212,11 +208,43 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <script src="\blog\assets\js\APlayer.min.js"> </script><p>NODE_HOME</p>
-<p>D:\UnInstallSoft\node-v10.15.3-win-x64</p>
-<p>NODE_PATH</p>
-<p>%NODE_HOME%\node_modules\node_global\node_modules</p>
-<p>%NODE_HOME%;%NODE_HOME%\node_modules\node_global;</p>
+                <script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><h5 id="2019-06-04"><a href="#2019-06-04" class="headerlink" title="2019-06-04"></a>2019-06-04</h5><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>npm 源配置</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官网下载</a></p>
+<h5 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h5><p><strong>Windows Installer (.msi)</strong> 安装版</p>
+<p><strong>Windows Binary (.zip)</strong> 免安装版</p>
+<blockquote>
+<p>个人选择：window binary 64位 / win64位免安装版 </p>
+</blockquote>
+<p>不需要修改注册表，装系统重新安装什么的</p>
+<h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><p>解压，到指定位置就可以</p>
+<p>eg: <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p>
+<h3 id="配置本地系统环境变量"><a href="#配置本地系统环境变量" class="headerlink" title="配置本地系统环境变量"></a>配置本地系统环境变量</h3><p>新建 NODE_HOME</p>
+<p>值 <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p>
+<p>新建 NODE_PATH</p>
+<p>值 <code>%NODE_HOME%\node_modules\node_global\node_modules</code></p>
+<p>ps: 承接node_global的配置</p>
+<p>path路径后面添加：</p>
+<p>;%NODE_HOME%;%NODE_HOME%\node_modules\node_global;</p>
+<p>参考</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604002659.png" alt="环境变量"></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>打开任意cmd</p>
+<p>输入 path 查看path是否ok</p>
+<p>输入 npm -v 查看npm版本 node -v 查看node版本</p>
+<p>正常输入 测试通过</p>
+<p><img src="/blog/2019/06/03/技术/WEB/工具/nodejs/nodejs搭建/C:/Users\sunbo\AppData\Roaming\Typora\typora-user-images\1559579565059.png" alt="1559579565059"></p>
+<h3 id="配置nodejs-config"><a href="#配置nodejs-config" class="headerlink" title="配置nodejs config"></a>配置nodejs config</h3><h5 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h5><p>再 D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules 目录下新建 node_global 和 node_cache 文件夹</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604003817.png" alt></p>
+<h5 id="设置配置"><a href="#设置配置" class="headerlink" title="设置配置"></a>设置配置</h5><p>方法一：</p>
+<p>cmd命令执行下面的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global&quot;</span><br><span class="line"></span><br><span class="line">npm config set cache &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache&quot;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>在nodejs的安装目录中找到node_modules\npm.npmrc文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prefix = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global</span><br><span class="line"></span><br><span class="line">cache = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p>node配置</p>
+<p><a href="https://www.cnblogs.com/GeoChen/p/5496322.html" target="_blank" rel="noopener">https://www.cnblogs.com/GeoChen/p/5496322.html</a></p>
+</li>
+</ul>
 
             
             <p class="more">
@@ -225,57 +253,6 @@
         </div>
         <div class="post-thumbnail" data-img>
             <a href="http://disanshijie.github.io/blog/2019/06/03/技术/WEB/工具/nodejs/nodejs搭建/" title="nodejs搭建">
-                
-                    <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/3.jpg" alt="默认配图">
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/blog/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://disanshijie.github.io/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/">
-    		vscode上传笔记到印象
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2019-06-03T15:12:17.603Z">2019-06-03</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/blog/tags/vscode/" title="vscode">vscode</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h3 id="获取印象笔记Token"><a href="#获取印象笔记Token" class="headerlink" title="获取印象笔记Token"></a>获取印象笔记Token</h3><p>印象笔记Developer Token地址</p>
-<p><a href="https://app.yinxiang.com/api/DeveloperToken.action" target="_blank" rel="noopener">Developer Token</a></p>
-            
-            <p class="more">
-                <a href="http://disanshijie.github.io/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img>
-            <a href="http://disanshijie.github.io/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/" title="vscode上传笔记到印象">
                 
                     <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/3.jpg" alt="默认配图">
                 
@@ -326,6 +303,52 @@
         </div>
         <div class="post-thumbnail" data-img>
             <a href="http://disanshijie.github.io/blog/2019/06/03/日志/任务/一/" title="一">
+                
+                    <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/3.jpg" alt="默认配图">
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/blog/categories/日志/">日志</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://disanshijie.github.io/blog/2019/06/03/日志/任务/idea/eclipse/">
+    		maven idea部署
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        sun bo 发表于
+        <time datetime="2019-06-03T15:12:17.603Z">2019-06-03</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h3 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h3><p>开发模式 热部署<br></p>
+            
+            <p class="more">
+                <a href="http://disanshijie.github.io/blog/2019/06/03/日志/任务/idea/eclipse/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img>
+            <a href="http://disanshijie.github.io/blog/2019/06/03/日志/任务/idea/eclipse/" title="maven idea部署">
                 
                     <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/3.jpg" alt="默认配图">
                 
@@ -394,41 +417,43 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/blog/categories/日志/">日志</a>
+        <a class="cat-link" href="/blog/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://disanshijie.github.io/blog/2019/06/03/日志/任务/idea/eclipse/">
-    		maven idea部署
+    	<a href="http://disanshijie.github.io/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/">
+    		vscode上传笔记到印象
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
-        sun bo 发表于
+        Jelon 发表于
         <time datetime="2019-06-03T15:12:17.603Z">2019-06-03</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
+    
+        <a href="/blog/tags/vscode/" title="vscode">vscode</a>
+    
+
         </span>
     </p>
 
     <div class="post-content">
         <div class="post-excerpt">
             
-                <script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h3><p>开发模式 热部署</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   &lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">	&lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">	&lt;!-- 如果没有该配置，热部署的devtools不生效 --&gt;</span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;fork&gt;true&lt;/fork&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="打war包"><a href="#打war包" class="headerlink" title="打war包"></a>打war包</h5>
+                <h3 id="获取印象笔记Token"><a href="#获取印象笔记Token" class="headerlink" title="获取印象笔记Token"></a>获取印象笔记Token</h3><p>印象笔记Developer Token地址</p>
+<p><a href="https://app.yinxiang.com/api/DeveloperToken.action" target="_blank" rel="noopener">Developer Token</a></p>
             
             <p class="more">
-                <a href="http://disanshijie.github.io/blog/2019/06/03/日志/任务/idea/eclipse/">阅读剩下更多</a>
+                <a href="http://disanshijie.github.io/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img>
-            <a href="http://disanshijie.github.io/blog/2019/06/03/日志/任务/idea/eclipse/" title="maven idea部署">
+            <a href="http://disanshijie.github.io/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/" title="vscode上传笔记到印象">
                 
                     <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/3.jpg" alt="默认配图">
                 
@@ -607,7 +632,7 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
+        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -622,17 +647,7 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
+        <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -647,8 +662,8 @@
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a>
-        <span class="badge">(2)</span>
+        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -657,12 +672,22 @@
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a>
+        <a href="/blog/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a>
+        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -675,17 +700,17 @@
             <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/blog/tags/nodejs/" title="nodejs">nodejs (2)</a>
-  
     <a class="tag-item" href="/blog/tags/nginx-php-wordpress/" title="nginx,php,wordpress">nginx,php,wordpress (1)</a>
   
     <a class="tag-item" href="/blog/tags/git/" title="git">git (1)</a>
   
+    <a class="tag-item" href="/blog/tags/wordpress/" title="wordpress">wordpress (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/nodejs/" title="nodejs">nodejs (1)</a>
+  
     <a class="tag-item" href="/blog/tags/vscode-typora/" title="vscode,typora">vscode,typora (1)</a>
   
     <a class="tag-item" href="/blog/tags/vscode/" title="vscode">vscode (1)</a>
-  
-    <a class="tag-item" href="/blog/tags/wordpress/" title="wordpress">wordpress (1)</a>
   
 </div>
         </section>
