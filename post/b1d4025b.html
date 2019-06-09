@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>nodejs搭建 | 第三世界</title>
+    <title>hello-world | 第三世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="sun, java, Web, 数据库, 集群">
     <meta name="description" content="sun bo">
@@ -55,19 +55,19 @@
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-                <li rel="/blog/posts/技术-工具-WEB-nodejs20190603-index.html" class="item ">
+                <li rel="/blog/post/b1d4025b.html" class="item ">
                     <a href="/blog/" title="首页" class="icon-home">&nbsp;首页</a>
                 </li>
                 
-                <li rel="/blog/posts/技术-工具-WEB-nodejs20190603-index.html" class="item ">
+                <li rel="/blog/post/b1d4025b.html" class="item ">
                     <a href="/blog/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
                 </li>
                 
-                <li rel="/blog/posts/技术-工具-WEB-nodejs20190603-index.html" class="item ">
+                <li rel="/blog/post/b1d4025b.html" class="item ">
                     <a href="/blog/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
-                <li rel="/blog/posts/技术-工具-WEB-nodejs20190603-index.html" class="item ">
+                <li rel="/blog/post/b1d4025b.html" class="item ">
                     <a href="/blog/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
                 </li>
                 
@@ -121,64 +121,32 @@
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>nodejs搭建</span></h3>
+        <h3 class="post-title"><span>hello-world</span></h3>
     </header>
     <p class="post-meta text-center">
         sun bo 发表于
             <time datetime="2019-06-03T15:50:21.000Z">2019-06-03</time>
     </p>
     <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><h5 id="2019-06-04"><a href="#2019-06-04" class="headerlink" title="2019-06-04"></a>2019-06-04</h5><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>npm 源配置</p>
-<a id="more"></a>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官网下载</a></p>
-<h5 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h5><p><strong>Windows Installer (.msi)</strong> 安装版</p>
-<p><strong>Windows Binary (.zip)</strong> 免安装版</p>
-<blockquote>
-<p>个人选择：window binary 64位 / win64位免安装版 </p>
-</blockquote>
-<p>不需要修改注册表，装系统重新安装什么的</p>
-<h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><p>解压，到指定位置就可以</p>
-<p>eg: <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p>
-<h3 id="配置本地系统环境变量"><a href="#配置本地系统环境变量" class="headerlink" title="配置本地系统环境变量"></a>配置本地系统环境变量</h3><p>新建 NODE_HOME</p>
-<p>值 <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p>
-<p>新建 NODE_PATH</p>
-<p>值 <code>%NODE_HOME%\node_modules\node_global\node_modules</code></p>
-<p>ps: 承接node_global的配置</p>
-<p>path路径后面添加：</p>
-<p>;%NODE_HOME%;%NODE_HOME%\node_modules\node_global;</p>
-<p>参考</p>
-<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604002659.png" alt="环境变量"></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>打开任意cmd</p>
-<p>输入 path 查看path是否ok</p>
-<p>输入 npm -v 查看npm版本 node -v 查看node版本</p>
-<p>正常输入 测试通过</p>
-<p><img src="/blog/posts/C:/Users\sunbo\AppData\Roaming\Typora\typora-user-images\1559579565059.png" alt="1559579565059"></p>
-<h3 id="配置nodejs-config"><a href="#配置nodejs-config" class="headerlink" title="配置nodejs config"></a>配置nodejs config</h3><h5 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h5><p>再 D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules 目录下新建 node_global 和 node_cache 文件夹</p>
-<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604003817.png" alt></p>
-<h5 id="设置配置"><a href="#设置配置" class="headerlink" title="设置配置"></a>设置配置</h5><p>方法一：</p>
-<p>cmd命令执行下面的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global&quot;</span><br><span class="line"></span><br><span class="line">npm config set cache &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache&quot;</span><br></pre></td></tr></table></figure>
-<p>方法二：</p>
-<p>在nodejs的安装目录中找到node_modules\npm.npmrc文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prefix = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global</span><br><span class="line"></span><br><span class="line">cache = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache</span><br></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><p>node配置</p>
-<p><a href="https://www.cnblogs.com/GeoChen/p/5496322.html" target="_blank" rel="noopener">https://www.cnblogs.com/GeoChen/p/5496322.html</a></p>
-</li>
-</ul>
+        <script src="\blog\assets\js\APlayer.min.js"> </script><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><a id="more"></a>
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
-            <a class="cat-link" href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
+            <a class="cat-link" href="/blog/categories/默认/">默认</a>
         </span>
         <span class="post-tags">
             标签：
             
-    
-        <a href="/blog/tags/nodejs/" title="nodejs">nodejs</a>
-    
-
         </span>
     </p>
 </article>
@@ -202,9 +170,9 @@
     
     <span class="prev fl">
         上一篇<br>
-        <a href="/blog/posts/默认20190603-index.html">
+        <a href="/blog/post/67f2c5e.html">
             
-                hello-world
+                nodejs搭建
             
         </a>
     </span>
@@ -213,7 +181,7 @@
     
     <span class="next fr">
         下一篇<br>
-        <a href="/blog/posts/生活-计算机-软件-印象笔记20190603-index.html">
+        <a href="/blog/post/34858cd5.html">
             
                 vscode上传笔记到印象
             
@@ -292,7 +260,7 @@
         <script>
             JELON.Comment({
                 container: 'comments',
-                label: '技术/WEB/工具/nodejs/nodejs搭建' || 'posts/技术-工具-WEB-nodejs20190603-index.html',
+                label: 'hello-world' || 'post/b1d4025b.html',
                 owner: 'your_github_id',
                 repo: 'your_blog_comments',
                 clientId: 'your_client_id',
@@ -363,8 +331,8 @@
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-window/">生活 - 计算机 - window</a>
-        <span class="badge">(2)</span>
+        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -373,8 +341,8 @@
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/生活-计算机-window/">生活 - 计算机 - window</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
@@ -388,17 +356,22 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
-        <span class="badge">(4)</span>
-    </li>
-    
-    <li>
         <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
+        <a href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
         <a href="/blog/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -410,11 +383,6 @@
     <li>
         <a href="/blog/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a>
         <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a>
-        <span class="badge">(1)</span>
     </li>
     
     <li>
