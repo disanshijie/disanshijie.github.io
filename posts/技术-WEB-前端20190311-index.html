@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>Hexo建站-插件 | 第三世界</title>
+    <title>css在文字两边加线，文字居中效果——实战应用 | 第三世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="sun, java, Web, 数据库, 集群">
     <meta name="description" content="sun bo">
@@ -55,19 +55,19 @@
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-                <li rel="/blog/post/6b8323ff.html" class="item ">
+                <li rel="/blog/posts/技术-WEB-前端20190311-index.html" class="item ">
                     <a href="/blog/" title="首页" class="icon-home">&nbsp;首页</a>
                 </li>
                 
-                <li rel="/blog/post/6b8323ff.html" class="item ">
+                <li rel="/blog/posts/技术-WEB-前端20190311-index.html" class="item ">
                     <a href="/blog/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
                 </li>
                 
-                <li rel="/blog/post/6b8323ff.html" class="item ">
+                <li rel="/blog/posts/技术-WEB-前端20190311-index.html" class="item ">
                     <a href="/blog/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
-                <li rel="/blog/post/6b8323ff.html" class="item ">
+                <li rel="/blog/posts/技术-WEB-前端20190311-index.html" class="item ">
                     <a href="/blog/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
                 </li>
                 
@@ -121,33 +121,25 @@
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>Hexo建站-插件</span></h3>
+        <h3 class="post-title"><span>css在文字两边加线，文字居中效果——实战应用</span></h3>
     </header>
     <p class="post-meta text-center">
         sun bo 发表于
             <time datetime="2019-03-11T07:47:22.000Z">2019-03-11</time>
     </p>
     <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><h5 id="代码块处理"><a href="#代码块处理" class="headerlink" title="代码块处理"></a>代码块处理</h5><h6 id="添加复制功能"><a href="#添加复制功能" class="headerlink" title="添加复制功能"></a>添加复制功能</h6><p><a href="https://www.jianshu.com/p/3e9d614c1e77" target="_blank" rel="noopener">参考</a></p>
-<h6 id="下载-clipboard-js"><a href="#下载-clipboard-js" class="headerlink" title="下载 clipboard.js"></a>下载 clipboard.js</h6><p>三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它<a href="https://clipboardjs.com/" target="_blank" rel="noopener">主页</a>或<a href="https://github.com/zenorocha/clipboard.js" target="_blank" rel="noopener">github</a>上看。<br><a id="more"></a></p>
-<h6 id="clipboardjs-使用"><a href="#clipboardjs-使用" class="headerlink" title="clipboardjs 使用"></a>clipboardjs 使用</h6><p>在<code>.\source\js</code>目录下,保存文件<code>clipboard.js / clipboard.min.js</code></p>
-<p>也是在<code>.\source\js</code>目录下，创建<code>clipboard-use.js</code>，文件内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*页面载入完成后，创建复制按钮*/</span><br><span class="line">!function (e, t, a) &#123; </span><br><span class="line">  /* code */</span><br><span class="line">  var initCopyCode = function()&#123;</span><br><span class="line">    var copyHtml = &apos;&apos;;</span><br><span class="line">    copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;;</span><br><span class="line">    copyHtml += &apos;  &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;;</span><br><span class="line">    copyHtml += &apos;&lt;/button&gt;&apos;;</span><br><span class="line">    $(&quot;.highlight .code pre&quot;).before(copyHtml);</span><br><span class="line">    new ClipboardJS(&apos;.btn-copy&apos;, &#123;</span><br><span class="line">        target: function(trigger) &#123;</span><br><span class="line">            return trigger.nextElementSibling;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  initCopyCode();</span><br><span class="line">&#125;(window, document);</span><br></pre></td></tr></table></figure>
-<h6 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h6><p>在<code>source\css\_partial</code>样式文件中添加下面代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//代码块复制按钮</span><br><span class="line">.highlight&#123;</span><br><span class="line">  //方便copy代码按钮（btn-copy）的定位</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.btn-copy &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    background-color: #eee;</span><br><span class="line">    background-image: linear-gradient(#fcfcfc,#eee);</span><br><span class="line">    border: 1px solid #d5d5d5;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    -webkit-user-select: none;</span><br><span class="line">    -moz-user-select: none;</span><br><span class="line">    -ms-user-select: none;</span><br><span class="line">    user-select: none;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">    font-size: 13px;</span><br><span class="line">    font-weight: 700;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">    color: #333;</span><br><span class="line">    -webkit-transition: opacity .3s ease-in-out;</span><br><span class="line">    -o-transition: opacity .3s ease-in-out;</span><br><span class="line">    transition: opacity .3s ease-in-out;</span><br><span class="line">    padding: 2px 6px;</span><br><span class="line">    position: absolute;</span><br><span class="line">    right: 5px;</span><br><span class="line">    top: 5px;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.btn-copy span &#123;</span><br><span class="line">    margin-left: 5px;</span><br><span class="line">&#125;</span><br><span class="line">.highlight:hover .btn-copy&#123;</span><br><span class="line">  opacity: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h6><p>引用js ==(clipboard-use需要jQuery支持)==</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 代码块复制功能 --&gt;</span><br><span class="line">&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;</span><br><span class="line">&lt;%- js(&apos;js/clipboard-use&apos;) %&gt;</span><br></pre></td></tr></table></figure>
-<p>引用css</p>
-<p>相应地方引入 eg：<code>...source\css\style.styl</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 代码块复制按钮</span><br><span class="line">//-----------------------------------------------</span><br><span class="line">@import &quot;_partial/clipboard&quot;</span><br></pre></td></tr></table></figure>
-<h6 id="添加折叠效果"><a href="#添加折叠效果" class="headerlink" title="添加折叠效果"></a>添加折叠效果</h6><p><a href="https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/</a></p>
-<p><a href="https://blog.rmiao.top/hexo-fold-block/" target="_blank" rel="noopener">https://blog.rmiao.top/hexo-fold-block/</a></p>
-<h4 id="辅助功能"><a href="#辅助功能" class="headerlink" title="辅助功能"></a>辅助功能</h4><p>添加字数统计，阅读次数</p>
+        <script src="\blog\assets\js\APlayer.min.js"> </script><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190325104047.png" alt="效果"></p>
+<a id="more"></a>
+<p>源代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .title-text span &#123;</span><br><span class="line">            display: block;</span><br><span class="line">            /*设置为块级元素会独占一行形成上下居中的效果*/</span><br><span class="line">            position: relative;</span><br><span class="line">            /*定位横线（当横线的父元素）*/</span><br><span class="line">            color: #188eee;</span><br><span class="line">            /*居中文字的颜色*/</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .title-text span:before,</span><br><span class="line">        .title-text span:after &#123;</span><br><span class="line">            content: &apos;&apos;;</span><br><span class="line">            position: absolute;</span><br><span class="line">            /*定位背景横线的位置*/</span><br><span class="line">            top: 50%;</span><br><span class="line">            background: #8c8c8c;</span><br><span class="line">            /*背景横线颜色*/</span><br><span class="line">            width: 35%;</span><br><span class="line">            /*单侧横线的长度*/</span><br><span class="line">            height: 1px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .title-text span:before &#123;</span><br><span class="line">            left: 2%;</span><br><span class="line">            /*调整背景横线的左右距离*/</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .title-text span:after &#123;</span><br><span class="line">            right: 2%;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;work-intro&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;title&quot;&gt;</span><br><span class="line">            &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>另外</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190325104923.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        html &#123;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .work-intro &#123;</span><br><span class="line">            background: #18c8f6;</span><br><span class="line">            height: auto;</span><br><span class="line">            background: url(&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190325104422.png&quot;) no-repeat center fixed;</span><br><span class="line">            -webkit-background-size: cover;</span><br><span class="line">            -moz-background-size: cover;</span><br><span class="line">            -o-background-size: cover;</span><br><span class="line">            background-size: cover;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .title-text span &#123;</span><br><span class="line">            display: block;</span><br><span class="line">            /*设置为块级元素会独占一行形成上下居中的效果*/</span><br><span class="line">            position: relative;</span><br><span class="line">            /*定位横线（当横线的父元素）*/</span><br><span class="line">            color: #FFFFFF;</span><br><span class="line">            /*居中文字的颜色*/</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .title-text span:before,</span><br><span class="line">        .title-text span:after &#123;</span><br><span class="line">            content: &apos;&apos;;</span><br><span class="line">            position: absolute;</span><br><span class="line">            /*定位背景横线的位置*/</span><br><span class="line">            top: 50%;</span><br><span class="line">            background: #8c8c8c;</span><br><span class="line">            /*背景横线颜色*/</span><br><span class="line">            width: 35%;</span><br><span class="line">            /*单侧横线的长度*/</span><br><span class="line">            height: 1px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .title-text span:before &#123;</span><br><span class="line">            left: 2%;</span><br><span class="line">            /*调整背景横线的左右距离*/</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .title-text span:after &#123;</span><br><span class="line">            right: 2%;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;work-intro&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;title&quot;&gt;</span><br><span class="line">            &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
-            <a class="cat-link" href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
+            <a class="cat-link" href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
         </span>
         <span class="post-tags">
             标签：
@@ -175,9 +167,9 @@
     
     <span class="prev fl">
         上一篇<br>
-        <a href="/blog/post/22c0c787.html">
+        <a href="/blog/posts/生活-计算机-软件-typora20190311-index.html">
             
-                一个项目需要的模块
+                Typora快捷键
             
         </a>
     </span>
@@ -186,9 +178,9 @@
     
     <span class="next fr">
         下一篇<br>
-        <a href="/blog/post/5e339248.html">
+        <a href="/blog/posts/技术-WEB-建站-博客20190311-index.html">
             
-                Typora快捷键
+                Hexo建站-插件
             
         </a>
     </span>
@@ -265,7 +257,7 @@
         <script>
             JELON.Comment({
                 container: 'comments',
-                label: '技术/WEB/建站/hexo/Hexo建站-插件' || 'post/6b8323ff.html',
+                label: '技术/WEB/前端/文字左右添加水平线' || 'posts/技术-WEB-前端20190311-index.html',
                 owner: 'your_github_id',
                 repo: 'your_blog_comments',
                 clientId: 'your_client_id',
@@ -311,12 +303,12 @@
 <ul class="widget-bd">
     
     <li>
-        <a href="/blog/categories/常用/">常用</a>
+        <a href="/blog/categories/默认/">默认</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/默认/">默认</a>
+        <a href="/blog/categories/常用/">常用</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -327,11 +319,6 @@
     
     <li>
         <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -351,8 +338,8 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
-        <span class="badge">(4)</span>
+        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -361,13 +348,18 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
         <a href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>

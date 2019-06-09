@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>常用相关命令 | 第三世界</title>
+    <title>typora创建task任务 | 第三世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="sun, java, Web, 数据库, 集群">
     <meta name="description" content="sun bo">
@@ -55,19 +55,19 @@
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-                <li rel="/blog/post/4f70f43f.html" class="item ">
+                <li rel="/blog/posts/生活-计算机-软件-typora20190521-index.html" class="item ">
                     <a href="/blog/" title="首页" class="icon-home">&nbsp;首页</a>
                 </li>
                 
-                <li rel="/blog/post/4f70f43f.html" class="item ">
+                <li rel="/blog/posts/生活-计算机-软件-typora20190521-index.html" class="item ">
                     <a href="/blog/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
                 </li>
                 
-                <li rel="/blog/post/4f70f43f.html" class="item ">
+                <li rel="/blog/posts/生活-计算机-软件-typora20190521-index.html" class="item ">
                     <a href="/blog/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
-                <li rel="/blog/post/4f70f43f.html" class="item ">
+                <li rel="/blog/posts/生活-计算机-软件-typora20190521-index.html" class="item ">
                     <a href="/blog/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
                 </li>
                 
@@ -121,33 +121,59 @@
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>常用相关命令</span></h3>
+        <h3 class="post-title"><span>typora创建task任务</span></h3>
     </header>
     <p class="post-meta text-center">
         sun bo 发表于
-            <time datetime="2019-06-06T11:10:53.000Z">2019-06-06</time>
+            <time datetime="2019-05-20T16:00:00.000Z">2019-05-21</time>
     </p>
     <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><p>记笔记常用命令<br><a id="more"></a></p>
-<h4 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h4><h4 id="evermonkey"><a href="#evermonkey" class="headerlink" title="evermonkey"></a>evermonkey</h4><p>（上传到印象笔记）</p>
-<p><code>ever token</code>设置印象笔记token</p>
-<p><code>ever new</code>创建文件</p>
-<p><code>ever public</code> 发布</p>
-<p>删除标签（如果发布报错的话）</p>
-<p>自定义命令</p>
-<p><code>Ctrl +1</code>打开typora</p>
-<p>时时的</p>
+        <script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="typora创建task"><a href="#typora创建task" class="headerlink" title="typora创建task"></a>typora创建task</h2><h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>2019-05-20</p>
+<p>tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png" alt></p>
+<a id="more"></a>
+<h3 id="创建task-json"><a href="#创建task-json" class="headerlink" title="创建task.json"></a>创建task.json</h3><p>打开命令窗口</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135013.png" alt></p>
+<p>注：点击配置任务后 -&gt; 随便点击一个就会生成 .vscode/tasks.json 文件</p>
+<h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135221.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;Open Typora&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;process&quot;,</span><br><span class="line">            &quot;windows&quot;: &#123; &quot;command&quot;: &quot;F:\\ProgramFiles\\Typora\\Typora.exe&quot;,&quot;args&quot;: [</span><br><span class="line">                &quot;$&#123;file&#125;&quot;</span><br><span class="line">            ] &#125;,</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;presentation&quot;: &#123;</span><br><span class="line">                &quot;reveal&quot;: &quot;always&quot;,</span><br><span class="line">                &quot;panel&quot;: &quot;new&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：自己修改typora的安装目录</p>
+<h4 id="测试任务是否成功"><a href="#测试任务是否成功" class="headerlink" title="测试任务是否成功"></a>测试任务是否成功</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190602112149.png" alt></p>
+<h4 id="修改快捷键"><a href="#修改快捷键" class="headerlink" title="修改快捷键"></a>修改快捷键</h4><p>我们可以在“文件”—-“首选项”—“键盘快捷方式”。打开设置</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135445.png" alt></p>
+<p>注：没有直接 <code>ctrl + p</code>  搜索 <code>keybindings.json</code></p>
+<p>内容如下</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135530.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;key&quot;: &quot;ctrl+1&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;workbench.action.tasks.runTask&quot;,</span><br><span class="line">    &quot;args&quot;: &quot;Open Typora&quot;,</span><br><span class="line">    &quot;when&quot;: &quot;resourceLangId == markdown&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：此处的args与tasks.json中的label值对应</p>
+<h4 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h4><p>快捷键 Ctrl + 1</p>
+<p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141527.gif" alt></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><p>vscode 基本配置和使用</p>
+<p><a href="http://www.cnblogs.com/jcuan/p/5918088.html" target="_blank" rel="noopener">http://www.cnblogs.com/jcuan/p/5918088.html</a></p>
+</li>
+<li><p>如何建一个task任务</p>
+<p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p>
+</li>
+<li><p>vscode快捷键使用（when的用法）</p>
+<p><a href="https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts" target="_blank" rel="noopener">https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts</a></p>
+</li>
+<li><p>vscode</p>
+</li>
+</ul>
 
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
-            <a class="cat-link" href="/blog/categories/常用/">常用</a>
+            <a class="cat-link" href="/blog/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a>
         </span>
         <span class="post-tags">
             标签：
             
     
-        <a href="/blog/tags/默认/" title="默认">默认</a>
+        <a href="/blog/tags/vscode/" title="vscode">vscode</a> / 
+    
+        <a href="/blog/tags/typora/" title="typora">typora</a>
     
 
         </span>
@@ -173,9 +199,9 @@
     
     <span class="prev fl">
         上一篇<br>
-        <a href="/blog/post/a67595ce.html">
+        <a href="/blog/posts/技术-WEB-建站-wordpress20190521-index.html">
             
-                开发常用环境变量配置
+                wordpress jwt认证并发布文章
             
         </a>
     </span>
@@ -184,9 +210,9 @@
     
     <span class="next fr">
         下一篇<br>
-        <a href="/blog/post/dff104ab.html">
+        <a href="/blog/posts/技术-WEB-后台-架构20190314-index.html">
             
-                Linux查看系统信息
+                一个项目需要的模块
             
         </a>
     </span>
@@ -263,7 +289,7 @@
         <script>
             JELON.Comment({
                 container: 'comments',
-                label: '常用相关命令' || 'post/4f70f43f.html',
+                label: '生活/计算机/软件/typora/typora创建task任务' || 'posts/生活-计算机-软件-typora20190521-index.html',
                 owner: 'your_github_id',
                 repo: 'your_blog_comments',
                 clientId: 'your_client_id',
@@ -309,12 +335,12 @@
 <ul class="widget-bd">
     
     <li>
-        <a href="/blog/categories/常用/">常用</a>
+        <a href="/blog/categories/默认/">默认</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/默认/">默认</a>
+        <a href="/blog/categories/常用/">常用</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -325,11 +351,6 @@
     
     <li>
         <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -349,8 +370,8 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
-        <span class="badge">(4)</span>
+        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -359,13 +380,18 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
         <a href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>

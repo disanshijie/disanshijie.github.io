@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>Git stash使用 | 第三世界</title>
+    <title>git pull和pash使用 | 第三世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="sun, java, Web, 数据库, 集群">
     <meta name="description" content="sun bo">
@@ -55,19 +55,19 @@
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-                <li rel="/blog/post/ce3cb319.html" class="item ">
+                <li rel="/blog/posts/技术-工具-Git20190606-index.html" class="item ">
                     <a href="/blog/" title="首页" class="icon-home">&nbsp;首页</a>
                 </li>
                 
-                <li rel="/blog/post/ce3cb319.html" class="item ">
+                <li rel="/blog/posts/技术-工具-Git20190606-index.html" class="item ">
                     <a href="/blog/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
                 </li>
                 
-                <li rel="/blog/post/ce3cb319.html" class="item ">
+                <li rel="/blog/posts/技术-工具-Git20190606-index.html" class="item ">
                     <a href="/blog/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
-                <li rel="/blog/post/ce3cb319.html" class="item ">
+                <li rel="/blog/posts/技术-工具-Git20190606-index.html" class="item ">
                     <a href="/blog/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
                 </li>
                 
@@ -121,36 +121,16 @@
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>Git stash使用</span></h3>
+        <h3 class="post-title"><span>git pull和pash使用</span></h3>
     </header>
     <p class="post-meta text-center">
         sun bo 发表于
-            <time datetime="2019-06-04T16:00:00.000Z">2019-06-05</time>
+            <time datetime="2019-06-05T16:00:00.000Z">2019-06-06</time>
     </p>
     <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p><a href="https://www.cnblogs.com/tocy/p/git-stash-reference.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-stash-reference.html</a></p>
-<p><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89" target="_blank" rel="noopener">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89</a></p>
-<p><a href="https://blog.csdn.net/qq_32452623/article/details/76100140" target="_blank" rel="noopener">https://blog.csdn.net/qq_32452623/article/details/76100140</a></p>
+        <script src="\blog\assets\js\APlayer.min.js"> </script><p>设置本地分支默认对应远程dev分支，方便pull和push</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>基本使用</p>
-<p>当前分支 master ，文件已做了修改</p>
-<p>git stash </p>
-<p>推送一个新的储藏，当前的工作目录就干净了 </p>
-<p>git  checkout <branch> </branch></p>
-<p>随意切换到其他分支，例 dev</p>
-<p>修改dev分支，解决dev bug问题后 提交commit</p>
-<p>git  checkout master</p>
-<p>dev分支问题解决后 切换到 原来分支 master</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash apply  (应用最新但不删除储藏)</span><br><span class="line">git stash pop (应用最新并删除储藏)</span><br></pre></td></tr></table></figure>
-<p>将缓存堆栈中的stash应用到工作目录中</p>
-<p>其他</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash list  //查看储藏列表</span><br><span class="line">git stash clear //删除所有缓存的stash</span><br></pre></td></tr></table></figure>
-<p>总结：</p>
-<blockquote>
-<p>当前分支有没有提交的内容，但急需切换到其他分支</p>
-<p>通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 </p>
-<p>其他分支内容修复后，再从储藏中将内容拿出来继续工作</p>
-</blockquote>
 
     </div>
     <p class="post-meta">
@@ -183,9 +163,9 @@
     
     <span class="prev fl">
         上一篇<br>
-        <a href="/blog/post/a2598390.html">
+        <a href="/blog/posts/技术-工具-Git20190606-index.html">
             
-                vscode使用
+                git pull和pash使用
             
         </a>
     </span>
@@ -194,9 +174,9 @@
     
     <span class="next fr">
         下一篇<br>
-        <a href="/blog/post/2905fbe1.html">
+        <a href="/blog/posts/技术-工具-Git20190605-index.html">
             
-                如何写笔记
+                git错误解决
             
         </a>
     </span>
@@ -273,7 +253,7 @@
         <script>
             JELON.Comment({
                 container: 'comments',
-                label: '技术/WEB/工具/Git/Git stash使用' || 'post/ce3cb319.html',
+                label: '技术/WEB/工具/Git/git pull和pash使用' || 'posts/技术-工具-Git20190606-index.html',
                 owner: 'your_github_id',
                 repo: 'your_blog_comments',
                 clientId: 'your_client_id',
@@ -319,12 +299,12 @@
 <ul class="widget-bd">
     
     <li>
-        <a href="/blog/categories/常用/">常用</a>
+        <a href="/blog/categories/默认/">默认</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/默认/">默认</a>
+        <a href="/blog/categories/常用/">常用</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -335,11 +315,6 @@
     
     <li>
         <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -359,8 +334,8 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
-        <span class="badge">(4)</span>
+        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -369,13 +344,18 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
         <a href="/blog/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
