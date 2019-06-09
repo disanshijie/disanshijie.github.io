@@ -1,11 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[hello-world]]></title>
-    <url>%2Fblog%2F2019%2F06%2F03%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[开发常用环境变量配置]]></title>
+    <url>%2Fblog%2F2019%2F06%2F07%2F%E7%94%9F%E6%B4%BB%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%2Fwindow%2F%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[简介]]></content>
       <categories>
-        <category>默认</category>
+        <category>生活\计算机\window</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用相关命令]]></title>
+    <url>%2Fblog%2F2019%2F06%2F06%2F%E5%B8%B8%E7%94%A8%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[记笔记常用命令 hexoevermonkey（上传到印象笔记） ever token设置印象笔记token ever new创建文件 ever public 发布 删除标签（如果发布报错的话） 自定义命令 Ctrl +1打开typora 时时的]]></content>
+      <categories>
+        <category>常用</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux查看系统信息]]></title>
+    <url>%2Fblog%2F2019%2F06%2F06%2F%E6%8A%80%E6%9C%AF%2F%E6%9C%8D%E5%8A%A1%E5%99%A8%2FLinux%2FLinux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%2F</url>
+    <content type="text"><![CDATA[说明以下均基于Linux centos7 查看文件more cat tail 查看cup占用1top -c 查看文件夹大小查看当前目录下的文件夹大小 1du -h --max-depth=1]]></content>
+      <categories>
+        <category>技术 - 服务器 - Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ideagit使用]]></title>
+    <url>%2Fblog%2F2019%2F06%2F06%2F%E7%94%9F%E6%B4%BB%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%2F%E8%BD%AF%E4%BB%B6%2Fidea%2Fideagit%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[### 参考https://blog.csdn.net/wang_shuyu/article/details/83217211]]></content>
+      <categories>
+        <category>生活 - 计算机 - 软件 - idea</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vscode 自定义代码片段]]></title>
+    <url>%2Fblog%2F2019%2F06%2F06%2F%E7%94%9F%E6%B4%BB%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%2F%E8%BD%AF%E4%BB%B6%2Fvscode%2Fvscode%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%2F</url>
+    <content type="text"><![CDATA[说明利用vscode snippet 功能，自定义代码片段 快捷生成内容 在使用hexo建自己博客的时候，一般都是自己新建md文件，hexo的head头部注释可以 快捷生成，方便写作 操作第一步：文件==&gt;首选项==&gt;用户代码片段 第二步：选择代码片段文件 markdown.json 第三步：输入要自定义的快捷键 和 模板代码段 例子 123456789101112131415161718192021222324252627282930&quot;sun hexo head&quot;: &#123; &quot;prefix&quot;: &quot;hexo-head&quot;, &quot;body&quot;: [ &quot;---&quot;, &quot;title: $&#123;TM_FILENAME_BASE&#125;&quot;, &quot;date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND&quot;, &quot;author: sun bo&quot;, &quot;notebook: blog&quot;, &quot;evernote-version: 0&quot;, &quot;source: 原创/转载&quot;, &quot;thumbnail: &quot;, &quot;tags:&quot;, &quot; - 默认&quot;, &quot;categories:&quot;, &quot;\t- $&#123;TM_DIRECTORY/(.*?)_posts\\\\(.*)/$2/g&#125;&quot;, // 截取_posts后面的内容 //&quot;$&#123;TM_DIRECTORY/[\\\\]/\t- /g&#125;&quot;, //将 \ 全部转化成 - &quot;blogexcerpt:&quot;, &quot;---&quot;, &quot;&quot;, &quot;&lt;!-- more --&gt;&quot;, &quot;&quot;, &quot;### $&#123;1|说明,简介,更新|&#125;&quot;, &quot;&quot;, &quot;&lt;!-- more --&gt;&quot;, &quot;&quot; ], &quot;description&quot;: &quot;添加hexo的head&quot;&#125; ps：想截取指定字符串后面的内容，并将/转化成 - 此功能无法实现，望高手解答 结果 补充变量(Variables)使用 $name 或者 ${name|default} 可以插入变量的值，如果变量未被赋值则插入 default 的值或者空值 。当变量未被定义，则将变量名插入，变量(Variables)将被转换为占位符(Placeholders)系统变量如下 TM_SELECTED_TEXT 当前选定的文本或空字符串 TM_CURRENT_LINE 当前行的内容 TM_CURRENT_WORD 光标下的单词的内容或空字符串 TM_LINE_INDEX 基于零索引的行号 TM_LINE_NUMBER 基于一索引的行号 TM_FILENAME 当前文档的文件名 TM_FILENAME_BASE 当前文档的文件名（不含后缀名) TM_DIRECTORY 当前文档的目录 TM_FILEPATH当前文档的完整文件路径 CLIPBOARD 剪切板里的内容 插入当前日期或时间： CURRENT_YEAR 当前年(四位数) CURRENT_YEAR_SHORT 当前年(两位数) CURRENT_MONTH 当前月 CURRENT_MONTH_NAME 本月的全名（’七月’） CURRENT_MONTH_NAME_SHORT 月份的简称（’Jul’） CURRENT_DATE 当前日 CURRENT_DAY_NAME 当天的名称（’星期一’） CURRENT_DAY_NAME_SHORT 当天的短名称（’Mon’） CURRENT_HOUR 当前小时 CURRENT_MINUTE 当前分钟 CURRENT_SECOND 当前秒 当前语言的行注释或块注释: BLOCK_COMMENT_START 块注释开始标识,如 PHP /*或 HTML &lt;!-- BLOCK_COMMENT_END 块注释结束标识,如 PHP */或 HTML --&gt; LINE_COMMENT 行注释，如： PHP // 或 HTML &lt;!-- --&gt; 变量转换(Variable transforms)变量转换(Variable transforms) 允许变量在插入前改变变量的值，变量转换(Variable transforms)由三部分组成 正则匹配：使用正则表达式匹配变量值，若变量无法解析则值为空。 格式串：允许引用正则表达式匹配组。格式串允许条件插入和做简单的修改。 正则表达式匹配选项 下面例子是使用变量转换(Variable transforms)将带后缀的文件名转换为不带后缀的文件名 1234567891011$&#123;TM_FILENAME/(.*)\\..+$/$1/&#125; | | | | | | | |-&gt; 无选项设置 | | | | | |-&gt; 引用捕获组的第一个分组内容 | | | | | |-&gt; 匹配后缀前的所有字符串 | | |-&gt; 文件名（带后缀） 参考 官网文档 https://code.visualstudio.com/docs/editor/userdefinedsnippets#_assign-keybindings-to-snippets 参考文档 https://segmentfault.com/a/1190000018457312?utm_source=tag-newest https://blog.csdn.net/qq_40191093/article/details/82915028]]></content>
+      <categories>
+        <category>生活 - 计算机 - 软件 - vscode</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git pull和pash使用]]></title>
+    <url>%2Fblog%2F2019%2F06%2F06%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%B7%A5%E5%85%B7%2FGit%2Fgit%20pull%E5%92%8Cpash%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[设置本地分支默认对应远程dev分支，方便pull和push 1git branch --set-upstream-to=origin/dev dev]]></content>
+      <categories>
+        <category>技术 - 工具 - Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[git pull和pash使用]]></title>
+    <url>%2Fblog%2F2019%2F06%2F06%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%B7%A5%E5%85%B7%2FGit%2FGit%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。便捷用法，编写 shell 脚本，disable_track.sh 内容： #!/bin/bashgit update-index –assume-unchanged 文件名把 disable_track.sh 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/disable_track.sh 即可。同理建立 enable_track.sh： #!/bin/bashgit update-index –no-assume-unchanged 文件名做逆向操作。]]></content>
+      <categories>
+        <category>技术 - 工具 - Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[git错误解决]]></title>
+    <url>%2Fblog%2F2019%2F06%2F05%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%B7%A5%E5%85%B7%2FGit%2Fgit%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%2F</url>
+    <content type="text"><![CDATA[Youhave not concluded your merge (MERGE_HEAD exists). Exiting because ofunfinished merge你还没有结束你的合并(MERGE_HEAD存在)。退出,因为未完成合并。本地没有更新到最新代码， 解决方法有二个： 方法一： 123git merge --abortgit reset --mergegit pull 如果这几个命令并没有解决问题，那将就看第二个方法。开始方法二前，保证代码已经有备份，备份，备份； 方法二： 123git fetch --allgit reset --hard origin/mastergit fetch]]></content>
+      <categories>
+        <category>技术 - 工具 - Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[vscode使用]]></title>
+    <url>%2Fblog%2F2019%2F06%2F05%2F%E7%94%9F%E6%B4%BB%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%2F%E8%BD%AF%E4%BB%B6%2Fvscode%2Fvscode%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[TODOvscod 的git怎么使用 提交 amend 同步 时提交 暂存？? 源代码管理 基本使用TODO 1 随便打开一个文件，添加一个注释 2 打开git工作区可以看到就是修改的这个文件 然后点击右侧的+号，把他暂存起来。 3 再在消息框里输入消息，按ctrl+enter提交暂存 4 再点击 推送（push）提交，代码就提交到云端了。 5、克隆你的项目到本地 相关命令详细说明 ![(https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605143716.png) 同步更新到远程服务器上 拉取（变基）拉取下来的代码 到“暂存”区 操作：在visual stutia code 拉取代码，通过菜单命令执行了 拉取（变基）；问题;拉取（变基）后，发现下载的问题都成了暂存，解决：COMMIT这些暂存文件，注意不是PUSH~！问题2：再次做PULL操作（不是变基）时，提示解决：执行git branch，查看分支，执行git checkout develop切换分支 参考 版本控制攻略 https://github.com/xuanhun/vscode/blob/master/Visual%20Studio%20Code%20%E4%BD%BF%E7%94%A8Git%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md vscode git使用 https://www.cnblogs.com/ashidamana/p/6122619.html 问题vscode git 出现”没有活动的源代码控制提供程序 https://blog.csdn.net/qq_36131788/article/details/84635301]]></content>
+      <categories>
+        <category>生活 - 计算机 - 软件 - vscode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Git stash使用]]></title>
+    <url>%2Fblog%2F2019%2F06%2F05%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%B7%A5%E5%85%B7%2FGit%2FGit%20stash%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[TODOhttps://www.cnblogs.com/tocy/p/git-stash-reference.html https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89 https://blog.csdn.net/qq_32452623/article/details/76100140 基本使用 当前分支 master ，文件已做了修改 git stash 推送一个新的储藏，当前的工作目录就干净了 git checkout 随意切换到其他分支，例 dev 修改dev分支，解决dev bug问题后 提交commit git checkout master dev分支问题解决后 切换到 原来分支 master 12git stash apply (应用最新但不删除储藏)git stash pop (应用最新并删除储藏) 将缓存堆栈中的stash应用到工作目录中 其他 12git stash list //查看储藏列表git stash clear //删除所有缓存的stash 总结： 当前分支有没有提交的内容，但急需切换到其他分支 通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 其他分支内容修复后，再从储藏中将内容拿出来继续工作]]></content>
+      <categories>
+        <category>技术 - 工具 - Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[如何写笔记]]></title>
+    <url>%2Fblog%2F2019%2F06%2F04%2F%E7%94%9F%E6%B4%BB%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%2Fwindow%2F%E5%A6%82%E4%BD%95%E5%86%99%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[公司官网下载 个人偏向zip非安装版 百度云: 左侧强大的文件资源管理 大量高效插件 1 打开解压压缩包运行vscode.exe 2 下载必要插件 推荐插件 简体中文 Chinese (Simplified) Language Pack for Visual Studio Code 发布到印象笔记工具 evermonkey 服务器上传 SFTP TODO 3 使用本地磁盘上建立一个文件夹 笔记本 拖动到左侧 资源管理中 点击文件夹 右键 —&gt; 新建文件/夹 右侧编辑文件 这样本地笔记本就完成了 扩展编辑markdown文件目前流行的笔记方式是 .md文件 vscode本身可以用markdown原始语言编排 也可以到插件库中下载md编辑插件 eg: Markdown All in One 还有一些md编辑器支持 资源管理功能 eg: Yu Writer 但均不好用 vscode 快捷键打开 typora 参考： 效果： typora 修改快捷键参考：TODO md文件/图片处理方案一 typora 可以保存图片 到指定位置 推荐在当前文件所在文件夹下建一个 和文件名同名的文件夹， 图片保存到此文件夹下 方案一 使用PicGo PicGo使用参考：TODO 推荐使用方案二配置完成后 Ctrl+shift+p剪切板一键上传，非常方便 为本地笔记设置云服务器使用github/gitee云将自己的文件夹（笔记本）同步到github或者gitee上需要熟悉 Git 的使用 Git入门：TODO Git配置：TODO Git在vscode使用（针对本文）：TODO Git命令（针对本文）：TODO 使用ftp/sftp使用ftp/sftp的方式将自己的文件夹（笔记本）同步到自己的服务器 条件： 安装vscode插件 sftp 有一台自己的云服务器 使用：TODO 上传文件到印象笔记写这个模块是因为自己用印象笔记很久了，每次搜索都习惯从印象笔记检索引擎中查找，为了将本地笔记 可以同步到印象笔记 条件： 安装vscode插件 evermonkey 有印象笔记 使用vscode插件将md文件同步至印象笔记 参考 TODO ps： 同步到印象笔记的md文件以只读方式展示 应用hexo简介： hexo适合个人博客 hexo使用需要基于git + npm + markdown 使用hexo 建立自己的网站，可以随意变换风格，以github/gitee为云床，既可以任意网络同步，又能网页查看 hexo的博客均是md文件 完全可以同步到 其他服务器 例: 印象笔记 hexo基础安装使用参考：TODO wordpress简介 搭建wordpress需要 虚拟主机+php +mysql +nginx wordpress 适合建站 wordpress 基础安装使用参考：TODO 使用插件 WP REST API+ JWT Authentication for WP-API 自动发布文章 链接 总结：笔记结构图片： 参考：]]></content>
+      <categories>
+        <category>生活 - 计算机 - window</category>
       </categories>
   </entry>
   <entry>
@@ -20,17 +116,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[一]]></title>
-    <url>%2Fblog%2F2019%2F06%2F03%2F%E6%97%A5%E5%BF%97%2F%E4%BB%BB%E5%8A%A1%2F%E4%B8%80%2F</url>
-    <content type="text"><![CDATA[Java 列表排序算法a b c d e f g 1 2 3 4 5 6 7 3和6调换位置，只需要修改3-6这个区间内的数据sort值 内容：a b c d e f g –&gt; a b f d e c g 序号：1 2 3 4 5 6 7 –&gt;1 2 3 4 5 6 7]]></content>
+    <title><![CDATA[hello-world]]></title>
+    <url>%2Fblog%2F2019%2F06%2F03%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
       <categories>
-        <category>日志</category>
+        <category>默认</category>
       </categories>
   </entry>
   <entry>
     <title><![CDATA[vscode上传笔记到印象]]></title>
     <url>%2Fblog%2F2019%2F06%2F03%2F%E7%94%9F%E6%B4%BB%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%2F%E8%BD%AF%E4%BB%B6%2F%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0%2Fvscode%E4%B8%8A%E4%BC%A0%E7%AC%94%E8%AE%B0%E5%88%B0%E5%8D%B0%E8%B1%A1%2F</url>
-    <content type="text"><![CDATA[获取印象笔记Token印象笔记Developer Token地址 Developer Token 申请获取token 1Notice：如果你的页面显示无法申请Develooper Tokens，只需要使用帐户注册邮箱直接发送邮件到 online-help@yinxiang.com ，并说明需要开启Token即可，会有印象笔记的工作人员帮你开放。 我的token 12345678Developer TokenS=s2:U=10f9900:E=16b2c283d3f:C=16b081bb8f8:P=1cd:A=en-devtoken:V=2:H=3e537a834099f687b57746ef594238b1NoteStore URL:https://app.yinxiang.com/shard/s2/notestore有效期06 June 2019, 09:39 vscode下载插件EverMonkey 使用以下打开控制面板 crtl + shift +p中执行 1234567设置token&gt;ever token创建一个md文件&gt;ever new将最新编辑的内容发布到印象笔记&gt;ever publish md头模板 12345---title: 题目tags: 标签（多个,分开）notebook: 保存到那个笔记本下--- 问题出现EVernote Error:5-Note.title说明是换行符有问题,将vc code 右下角的换行符 CRLF换成 LF,然后在重新发布就就成功了 注意：不支持 notebook: - 常用 这种格式 上传到印象笔记上时一定记得把头部 这种hexo中 一级二级… 的这种写法先去掉 在ever public到印象笔记 参考​ 文章 https://www.jianshu.com/p/fe2efe1aa6d4 插件 https://github.com/michalyao/evermonkey/blob/master/docs/zh-Hans/README.md 印象笔记开发者 https://dev.yinxiang.com/doc/articles/dev_tokens.php]]></content>
+    <content type="text"><![CDATA[获取印象笔记Token印象笔记Developer Token地址 Developer Token 申请获取token 1Notice：如果你的页面显示无法申请Develooper Tokens，只需要使用帐户注册邮箱直接发送邮件到 online-help@yinxiang.com ，并说明需要开启Token即可，会有印象笔记的工作人员帮你开放。 我的token 12345678Developer TokenS=s2:U=10f9900:E=16b2c283d3f:C=16b081bb8f8:P=1cd:A=en-devtoken:V=2:H=3e537a834099f687b57746ef594238b1NoteStore URL:https://app.yinxiang.com/shard/s2/notestore有效期06 June 2019, 09:39 123S=s2:U=10f9900:E=16b50586895:C=16b2c4be1f8:P=1cd:A=en-devtoken:V=2:H=cb4c6b7250a91095654b1f800e9852c8https://app.yinxiang.com/shard/s2/notestore vscode下载插件EverMonkey 使用以下打开控制面板 crtl + shift +p中执行 1234567设置token&gt;ever token创建一个md文件&gt;ever new将最新编辑的内容发布到印象笔记&gt;ever publish md头模板 12345---title: 题目tags: 标签（多个,分开）notebook: 保存到那个笔记本下--- 问题出现EVernote Error:5-Note.title说明是换行符有问题,将vc code 右下角的换行符 CRLF换成 LF,然后在重新发布就就成功了 注意：不支持 notebook: - 常用 这种格式 上传到印象笔记上时一定记得把头部 这种hexo中 一级二级… 的这种写法先去掉 在ever public到印象笔记 参考​ 文章 https://www.jianshu.com/p/fe2efe1aa6d4 插件 https://github.com/michalyao/evermonkey/blob/master/docs/zh-Hans/README.md 印象笔记开发者 https://dev.yinxiang.com/doc/articles/dev_tokens.php]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - 印象笔记</category>
       </categories>
@@ -39,33 +135,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[git错误解决]]></title>
-    <url>%2Fblog%2F2019%2F06%2F03%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%B7%A5%E5%85%B7%2FGit%2Fgit%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%2F</url>
-    <content type="text"><![CDATA[Youhave not concluded your merge (MERGE_HEAD exists). Exiting because ofunfinished merge你还没有结束你的合并(MERGE_HEAD存在)。退出,因为未完成合并。本地没有更新到最新代码， 解决方法有二个： 方法一： 123git merge --abortgit reset --mergegit pull 如果这几个命令并没有解决问题，那将就看第二个方法。开始方法二前，保证代码已经有备份，备份，备份； 方法二： 123git fetch --allgit reset --hard origin/mastergit fetch]]></content>
-      <categories>
-        <category>技术 - 工具 - Git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[maven idea部署]]></title>
-    <url>%2Fblog%2F2019%2F06%2F03%2F%E6%97%A5%E5%BF%97%2F%E4%BB%BB%E5%8A%A1%2Fidea%2Feclipse%2F</url>
-    <content type="text"><![CDATA[maven开发模式 热部署12345 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt; &lt;optional&gt;true&lt;/optional&gt;&lt;/dependency&gt; 12345678&lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;!-- 如果没有该配置，热部署的devtools不生效 --&gt; &lt;configuration&gt; &lt;fork&gt;true&lt;/fork&gt; &lt;/configuration&gt;&lt;/plugin&gt; 打war包]]></content>
-      <categories>
-        <category>日志</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[nginx配置文件]]></title>
     <url>%2Fblog%2F2019%2F06%2F03%2F%E6%8A%80%E6%9C%AF%2F%E6%9C%8D%E5%8A%A1%E5%99%A8%2Fnginx%2Fnginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[nginx配置文件demo 123456789101112131415161718server &#123; listen 80; server_name _; root /var/www/wordpress; location / &#123; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; &#125; location ~ \.php(.*)$ &#123; try_files $uri =404; fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; &#125; &#125; 支持php （wordpress用） 1234567891011121314151617181920212223242526272829303132333435server &#123; listen 80; server_name it.hanglvda.com; #server_name 127.0.0.1; #地址没有/时自动加上/ 实现重定向 #server_name_in_redirect off; root /var/www/wordpress; #index index.php index.html index.htm; location / &#123; #root /var/www/wordpress; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; # 只有首页面根目录可以访问，其他页面地址都是404 not found #try_files $uri $uri/ /index.php?$query_string; #if (!-e $request_filename)&#123; # rewrite ^/(.*) /index.php last; #&#125; #访问目录自动到 index #autoindex on; &#125; location ~ \.php(.*)$ &#123; #错误输出 try_files $uri =404; #php-fpm服务 fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; # fastcgi_split_path_info ^((?U).+\. php)(/?.+)$; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; # include fastcgi_params; &#125; &#125; 默认nginx.conf 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118#user nobody;worker_processes 1;#error_log logs/error.log;#error_log logs/error.log notice;#error_log logs/error.log info;#pid logs/nginx.pid;events &#123; worker_connections 1024;&#125;http &#123; include mime.types; default_type application/octet-stream; #log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos; # &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos; # &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;; #access_log logs/access.log main; sendfile on; #tcp_nopush on; #keepalive_timeout 0; keepalive_timeout 65; #gzip on; server &#123; listen 80; server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html; index index.html index.htm; proxy_pass http://127.0.0.1:8080/; &#125; #error_page 404 /404.html; # redirect server error pages to the static page /50x.html # error_page 500 502 503 504 /50x.html; location = /50x.html &#123; root html; &#125; # proxy the PHP scripts to Apache listening on 127.0.0.1:80 # #location ~ \.php$ &#123; # proxy_pass http://127.0.0.1; #&#125; # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000 # #location ~ \.php$ &#123; # root html; # fastcgi_pass 127.0.0.1:9000; # fastcgi_index index.php; # fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name; # include fastcgi_params; #&#125; # deny access to .htaccess files, if Apache&apos;s document root # concurs with nginx&apos;s one # #location ~ /\.ht &#123; # deny all; #&#125; &#125; # another virtual host using mix of IP-, name-, and port-based configuration # #server &#123; # listen 8000; # listen somename:8080; # server_name somename alias another.alias; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125; # HTTPS server # #server &#123; # listen 443 ssl; # server_name localhost; # ssl_certificate cert.pem; # ssl_certificate_key cert.key; # ssl_session_cache shared:SSL:1m; # ssl_session_timeout 5m; # ssl_ciphers HIGH:!aNULL:!MD5; # ssl_prefer_server_ciphers on; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125;&#125;]]></content>
+    <content type="text"><![CDATA[nginx配置文件123456789101112131415161718server &#123; listen 80; server_name _; root /var/www/wordpress; location / &#123; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; &#125; location ~ \.php(.*)$ &#123; try_files $uri =404; fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; &#125; &#125; demo 支持php （wordpress用） 1234567891011121314151617181920212223242526272829303132333435server &#123; listen 80; server_name it.hanglvda.com; #server_name 127.0.0.1; #地址没有/时自动加上/ 实现重定向 #server_name_in_redirect off; root /var/www/wordpress; #index index.php index.html index.htm; location / &#123; #root /var/www/wordpress; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; # 只有首页面根目录可以访问，其他页面地址都是404 not found #try_files $uri $uri/ /index.php?$query_string; #if (!-e $request_filename)&#123; # rewrite ^/(.*) /index.php last; #&#125; #访问目录自动到 index #autoindex on; &#125; location ~ \.php(.*)$ &#123; #错误输出 try_files $uri =404; #php-fpm服务 fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; # fastcgi_split_path_info ^((?U).+\. php)(/?.+)$; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; # include fastcgi_params; &#125; &#125; 默认nginx.conf 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118#user nobody;worker_processes 1;#error_log logs/error.log;#error_log logs/error.log notice;#error_log logs/error.log info;#pid logs/nginx.pid;events &#123; worker_connections 1024;&#125;http &#123; include mime.types; default_type application/octet-stream; #log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos; # &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos; # &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;; #access_log logs/access.log main; sendfile on; #tcp_nopush on; #keepalive_timeout 0; keepalive_timeout 65; #gzip on; server &#123; listen 80; server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html; index index.html index.htm; proxy_pass http://127.0.0.1:8080/; &#125; #error_page 404 /404.html; # redirect server error pages to the static page /50x.html # error_page 500 502 503 504 /50x.html; location = /50x.html &#123; root html; &#125; # proxy the PHP scripts to Apache listening on 127.0.0.1:80 # #location ~ \.php$ &#123; # proxy_pass http://127.0.0.1; #&#125; # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000 # #location ~ \.php$ &#123; # root html; # fastcgi_pass 127.0.0.1:9000; # fastcgi_index index.php; # fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name; # include fastcgi_params; #&#125; # deny access to .htaccess files, if Apache&apos;s document root # concurs with nginx&apos;s one # #location ~ /\.ht &#123; # deny all; #&#125; &#125; # another virtual host using mix of IP-, name-, and port-based configuration # #server &#123; # listen 8000; # listen somename:8080; # server_name somename alias another.alias; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125; # HTTPS server # #server &#123; # listen 443 ssl; # server_name localhost; # ssl_certificate cert.pem; # ssl_certificate_key cert.key; # ssl_session_cache shared:SSL:1m; # ssl_session_timeout 5m; # ssl_ciphers HIGH:!aNULL:!MD5; # ssl_prefer_server_ciphers on; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125;&#125;]]></content>
       <categories>
         <category>技术 - 服务器 - Linux - nginx</category>
       </categories>
       <tags>
-        <tag>nginx,php,wordpress</tag>
+        <tag>nginx</tag>
+        <tag>php</tag>
+        <tag>wordpress</tag>
       </tags>
   </entry>
   <entry>
@@ -77,12 +156,15 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[常用相关命令]]></title>
-    <url>%2Fblog%2F2019%2F05%2F29%2F%E5%B8%B8%E7%94%A8%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[vscodehexoevermonkey（上传到印象笔记） ever token设置印象笔记token ever new创建文件 ever public 发布 自定义命令 Ctrl +1打开typora 时时的]]></content>
+    <title><![CDATA[wordpress jwt认证并发布文章]]></title>
+    <url>%2Fblog%2F2019%2F05%2F21%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%BB%BA%E7%AB%99%2Fwordpress%2F%E9%85%8D%E7%BD%AEwordpress%20jwt%E8%AE%A4%E8%AF%81%E5%B9%B6%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%2F</url>
+    <content type="text"><![CDATA[安装插件ps：wordpress插件安装方式 ftp 安装 登录wordpress后台–&gt; 插件–&gt; 搜索–&gt;安装 服务器需要安装ftp，开启21端口 安装包 直接下载安装包 上传到服务器上 目录 为 （wordpress目录）+ wordpress/wp-content/plugins 运行 ~unzip 插件名.zip ~ 命令解压到当前文件夹 略 WP REST APIps：用于返回接口数据支持 下载安装包 –&gt; 解压 JWT Authentication for WP-API提供jwt认证支持 下载安装包 –&gt; 解压 修改配置文件 （wordpress目录）/wordpress/wp-config.php 参考 https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/ 密码盐参考： 12345678define(&apos;AUTH_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;SECURE_AUTH_KEY&apos;, &apos;giVYR&lt;9piU^l~*/`1F-VhAoZ~y@VZVK&#125;]@]od5lxXK!^t9[,a|fK&#125;$UWeG[2G*0g&apos;);define(&apos;LOGGED_IN_KEY&apos;, &apos;n11b7hlD&gt;Q&lt;2=/77SpS[,S&gt;i0]@X!_4W&#123;/U-W65lN|gJpIQa@ub-^P%o%.sb2;%D&apos;);define(&apos;NONCE_KEY&apos;, &apos;24F8qI!UCFLdIX:&lt;m?63Duu_*p$`+p!9&gt;7LdJs4p#+^=(U&gt;x)pz&lt;M-;BB=7&amp;(XGl&apos;);define(&apos;AUTH_SALT&apos;, &apos;UG=0+&gt;cM9kDK%-YhVWf|j(*u2-* s~/hY!vWF&#123;&amp;Q[;&lt;a%fT/o+/FDltX%5GzKT/5&apos;);define(&apos;SECURE_AUTH_SALT&apos;, &apos;&gt;HO|82&gt;/@([FW@VR|3L9dV^mq37Y(WYrx?--p&gt;d-b&gt;~w[8,`Y-C%c(nm4[$ -kA&#123;&apos;);define(&apos;LOGGED_IN_SALT&apos;, &apos;bfRl^SUa4MNit)#7D67 cQ#:`m[ :&#123;_*&amp;p5.*oK&#123;t;1s&#125;&lt;!L7*NO|YSV)3B)=wEK&apos;);define(&apos;NONCE_SALT&apos;, &apos;j3[,QgyE.0).&gt;L~3+Qaa+,hK4[IdASXAykf@yPIs[9C#wc&lt;gixl]7&gt;YWt:.|Wzm &apos;); 注：上面内容不需要复制到配置文件中 eg: 配置文件 define( ‘WP_DEBUG’, false ); 上添加如下内容 12define(&apos;JWT_AUTH_SECRET_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;JWT_AUTH_CORS_ENABLE&apos;, true); 配置nginx （可能会用到）1234567在设置-固定连接中 URL的显示方式修改为除朴素之外的任意一种添加伪静态 不同服务器的配置方式不同 这里以nginx服务器为例：在server模块添加代码location / &#123; try_files $uri $uri/ /index.php?$args ;&#125; 然后重启nginx服务器。 测试启用WP REST API安装后，看看配置（一般不用改） 打开链接查看是否安装成功 eg https://blog.siburuxue.com/wp-json 启用JWT Authentication for WP-API执行下面请求 eg: 1234567891011121314登录获取token接口url:https://blog.siburuxue.com/wp-json/jwt-auth/v1/tokenmethod:postparam:&#123; username:xxx, password:xxx&#125;return:&#123; &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmxvZy5zaWJ1cnV4dWUuY29tIiwiaWF0IjoxNTU4MzE4MTc4LCJuYmYiOjE1NTgzMTgxNzgsImV4cCI6MTU1ODkyMjk3OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.-2qctW3wVyyIX-RLXWXl3YH3eo2aNXIT9isNjwvsV_k&quot;, &quot;user_email&quot;: &quot;siburuxue@aliyun.com&quot;, &quot;user_nicename&quot;: &quot;siburuxue&quot;, &quot;user_display_name&quot;: &quot;siburuxue&quot; &#125; 返回成功说明OK 使用1234567891011发布文章接口：url:https://blog.siburuxue.com/wp-json/wp/v2/postsmethod:postheader:&#123; Authorization:Bearer token&#125;param:&#123; title:测试, content:测试文章&#125; 问题jwt_auth_bad_config 解决：没有配置 wp-config.php rest_cannot_create 抱歉，您不能作为此用户创建文章。 解决：重新登录 参考官网插件 https://wordpress.org/plugins/ 博客 https://blog.siburuxue.com/]]></content>
       <categories>
-        <category>常用</category>
+        <category>技术 - WEB - 建站 - wordpress</category>
       </categories>
+      <tags>
+        <tag>wordpress</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[typora创建task任务]]></title>
@@ -92,36 +174,24 @@
         <category>生活 - 计算机 - 软件 - typora</category>
       </categories>
       <tags>
-        <tag>vscode,typora</tag>
+        <tag>vscode</tag>
+        <tag>typora</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[wordpress jwt认证并发布文章]]></title>
-    <url>%2Fblog%2F2019%2F05%2F21%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%BB%BA%E7%AB%99%2Fwordpress%2F%E9%85%8D%E7%BD%AEwordpress%20jwt%E8%AE%A4%E8%AF%81%E5%B9%B6%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%2F</url>
-    <content type="text"><![CDATA[安装插件ps：wordpress插件安装方式 ftp 安装 登录wordpress后台–&gt; 插件–&gt; 搜索–&gt;安装 服务器需要安装ftp，开启21端口 安装包 直接下载安装包 上传到服务器上 目录 为 （wordpress目录）+ wordpress/wp-content/plugins 运行 ~unzip 插件名.zip ~ 命令解压到当前文件夹 略 WP REST API ps：用于返回接口数据支持 下载安装包 –&gt; 解压 JWT Authentication for WP-API提供jwt认证支持 下载安装包 –&gt; 解压 修改配置文件 （wordpress目录）/wordpress/wp-config.php 参考 https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/ 密码盐参考： 12345678define(&apos;AUTH_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;SECURE_AUTH_KEY&apos;, &apos;giVYR&lt;9piU^l~*/`1F-VhAoZ~y@VZVK&#125;]@]od5lxXK!^t9[,a|fK&#125;$UWeG[2G*0g&apos;);define(&apos;LOGGED_IN_KEY&apos;, &apos;n11b7hlD&gt;Q&lt;2=/77SpS[,S&gt;i0]@X!_4W&#123;/U-W65lN|gJpIQa@ub-^P%o%.sb2;%D&apos;);define(&apos;NONCE_KEY&apos;, &apos;24F8qI!UCFLdIX:&lt;m?63Duu_*p$`+p!9&gt;7LdJs4p#+^=(U&gt;x)pz&lt;M-;BB=7&amp;(XGl&apos;);define(&apos;AUTH_SALT&apos;, &apos;UG=0+&gt;cM9kDK%-YhVWf|j(*u2-* s~/hY!vWF&#123;&amp;Q[;&lt;a%fT/o+/FDltX%5GzKT/5&apos;);define(&apos;SECURE_AUTH_SALT&apos;, &apos;&gt;HO|82&gt;/@([FW@VR|3L9dV^mq37Y(WYrx?--p&gt;d-b&gt;~w[8,`Y-C%c(nm4[$ -kA&#123;&apos;);define(&apos;LOGGED_IN_SALT&apos;, &apos;bfRl^SUa4MNit)#7D67 cQ#:`m[ :&#123;_*&amp;p5.*oK&#123;t;1s&#125;&lt;!L7*NO|YSV)3B)=wEK&apos;);define(&apos;NONCE_SALT&apos;, &apos;j3[,QgyE.0).&gt;L~3+Qaa+,hK4[IdASXAykf@yPIs[9C#wc&lt;gixl]7&gt;YWt:.|Wzm &apos;); 注：上面内容不需要复制到配置文件中 eg: 配置文件 define( ‘WP_DEBUG’, false ); 上添加如下内容 12define(&apos;JWT_AUTH_SECRET_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;JWT_AUTH_CORS_ENABLE&apos;, true); 配置nginx （可能会用到）1234567在设置-固定连接中 URL的显示方式修改为除朴素之外的任意一种添加伪静态 不同服务器的配置方式不同 这里以nginx服务器为例：在server模块添加代码location / &#123; try_files $uri $uri/ /index.php?$args ;&#125; 然后重启nginx服务器。 测试启用WP REST API安装后，看看配置（一般不用改） 打开链接查看是否安装成功 eg https://blog.siburuxue.com/wp-json 启用JWT Authentication for WP-API执行下面请求 eg: 1234567891011121314登录获取token接口url:https://blog.siburuxue.com/wp-json/jwt-auth/v1/tokenmethod:postparam:&#123; username:xxx, password:xxx&#125;return:&#123; &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmxvZy5zaWJ1cnV4dWUuY29tIiwiaWF0IjoxNTU4MzE4MTc4LCJuYmYiOjE1NTgzMTgxNzgsImV4cCI6MTU1ODkyMjk3OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.-2qctW3wVyyIX-RLXWXl3YH3eo2aNXIT9isNjwvsV_k&quot;, &quot;user_email&quot;: &quot;siburuxue@aliyun.com&quot;, &quot;user_nicename&quot;: &quot;siburuxue&quot;, &quot;user_display_name&quot;: &quot;siburuxue&quot; &#125; 返回成功说明OK 使用1234567891011发布文章接口：url:https://blog.siburuxue.com/wp-json/wp/v2/postsmethod:postheader:&#123; Authorization:Bearer token&#125;param:&#123; title:测试, content:测试文章&#125; 问题jwt_auth_bad_config 解决：没有配置 wp-config.php rest_cannot_create 抱歉，您不能作为此用户创建文章。 解决：重新登录 参考官网插件 https://wordpress.org/plugins/ 博客 https://blog.siburuxue.com/]]></content>
+    <title><![CDATA[一个项目需要的模块]]></title>
+    <url>%2Fblog%2F2019%2F03%2F14%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%90%8E%E5%8F%B0%2F%E6%9E%B6%E6%9E%84%2F%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%9C%80%E8%A6%81%E7%9A%84%E6%A8%A1%E5%9D%97%2F</url>
+    <content type="text"><![CDATA[项目模块 后台模块util模块公共jar，常用util 各编号规则 excel 导入导出 httpclient 请求 token权鉴 common模块本项目定制化 工具类 常量 —系统，表 权限：shiro 缓存管理：J2cache/redis 校验规则 词典 公共 实体对象 统一 异常处理 返回处理 日志处理 admin模块用户，部门，角色 相关 补充模块定时任务模块 文件上传模块 日志模块 消息通知模块 验证码模块 (session 方式，存表方式) 搜索引擎模块 个人中心模块 订单，统计模块 独立评论模块 测试模块 插件ip拦截 思想高度解耦合 模块之间引用 尽量少关联高度分离 只做我的功能,新的功能用新的表 新的模块 可以继承已有的 目标sys sys-util 项目工具类 (我的每个功能可以[jar + 自定义]) 非servlet springMVC mybatis就行 （因为sys-core中才引用这些包） sys-util-excel sys-util-httpclient sys-util-token /jwt sys-util-valid 效验 sys-util-拦截器 sys-util-结果 异常 分页 常量 … 文件操作、日期转换、数据类型转换、序列化、汉字转拼音、身份证号码验证、数字转人民币、发送短信、发送邮件、加密解密、图片处理、FTP/SFTP/fastDFS上传下载、二维码、XML读写、高精度计算 sys-core 核心模块 关联表操作 sys-core-log sys-core-shiro sys-core-cache 缓存 sys-common 插拔式公共模块 关联表操作 sys-common-dict sys-common-email sys-common-code 验证码 sys-common-支付 sys-common-第三方登录 sys-common-统计 … sys-user （jar）（API）用户 部门 角色 权限 获取 拿到系统用户相关信息 例如: 拿到部门信息 //sys-user-api 用户 部门 角色 权限处理 API sys-web （war） || sys-web-sun sys-web-admin 用户权限管理 sys-web-common quartz upload log message 消息通知 dict 词典 oss sql 监控 blog blog-web 后台管理 goods goods-web 商品 //TODO 聊天 基于 springMVC mybatis-plus 其关联逻辑不能换redis shiro etc尽量解耦 先完成用户管理模块 sys-web-admin 条件: MVC请求控制, 需要配置shiro sys-user基础用户 部门 角色 权限处理 以满足shiro需要 缓存配置 以满足shiro需要 缓存用redis,redis基础模块不做涉及表的操作, 可以类似一个工具类 结构 缓存 + 用户 部门 角色逻辑 –&gt; shiro –&gt; author–&gt; MVC 结构sys-core common base 继承类,继承mybatis-plus service dao contants exception cache 缓存 aspect annotation log sys 用户 部门 角色 权限处理 //对shiro提供支持 //TODO 向外api提供用户相关信息 shiro 权限 authc config 配置 eg: shiro规则 log规则sys-web 系统用户登录 sys-web-admin common config interceptor modules… 登录 权限编辑 相关 controller service dao entity sys-web-common common config modules… 博客系统blog-web 用户后台登录 common config modules… 博客相关 controller service dao entity 爬虫系统 论坛项目]]></content>
       <categories>
-        <category>技术 - WEB - 建站 - wordpress</category>
+        <category>技术 - WEB - 后台 - 架构</category>
       </categories>
-      <tags>
-        <tag>wordpress</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[系统管理模块]]></title>
     <url>%2Fblog%2F2019%2F03%2F14%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%90%8E%E5%8F%B0%2F%E6%9E%B6%E6%9E%84%2F%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%2F</url>
     <content type="text"><![CDATA[表用户 角色基础表 表 基础字段 权限普通菜单，按钮权限—shiro 展示/隐藏 数据权限某个角色是否 可以查看哪些部门 角色权限必须指定角色才能执行的 方法 eg: @RequiresRoles({“admin”}) 拦截器自定义aop指定信息 如管理员 可看不可改性 TODO]]></content>
       <categories>
-        <category>技术</category>
-        <category>项目</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[一个项目需要的模块]]></title>
-    <url>%2Fblog%2F2019%2F03%2F14%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%90%8E%E5%8F%B0%2F%E6%9E%B6%E6%9E%84%2F%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%9C%80%E8%A6%81%E7%9A%84%E6%A8%A1%E5%9D%97%2F</url>
-    <content type="text"><![CDATA[项目模块 后台模块util模块公共jar，常用util 各编号规则 excel 导入导出 httpclient 请求 token权鉴 common模块本项目定制化 工具类 常量 —系统，表 权限：shiro 缓存管理：J2cache/redis 校验规则 词典 公共 实体对象 统一 异常处理 返回处理 日志处理 admin模块用户，部门，角色 相关 补充模块定时任务模块 文件上传模块 日志模块 消息通知模块 验证码模块 (session 方式，存表方式) 搜索引擎模块 个人中心模块 订单，统计模块 独立评论模块 测试模块 插件ip拦截 思想高度解耦合 模块之间引用 尽量少关联高度分离 只做我的功能,新的功能用新的表 新的模块 可以继承已有的 目标sys sys-util 项目工具类 (我的每个功能可以[jar + 自定义]) 非servlet springMVC mybatis就行 （因为sys-core中才引用这些包） sys-util-excel sys-util-httpclient sys-util-token /jwt sys-util-valid 效验 sys-util-拦截器 sys-util-结果 异常 分页 常量 … 文件操作、日期转换、数据类型转换、序列化、汉字转拼音、身份证号码验证、数字转人民币、发送短信、发送邮件、加密解密、图片处理、FTP/SFTP/fastDFS上传下载、二维码、XML读写、高精度计算 sys-core 核心模块 关联表操作 sys-core-log sys-core-shiro sys-core-cache 缓存 sys-common 插拔式公共模块 关联表操作 sys-common-dict sys-common-email sys-common-code 验证码 sys-common-支付 sys-common-第三方登录 sys-common-统计 … sys-user （jar）（API）用户 部门 角色 权限 获取 拿到系统用户相关信息 例如: 拿到部门信息 //sys-user-api 用户 部门 角色 权限处理 API sys-web （war） || sys-web-sun sys-web-admin 用户权限管理 sys-web-common quartz upload log message 消息通知 dict 词典 oss sql 监控 blog blog-web 后台管理 goods goods-web 商品 //TODO 聊天 基于 springMVC mybatis-plus 其关联逻辑不能换redis shiro etc尽量解耦 先完成用户管理模块 sys-web-admin 条件: MVC请求控制, 需要配置shiro sys-user基础用户 部门 角色 权限处理 以满足shiro需要 缓存配置 以满足shiro需要 缓存用redis,redis基础模块不做涉及表的操作, 可以类似一个工具类 结构 缓存 + 用户 部门 角色逻辑 –&gt; shiro –&gt; author–&gt; MVC 结构sys-core common base 继承类,继承mybatis-plus service dao contants exception cache 缓存 aspect annotation log sys 用户 部门 角色 权限处理 //对shiro提供支持 //TODO 向外api提供用户相关信息 shiro 权限 authc config 配置 eg: shiro规则 log规则sys-web 系统用户登录 sys-web-admin common config interceptor modules… 登录 权限编辑 相关 controller service dao entity sys-web-common common config modules… 博客系统blog-web 用户后台登录 common config modules… 博客相关 controller service dao entity]]></content>
-      <categories>
-        <category>技术</category>
-        <category>项目</category>
+        <category>技术 - WEB - 后台 - 架构</category>
       </categories>
   </entry>
   <entry>
@@ -133,19 +203,19 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Hexo建站-插件]]></title>
-    <url>%2Fblog%2F2019%2F03%2F11%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%BB%BA%E7%AB%99%2Fhexo%2FHexo%E5%BB%BA%E7%AB%99-%E6%8F%92%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[代码块处理添加复制功能参考 下载 clipboard.js三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它主页或github上看。 clipboardjs 使用在.\source\js目录下,保存文件clipboard.js / clipboard.min.js 也是在.\source\js目录下，创建clipboard-use.js，文件内容如下： 1234567891011121314151617/*页面载入完成后，创建复制按钮*/!function (e, t, a) &#123; /* code */ var initCopyCode = function()&#123; var copyHtml = &apos;&apos;; copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;; copyHtml += &apos; &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;; copyHtml += &apos;&lt;/button&gt;&apos;; $(&quot;.highlight .code pre&quot;).before(copyHtml); new ClipboardJS(&apos;.btn-copy&apos;, &#123; target: function(trigger) &#123; return trigger.nextElementSibling; &#125; &#125;); &#125; initCopyCode();&#125;(window, document); 样式在source\css\_partial样式文件中添加下面代码： 123456789101112131415161718192021222324252627282930313233343536//代码块复制按钮.highlight&#123; //方便copy代码按钮（btn-copy）的定位 position: relative;&#125;.btn-copy &#123; display: inline-block; cursor: pointer; background-color: #eee; background-image: linear-gradient(#fcfcfc,#eee); border: 1px solid #d5d5d5; border-radius: 3px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-appearance: none; font-size: 13px; font-weight: 700; line-height: 20px; color: #333; -webkit-transition: opacity .3s ease-in-out; -o-transition: opacity .3s ease-in-out; transition: opacity .3s ease-in-out; padding: 2px 6px; position: absolute; right: 5px; top: 5px; opacity: 0;&#125;.btn-copy span &#123; margin-left: 5px;&#125;.highlight:hover .btn-copy&#123; opacity: 1;&#125; 引用引用js ==(clipboard-use需要jQuery支持)== 123&lt;!-- 代码块复制功能 --&gt;&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;&lt;%- js(&apos;js/clipboard-use&apos;) %&gt; 引用css 相应地方引入 eg：...source\css\style.styl 123// 代码块复制按钮//-----------------------------------------------@import &quot;_partial/clipboard&quot; 添加折叠效果https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/ https://blog.rmiao.top/hexo-fold-block/ 辅助功能添加字数统计，阅读次数]]></content>
-      <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[css在文字两边加线，文字居中效果——实战应用]]></title>
     <url>%2Fblog%2F2019%2F03%2F11%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%89%8D%E7%AB%AF%2F%E6%96%87%E5%AD%97%E5%B7%A6%E5%8F%B3%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%B9%B3%E7%BA%BF%2F</url>
     <content type="text"><![CDATA[源代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; .title-text span &#123; display: block; /*设置为块级元素会独占一行形成上下居中的效果*/ position: relative; /*定位横线（当横线的父元素）*/ color: #188eee; /*居中文字的颜色*/ text-align: center; &#125; .title-text span:before, .title-text span:after &#123; content: &apos;&apos;; position: absolute; /*定位背景横线的位置*/ top: 50%; background: #8c8c8c; /*背景横线颜色*/ width: 35%; /*单侧横线的长度*/ height: 1px; &#125; .title-text span:before &#123; left: 2%; /*调整背景横线的左右距离*/ &#125; .title-text span:after &#123; right: 2%; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;work-intro&quot;&gt; &lt;div class=&quot;title&quot;&gt; &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt; &lt;/div&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt; 另外 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; html &#123; height: 100%; &#125; .work-intro &#123; background: #18c8f6; height: auto; background: url(&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190325104422.png&quot;) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; &#125; .title-text span &#123; display: block; /*设置为块级元素会独占一行形成上下居中的效果*/ position: relative; /*定位横线（当横线的父元素）*/ color: #FFFFFF; /*居中文字的颜色*/ text-align: center; &#125; .title-text span:before, .title-text span:after &#123; content: &apos;&apos;; position: absolute; /*定位背景横线的位置*/ top: 50%; background: #8c8c8c; /*背景横线颜色*/ width: 35%; /*单侧横线的长度*/ height: 1px; &#125; .title-text span:before &#123; left: 2%; /*调整背景横线的左右距离*/ &#125; .title-text span:after &#123; right: 2%; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;work-intro&quot;&gt; &lt;div class=&quot;title&quot;&gt; &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt; &lt;/div&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;]]></content>
       <categories>
         <category>技术 - WEB - 前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo建站-插件]]></title>
+    <url>%2Fblog%2F2019%2F03%2F11%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%BB%BA%E7%AB%99%2Fhexo%2FHexo%E5%BB%BA%E7%AB%99-%E6%8F%92%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[代码块处理添加复制功能参考 下载 clipboard.js三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它主页或github上看。 clipboardjs 使用在.\source\js目录下,保存文件clipboard.js / clipboard.min.js 也是在.\source\js目录下，创建clipboard-use.js，文件内容如下： 1234567891011121314151617/*页面载入完成后，创建复制按钮*/!function (e, t, a) &#123; /* code */ var initCopyCode = function()&#123; var copyHtml = &apos;&apos;; copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;; copyHtml += &apos; &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;; copyHtml += &apos;&lt;/button&gt;&apos;; $(&quot;.highlight .code pre&quot;).before(copyHtml); new ClipboardJS(&apos;.btn-copy&apos;, &#123; target: function(trigger) &#123; return trigger.nextElementSibling; &#125; &#125;); &#125; initCopyCode();&#125;(window, document); 样式在source\css\_partial样式文件中添加下面代码： 123456789101112131415161718192021222324252627282930313233343536//代码块复制按钮.highlight&#123; //方便copy代码按钮（btn-copy）的定位 position: relative;&#125;.btn-copy &#123; display: inline-block; cursor: pointer; background-color: #eee; background-image: linear-gradient(#fcfcfc,#eee); border: 1px solid #d5d5d5; border-radius: 3px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-appearance: none; font-size: 13px; font-weight: 700; line-height: 20px; color: #333; -webkit-transition: opacity .3s ease-in-out; -o-transition: opacity .3s ease-in-out; transition: opacity .3s ease-in-out; padding: 2px 6px; position: absolute; right: 5px; top: 5px; opacity: 0;&#125;.btn-copy span &#123; margin-left: 5px;&#125;.highlight:hover .btn-copy&#123; opacity: 1;&#125; 引用引用js ==(clipboard-use需要jQuery支持)== 123&lt;!-- 代码块复制功能 --&gt;&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;&lt;%- js(&apos;js/clipboard-use&apos;) %&gt; 引用css 相应地方引入 eg：...source\css\style.styl 123// 代码块复制按钮//-----------------------------------------------@import &quot;_partial/clipboard&quot; 添加折叠效果https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/ https://blog.rmiao.top/hexo-fold-block/ 辅助功能添加字数统计，阅读次数]]></content>
+      <categories>
+        <category>技术 - WEB - 建站 - 博客</category>
       </categories>
   </entry>
   <entry>
@@ -165,19 +235,19 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[目录说明]]></title>
-    <url>%2Fblog%2F2019%2F03%2F08%2F%E6%8A%80%E6%9C%AF%2Fresume%2F</url>
-    <content type="text"><![CDATA[##熟悉spring springmvc ##工具使用 vscode]]></content>
-      <categories>
-        <category>技术 - web - 服务器 - 项目</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Hexo建站]]></title>
     <url>%2Fblog%2F2019%2F03%2F08%2F%E6%8A%80%E6%9C%AF%2FWEB%2F%E5%BB%BA%E7%AB%99%2Fhexo%2FHexo%E6%90%AD%E5%BB%BA%2F</url>
     <content type="text"><![CDATA[更新2019-03-08直接npm install hexo-asset-image即可 修正路径 应该是官方修改了 快速开始1 安装node，git 2 选择编辑工具 3 git服务器 4 安装Hexo ​ 主题模板 ​ 个人配置 ​ 发布文章 ​ 图片 ​ 搜索 ​ SEO,统计 ​ 评论 ​ RSS //TODO 5 end 一，安装node，git…略 二 Idea工具 Vscode使用说明：略… 三 服务器github或者gitee 开通git pages //TODO 四 安装Hexo官方文档前面git和nodejs安装好后，就可以安装hexo了，你可以先创建一个文件夹blog，然后cd到这个文件夹下（或者在这个文件夹下直接右键git bash打开）。 1234567#安装npm install -g hexo-cli#初始化hexo init blog#进入这个myblog文件夹cd blog npm install 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 在浏览器输入localhost:4000就可以看到你生成的博客了。 模板模板库 模板推荐 个人配置Hexo _config.yml配置相关说明eg: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110# Hexo Configuration## Docs: https://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Sitetitle: 第三世界subtitle:description:keywords:author: sun bolanguage: zh-CNtimezone: Asia/Shanghai# URL## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;url: #http://sunjinchao.gitee.io/blog/ http://localhost:4000/root: #/blog /permalink: :year/:month/:day/:title/permalink_defaults:# Directorysource_dir: sourcepublic_dir: publictag_dir: tagsarchive_dir: archivescategory_dir: categoriescode_dir: downloads/codei18n_dir: :langskip_render:# Writing#new_post_name: :year-:month-:day-:title.md # File name of new postsnew_post_name: :title.md # File name of new postsdefault_layout: posttitlecase: false # Transform title into titlecaseexternal_link: true # Open external links in new tabfilename_case: 0render_drafts: false#在建立文件时，Hexo会自动建立一个与文章同名的文件夹post_asset_folder: truerelative_link: falsefuture: truehighlight: enable: true line_number: true auto_detect: false tab_replace: # Home page setting# path: Root path for your blogs index page. (default = &apos;&apos;)# per_page: Posts displayed per page. (0 = disable pagination)# order_by: Posts order. (Order by date descending by default)index_generator: path: &apos;&apos; per_page: 10 order_by: -date # Category &amp; Tagdefault_category: uncategorizedcategory_map:tag_map:# Date / Time format## Hexo uses Moment.js to parse and display date## You can customize the date format as defined in## http://momentjs.com/docs/#/displaying/format/date_format: YYYY-MM-DDtime_format: HH:mm:ss# Pagination## Set per_page to 0 to disable paginationper_page: 10pagination_dir: page# Extensions## Plugins: https://hexo.io/plugins/## Themes: https://hexo.io/themes/theme: #cyanstyle #landscape #next-default #next-my #next-someone #pure xups#plugins:#- hexo-generator-sitemap#- hexo-generator-baidu-sitemap#baidusitemap:# path: baidusitemap.xml# Deployment## Docs: https://hexo.io/docs/deployment.htmldeploy: type: git repo: git@gitee.com:sunjinchao/blog.git branch: publish message: search: path: search.xml field: post format: html limit: 10000 自动上传到github/gitee 需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。 1npm install hexo-deployer-git --save 上传 hexo clean &amp;&amp; hexo g &amp;&amp; hexo d 主题文件config.yml 配置略… 发文章新建md hexo n newpapername 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 图片处理 首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true 在blog（hexo）目录下执行: 1npm install hexo-asset-image --save 用 hexo n 名称 生成文件，会默认给你生成一个相同名字的文件夹，用typora编辑时可以设置图片根路径为此目录下 1234567npm install hexo-asset-image或npm install hexo-asset-image --save或 （官版）npm install https://github.com/CodeFalling/hexo-asset-image --save或（官版上修改）npm install https://github.com/7ym0n/hexo-asset-image.git 123456或（sunbo修改的）npm i git+https://gitee.com/sunjinchao/blog.git#hexo-asset-image --save更新 npm update hexo-asset-image删除npm uninstall hexo-asset-image 搜索功能 安装插件 1hexo-generator-json-content SEO,统计SEO需要自己的域名百度SEO地址 google站点地图 百度统计百度统计 照样把代码复制到head.ejs文件中，然后再进行一下安装检查，半小时左右就可以在百度统计里面看到自己的网站信息了。 引入不蒜子访问量和访问人次统计不蒜子的添加非常非常方便，不蒜子 在footer.ejs中的合适位置，看你要显示在哪个地方，添加： 1234&lt;!--这一段是不蒜子的访问量统计代码--&gt;&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次 &lt;/span&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次&lt;/span&gt; 评论]]></content>
       <categories>
         <category>技术 - WEB - 建站 - 博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[目录说明]]></title>
+    <url>%2Fblog%2F2019%2F03%2F08%2F%E6%8A%80%E6%9C%AF%2Fresume%2F</url>
+    <content type="text"><![CDATA[##熟悉spring springmvc ##工具使用 vscode]]></content>
+      <categories>
+        <category>技术 - web - 服务器 - 项目</category>
       </categories>
   </entry>
   <entry>

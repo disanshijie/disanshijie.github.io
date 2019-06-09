@@ -128,9 +128,9 @@
             <time datetime="2019-06-03T11:54:04.000Z">2019-06-03</time>
     </p>
     <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="nginx配置文件"><a href="#nginx配置文件" class="headerlink" title="nginx配置文件"></a>nginx配置文件</h3><p>demo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name _;</span><br><span class="line">	root /var/www/wordpress;</span><br><span class="line"></span><br><span class="line">	location / &#123;</span><br><span class="line">		try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">		index  index.php index.html index.htm;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	location ~ \.php(.*)$ &#123;</span><br><span class="line">		try_files $uri =404;</span><br><span class="line">		fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">		fastcgi_index  index.php;</span><br><span class="line">		fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">		include	fastcgi.conf;</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="nginx配置文件"><a href="#nginx配置文件" class="headerlink" title="nginx配置文件"></a>nginx配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name _;</span><br><span class="line">	root /var/www/wordpress;</span><br><span class="line"></span><br><span class="line">	location / &#123;</span><br><span class="line">		try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">		index  index.php index.html index.htm;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	location ~ \.php(.*)$ &#123;</span><br><span class="line">		try_files $uri =404;</span><br><span class="line">		fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">		fastcgi_index  index.php;</span><br><span class="line">		fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">		include	fastcgi.conf;</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<p>demo</p>
 <p>支持php （wordpress用）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name it.hanglvda.com;</span><br><span class="line">	#server_name  127.0.0.1;</span><br><span class="line">	#地址没有/时自动加上/ 实现重定向</span><br><span class="line">	#server_name_in_redirect off;</span><br><span class="line"></span><br><span class="line">	root /var/www/wordpress;</span><br><span class="line">	#index index.php index.html index.htm;</span><br><span class="line"></span><br><span class="line">	location / &#123;</span><br><span class="line">		#root /var/www/wordpress;</span><br><span class="line">		try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">		index  index.php index.html index.htm;</span><br><span class="line">		# 只有首页面根目录可以访问，其他页面地址都是404 not found</span><br><span class="line">		#try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">		#if (!-e $request_filename)&#123; </span><br><span class="line">		#	rewrite ^/(.*) /index.php last; </span><br><span class="line">		#&#125;</span><br><span class="line">		#访问目录自动到 index	</span><br><span class="line">		#autoindex on;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">       location ~ \.php(.*)$ &#123;</span><br><span class="line">       	#错误输出</span><br><span class="line">           try_files $uri =404;</span><br><span class="line">           #php-fpm服务</span><br><span class="line">           fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">           fastcgi_index  index.php;</span><br><span class="line">	#	fastcgi_split_path_info ^((?U).+\. php)(/?.+)$;</span><br><span class="line">           fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">		include	fastcgi.conf;</span><br><span class="line">       #    include	fastcgi_params;</span><br><span class="line">       &#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>默认nginx.conf</p>
@@ -145,7 +145,11 @@
             标签：
             
     
-        <a href="/blog/tags/nginx-php-wordpress/" title="nginx,php,wordpress">nginx,php,wordpress</a>
+        <a href="/blog/tags/nginx/" title="nginx">nginx</a> / 
+    
+        <a href="/blog/tags/php/" title="php">php</a> / 
+    
+        <a href="/blog/tags/wordpress/" title="wordpress">wordpress</a>
     
 
         </span>
@@ -153,17 +157,17 @@
 </article>
 <!-- 分享按钮 -->
 
-  <div class="article-share clearfix text-center">
-    <div class="share-area">
-      <span class="share-txt">分享到：</span>
-      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
-      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
-      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
-      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
-      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    <div class="article-share clearfix text-center">
+        <div class="share-area">
+            <span class="share-txt">分享到：</span>
+            <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+            <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+            <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+            <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=sunbo个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+            <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+        </div>
     </div>
-  </div>
-
+    
 
     <!-- 上一篇/下一篇 -->
 
@@ -171,9 +175,9 @@
     
     <span class="prev fl">
         上一篇<br>
-        <a href="/blog/2019/06/03/日志/任务/idea/eclipse/">
+        <a href="/blog/2019/06/03/生活/计算机/软件/印象笔记/vscode上传笔记到印象/">
             
-                maven idea部署
+                vscode上传笔记到印象
             
         </a>
     </span>
@@ -322,12 +326,17 @@
     </li>
     
     <li>
-        <a href="/blog/categories/日志/">日志</a>
+        <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
+        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -337,33 +346,18 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/blog/categories/生活-计算机-window/">生活 - 计算机 - window</a>
-        <span class="badge">(1)</span>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术/">技术</a>
+        <a href="/blog/categories/技术-WEB-后台-架构/">技术 - WEB - 后台 - 架构</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
         <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/技术/项目/">项目</a>
-        <span class="badge">(2)</span>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
@@ -372,18 +366,33 @@
     </li>
     
     <li>
+        <a href="/blog/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
         <a href="/blog/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
         <a href="/blog/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a>
         <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/blog/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a>
-        <span class="badge">(1)</span>
     </li>
     
 </ul>
@@ -395,17 +404,23 @@
             <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/blog/tags/nginx-php-wordpress/" title="nginx,php,wordpress">nginx,php,wordpress (1)</a>
+    <a class="tag-item" href="/blog/tags/默认/" title="默认">默认 (3)</a>
   
-    <a class="tag-item" href="/blog/tags/git/" title="git">git (1)</a>
+    <a class="tag-item" href="/blog/tags/Linux/" title="Linux">Linux (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/nginx/" title="nginx">nginx (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/php/" title="php">php (1)</a>
+  
+    <a class="tag-item" href="/blog/tags/wordpress/" title="wordpress">wordpress (2)</a>
   
     <a class="tag-item" href="/blog/tags/nodejs/" title="nodejs">nodejs (1)</a>
   
-    <a class="tag-item" href="/blog/tags/wordpress/" title="wordpress">wordpress (1)</a>
+    <a class="tag-item" href="/blog/tags/vscode/" title="vscode">vscode (3)</a>
   
-    <a class="tag-item" href="/blog/tags/vscode-typora/" title="vscode,typora">vscode,typora (1)</a>
+    <a class="tag-item" href="/blog/tags/hexo/" title="hexo">hexo (1)</a>
   
-    <a class="tag-item" href="/blog/tags/vscode/" title="vscode">vscode (1)</a>
+    <a class="tag-item" href="/blog/tags/typora/" title="typora">typora (1)</a>
   
 </div>
         </section>
