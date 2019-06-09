@@ -43,28 +43,6 @@
   </entry>
   
   <entry>
-    <title>常用相关命令</title>
-    <link href="http://disanshijie.github.io/blog/post/4f70f43f.html"/>
-    <id>http://disanshijie.github.io/blog/post/4f70f43f.html</id>
-    <published>2019-06-06T11:10:53.000Z</published>
-    <updated>2019-06-09T15:43:07.846Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><p>记笔记常用命令<br><a id="more"></a></p><h4 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h4><h4 id="evermonkey"><a href="#evermonkey" class="headerlink" title="evermonkey"></a>evermonkey</h4><p>（上传到印象笔记）</p><p><code>ever token</code>设置印象笔记token</p><p><code>ever new</code>创建文件</p><p><code>ever public</code> 发布</p><p>删除标签（如果发布报错的话）</p><p>自定义命令</p><p><code>Ctrl +1</code>打开typora</p><p>时时的</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记笔记常用命令&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="常用" scheme="http://disanshijie.github.io/blog/categories/%E5%B8%B8%E7%94%A8/"/>
-    
-    
-      <category term="默认" scheme="http://disanshijie.github.io/blog/tags/%E9%BB%98%E8%AE%A4/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux查看系统信息</title>
     <link href="http://disanshijie.github.io/blog/post/dff104ab.html"/>
     <id>http://disanshijie.github.io/blog/post/dff104ab.html</id>
@@ -138,27 +116,6 @@
     <link href="http://disanshijie.github.io/blog/post/189a6a9b.html"/>
     <id>http://disanshijie.github.io/blog/post/189a6a9b.html</id>
     <published>2019-06-05T16:00:00.000Z</published>
-    <updated>2019-06-09T03:32:39.596Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><p>设置本地分支默认对应远程dev分支，方便pull和push</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;设置本地分支默认对应远程dev分支，方便pull和push&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git branch --set-upstream-to=origin/dev dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>git pull和pash使用</title>
-    <link href="http://disanshijie.github.io/blog/post/189a6a9b.html"/>
-    <id>http://disanshijie.github.io/blog/post/189a6a9b.html</id>
-    <published>2019-06-05T16:00:00.000Z</published>
     <updated>2019-06-09T03:32:39.601Z</updated>
     
     <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><a id="more"></a><blockquote><p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p><p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p><p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p></blockquote>]]></content>
@@ -180,19 +137,18 @@
   </entry>
   
   <entry>
-    <title>Git stash使用</title>
-    <link href="http://disanshijie.github.io/blog/post/ce3cb319.html"/>
-    <id>http://disanshijie.github.io/blog/post/ce3cb319.html</id>
-    <published>2019-06-04T16:00:00.000Z</published>
-    <updated>2019-06-09T03:32:39.592Z</updated>
+    <title>git pull和pash使用</title>
+    <link href="http://disanshijie.github.io/blog/post/189a6a9b.html"/>
+    <id>http://disanshijie.github.io/blog/post/189a6a9b.html</id>
+    <published>2019-06-05T16:00:00.000Z</published>
+    <updated>2019-06-09T03:32:39.596Z</updated>
     
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p><a href="https://www.cnblogs.com/tocy/p/git-stash-reference.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-stash-reference.html</a></p><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89" target="_blank" rel="noopener">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89</a></p><p><a href="https://blog.csdn.net/qq_32452623/article/details/76100140" target="_blank" rel="noopener">https://blog.csdn.net/qq_32452623/article/details/76100140</a></p><a id="more"></a><p>基本使用</p><p>当前分支 master ，文件已做了修改</p><p>git stash </p><p>推送一个新的储藏，当前的工作目录就干净了 </p><p>git  checkout <branch> </branch></p><p>随意切换到其他分支，例 dev</p><p>修改dev分支，解决dev bug问题后 提交commit</p><p>git  checkout master</p><p>dev分支问题解决后 切换到 原来分支 master</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash apply  (应用最新但不删除储藏)</span><br><span class="line">git stash pop (应用最新并删除储藏)</span><br></pre></td></tr></table></figure><p>将缓存堆栈中的stash应用到工作目录中</p><p>其他</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash list  //查看储藏列表</span><br><span class="line">git stash clear //删除所有缓存的stash</span><br></pre></td></tr></table></figure><p>总结：</p><blockquote><p>当前分支有没有提交的内容，但急需切换到其他分支</p><p>通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 </p><p>其他分支内容修复后，再从储藏中将内容拿出来继续工作</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><p>设置本地分支默认对应远程dev分支，方便pull和push</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/tocy/p/git-stash-reference.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/tocy/p/git-stash-reference.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_32452623/article/details/76100140&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/qq_32452623/article/details/76100140&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;设置本地分支默认对应远程dev分支，方便pull和push&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git branch --set-upstream-to=origin/dev dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -239,6 +195,28 @@
 &lt;p&gt;方法一：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git merge --abort&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git reset --merge&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git pull&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;  如果这几个命令并没有解决问题，那将就看第二个方法。开始方法二前，保证代码已经有备份，备份，备份；&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git stash使用</title>
+    <link href="http://disanshijie.github.io/blog/post/ce3cb319.html"/>
+    <id>http://disanshijie.github.io/blog/post/ce3cb319.html</id>
+    <published>2019-06-04T16:00:00.000Z</published>
+    <updated>2019-06-09T03:32:39.592Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p><a href="https://www.cnblogs.com/tocy/p/git-stash-reference.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-stash-reference.html</a></p><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89" target="_blank" rel="noopener">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89</a></p><p><a href="https://blog.csdn.net/qq_32452623/article/details/76100140" target="_blank" rel="noopener">https://blog.csdn.net/qq_32452623/article/details/76100140</a></p><a id="more"></a><p>基本使用</p><p>当前分支 master ，文件已做了修改</p><p>git stash </p><p>推送一个新的储藏，当前的工作目录就干净了 </p><p>git  checkout <branch> </branch></p><p>随意切换到其他分支，例 dev</p><p>修改dev分支，解决dev bug问题后 提交commit</p><p>git  checkout master</p><p>dev分支问题解决后 切换到 原来分支 master</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash apply  (应用最新但不删除储藏)</span><br><span class="line">git stash pop (应用最新并删除储藏)</span><br></pre></td></tr></table></figure><p>将缓存堆栈中的stash应用到工作目录中</p><p>其他</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash list  //查看储藏列表</span><br><span class="line">git stash clear //删除所有缓存的stash</span><br></pre></td></tr></table></figure><p>总结：</p><blockquote><p>当前分支有没有提交的内容，但急需切换到其他分支</p><p>通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 </p><p>其他分支内容修复后，再从储藏中将内容拿出来继续工作</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/tocy/p/git-stash-reference.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/tocy/p/git-stash-reference.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_32452623/article/details/76100140&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/qq_32452623/article/details/76100140&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -389,32 +367,6 @@
   </entry>
   
   <entry>
-    <title>typora创建task任务</title>
-    <link href="http://disanshijie.github.io/blog/post/9d6885de.html"/>
-    <id>http://disanshijie.github.io/blog/post/9d6885de.html</id>
-    <published>2019-05-20T16:00:00.000Z</published>
-    <updated>2019-06-09T03:32:39.617Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="typora创建task"><a href="#typora创建task" class="headerlink" title="typora创建task"></a>typora创建task</h2><h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>2019-05-20</p><p>tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png" alt></p><a id="more"></a><h3 id="创建task-json"><a href="#创建task-json" class="headerlink" title="创建task.json"></a>创建task.json</h3><p>打开命令窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135013.png" alt></p><p>注：点击配置任务后 -&gt; 随便点击一个就会生成 .vscode/tasks.json 文件</p><h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135221.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;Open Typora&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;process&quot;,</span><br><span class="line">            &quot;windows&quot;: &#123; &quot;command&quot;: &quot;F:\\ProgramFiles\\Typora\\Typora.exe&quot;,&quot;args&quot;: [</span><br><span class="line">                &quot;$&#123;file&#125;&quot;</span><br><span class="line">            ] &#125;,</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;presentation&quot;: &#123;</span><br><span class="line">                &quot;reveal&quot;: &quot;always&quot;,</span><br><span class="line">                &quot;panel&quot;: &quot;new&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注：自己修改typora的安装目录</p><h4 id="测试任务是否成功"><a href="#测试任务是否成功" class="headerlink" title="测试任务是否成功"></a>测试任务是否成功</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190602112149.png" alt></p><h4 id="修改快捷键"><a href="#修改快捷键" class="headerlink" title="修改快捷键"></a>修改快捷键</h4><p>我们可以在“文件”—-“首选项”—“键盘快捷方式”。打开设置</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135445.png" alt></p><p>注：没有直接 <code>ctrl + p</code>  搜索 <code>keybindings.json</code></p><p>内容如下</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135530.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;key&quot;: &quot;ctrl+1&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;workbench.action.tasks.runTask&quot;,</span><br><span class="line">    &quot;args&quot;: &quot;Open Typora&quot;,</span><br><span class="line">    &quot;when&quot;: &quot;resourceLangId == markdown&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意：此处的args与tasks.json中的label值对应</p><h4 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h4><p>快捷键 Ctrl + 1</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141527.gif" alt></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul><li><p>vscode 基本配置和使用</p><p><a href="http://www.cnblogs.com/jcuan/p/5918088.html" target="_blank" rel="noopener">http://www.cnblogs.com/jcuan/p/5918088.html</a></p></li><li><p>如何建一个task任务</p><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p></li><li><p>vscode快捷键使用（when的用法）</p><p><a href="https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts" target="_blank" rel="noopener">https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts</a></p></li><li><p>vscode</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;typora创建task&quot;&gt;&lt;a href=&quot;#typora创建task&quot; class=&quot;headerlink&quot; title=&quot;typora创建task&quot;&gt;&lt;/a&gt;typora创建task&lt;/h2&gt;&lt;h4 id=&quot;备注&quot;&gt;&lt;a href=&quot;#备注&quot; class=&quot;headerlink&quot; title=&quot;备注&quot;&gt;&lt;/a&gt;备注&lt;/h4&gt;&lt;p&gt;2019-05-20&lt;/p&gt;
-&lt;p&gt;tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png&quot; alt&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活 - 计算机 - 软件 - typora" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-typora/"/>
-    
-    
-      <category term="vscode" scheme="http://disanshijie.github.io/blog/tags/vscode/"/>
-    
-      <category term="typora" scheme="http://disanshijie.github.io/blog/tags/typora/"/>
-    
-  </entry>
-  
-  <entry>
     <title>wordpress jwt认证并发布文章</title>
     <link href="http://disanshijie.github.io/blog/post/3d7895ea.html"/>
     <id>http://disanshijie.github.io/blog/post/3d7895ea.html</id>
@@ -448,6 +400,52 @@
   </entry>
   
   <entry>
+    <title>typora创建task任务</title>
+    <link href="http://disanshijie.github.io/blog/post/9d6885de.html"/>
+    <id>http://disanshijie.github.io/blog/post/9d6885de.html</id>
+    <published>2019-05-20T16:00:00.000Z</published>
+    <updated>2019-06-09T03:32:39.617Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="typora创建task"><a href="#typora创建task" class="headerlink" title="typora创建task"></a>typora创建task</h2><h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>2019-05-20</p><p>tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png" alt></p><a id="more"></a><h3 id="创建task-json"><a href="#创建task-json" class="headerlink" title="创建task.json"></a>创建task.json</h3><p>打开命令窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135013.png" alt></p><p>注：点击配置任务后 -&gt; 随便点击一个就会生成 .vscode/tasks.json 文件</p><h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135221.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;Open Typora&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;process&quot;,</span><br><span class="line">            &quot;windows&quot;: &#123; &quot;command&quot;: &quot;F:\\ProgramFiles\\Typora\\Typora.exe&quot;,&quot;args&quot;: [</span><br><span class="line">                &quot;$&#123;file&#125;&quot;</span><br><span class="line">            ] &#125;,</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;presentation&quot;: &#123;</span><br><span class="line">                &quot;reveal&quot;: &quot;always&quot;,</span><br><span class="line">                &quot;panel&quot;: &quot;new&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注：自己修改typora的安装目录</p><h4 id="测试任务是否成功"><a href="#测试任务是否成功" class="headerlink" title="测试任务是否成功"></a>测试任务是否成功</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190602112149.png" alt></p><h4 id="修改快捷键"><a href="#修改快捷键" class="headerlink" title="修改快捷键"></a>修改快捷键</h4><p>我们可以在“文件”—-“首选项”—“键盘快捷方式”。打开设置</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135445.png" alt></p><p>注：没有直接 <code>ctrl + p</code>  搜索 <code>keybindings.json</code></p><p>内容如下</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135530.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;key&quot;: &quot;ctrl+1&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;workbench.action.tasks.runTask&quot;,</span><br><span class="line">    &quot;args&quot;: &quot;Open Typora&quot;,</span><br><span class="line">    &quot;when&quot;: &quot;resourceLangId == markdown&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意：此处的args与tasks.json中的label值对应</p><h4 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h4><p>快捷键 Ctrl + 1</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141527.gif" alt></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul><li><p>vscode 基本配置和使用</p><p><a href="http://www.cnblogs.com/jcuan/p/5918088.html" target="_blank" rel="noopener">http://www.cnblogs.com/jcuan/p/5918088.html</a></p></li><li><p>如何建一个task任务</p><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p></li><li><p>vscode快捷键使用（when的用法）</p><p><a href="https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts" target="_blank" rel="noopener">https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts</a></p></li><li><p>vscode</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;typora创建task&quot;&gt;&lt;a href=&quot;#typora创建task&quot; class=&quot;headerlink&quot; title=&quot;typora创建task&quot;&gt;&lt;/a&gt;typora创建task&lt;/h2&gt;&lt;h4 id=&quot;备注&quot;&gt;&lt;a href=&quot;#备注&quot; class=&quot;headerlink&quot; title=&quot;备注&quot;&gt;&lt;/a&gt;备注&lt;/h4&gt;&lt;p&gt;2019-05-20&lt;/p&gt;
+&lt;p&gt;tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活 - 计算机 - 软件 - typora" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-typora/"/>
+    
+    
+      <category term="vscode" scheme="http://disanshijie.github.io/blog/tags/vscode/"/>
+    
+      <category term="typora" scheme="http://disanshijie.github.io/blog/tags/typora/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个项目需要的模块</title>
+    <link href="http://disanshijie.github.io/blog/post/22c0c787.html"/>
+    <id>http://disanshijie.github.io/blog/post/22c0c787.html</id>
+    <published>2019-03-14T09:37:02.000Z</published>
+    <updated>2019-06-09T03:32:39.594Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="项目模块"><a href="#项目模块" class="headerlink" title="项目模块"></a>项目模块</h2><a id="more"></a><h4 id="后台模块"><a href="#后台模块" class="headerlink" title="后台模块"></a>后台模块</h4><h5 id="util模块"><a href="#util模块" class="headerlink" title="util模块"></a>util模块</h5><p>公共jar，常用util</p><p>各编号规则</p><p>excel 导入导出</p><p>httpclient 请求</p><p>token权鉴</p><h4 id="common模块"><a href="#common模块" class="headerlink" title="common模块"></a>common模块</h4><p>本项目定制化 工具类</p><p>常量 —系统，表</p><p>权限：shiro</p><p>缓存管理：J2cache/redis</p><p>校验规则</p><p>词典</p><p>公共 实体对象</p><p>统一 异常处理 返回处理 日志处理</p><h5 id="admin模块"><a href="#admin模块" class="headerlink" title="admin模块"></a>admin模块</h5><p>用户，部门，角色 相关</p><h5 id="补充模块"><a href="#补充模块" class="headerlink" title="补充模块"></a>补充模块</h5><p>定时任务模块</p><p>文件上传模块</p><p>日志模块</p><p>消息通知模块</p><p>验证码模块 (session 方式，存表方式)</p><p>搜索引擎模块</p><p>个人中心模块</p><p>订单，统计模块</p><p>独立评论模块</p><p>测试模块</p><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>ip拦截</p><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>高度解耦合 模块之间引用 尽量少关联<br>高度分离 只做我的功能,新的功能用新的表 新的模块 可以继承已有的</p><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>sys<br>    sys-util  项目工具类 (我的每个功能可以[jar + 自定义]) 非servlet springMVC mybatis就行 （因为sys-core中才引用这些包）<br>        sys-util-excel<br>        sys-util-httpclient<br>        sys-util-token /jwt<br>        sys-util-valid 效验<br>        sys-util-拦截器<br>        sys-util-结果 异常 分页 常量<br>        … 文件操作、日期转换、数据类型转换、序列化、汉字转拼音、身份证号码验证、数字转人民币、发送短信、发送邮件、加密解密、图片处理、FTP/SFTP/fastDFS上传下载、二维码、XML读写、高精度计算<br>    sys-core  核心模块 关联表操作<br>            sys-core-log<br>            sys-core-shiro<br>            sys-core-cache 缓存<br>    sys-common  插拔式公共模块 关联表操作<br>        sys-common-dict<br>        sys-common-email<br>        sys-common-code 验证码<br>        sys-common-支付<br>        sys-common-第三方登录<br>        sys-common-统计<br>        …<br>    sys-user （jar）（API）用户 部门 角色 权限 获取 拿到系统用户相关信息  例如: 拿到部门信息<br>    //sys-user-api 用户 部门 角色 权限处理 API<br>    sys-web （war） || sys-web-sun<br>        sys-web-admin 用户权限管理<br>        sys-web-common<br>            quartz<br>            upload<br>            log<br>            message 消息通知<br>            dict 词典<br>            oss<br>            sql 监控    </p><p>blog<br>    blog-web 后台管理</p><p>goods<br>    goods-web 商品</p><p>//TODO 聊天</p><hr><p>基于 springMVC mybatis-plus 其关联逻辑不能换<br>redis shiro etc尽量解耦</p><p>先完成用户管理模块 sys-web-admin<br>    条件:<br>        MVC请求控制, 需要配置shiro<br>        sys-user基础用户 部门 角色 权限处理 以满足shiro需要<br>        缓存配置 以满足shiro需要<br>        缓存用redis,redis基础模块不做涉及表的操作, 可以类似一个工具类<br>    结构<br>        缓存  + 用户 部门 角色逻辑  –&gt; shiro –&gt; author–&gt; MVC </p><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>sys-core<br>    common<br>        base 继承类,继承mybatis-plus<br>            service<br>            dao<br>        contants<br>        exception<br>    cache 缓存<br>        aspect<br>            annotation<br>    log<br>    sys<br>        用户 部门 角色 权限处理<br>            //对shiro提供支持<br>            //TODO 向外api提供用户相关信息<br>    shiro 权限<br>        authc<br>    config 配置 eg: shiro规则 log规则<br>sys-web   系统用户登录<br>    sys-web-admin<br>        common<br>        config<br>            interceptor<br>        modules… 登录 权限编辑 相关<br>            controller<br>            service<br>            dao<br>            entity<br>    sys-web-common<br>        common<br>        config<br>        modules…</p><p>博客系统<br>blog-web 用户后台登录<br>    common<br>    config<br>    modules… 博客相关<br>        controller<br>        service<br>        dao<br>        entity    </p><p>爬虫系统</p><h2 id="论坛项目"><a href="#论坛项目" class="headerlink" title="论坛项目"></a>论坛项目</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;项目模块&quot;&gt;&lt;a href=&quot;#项目模块&quot; class=&quot;headerlink&quot; title=&quot;项目模块&quot;&gt;&lt;/a&gt;项目模块&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="技术 - WEB - 后台 - 架构" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%90%8E%E5%8F%B0-%E6%9E%B6%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>系统管理模块</title>
     <link href="http://disanshijie.github.io/blog/post/18ca0036.html"/>
     <id>http://disanshijie.github.io/blog/post/18ca0036.html</id>
@@ -468,21 +466,22 @@
   </entry>
   
   <entry>
-    <title>一个项目需要的模块</title>
-    <link href="http://disanshijie.github.io/blog/post/22c0c787.html"/>
-    <id>http://disanshijie.github.io/blog/post/22c0c787.html</id>
-    <published>2019-03-14T09:37:02.000Z</published>
-    <updated>2019-06-09T03:32:39.594Z</updated>
+    <title>Hexo建站-插件</title>
+    <link href="http://disanshijie.github.io/blog/post/6b8323ff.html"/>
+    <id>http://disanshijie.github.io/blog/post/6b8323ff.html</id>
+    <published>2019-03-11T07:47:22.000Z</published>
+    <updated>2019-06-09T03:32:39.602Z</updated>
     
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="项目模块"><a href="#项目模块" class="headerlink" title="项目模块"></a>项目模块</h2><a id="more"></a><h4 id="后台模块"><a href="#后台模块" class="headerlink" title="后台模块"></a>后台模块</h4><h5 id="util模块"><a href="#util模块" class="headerlink" title="util模块"></a>util模块</h5><p>公共jar，常用util</p><p>各编号规则</p><p>excel 导入导出</p><p>httpclient 请求</p><p>token权鉴</p><h4 id="common模块"><a href="#common模块" class="headerlink" title="common模块"></a>common模块</h4><p>本项目定制化 工具类</p><p>常量 —系统，表</p><p>权限：shiro</p><p>缓存管理：J2cache/redis</p><p>校验规则</p><p>词典</p><p>公共 实体对象</p><p>统一 异常处理 返回处理 日志处理</p><h5 id="admin模块"><a href="#admin模块" class="headerlink" title="admin模块"></a>admin模块</h5><p>用户，部门，角色 相关</p><h5 id="补充模块"><a href="#补充模块" class="headerlink" title="补充模块"></a>补充模块</h5><p>定时任务模块</p><p>文件上传模块</p><p>日志模块</p><p>消息通知模块</p><p>验证码模块 (session 方式，存表方式)</p><p>搜索引擎模块</p><p>个人中心模块</p><p>订单，统计模块</p><p>独立评论模块</p><p>测试模块</p><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>ip拦截</p><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>高度解耦合 模块之间引用 尽量少关联<br>高度分离 只做我的功能,新的功能用新的表 新的模块 可以继承已有的</p><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>sys<br>    sys-util  项目工具类 (我的每个功能可以[jar + 自定义]) 非servlet springMVC mybatis就行 （因为sys-core中才引用这些包）<br>        sys-util-excel<br>        sys-util-httpclient<br>        sys-util-token /jwt<br>        sys-util-valid 效验<br>        sys-util-拦截器<br>        sys-util-结果 异常 分页 常量<br>        … 文件操作、日期转换、数据类型转换、序列化、汉字转拼音、身份证号码验证、数字转人民币、发送短信、发送邮件、加密解密、图片处理、FTP/SFTP/fastDFS上传下载、二维码、XML读写、高精度计算<br>    sys-core  核心模块 关联表操作<br>            sys-core-log<br>            sys-core-shiro<br>            sys-core-cache 缓存<br>    sys-common  插拔式公共模块 关联表操作<br>        sys-common-dict<br>        sys-common-email<br>        sys-common-code 验证码<br>        sys-common-支付<br>        sys-common-第三方登录<br>        sys-common-统计<br>        …<br>    sys-user （jar）（API）用户 部门 角色 权限 获取 拿到系统用户相关信息  例如: 拿到部门信息<br>    //sys-user-api 用户 部门 角色 权限处理 API<br>    sys-web （war） || sys-web-sun<br>        sys-web-admin 用户权限管理<br>        sys-web-common<br>            quartz<br>            upload<br>            log<br>            message 消息通知<br>            dict 词典<br>            oss<br>            sql 监控    </p><p>blog<br>    blog-web 后台管理</p><p>goods<br>    goods-web 商品</p><p>//TODO 聊天</p><hr><p>基于 springMVC mybatis-plus 其关联逻辑不能换<br>redis shiro etc尽量解耦</p><p>先完成用户管理模块 sys-web-admin<br>    条件:<br>        MVC请求控制, 需要配置shiro<br>        sys-user基础用户 部门 角色 权限处理 以满足shiro需要<br>        缓存配置 以满足shiro需要<br>        缓存用redis,redis基础模块不做涉及表的操作, 可以类似一个工具类<br>    结构<br>        缓存  + 用户 部门 角色逻辑  –&gt; shiro –&gt; author–&gt; MVC </p><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>sys-core<br>    common<br>        base 继承类,继承mybatis-plus<br>            service<br>            dao<br>        contants<br>        exception<br>    cache 缓存<br>        aspect<br>            annotation<br>    log<br>    sys<br>        用户 部门 角色 权限处理<br>            //对shiro提供支持<br>            //TODO 向外api提供用户相关信息<br>    shiro 权限<br>        authc<br>    config 配置 eg: shiro规则 log规则<br>sys-web   系统用户登录<br>    sys-web-admin<br>        common<br>        config<br>            interceptor<br>        modules… 登录 权限编辑 相关<br>            controller<br>            service<br>            dao<br>            entity<br>    sys-web-common<br>        common<br>        config<br>        modules…</p><p>博客系统<br>blog-web 用户后台登录<br>    common<br>    config<br>    modules… 博客相关<br>        controller<br>        service<br>        dao<br>        entity    </p><p>爬虫系统</p><h2 id="论坛项目"><a href="#论坛项目" class="headerlink" title="论坛项目"></a>论坛项目</h2>]]></content>
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h5 id="代码块处理"><a href="#代码块处理" class="headerlink" title="代码块处理"></a>代码块处理</h5><h6 id="添加复制功能"><a href="#添加复制功能" class="headerlink" title="添加复制功能"></a>添加复制功能</h6><p><a href="https://www.jianshu.com/p/3e9d614c1e77" target="_blank" rel="noopener">参考</a></p><h6 id="下载-clipboard-js"><a href="#下载-clipboard-js" class="headerlink" title="下载 clipboard.js"></a>下载 clipboard.js</h6><p>三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它<a href="https://clipboardjs.com/" target="_blank" rel="noopener">主页</a>或<a href="https://github.com/zenorocha/clipboard.js" target="_blank" rel="noopener">github</a>上看。<br><a id="more"></a></p><h6 id="clipboardjs-使用"><a href="#clipboardjs-使用" class="headerlink" title="clipboardjs 使用"></a>clipboardjs 使用</h6><p>在<code>.\source\js</code>目录下,保存文件<code>clipboard.js / clipboard.min.js</code></p><p>也是在<code>.\source\js</code>目录下，创建<code>clipboard-use.js</code>，文件内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*页面载入完成后，创建复制按钮*/</span><br><span class="line">!function (e, t, a) &#123; </span><br><span class="line">  /* code */</span><br><span class="line">  var initCopyCode = function()&#123;</span><br><span class="line">    var copyHtml = &apos;&apos;;</span><br><span class="line">    copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;;</span><br><span class="line">    copyHtml += &apos;  &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;;</span><br><span class="line">    copyHtml += &apos;&lt;/button&gt;&apos;;</span><br><span class="line">    $(&quot;.highlight .code pre&quot;).before(copyHtml);</span><br><span class="line">    new ClipboardJS(&apos;.btn-copy&apos;, &#123;</span><br><span class="line">        target: function(trigger) &#123;</span><br><span class="line">            return trigger.nextElementSibling;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  initCopyCode();</span><br><span class="line">&#125;(window, document);</span><br></pre></td></tr></table></figure><h6 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h6><p>在<code>source\css\_partial</code>样式文件中添加下面代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//代码块复制按钮</span><br><span class="line">.highlight&#123;</span><br><span class="line">  //方便copy代码按钮（btn-copy）的定位</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.btn-copy &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    background-color: #eee;</span><br><span class="line">    background-image: linear-gradient(#fcfcfc,#eee);</span><br><span class="line">    border: 1px solid #d5d5d5;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    -webkit-user-select: none;</span><br><span class="line">    -moz-user-select: none;</span><br><span class="line">    -ms-user-select: none;</span><br><span class="line">    user-select: none;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">    font-size: 13px;</span><br><span class="line">    font-weight: 700;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">    color: #333;</span><br><span class="line">    -webkit-transition: opacity .3s ease-in-out;</span><br><span class="line">    -o-transition: opacity .3s ease-in-out;</span><br><span class="line">    transition: opacity .3s ease-in-out;</span><br><span class="line">    padding: 2px 6px;</span><br><span class="line">    position: absolute;</span><br><span class="line">    right: 5px;</span><br><span class="line">    top: 5px;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.btn-copy span &#123;</span><br><span class="line">    margin-left: 5px;</span><br><span class="line">&#125;</span><br><span class="line">.highlight:hover .btn-copy&#123;</span><br><span class="line">  opacity: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h6 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h6><p>引用js ==(clipboard-use需要jQuery支持)==</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 代码块复制功能 --&gt;</span><br><span class="line">&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;</span><br><span class="line">&lt;%- js(&apos;js/clipboard-use&apos;) %&gt;</span><br></pre></td></tr></table></figure><p>引用css</p><p>相应地方引入 eg：<code>...source\css\style.styl</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 代码块复制按钮</span><br><span class="line">//-----------------------------------------------</span><br><span class="line">@import &quot;_partial/clipboard&quot;</span><br></pre></td></tr></table></figure><h6 id="添加折叠效果"><a href="#添加折叠效果" class="headerlink" title="添加折叠效果"></a>添加折叠效果</h6><p><a href="https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/</a></p><p><a href="https://blog.rmiao.top/hexo-fold-block/" target="_blank" rel="noopener">https://blog.rmiao.top/hexo-fold-block/</a></p><h4 id="辅助功能"><a href="#辅助功能" class="headerlink" title="辅助功能"></a>辅助功能</h4><p>添加字数统计，阅读次数</p>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;项目模块&quot;&gt;&lt;a href=&quot;#项目模块&quot; class=&quot;headerlink&quot; title=&quot;项目模块&quot;&gt;&lt;/a&gt;项目模块&lt;/h2&gt;
+      &lt;h5 id=&quot;代码块处理&quot;&gt;&lt;a href=&quot;#代码块处理&quot; class=&quot;headerlink&quot; title=&quot;代码块处理&quot;&gt;&lt;/a&gt;代码块处理&lt;/h5&gt;&lt;h6 id=&quot;添加复制功能&quot;&gt;&lt;a href=&quot;#添加复制功能&quot; class=&quot;headerlink&quot; title=&quot;添加复制功能&quot;&gt;&lt;/a&gt;添加复制功能&lt;/h6&gt;&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/3e9d614c1e77&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;h6 id=&quot;下载-clipboard-js&quot;&gt;&lt;a href=&quot;#下载-clipboard-js&quot; class=&quot;headerlink&quot; title=&quot;下载 clipboard.js&quot;&gt;&lt;/a&gt;下载 clipboard.js&lt;/h6&gt;&lt;p&gt;三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它&lt;a href=&quot;https://clipboardjs.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;主页&lt;/a&gt;或&lt;a href=&quot;https://github.com/zenorocha/clipboard.js&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github&lt;/a&gt;上看。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
-      <category term="技术 - WEB - 后台 - 架构" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%90%8E%E5%8F%B0-%E6%9E%B6%E6%9E%84/"/>
+      <category term="技术 - WEB - 建站 - 博客" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%BB%BA%E7%AB%99-%E5%8D%9A%E5%AE%A2/"/>
     
     
   </entry>
