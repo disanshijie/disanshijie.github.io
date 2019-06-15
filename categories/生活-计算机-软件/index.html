@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>一个项目需要的模块 | 第三世界</title>
+    <title>`生活\计算机\软件`分类下的文章 | 第三世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="sun, java, Web, 数据库, 集群">
     <meta name="description" content="sun bo">
@@ -55,19 +55,19 @@
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-                <li rel="/blog/post/22c0c787.html" class="item ">
+                <li rel="/blog/categories/生活-计算机-软件/index.html" class="item ">
                     <a href="/blog/" title="首页" class="icon-home">&nbsp;首页</a>
                 </li>
                 
-                <li rel="/blog/post/22c0c787.html" class="item ">
+                <li rel="/blog/categories/生活-计算机-软件/index.html" class="item ">
                     <a href="/blog/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
                 </li>
                 
-                <li rel="/blog/post/22c0c787.html" class="item ">
+                <li rel="/blog/categories/生活-计算机-软件/index.html" class="item ">
                     <a href="/blog/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
-                <li rel="/blog/post/22c0c787.html" class="item ">
+                <li rel="/blog/categories/生活-计算机-软件/index.html" class="item ">
                     <a href="/blog/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
                 </li>
                 
@@ -117,184 +117,73 @@
     <div class="container body clearfix">
         <section class="content">
             <div class="content-main widget">
-                <!-- 文章页 -->
-<!-- 文章 -->
-<article class="post article">
-    <header class="text-center">
-        <h3 class="post-title"><span>一个项目需要的模块</span></h3>
+                <!-- 文章分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `生活\计算机\软件`分类下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+            <a class="cat-link" href="/blog/categories/生活-计算机-软件/">生活\计算机\软件</a>
+                
+                        <!-- 文章标题 -->
+                        
+    <h3 class="post-title">
+    	<a href="http://disanshijie.github.io/post/375ce186.html">
+    		window-nginx
+    	</a>
+    </h3>
+
     </header>
-    <p class="post-meta text-center">
-        sun bo 发表于
-            <time datetime="2019-03-14T09:37:02.000Z">2019-03-14</time>
-    </p>
-    <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="项目模块"><a href="#项目模块" class="headerlink" title="项目模块"></a>项目模块</h2><a id="more"></a>
-<h4 id="后台模块"><a href="#后台模块" class="headerlink" title="后台模块"></a>后台模块</h4><h5 id="util模块"><a href="#util模块" class="headerlink" title="util模块"></a>util模块</h5><p>公共jar，常用util</p>
-<p>各编号规则</p>
-<p>excel 导入导出</p>
-<p>httpclient 请求</p>
-<p>token权鉴</p>
-<h4 id="common模块"><a href="#common模块" class="headerlink" title="common模块"></a>common模块</h4><p>本项目定制化 工具类</p>
-<p>常量 —系统，表</p>
-<p>权限：shiro</p>
-<p>缓存管理：J2cache/redis</p>
-<p>校验规则</p>
-<p>词典</p>
-<p>公共 实体对象</p>
-<p>统一 异常处理 返回处理 日志处理</p>
-<h5 id="admin模块"><a href="#admin模块" class="headerlink" title="admin模块"></a>admin模块</h5><p>用户，部门，角色 相关</p>
-<h5 id="补充模块"><a href="#补充模块" class="headerlink" title="补充模块"></a>补充模块</h5><p>定时任务模块</p>
-<p>文件上传模块</p>
-<p>日志模块</p>
-<p>消息通知模块</p>
-<p>验证码模块 (session 方式，存表方式)</p>
-<p>搜索引擎模块</p>
-<p>个人中心模块</p>
-<p>订单，统计模块</p>
-<p>独立评论模块</p>
-<p>测试模块</p>
-<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>ip拦截</p>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>高度解耦合 模块之间引用 尽量少关联<br>高度分离 只做我的功能,新的功能用新的表 新的模块 可以继承已有的</p>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>sys<br>    sys-util  项目工具类 (我的每个功能可以[jar + 自定义]) 非servlet springMVC mybatis就行 （因为sys-core中才引用这些包）<br>        sys-util-excel<br>        sys-util-httpclient<br>        sys-util-token /jwt<br>        sys-util-valid 效验<br>        sys-util-拦截器<br>        sys-util-结果 异常 分页 常量<br>        … 文件操作、日期转换、数据类型转换、序列化、汉字转拼音、身份证号码验证、数字转人民币、发送短信、发送邮件、加密解密、图片处理、FTP/SFTP/fastDFS上传下载、二维码、XML读写、高精度计算<br>    sys-core  核心模块 关联表操作<br>            sys-core-log<br>            sys-core-shiro<br>            sys-core-cache 缓存<br>    sys-common  插拔式公共模块 关联表操作<br>        sys-common-dict<br>        sys-common-email<br>        sys-common-code 验证码<br>        sys-common-支付<br>        sys-common-第三方登录<br>        sys-common-统计<br>        …<br>    sys-user （jar）（API）用户 部门 角色 权限 获取 拿到系统用户相关信息  例如: 拿到部门信息<br>    //sys-user-api 用户 部门 角色 权限处理 API<br>    sys-web （war） || sys-web-sun<br>        sys-web-admin 用户权限管理<br>        sys-web-common<br>            quartz<br>            upload<br>            log<br>            message 消息通知<br>            dict 词典<br>            oss<br>            sql 监控    </p>
-<p>blog<br>    blog-web 后台管理</p>
-<p>goods<br>    goods-web 商品</p>
-<p>//TODO 聊天</p>
-<hr>
-<p>基于 springMVC mybatis-plus 其关联逻辑不能换<br>redis shiro etc尽量解耦</p>
-<p>先完成用户管理模块 sys-web-admin<br>    条件:<br>        MVC请求控制, 需要配置shiro<br>        sys-user基础用户 部门 角色 权限处理 以满足shiro需要<br>        缓存配置 以满足shiro需要<br>        缓存用redis,redis基础模块不做涉及表的操作, 可以类似一个工具类<br>    结构<br>        缓存  + 用户 部门 角色逻辑  –&gt; shiro –&gt; author–&gt; MVC </p>
-<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>sys-core<br>    common<br>        base 继承类,继承mybatis-plus<br>            service<br>            dao<br>        contants<br>        exception<br>    cache 缓存<br>        aspect<br>            annotation<br>    log<br>    sys<br>        用户 部门 角色 权限处理<br>            //对shiro提供支持<br>            //TODO 向外api提供用户相关信息<br>    shiro 权限<br>        authc<br>    config 配置 eg: shiro规则 log规则<br>sys-web   系统用户登录<br>    sys-web-admin<br>        common<br>        config<br>            interceptor<br>        modules… 登录 权限编辑 相关<br>            controller<br>            service<br>            dao<br>            entity<br>    sys-web-common<br>        common<br>        config<br>        modules…</p>
-<p>博客系统<br>blog-web 用户后台登录<br>    common<br>    config<br>    modules… 博客相关<br>        controller<br>        service<br>        dao<br>        entity    </p>
-<p>爬虫系统</p>
-<h2 id="论坛项目"><a href="#论坛项目" class="headerlink" title="论坛项目"></a>论坛项目</h2>
-    </div>
     <p class="post-meta">
-        <span class="post-cat">分类：
-            <a class="cat-link" href="/blog/categories/技术-WEB-后台-架构/">技术 - WEB - 后台 - 架构</a>
-        </span>
-        <span class="post-tags">
+        sun bo 发表于
+            <time datetime="2019-06-10T07:28:31.000Z">2019-06-10</time>
+                &nbsp;&nbsp;
+                <span class="post-tags">
             标签：
             
+    
+        <a href="/blog/tags/默认/" title="默认">默认</a>
+    
+
         </span>
     </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                在Windows下使用Nginx，我们需要掌握一些基本的操作命令，比如：启动、停止Nginx服务，重新载入Nginx等，下面我就进行一些简单的介绍。
+                    
+                        <p class="more">
+                            <a href="http://disanshijie.github.io/post/375ce186.html">阅读剩下更多</a>
+                        </p>
+        </div>
+        <div class="post-thumbnail" data-img>
+            <a href="http://disanshijie.github.io/post/375ce186.html" title="window-nginx">
+                
+                                <img class="thumbnail" src="/blog/img/default.png" data-echo="/blog/img/thumbnail/0.jpg" alt="默认配图">
+                                
+            </a>
+        </div>
+    </div>
 </article>
-<!-- 分享按钮 -->
-
-    <div class="article-share clearfix text-center">
-        <div class="share-area">
-            <span class="share-txt">分享到：</span>
-            <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
-            <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
-            <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
-            <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=sunbo个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
-            <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
-        </div>
-    </div>
-    
-
-    <!-- 上一篇/下一篇 -->
-
-<div class="article-nav clearfix">
-    
-    <span class="prev fl">
-        上一篇<br>
-        <a href="/blog/post/3d7895ea.html">
-            
-                wordpress jwt认证并发布文章
-            
-        </a>
-    </span>
     
 
     
-    <span class="next fr">
-        下一篇<br>
-        <a href="/blog/post/18ca0036.html">
-            
-                系统管理模块
-            
-        </a>
-    </span>
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
     
-</div>
 
-        <!-- 文章评论 -->
-        
-    <script src="/blog/js/comment.js"></script>
-        <div id="comments" class="comment">
-            <!--
-    <div class="sign-bar">
-      GitHub 已登录!
-      <span class="sign-link">登出</span>
-    </div>
-    <section class="box">
-      <div class="com-avatar"><img src="/img/sunbo.jpg" alt="avatar"></div>
-      <div class="com-text">
-        <div class="main">
-          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
-          <div class="text-area-preview"></div>
-        </div>
-        <div class="switch">
-          <div class="switch-item on">编辑</div>
-          <div class="switch-item">预览</div>
-        </div>
-        <div class="button">提交</div>
-      </div>
-    </section>
-    <section class="tips">注：评论支持 markdown 语法！</section>
-    <section class="list-wrap">
-      <ul class="list">
-        <li>
-          <div class="user-avatar">
-            <a href="/">
-              <img src="/img/sunbo.jpg" alt="user-avatar">
-            </a>
-          </div>
-          <div class="user-comment">
-            <div class="user-comment-header">
-              <span class="post-name">张德龙</span>
-              <span class="post-time">2017年12月12日</span>
-              <span class="like liked">已赞</span>
-              <span class="like-num">2</span>
-            </div>
-            <div class="user-comment-body">333333</div>
-          </div>
-        </li>
-        <li>
-          <div class="user-avatar">
-            <a href="/">
-              <img src="/img/sunbo.jpg" alt="user-avatar">
-            </a>
-          </div>
-          <div class="user-comment">
-            <div class="user-comment-header">
-              <span class="post-name">刘德华</span>
-              <span class="post-time">2017年12月12日</span>
-              <span class="like">点赞</span>
-              <span class="like-num">2</span>
-            </div>
-            <div class="user-comment-body">vvvvv</div>
-          </div>
-        </li>
-      </ul>
-      <div class="page-nav">
-        <a href="javascript: void(0);" class="item">1</a>
-        <a href="javascript: void(0);" class="item">2</a>
-        <a href="javascript: void(0);" class="item current">3</a>
-      </div>
-    </section>
-    -->
-        </div>
-        <script>
-            JELON.Comment({
-                container: 'comments',
-                label: '技术/WEB/后台/架构/一个项目需要的模块' || 'post/22c0c787.html',
-                owner: 'your_github_id',
-                repo: 'your_blog_comments',
-                clientId: 'your_client_id',
-                clientSecret: 'your_client_secret'
-            });
-        </script>
-        
+
             </div>
 
         </section>

@@ -5,9 +5,9 @@
   
   <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="http://disanshijie.github.io/blog/"/>
-  <updated>2019-06-09T03:32:39.585Z</updated>
-  <id>http://disanshijie.github.io/blog/</id>
+  <link href="http://disanshijie.github.io/"/>
+  <updated>2019-06-11T16:01:29.007Z</updated>
+  <id>http://disanshijie.github.io/</id>
   
   <author>
     <name>sun bo</name>
@@ -17,9 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>window-nginx</title>
+    <link href="http://disanshijie.github.io/post/375ce186.html"/>
+    <id>http://disanshijie.github.io/post/375ce186.html</id>
+    <published>2019-06-10T07:28:31.000Z</published>
+    <updated>2019-06-11T16:01:29.007Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><a id="more"></a><p><strong>Windows下Nginx的启动、停止等命令</strong></p><p>假设你安装在 C:\server\nginx-1.0.2目录下，</p><p>cmd命令进入安装文件；</p><p><strong>1、启动：</strong></p><p>C:\server\nginx-1.0.2&gt;start nginx</p><p>或</p><p>C:\server\nginx-1.0.2&gt;nginx.exe</p><p>注：建议使用第一种，第二种会使你的cmd窗口一直处于执行中，不能进行其他命令操作。</p><p><strong>2、停止：</strong></p><p>C:\server\nginx-1.0.2&gt;nginx.exe -s stop</p><p>或</p><p>C:\server\nginx-1.0.2&gt;nginx.exe -s quit</p><p>注：stop是快速停止nginx，可能并不保存相关信息；quit是完整有序的停止nginx，并保存相关信息。</p><p><strong>3、重新载入Nginx：</strong></p><p>C:\server\nginx-1.0.2&gt;nginx.exe -s reload</p><p>当配置信息修改，需要重新载入这些配置时使用此命令。</p><p><strong>4、重新打开日志文件：</strong></p><p>C:\server\nginx-1.0.2&gt;nginx.exe -s reopen</p><p><strong>5、查看Nginx版本：</strong></p><p>C:\server\nginx-1.0.2&gt;nginx -v</p><p>作者：秋天下雨淋湿冬天</p><p>链接：<a href="https://www.jianshu.com/p/01f3626cf25d" target="_blank" rel="noopener">https://www.jianshu.com/p/01f3626cf25d</a></p><p>来源：简书</p><p>简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script src=&quot;\blog\assets\js\APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;strong&gt;Windows下Nginx的启动、停止等命令&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设你安装在 C:\server\
+      
+    
+    </summary>
+    
+      <category term="生活\计算机\软件" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="默认" scheme="http://disanshijie.github.io/tags/%E9%BB%98%E8%AE%A4/"/>
+    
+  </entry>
+  
+  <entry>
     <title>开发常用环境变量配置</title>
-    <link href="http://disanshijie.github.io/blog/post/a67595ce.html"/>
-    <id>http://disanshijie.github.io/blog/post/a67595ce.html</id>
+    <link href="http://disanshijie.github.io/post/a67595ce.html"/>
+    <id>http://disanshijie.github.io/post/a67595ce.html</id>
     <published>2019-06-07T02:44:46.000Z</published>
     <updated>2019-06-09T03:32:39.585Z</updated>
     
@@ -35,17 +62,17 @@
     
     </summary>
     
-      <category term="生活\计算机\window" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-window/"/>
+      <category term="生活\计算机\window" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-window/"/>
     
     
-      <category term="默认" scheme="http://disanshijie.github.io/blog/tags/%E9%BB%98%E8%AE%A4/"/>
+      <category term="默认" scheme="http://disanshijie.github.io/tags/%E9%BB%98%E8%AE%A4/"/>
     
   </entry>
   
   <entry>
     <title>Linux查看系统信息</title>
-    <link href="http://disanshijie.github.io/blog/post/dff104ab.html"/>
-    <id>http://disanshijie.github.io/blog/post/dff104ab.html</id>
+    <link href="http://disanshijie.github.io/post/dff104ab.html"/>
+    <id>http://disanshijie.github.io/post/dff104ab.html</id>
     <published>2019-06-06T10:13:47.000Z</published>
     <updated>2019-06-09T03:32:39.586Z</updated>
     
@@ -57,17 +84,17 @@
     
     </summary>
     
-      <category term="技术 - 服务器 - Linux" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux/"/>
+      <category term="技术 - 服务器 - Linux" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux/"/>
     
     
-      <category term="Linux" scheme="http://disanshijie.github.io/blog/tags/Linux/"/>
+      <category term="Linux" scheme="http://disanshijie.github.io/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>ideagit使用</title>
-    <link href="http://disanshijie.github.io/blog/post/1c7f5eae.html"/>
-    <id>http://disanshijie.github.io/blog/post/1c7f5eae.html</id>
+    <link href="http://disanshijie.github.io/post/1c7f5eae.html"/>
+    <id>http://disanshijie.github.io/post/1c7f5eae.html</id>
     <published>2019-06-06T08:39:08.000Z</published>
     <updated>2019-06-09T03:32:39.610Z</updated>
     
@@ -79,17 +106,17 @@
     
     </summary>
     
-      <category term="生活 - 计算机 - 软件 - idea" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-idea/"/>
+      <category term="生活 - 计算机 - 软件 - idea" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-idea/"/>
     
     
-      <category term="默认" scheme="http://disanshijie.github.io/blog/tags/%E9%BB%98%E8%AE%A4/"/>
+      <category term="默认" scheme="http://disanshijie.github.io/tags/%E9%BB%98%E8%AE%A4/"/>
     
   </entry>
   
   <entry>
     <title>vscode 自定义代码片段</title>
-    <link href="http://disanshijie.github.io/blog/post/a3325540.html"/>
-    <id>http://disanshijie.github.io/blog/post/a3325540.html</id>
+    <link href="http://disanshijie.github.io/post/a3325540.html"/>
+    <id>http://disanshijie.github.io/post/a3325540.html</id>
     <published>2019-06-06T07:44:41.000Z</published>
     <updated>2019-06-09T03:32:39.612Z</updated>
     
@@ -102,19 +129,19 @@
     
     </summary>
     
-      <category term="生活 - 计算机 - 软件 - vscode" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-vscode/"/>
+      <category term="生活 - 计算机 - 软件 - vscode" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-vscode/"/>
     
     
-      <category term="vscode" scheme="http://disanshijie.github.io/blog/tags/vscode/"/>
+      <category term="vscode" scheme="http://disanshijie.github.io/tags/vscode/"/>
     
-      <category term="hexo" scheme="http://disanshijie.github.io/blog/tags/hexo/"/>
+      <category term="hexo" scheme="http://disanshijie.github.io/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>git pull和pash使用</title>
-    <link href="http://disanshijie.github.io/blog/post/189a6a9b.html"/>
-    <id>http://disanshijie.github.io/blog/post/189a6a9b.html</id>
+    <link href="http://disanshijie.github.io/post/189a6a9b.html"/>
+    <id>http://disanshijie.github.io/post/189a6a9b.html</id>
     <published>2019-06-05T16:00:00.000Z</published>
     <updated>2019-06-09T03:32:39.601Z</updated>
     
@@ -131,15 +158,15 @@
     
     </summary>
     
-      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
+      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
     
     
   </entry>
   
   <entry>
     <title>git pull和pash使用</title>
-    <link href="http://disanshijie.github.io/blog/post/189a6a9b.html"/>
-    <id>http://disanshijie.github.io/blog/post/189a6a9b.html</id>
+    <link href="http://disanshijie.github.io/post/189a6a9b.html"/>
+    <id>http://disanshijie.github.io/post/189a6a9b.html</id>
     <published>2019-06-05T16:00:00.000Z</published>
     <updated>2019-06-09T03:32:39.596Z</updated>
     
@@ -152,37 +179,15 @@
     
     </summary>
     
-      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>vscode使用</title>
-    <link href="http://disanshijie.github.io/blog/post/a2598390.html"/>
-    <id>http://disanshijie.github.io/blog/post/a2598390.html</id>
-    <published>2019-06-04T16:00:00.000Z</published>
-    <updated>2019-06-09T03:32:39.609Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><p>vscod  的git怎么使用 </p><p>提交 amend</p><p>同步 时提交<br><a id="more"></a></p><p>暂存？?</p><h4 id="源代码管理"><a href="#源代码管理" class="headerlink" title="源代码管理"></a>源代码管理</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190604173111.png" alt></p><h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><p>TODO</p><p>1 随便打开一个文件，添加一个注释</p><p>2 打开git工作区可以看到就是修改的这个文件 </p><p>然后点击右侧的+号，把他暂存起来。</p><p><img src="https://images2015.cnblogs.com/blog/717286/201612/717286-20161201162929693-967877373.png" alt="暂存"></p><p>3 再在消息框里输入消息，按ctrl+enter提交暂存</p><p><img src="https://images2015.cnblogs.com/blog/717286/201612/717286-20161201163128349-1615861863.png" alt="提交"></p><p>4 再点击 推送（push）提交，代码就提交到云端了。</p><p>5、克隆你的项目到本地</p><h5 id="相关命令详细说明"><a href="#相关命令详细说明" class="headerlink" title="相关命令详细说明"></a>相关命令详细说明</h5><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605151036.png" alt></p><p>![(<a href="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605143716.png" target="_blank" rel="noopener">https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605143716.png</a>)</p><h6 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h6><p>更新到远程服务器上</p><h6 id="拉取（变基）"><a href="#拉取（变基）" class="headerlink" title="拉取（变基）"></a>拉取（变基）</h6><p>拉取下来的代码 到“暂存”区</p><blockquote><p>操作：在visual stutia code 拉取代码，通过菜单命令执行了 拉取（变基）；<br>问题;拉取（变基）后，发现下载的问题都成了暂存，<br>解决：COMMIT这些暂存文件，注意不是PUSH~！<br>问题2：再次做PULL操作（不是变基）时，提示<br>解决：执行git branch，查看分支，执行git checkout develop切换分支</p></blockquote><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul><li>版本控制攻略</li><li><a href="https://github.com/xuanhun/vscode/blob/master/Visual%20Studio%20Code%20%E4%BD%BF%E7%94%A8Git%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md" target="_blank" rel="noopener">https://github.com/xuanhun/vscode/blob/master/Visual%20Studio%20Code%20%E4%BD%BF%E7%94%A8Git%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md</a></li><li>vscode git使用</li><li><a href="https://www.cnblogs.com/ashidamana/p/6122619.html" target="_blank" rel="noopener">https://www.cnblogs.com/ashidamana/p/6122619.html</a></li></ul><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>vscode git 出现”没有活动的源代码控制提供程序</p><p><a href="https://blog.csdn.net/qq_36131788/article/details/84635301" target="_blank" rel="noopener">https://blog.csdn.net/qq_36131788/article/details/84635301</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h3&gt;&lt;p&gt;vscod  的git怎么使用 &lt;/p&gt;
-&lt;p&gt;提交 amend&lt;/p&gt;
-&lt;p&gt;同步 时提交&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活 - 计算机 - 软件 - vscode" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-vscode/"/>
+      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
     
     
   </entry>
   
   <entry>
     <title>git错误解决</title>
-    <link href="http://disanshijie.github.io/blog/post/6350e18f.html"/>
-    <id>http://disanshijie.github.io/blog/post/6350e18f.html</id>
+    <link href="http://disanshijie.github.io/post/6350e18f.html"/>
+    <id>http://disanshijie.github.io/post/6350e18f.html</id>
     <published>2019-06-04T16:00:00.000Z</published>
     <updated>2019-06-09T03:32:39.597Z</updated>
     
@@ -198,15 +203,15 @@
     
     </summary>
     
-      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
+      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
     
     
   </entry>
   
   <entry>
     <title>Git stash使用</title>
-    <link href="http://disanshijie.github.io/blog/post/ce3cb319.html"/>
-    <id>http://disanshijie.github.io/blog/post/ce3cb319.html</id>
+    <link href="http://disanshijie.github.io/post/ce3cb319.html"/>
+    <id>http://disanshijie.github.io/post/ce3cb319.html</id>
     <published>2019-06-04T16:00:00.000Z</published>
     <updated>2019-06-09T03:32:39.592Z</updated>
     
@@ -220,15 +225,37 @@
     
     </summary>
     
-      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
+      <category term="技术 - 工具 - Git" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vscode使用</title>
+    <link href="http://disanshijie.github.io/post/a2598390.html"/>
+    <id>http://disanshijie.github.io/post/a2598390.html</id>
+    <published>2019-06-04T16:00:00.000Z</published>
+    <updated>2019-06-09T03:32:39.609Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><p>vscod  的git怎么使用 </p><p>提交 amend</p><p>同步 时提交<br><a id="more"></a></p><p>暂存？?</p><h4 id="源代码管理"><a href="#源代码管理" class="headerlink" title="源代码管理"></a>源代码管理</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190604173111.png" alt></p><h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><p>TODO</p><p>1 随便打开一个文件，添加一个注释</p><p>2 打开git工作区可以看到就是修改的这个文件 </p><p>然后点击右侧的+号，把他暂存起来。</p><p><img src="https://images2015.cnblogs.com/blog/717286/201612/717286-20161201162929693-967877373.png" alt="暂存"></p><p>3 再在消息框里输入消息，按ctrl+enter提交暂存</p><p><img src="https://images2015.cnblogs.com/blog/717286/201612/717286-20161201163128349-1615861863.png" alt="提交"></p><p>4 再点击 推送（push）提交，代码就提交到云端了。</p><p>5、克隆你的项目到本地</p><h5 id="相关命令详细说明"><a href="#相关命令详细说明" class="headerlink" title="相关命令详细说明"></a>相关命令详细说明</h5><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605151036.png" alt></p><p>![(<a href="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605143716.png" target="_blank" rel="noopener">https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605143716.png</a>)</p><h6 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h6><p>更新到远程服务器上</p><h6 id="拉取（变基）"><a href="#拉取（变基）" class="headerlink" title="拉取（变基）"></a>拉取（变基）</h6><p>拉取下来的代码 到“暂存”区</p><blockquote><p>操作：在visual stutia code 拉取代码，通过菜单命令执行了 拉取（变基）；<br>问题;拉取（变基）后，发现下载的问题都成了暂存，<br>解决：COMMIT这些暂存文件，注意不是PUSH~！<br>问题2：再次做PULL操作（不是变基）时，提示<br>解决：执行git branch，查看分支，执行git checkout develop切换分支</p></blockquote><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul><li>版本控制攻略</li><li><a href="https://github.com/xuanhun/vscode/blob/master/Visual%20Studio%20Code%20%E4%BD%BF%E7%94%A8Git%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md" target="_blank" rel="noopener">https://github.com/xuanhun/vscode/blob/master/Visual%20Studio%20Code%20%E4%BD%BF%E7%94%A8Git%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md</a></li><li>vscode git使用</li><li><a href="https://www.cnblogs.com/ashidamana/p/6122619.html" target="_blank" rel="noopener">https://www.cnblogs.com/ashidamana/p/6122619.html</a></li></ul><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>vscode git 出现”没有活动的源代码控制提供程序</p><p><a href="https://blog.csdn.net/qq_36131788/article/details/84635301" target="_blank" rel="noopener">https://blog.csdn.net/qq_36131788/article/details/84635301</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h3&gt;&lt;p&gt;vscod  的git怎么使用 &lt;/p&gt;
+&lt;p&gt;提交 amend&lt;/p&gt;
+&lt;p&gt;同步 时提交&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活 - 计算机 - 软件 - vscode" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-vscode/"/>
     
     
   </entry>
   
   <entry>
     <title>如何写笔记</title>
-    <link href="http://disanshijie.github.io/blog/post/2905fbe1.html"/>
-    <id>http://disanshijie.github.io/blog/post/2905fbe1.html</id>
+    <link href="http://disanshijie.github.io/post/2905fbe1.html"/>
+    <id>http://disanshijie.github.io/post/2905fbe1.html</id>
     <published>2019-06-04T07:32:13.000Z</published>
     <updated>2019-06-09T03:32:39.587Z</updated>
     
@@ -246,19 +273,19 @@
     
     </summary>
     
-      <category term="生活 - 计算机 - window" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-window/"/>
+      <category term="生活 - 计算机 - window" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-window/"/>
     
     
   </entry>
   
   <entry>
     <title>nodejs搭建</title>
-    <link href="http://disanshijie.github.io/blog/post/67f2c5e.html"/>
-    <id>http://disanshijie.github.io/blog/post/67f2c5e.html</id>
+    <link href="http://disanshijie.github.io/post/67f2c5e.html"/>
+    <id>http://disanshijie.github.io/post/67f2c5e.html</id>
     <published>2019-06-03T15:50:21.000Z</published>
     <updated>2019-06-09T03:32:39.600Z</updated>
     
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><h5 id="2019-06-04"><a href="#2019-06-04" class="headerlink" title="2019-06-04"></a>2019-06-04</h5><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>npm 源配置</p><a id="more"></a><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官网下载</a></p><h5 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h5><p><strong>Windows Installer (.msi)</strong> 安装版</p><p><strong>Windows Binary (.zip)</strong> 免安装版</p><blockquote><p>个人选择：window binary 64位 / win64位免安装版 </p></blockquote><p>不需要修改注册表，装系统重新安装什么的</p><h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><p>解压，到指定位置就可以</p><p>eg: <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p><h3 id="配置本地系统环境变量"><a href="#配置本地系统环境变量" class="headerlink" title="配置本地系统环境变量"></a>配置本地系统环境变量</h3><p>新建 NODE_HOME</p><p>值 <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p><p>新建 NODE_PATH</p><p>值 <code>%NODE_HOME%\node_modules\node_global\node_modules</code></p><p>ps: 承接node_global的配置</p><p>path路径后面添加：</p><p>;%NODE_HOME%;%NODE_HOME%\node_modules\node_global;</p><p>参考</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604002659.png" alt="环境变量"></p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>打开任意cmd</p><p>输入 path 查看path是否ok</p><p>输入 npm -v 查看npm版本 node -v 查看node版本</p><p>正常输入 测试通过</p><p><img src="/blog/post/C:/Users\sunbo\AppData\Roaming\Typora\typora-user-images\1559579565059.png" alt="1559579565059"></p><h3 id="配置nodejs-config"><a href="#配置nodejs-config" class="headerlink" title="配置nodejs config"></a>配置nodejs config</h3><h5 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h5><p>再 D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules 目录下新建 node_global 和 node_cache 文件夹</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604003817.png" alt></p><h5 id="设置配置"><a href="#设置配置" class="headerlink" title="设置配置"></a>设置配置</h5><p>方法一：</p><p>cmd命令执行下面的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global&quot;</span><br><span class="line"></span><br><span class="line">npm config set cache &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache&quot;</span><br></pre></td></tr></table></figure><p>方法二：</p><p>在nodejs的安装目录中找到node_modules\npm.npmrc文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prefix = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global</span><br><span class="line"></span><br><span class="line">cache = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><p>node配置</p><p><a href="https://www.cnblogs.com/GeoChen/p/5496322.html" target="_blank" rel="noopener">https://www.cnblogs.com/GeoChen/p/5496322.html</a></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><h5 id="2019-06-04"><a href="#2019-06-04" class="headerlink" title="2019-06-04"></a>2019-06-04</h5><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>npm 源配置</p><a id="more"></a><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官网下载</a></p><h5 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h5><p><strong>Windows Installer (.msi)</strong> 安装版</p><p><strong>Windows Binary (.zip)</strong> 免安装版</p><blockquote><p>个人选择：window binary 64位 / win64位免安装版 </p></blockquote><p>不需要修改注册表，装系统重新安装什么的</p><h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><p>解压，到指定位置就可以</p><p>eg: <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p><h3 id="配置本地系统环境变量"><a href="#配置本地系统环境变量" class="headerlink" title="配置本地系统环境变量"></a>配置本地系统环境变量</h3><p>新建 NODE_HOME</p><p>值 <code>D:\UnInstallSoft\node-v10.15.3-win-x64</code></p><p>新建 NODE_PATH</p><p>值 <code>%NODE_HOME%\node_modules\node_global\node_modules</code></p><p>ps: 承接node_global的配置</p><p>path路径后面添加：</p><p>;%NODE_HOME%;%NODE_HOME%\node_modules\node_global;</p><p>参考</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604002659.png" alt="环境变量"></p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>打开任意cmd</p><p>输入 path 查看path是否ok</p><p>输入 npm -v 查看npm版本 node -v 查看node版本</p><p>正常输入 测试通过</p><p><img src="/post/C:/Users\sunbo\AppData\Roaming\Typora\typora-user-images\1559579565059.png" alt="1559579565059"></p><h3 id="配置nodejs-config"><a href="#配置nodejs-config" class="headerlink" title="配置nodejs config"></a>配置nodejs config</h3><h5 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h5><p>再 D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules 目录下新建 node_global 和 node_cache 文件夹</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190604003817.png" alt></p><h5 id="设置配置"><a href="#设置配置" class="headerlink" title="设置配置"></a>设置配置</h5><p>方法一：</p><p>cmd命令执行下面的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global&quot;</span><br><span class="line"></span><br><span class="line">npm config set cache &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache&quot;</span><br></pre></td></tr></table></figure><p>方法二：</p><p>在nodejs的安装目录中找到node_modules\npm.npmrc文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">prefix = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global</span><br><span class="line"></span><br><span class="line">cache = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><p>node配置</p><p><a href="https://www.cnblogs.com/GeoChen/p/5496322.html" target="_blank" rel="noopener">https://www.cnblogs.com/GeoChen/p/5496322.html</a></p></li></ul>]]></content>
     
     <summary type="html">
     
@@ -266,17 +293,17 @@
     
     </summary>
     
-      <category term="技术 - 工具 - WEB - nodejs" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-WEB-nodejs/"/>
+      <category term="技术 - 工具 - WEB - nodejs" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-WEB-nodejs/"/>
     
     
-      <category term="nodejs" scheme="http://disanshijie.github.io/blog/tags/nodejs/"/>
+      <category term="nodejs" scheme="http://disanshijie.github.io/tags/nodejs/"/>
     
   </entry>
   
   <entry>
     <title>hello-world</title>
-    <link href="http://disanshijie.github.io/blog/post/b1d4025b.html"/>
-    <id>http://disanshijie.github.io/blog/post/b1d4025b.html</id>
+    <link href="http://disanshijie.github.io/post/b1d4025b.html"/>
+    <id>http://disanshijie.github.io/post/b1d4025b.html</id>
     <published>2019-06-03T15:50:21.000Z</published>
     <updated>2019-06-09T03:32:39.581Z</updated>
     
@@ -289,15 +316,15 @@
     
     </summary>
     
-      <category term="默认" scheme="http://disanshijie.github.io/blog/categories/%E9%BB%98%E8%AE%A4/"/>
+      <category term="默认" scheme="http://disanshijie.github.io/categories/%E9%BB%98%E8%AE%A4/"/>
     
     
   </entry>
   
   <entry>
     <title>vscode上传笔记到印象</title>
-    <link href="http://disanshijie.github.io/blog/post/34858cd5.html"/>
-    <id>http://disanshijie.github.io/blog/post/34858cd5.html</id>
+    <link href="http://disanshijie.github.io/post/34858cd5.html"/>
+    <id>http://disanshijie.github.io/post/34858cd5.html</id>
     <published>2019-06-03T15:12:17.603Z</published>
     <updated>2019-06-09T03:32:39.613Z</updated>
     
@@ -310,17 +337,17 @@
     
     </summary>
     
-      <category term="生活 - 计算机 - 软件 - 印象笔记" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0/"/>
+      <category term="生活 - 计算机 - 软件 - 印象笔记" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="vscode" scheme="http://disanshijie.github.io/blog/tags/vscode/"/>
+      <category term="vscode" scheme="http://disanshijie.github.io/tags/vscode/"/>
     
   </entry>
   
   <entry>
     <title>nginx配置文件</title>
-    <link href="http://disanshijie.github.io/blog/post/d271472.html"/>
-    <id>http://disanshijie.github.io/blog/post/d271472.html</id>
+    <link href="http://disanshijie.github.io/post/d271472.html"/>
+    <id>http://disanshijie.github.io/post/d271472.html</id>
     <published>2019-06-03T11:54:04.000Z</published>
     <updated>2019-06-09T03:32:39.589Z</updated>
     
@@ -332,21 +359,21 @@
     
     </summary>
     
-      <category term="技术 - 服务器 - Linux - nginx" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux-nginx/"/>
+      <category term="技术 - 服务器 - Linux - nginx" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux-nginx/"/>
     
     
-      <category term="nginx" scheme="http://disanshijie.github.io/blog/tags/nginx/"/>
+      <category term="nginx" scheme="http://disanshijie.github.io/tags/nginx/"/>
     
-      <category term="php" scheme="http://disanshijie.github.io/blog/tags/php/"/>
+      <category term="php" scheme="http://disanshijie.github.io/tags/php/"/>
     
-      <category term="wordpress" scheme="http://disanshijie.github.io/blog/tags/wordpress/"/>
+      <category term="wordpress" scheme="http://disanshijie.github.io/tags/wordpress/"/>
     
   </entry>
   
   <entry>
     <title>Linux用户管理</title>
-    <link href="http://disanshijie.github.io/blog/post/ef277b25.html"/>
-    <id>http://disanshijie.github.io/blog/post/ef277b25.html</id>
+    <link href="http://disanshijie.github.io/post/ef277b25.html"/>
+    <id>http://disanshijie.github.io/post/ef277b25.html</id>
     <published>2019-06-03T07:19:03.000Z</published>
     <updated>2019-06-09T03:32:39.591Z</updated>
     
@@ -361,19 +388,45 @@
     
     </summary>
     
-      <category term="技术 - 服务器 - Linux" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux/"/>
+      <category term="技术 - 服务器 - Linux" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux/"/>
     
     
   </entry>
   
   <entry>
+    <title>typora创建task任务</title>
+    <link href="http://disanshijie.github.io/post/9d6885de.html"/>
+    <id>http://disanshijie.github.io/post/9d6885de.html</id>
+    <published>2019-05-20T16:00:00.000Z</published>
+    <updated>2019-06-09T03:32:39.617Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="typora创建task"><a href="#typora创建task" class="headerlink" title="typora创建task"></a>typora创建task</h2><h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>2019-05-20</p><p>tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png" alt></p><a id="more"></a><h3 id="创建task-json"><a href="#创建task-json" class="headerlink" title="创建task.json"></a>创建task.json</h3><p>打开命令窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135013.png" alt></p><p>注：点击配置任务后 -&gt; 随便点击一个就会生成 .vscode/tasks.json 文件</p><h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135221.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;Open Typora&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;process&quot;,</span><br><span class="line">            &quot;windows&quot;: &#123; &quot;command&quot;: &quot;F:\\ProgramFiles\\Typora\\Typora.exe&quot;,&quot;args&quot;: [</span><br><span class="line">                &quot;$&#123;file&#125;&quot;</span><br><span class="line">            ] &#125;,</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;presentation&quot;: &#123;</span><br><span class="line">                &quot;reveal&quot;: &quot;always&quot;,</span><br><span class="line">                &quot;panel&quot;: &quot;new&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注：自己修改typora的安装目录</p><h4 id="测试任务是否成功"><a href="#测试任务是否成功" class="headerlink" title="测试任务是否成功"></a>测试任务是否成功</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190602112149.png" alt></p><h4 id="修改快捷键"><a href="#修改快捷键" class="headerlink" title="修改快捷键"></a>修改快捷键</h4><p>我们可以在“文件”—-“首选项”—“键盘快捷方式”。打开设置</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135445.png" alt></p><p>注：没有直接 <code>ctrl + p</code>  搜索 <code>keybindings.json</code></p><p>内容如下</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135530.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;key&quot;: &quot;ctrl+1&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;workbench.action.tasks.runTask&quot;,</span><br><span class="line">    &quot;args&quot;: &quot;Open Typora&quot;,</span><br><span class="line">    &quot;when&quot;: &quot;resourceLangId == markdown&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意：此处的args与tasks.json中的label值对应</p><h4 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h4><p>快捷键 Ctrl + 1</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141527.gif" alt></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul><li><p>vscode 基本配置和使用</p><p><a href="http://www.cnblogs.com/jcuan/p/5918088.html" target="_blank" rel="noopener">http://www.cnblogs.com/jcuan/p/5918088.html</a></p></li><li><p>如何建一个task任务</p><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p></li><li><p>vscode快捷键使用（when的用法）</p><p><a href="https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts" target="_blank" rel="noopener">https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts</a></p></li><li><p>vscode</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;typora创建task&quot;&gt;&lt;a href=&quot;#typora创建task&quot; class=&quot;headerlink&quot; title=&quot;typora创建task&quot;&gt;&lt;/a&gt;typora创建task&lt;/h2&gt;&lt;h4 id=&quot;备注&quot;&gt;&lt;a href=&quot;#备注&quot; class=&quot;headerlink&quot; title=&quot;备注&quot;&gt;&lt;/a&gt;备注&lt;/h4&gt;&lt;p&gt;2019-05-20&lt;/p&gt;
+&lt;p&gt;tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活 - 计算机 - 软件 - typora" scheme="http://disanshijie.github.io/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-typora/"/>
+    
+    
+      <category term="vscode" scheme="http://disanshijie.github.io/tags/vscode/"/>
+    
+      <category term="typora" scheme="http://disanshijie.github.io/tags/typora/"/>
+    
+  </entry>
+  
+  <entry>
     <title>wordpress jwt认证并发布文章</title>
-    <link href="http://disanshijie.github.io/blog/post/3d7895ea.html"/>
-    <id>http://disanshijie.github.io/blog/post/3d7895ea.html</id>
+    <link href="http://disanshijie.github.io/post/3d7895ea.html"/>
+    <id>http://disanshijie.github.io/post/3d7895ea.html</id>
     <published>2019-05-20T16:00:00.000Z</published>
     <updated>2019-06-09T03:32:39.606Z</updated>
     
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>ps：wordpress插件安装方式</p><ol><li><p>ftp 安装</p><p>登录wordpress后台–&gt; 插件–&gt; 搜索–&gt;安装</p><p>服务器需要安装ftp，开启21端口</p></li><li><p>安装包</p><p>直接下载安装包</p><p>上传到服务器上 目录 为 （wordpress目录）+ wordpress/wp-content/plugins</p><p>运行 ~unzip 插件名.zip ~ 命令解压到当前文件夹</p></li><li><p>略</p><a id="more"></a></li></ol><h3 id="WP-REST-API"><a href="#WP-REST-API" class="headerlink" title="WP REST API"></a>WP REST API</h3><p>ps：用于返回接口数据支持</p><p>下载安装包 –&gt; 解压</p><h3 id="JWT-Authentication-for-WP-API"><a href="#JWT-Authentication-for-WP-API" class="headerlink" title="JWT Authentication for WP-API"></a>JWT Authentication for WP-API</h3><p>提供jwt认证支持</p><p>下载安装包 –&gt; 解压</p><p>修改配置文件 （wordpress目录）/wordpress/wp-config.php</p><p>参考 <a href="https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/" target="_blank" rel="noopener">https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/</a></p><p>密码盐参考：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define(&apos;AUTH_KEY&apos;,         &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);</span><br><span class="line">define(&apos;SECURE_AUTH_KEY&apos;,  &apos;giVYR&lt;9piU^l~*/`1F-VhAoZ~y@VZVK&#125;]@]od5lxXK!^t9[,a|fK&#125;$UWeG[2G*0g&apos;);</span><br><span class="line">define(&apos;LOGGED_IN_KEY&apos;,    &apos;n11b7hlD&gt;Q&lt;2=/77SpS[,S&gt;i0]@X!_4W&#123;/U-W65lN|gJpIQa@ub-^P%o%.sb2;%D&apos;);</span><br><span class="line">define(&apos;NONCE_KEY&apos;,        &apos;24F8qI!UCFLdIX:&lt;m?63Duu_*p$`+p!9&gt;7LdJs4p#+^=(U&gt;x)pz&lt;M-;BB=7&amp;(XGl&apos;);</span><br><span class="line">define(&apos;AUTH_SALT&apos;,        &apos;UG=0+&gt;cM9kDK%-YhVWf|j(*u2-* s~/hY!vWF&#123;&amp;Q[;&lt;a%fT/o+/FDltX%5GzKT/5&apos;);</span><br><span class="line">define(&apos;SECURE_AUTH_SALT&apos;, &apos;&gt;HO|82&gt;/@([FW@VR|3L9dV^mq37Y(WYrx?--p&gt;d-b&gt;~w[8,`Y-C%c(nm4[$ -kA&#123;&apos;);</span><br><span class="line">define(&apos;LOGGED_IN_SALT&apos;,   &apos;bfRl^SUa4MNit)#7D67 cQ#:`m[ :&#123;_*&amp;p5.*oK&#123;t;1s&#125;&lt;!L7*NO|YSV)3B)=wEK&apos;);</span><br><span class="line">define(&apos;NONCE_SALT&apos;,       &apos;j3[,QgyE.0).&gt;L~3+Qaa+,hK4[IdASXAykf@yPIs[9C#wc&lt;gixl]7&gt;YWt:.|Wzm &apos;);</span><br></pre></td></tr></table></figure><p>注：上面内容不需要复制到配置文件中</p><p>eg: 配置文件 define( ‘WP_DEBUG’, false ); 上添加如下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">define(&apos;JWT_AUTH_SECRET_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);</span><br><span class="line">define(&apos;JWT_AUTH_CORS_ENABLE&apos;, true);</span><br></pre></td></tr></table></figure><h3 id="配置nginx-（可能会用到）"><a href="#配置nginx-（可能会用到）" class="headerlink" title="配置nginx （可能会用到）"></a>配置nginx （可能会用到）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在设置-固定连接中 URL的显示方式修改为除朴素之外的任意一种</span><br><span class="line">添加伪静态 不同服务器的配置方式不同 这里以nginx服务器为例：</span><br><span class="line">在server模块添加代码</span><br><span class="line">location / &#123;</span><br><span class="line">    try_files $uri $uri/ /index.php?$args ;</span><br><span class="line">&#125;       </span><br><span class="line">然后重启nginx服务器。</span><br></pre></td></tr></table></figure><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="启用WP-REST-API"><a href="#启用WP-REST-API" class="headerlink" title="启用WP REST API"></a>启用WP REST API</h4><p>安装后，看看配置（一般不用改）</p><p>打开链接查看是否安装成功 eg <a href="https://blog.siburuxue.com/wp-json" target="_blank" rel="noopener">https://blog.siburuxue.com/wp-json</a> </p><h4 id="启用JWT-Authentication-for-WP-API"><a href="#启用JWT-Authentication-for-WP-API" class="headerlink" title="启用JWT Authentication for WP-API"></a>启用JWT Authentication for WP-API</h4><p>执行下面请求</p><p>eg:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">登录获取token接口</span><br><span class="line">url:https://blog.siburuxue.com/wp-json/jwt-auth/v1/token</span><br><span class="line">method:post</span><br><span class="line">param:&#123;</span><br><span class="line">    username:xxx,</span><br><span class="line">    password:xxx</span><br><span class="line">&#125;</span><br><span class="line">return:</span><br><span class="line">&#123;</span><br><span class="line">     &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmxvZy5zaWJ1cnV4dWUuY29tIiwiaWF0IjoxNTU4MzE4MTc4LCJuYmYiOjE1NTgzMTgxNzgsImV4cCI6MTU1ODkyMjk3OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.-2qctW3wVyyIX-RLXWXl3YH3eo2aNXIT9isNjwvsV_k&quot;,</span><br><span class="line">     &quot;user_email&quot;: &quot;siburuxue@aliyun.com&quot;,</span><br><span class="line">     &quot;user_nicename&quot;: &quot;siburuxue&quot;,</span><br><span class="line">     &quot;user_display_name&quot;: &quot;siburuxue&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>返回成功说明OK</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">发布文章接口：</span><br><span class="line">url:https://blog.siburuxue.com/wp-json/wp/v2/posts</span><br><span class="line">method:post</span><br><span class="line">header:</span><br><span class="line">&#123;</span><br><span class="line">    Authorization:Bearer token</span><br><span class="line">&#125;</span><br><span class="line">param:&#123;</span><br><span class="line">    title:测试,</span><br><span class="line">    content:测试文章</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>jwt_auth_bad_config</p><p><img src="/blog/post/./1558421850599.png" alt="1558421850599"></p><p>解决：没有配置 wp-config.php</p><p>rest_cannot_create</p><p>抱歉，您不能作为此用户创建文章。</p><p><img src="/blog/post/./1558421956279.png" alt="1558421956279"></p><p>解决：重新登录</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>官网插件</p><p><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">https://wordpress.org/plugins/</a></p><p>博客</p><p><a href="https://blog.siburuxue.com/" target="_blank" rel="noopener">https://blog.siburuxue.com/</a></p>]]></content>
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>ps：wordpress插件安装方式</p><ol><li><p>ftp 安装</p><p>登录wordpress后台–&gt; 插件–&gt; 搜索–&gt;安装</p><p>服务器需要安装ftp，开启21端口</p></li><li><p>安装包</p><p>直接下载安装包</p><p>上传到服务器上 目录 为 （wordpress目录）+ wordpress/wp-content/plugins</p><p>运行 ~unzip 插件名.zip ~ 命令解压到当前文件夹</p></li><li><p>略</p><a id="more"></a></li></ol><h3 id="WP-REST-API"><a href="#WP-REST-API" class="headerlink" title="WP REST API"></a>WP REST API</h3><p>ps：用于返回接口数据支持</p><p>下载安装包 –&gt; 解压</p><h3 id="JWT-Authentication-for-WP-API"><a href="#JWT-Authentication-for-WP-API" class="headerlink" title="JWT Authentication for WP-API"></a>JWT Authentication for WP-API</h3><p>提供jwt认证支持</p><p>下载安装包 –&gt; 解压</p><p>修改配置文件 （wordpress目录）/wordpress/wp-config.php</p><p>参考 <a href="https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/" target="_blank" rel="noopener">https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/</a></p><p>密码盐参考：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define(&apos;AUTH_KEY&apos;,         &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);</span><br><span class="line">define(&apos;SECURE_AUTH_KEY&apos;,  &apos;giVYR&lt;9piU^l~*/`1F-VhAoZ~y@VZVK&#125;]@]od5lxXK!^t9[,a|fK&#125;$UWeG[2G*0g&apos;);</span><br><span class="line">define(&apos;LOGGED_IN_KEY&apos;,    &apos;n11b7hlD&gt;Q&lt;2=/77SpS[,S&gt;i0]@X!_4W&#123;/U-W65lN|gJpIQa@ub-^P%o%.sb2;%D&apos;);</span><br><span class="line">define(&apos;NONCE_KEY&apos;,        &apos;24F8qI!UCFLdIX:&lt;m?63Duu_*p$`+p!9&gt;7LdJs4p#+^=(U&gt;x)pz&lt;M-;BB=7&amp;(XGl&apos;);</span><br><span class="line">define(&apos;AUTH_SALT&apos;,        &apos;UG=0+&gt;cM9kDK%-YhVWf|j(*u2-* s~/hY!vWF&#123;&amp;Q[;&lt;a%fT/o+/FDltX%5GzKT/5&apos;);</span><br><span class="line">define(&apos;SECURE_AUTH_SALT&apos;, &apos;&gt;HO|82&gt;/@([FW@VR|3L9dV^mq37Y(WYrx?--p&gt;d-b&gt;~w[8,`Y-C%c(nm4[$ -kA&#123;&apos;);</span><br><span class="line">define(&apos;LOGGED_IN_SALT&apos;,   &apos;bfRl^SUa4MNit)#7D67 cQ#:`m[ :&#123;_*&amp;p5.*oK&#123;t;1s&#125;&lt;!L7*NO|YSV)3B)=wEK&apos;);</span><br><span class="line">define(&apos;NONCE_SALT&apos;,       &apos;j3[,QgyE.0).&gt;L~3+Qaa+,hK4[IdASXAykf@yPIs[9C#wc&lt;gixl]7&gt;YWt:.|Wzm &apos;);</span><br></pre></td></tr></table></figure><p>注：上面内容不需要复制到配置文件中</p><p>eg: 配置文件 define( ‘WP_DEBUG’, false ); 上添加如下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">define(&apos;JWT_AUTH_SECRET_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);</span><br><span class="line">define(&apos;JWT_AUTH_CORS_ENABLE&apos;, true);</span><br></pre></td></tr></table></figure><h3 id="配置nginx-（可能会用到）"><a href="#配置nginx-（可能会用到）" class="headerlink" title="配置nginx （可能会用到）"></a>配置nginx （可能会用到）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在设置-固定连接中 URL的显示方式修改为除朴素之外的任意一种</span><br><span class="line">添加伪静态 不同服务器的配置方式不同 这里以nginx服务器为例：</span><br><span class="line">在server模块添加代码</span><br><span class="line">location / &#123;</span><br><span class="line">    try_files $uri $uri/ /index.php?$args ;</span><br><span class="line">&#125;       </span><br><span class="line">然后重启nginx服务器。</span><br></pre></td></tr></table></figure><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="启用WP-REST-API"><a href="#启用WP-REST-API" class="headerlink" title="启用WP REST API"></a>启用WP REST API</h4><p>安装后，看看配置（一般不用改）</p><p>打开链接查看是否安装成功 eg <a href="https://blog.siburuxue.com/wp-json" target="_blank" rel="noopener">https://blog.siburuxue.com/wp-json</a> </p><h4 id="启用JWT-Authentication-for-WP-API"><a href="#启用JWT-Authentication-for-WP-API" class="headerlink" title="启用JWT Authentication for WP-API"></a>启用JWT Authentication for WP-API</h4><p>执行下面请求</p><p>eg:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">登录获取token接口</span><br><span class="line">url:https://blog.siburuxue.com/wp-json/jwt-auth/v1/token</span><br><span class="line">method:post</span><br><span class="line">param:&#123;</span><br><span class="line">    username:xxx,</span><br><span class="line">    password:xxx</span><br><span class="line">&#125;</span><br><span class="line">return:</span><br><span class="line">&#123;</span><br><span class="line">     &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmxvZy5zaWJ1cnV4dWUuY29tIiwiaWF0IjoxNTU4MzE4MTc4LCJuYmYiOjE1NTgzMTgxNzgsImV4cCI6MTU1ODkyMjk3OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.-2qctW3wVyyIX-RLXWXl3YH3eo2aNXIT9isNjwvsV_k&quot;,</span><br><span class="line">     &quot;user_email&quot;: &quot;siburuxue@aliyun.com&quot;,</span><br><span class="line">     &quot;user_nicename&quot;: &quot;siburuxue&quot;,</span><br><span class="line">     &quot;user_display_name&quot;: &quot;siburuxue&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>返回成功说明OK</p><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">发布文章接口：</span><br><span class="line">url:https://blog.siburuxue.com/wp-json/wp/v2/posts</span><br><span class="line">method:post</span><br><span class="line">header:</span><br><span class="line">&#123;</span><br><span class="line">    Authorization:Bearer token</span><br><span class="line">&#125;</span><br><span class="line">param:&#123;</span><br><span class="line">    title:测试,</span><br><span class="line">    content:测试文章</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>jwt_auth_bad_config</p><p><img src="/post/./1558421850599.png" alt="1558421850599"></p><p>解决：没有配置 wp-config.php</p><p>rest_cannot_create</p><p>抱歉，您不能作为此用户创建文章。</p><p><img src="/post/./1558421956279.png" alt="1558421956279"></p><p>解决：重新登录</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>官网插件</p><p><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">https://wordpress.org/plugins/</a></p><p>博客</p><p><a href="https://blog.siburuxue.com/" target="_blank" rel="noopener">https://blog.siburuxue.com/</a></p>]]></content>
     
     <summary type="html">
     
@@ -392,43 +445,17 @@
     
     </summary>
     
-      <category term="技术 - WEB - 建站 - wordpress" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%BB%BA%E7%AB%99-wordpress/"/>
+      <category term="技术 - WEB - 建站 - wordpress" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%BB%BA%E7%AB%99-wordpress/"/>
     
     
-      <category term="wordpress" scheme="http://disanshijie.github.io/blog/tags/wordpress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>typora创建task任务</title>
-    <link href="http://disanshijie.github.io/blog/post/9d6885de.html"/>
-    <id>http://disanshijie.github.io/blog/post/9d6885de.html</id>
-    <published>2019-05-20T16:00:00.000Z</published>
-    <updated>2019-06-09T03:32:39.617Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h2 id="typora创建task"><a href="#typora创建task" class="headerlink" title="typora创建task"></a>typora创建task</h2><h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>2019-05-20</p><p>tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png" alt></p><a id="more"></a><h3 id="创建task-json"><a href="#创建task-json" class="headerlink" title="创建task.json"></a>创建task.json</h3><p>打开命令窗口</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135013.png" alt></p><p>注：点击配置任务后 -&gt; 随便点击一个就会生成 .vscode/tasks.json 文件</p><h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135221.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;Open Typora&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;process&quot;,</span><br><span class="line">            &quot;windows&quot;: &#123; &quot;command&quot;: &quot;F:\\ProgramFiles\\Typora\\Typora.exe&quot;,&quot;args&quot;: [</span><br><span class="line">                &quot;$&#123;file&#125;&quot;</span><br><span class="line">            ] &#125;,</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;presentation&quot;: &#123;</span><br><span class="line">                &quot;reveal&quot;: &quot;always&quot;,</span><br><span class="line">                &quot;panel&quot;: &quot;new&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注：自己修改typora的安装目录</p><h4 id="测试任务是否成功"><a href="#测试任务是否成功" class="headerlink" title="测试任务是否成功"></a>测试任务是否成功</h4><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/home/temp/20190602112149.png" alt></p><h4 id="修改快捷键"><a href="#修改快捷键" class="headerlink" title="修改快捷键"></a>修改快捷键</h4><p>我们可以在“文件”—-“首选项”—“键盘快捷方式”。打开设置</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135445.png" alt></p><p>注：没有直接 <code>ctrl + p</code>  搜索 <code>keybindings.json</code></p><p>内容如下</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520135530.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;key&quot;: &quot;ctrl+1&quot;,</span><br><span class="line">    &quot;command&quot;: &quot;workbench.action.tasks.runTask&quot;,</span><br><span class="line">    &quot;args&quot;: &quot;Open Typora&quot;,</span><br><span class="line">    &quot;when&quot;: &quot;resourceLangId == markdown&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意：此处的args与tasks.json中的label值对应</p><h4 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h4><p>快捷键 Ctrl + 1</p><p><img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141527.gif" alt></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul><li><p>vscode 基本配置和使用</p><p><a href="http://www.cnblogs.com/jcuan/p/5918088.html" target="_blank" rel="noopener">http://www.cnblogs.com/jcuan/p/5918088.html</a></p></li><li><p>如何建一个task任务</p><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p></li><li><p>vscode快捷键使用（when的用法）</p><p><a href="https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts" target="_blank" rel="noopener">https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts</a></p></li><li><p>vscode</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;typora创建task&quot;&gt;&lt;a href=&quot;#typora创建task&quot; class=&quot;headerlink&quot; title=&quot;typora创建task&quot;&gt;&lt;/a&gt;typora创建task&lt;/h2&gt;&lt;h4 id=&quot;备注&quot;&gt;&lt;a href=&quot;#备注&quot; class=&quot;headerlink&quot; title=&quot;备注&quot;&gt;&lt;/a&gt;备注&lt;/h4&gt;&lt;p&gt;2019-05-20&lt;/p&gt;
-&lt;p&gt;tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190520141925.png&quot; alt&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活 - 计算机 - 软件 - typora" scheme="http://disanshijie.github.io/blog/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-typora/"/>
-    
-    
-      <category term="vscode" scheme="http://disanshijie.github.io/blog/tags/vscode/"/>
-    
-      <category term="typora" scheme="http://disanshijie.github.io/blog/tags/typora/"/>
+      <category term="wordpress" scheme="http://disanshijie.github.io/tags/wordpress/"/>
     
   </entry>
   
   <entry>
     <title>一个项目需要的模块</title>
-    <link href="http://disanshijie.github.io/blog/post/22c0c787.html"/>
-    <id>http://disanshijie.github.io/blog/post/22c0c787.html</id>
+    <link href="http://disanshijie.github.io/post/22c0c787.html"/>
+    <id>http://disanshijie.github.io/post/22c0c787.html</id>
     <published>2019-03-14T09:37:02.000Z</published>
     <updated>2019-06-09T03:32:39.594Z</updated>
     
@@ -440,19 +467,19 @@
     
     </summary>
     
-      <category term="技术 - WEB - 后台 - 架构" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%90%8E%E5%8F%B0-%E6%9E%B6%E6%9E%84/"/>
+      <category term="技术 - WEB - 后台 - 架构" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%90%8E%E5%8F%B0-%E6%9E%B6%E6%9E%84/"/>
     
     
   </entry>
   
   <entry>
     <title>系统管理模块</title>
-    <link href="http://disanshijie.github.io/blog/post/18ca0036.html"/>
-    <id>http://disanshijie.github.io/blog/post/18ca0036.html</id>
+    <link href="http://disanshijie.github.io/post/18ca0036.html"/>
+    <id>http://disanshijie.github.io/post/18ca0036.html</id>
     <published>2019-03-14T09:37:02.000Z</published>
     <updated>2019-06-09T03:32:39.594Z</updated>
     
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><p>用户 角色基础表<br><a id="more"></a></p><p><img src="/blog/post/假日优选权限结构.jpg" alt="权限结构"></p><p>表 基础字段</p><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><h4 id="普通菜单，按钮权限"><a href="#普通菜单，按钮权限" class="headerlink" title="普通菜单，按钮权限"></a>普通菜单，按钮权限</h4><p>—shiro 展示/隐藏</p><h4 id="数据权限"><a href="#数据权限" class="headerlink" title="数据权限"></a>数据权限</h4><p>某个角色是否 可以查看哪些部门</p><h4 id="角色权限"><a href="#角色权限" class="headerlink" title="角色权限"></a>角色权限</h4><p>必须指定角色才能执行的 方法 eg: @RequiresRoles({“admin”})</p><h5 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h5><h5 id="自定义aop"><a href="#自定义aop" class="headerlink" title="自定义aop"></a>自定义aop</h5><p>指定信息 如管理员 可看不可改性 TODO</p>]]></content>
+    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><p>用户 角色基础表<br><a id="more"></a></p><p><img src="/post/假日优选权限结构.jpg" alt="权限结构"></p><p>表 基础字段</p><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><h4 id="普通菜单，按钮权限"><a href="#普通菜单，按钮权限" class="headerlink" title="普通菜单，按钮权限"></a>普通菜单，按钮权限</h4><p>—shiro 展示/隐藏</p><h4 id="数据权限"><a href="#数据权限" class="headerlink" title="数据权限"></a>数据权限</h4><p>某个角色是否 可以查看哪些部门</p><h4 id="角色权限"><a href="#角色权限" class="headerlink" title="角色权限"></a>角色权限</h4><p>必须指定角色才能执行的 方法 eg: @RequiresRoles({“admin”})</p><h5 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h5><h5 id="自定义aop"><a href="#自定义aop" class="headerlink" title="自定义aop"></a>自定义aop</h5><p>指定信息 如管理员 可看不可改性 TODO</p>]]></content>
     
     <summary type="html">
     
@@ -460,28 +487,7 @@
     
     </summary>
     
-      <category term="技术 - WEB - 后台 - 架构" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%90%8E%E5%8F%B0-%E6%9E%B6%E6%9E%84/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo建站-插件</title>
-    <link href="http://disanshijie.github.io/blog/post/6b8323ff.html"/>
-    <id>http://disanshijie.github.io/blog/post/6b8323ff.html</id>
-    <published>2019-03-11T07:47:22.000Z</published>
-    <updated>2019-06-09T03:32:39.602Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\blog\assets\js\APlayer.min.js"> </script><h5 id="代码块处理"><a href="#代码块处理" class="headerlink" title="代码块处理"></a>代码块处理</h5><h6 id="添加复制功能"><a href="#添加复制功能" class="headerlink" title="添加复制功能"></a>添加复制功能</h6><p><a href="https://www.jianshu.com/p/3e9d614c1e77" target="_blank" rel="noopener">参考</a></p><h6 id="下载-clipboard-js"><a href="#下载-clipboard-js" class="headerlink" title="下载 clipboard.js"></a>下载 clipboard.js</h6><p>三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它<a href="https://clipboardjs.com/" target="_blank" rel="noopener">主页</a>或<a href="https://github.com/zenorocha/clipboard.js" target="_blank" rel="noopener">github</a>上看。<br><a id="more"></a></p><h6 id="clipboardjs-使用"><a href="#clipboardjs-使用" class="headerlink" title="clipboardjs 使用"></a>clipboardjs 使用</h6><p>在<code>.\source\js</code>目录下,保存文件<code>clipboard.js / clipboard.min.js</code></p><p>也是在<code>.\source\js</code>目录下，创建<code>clipboard-use.js</code>，文件内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*页面载入完成后，创建复制按钮*/</span><br><span class="line">!function (e, t, a) &#123; </span><br><span class="line">  /* code */</span><br><span class="line">  var initCopyCode = function()&#123;</span><br><span class="line">    var copyHtml = &apos;&apos;;</span><br><span class="line">    copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;;</span><br><span class="line">    copyHtml += &apos;  &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;;</span><br><span class="line">    copyHtml += &apos;&lt;/button&gt;&apos;;</span><br><span class="line">    $(&quot;.highlight .code pre&quot;).before(copyHtml);</span><br><span class="line">    new ClipboardJS(&apos;.btn-copy&apos;, &#123;</span><br><span class="line">        target: function(trigger) &#123;</span><br><span class="line">            return trigger.nextElementSibling;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  initCopyCode();</span><br><span class="line">&#125;(window, document);</span><br></pre></td></tr></table></figure><h6 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h6><p>在<code>source\css\_partial</code>样式文件中添加下面代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//代码块复制按钮</span><br><span class="line">.highlight&#123;</span><br><span class="line">  //方便copy代码按钮（btn-copy）的定位</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.btn-copy &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    background-color: #eee;</span><br><span class="line">    background-image: linear-gradient(#fcfcfc,#eee);</span><br><span class="line">    border: 1px solid #d5d5d5;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    -webkit-user-select: none;</span><br><span class="line">    -moz-user-select: none;</span><br><span class="line">    -ms-user-select: none;</span><br><span class="line">    user-select: none;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">    font-size: 13px;</span><br><span class="line">    font-weight: 700;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">    color: #333;</span><br><span class="line">    -webkit-transition: opacity .3s ease-in-out;</span><br><span class="line">    -o-transition: opacity .3s ease-in-out;</span><br><span class="line">    transition: opacity .3s ease-in-out;</span><br><span class="line">    padding: 2px 6px;</span><br><span class="line">    position: absolute;</span><br><span class="line">    right: 5px;</span><br><span class="line">    top: 5px;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.btn-copy span &#123;</span><br><span class="line">    margin-left: 5px;</span><br><span class="line">&#125;</span><br><span class="line">.highlight:hover .btn-copy&#123;</span><br><span class="line">  opacity: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h6 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h6><p>引用js ==(clipboard-use需要jQuery支持)==</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 代码块复制功能 --&gt;</span><br><span class="line">&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;</span><br><span class="line">&lt;%- js(&apos;js/clipboard-use&apos;) %&gt;</span><br></pre></td></tr></table></figure><p>引用css</p><p>相应地方引入 eg：<code>...source\css\style.styl</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 代码块复制按钮</span><br><span class="line">//-----------------------------------------------</span><br><span class="line">@import &quot;_partial/clipboard&quot;</span><br></pre></td></tr></table></figure><h6 id="添加折叠效果"><a href="#添加折叠效果" class="headerlink" title="添加折叠效果"></a>添加折叠效果</h6><p><a href="https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/</a></p><p><a href="https://blog.rmiao.top/hexo-fold-block/" target="_blank" rel="noopener">https://blog.rmiao.top/hexo-fold-block/</a></p><h4 id="辅助功能"><a href="#辅助功能" class="headerlink" title="辅助功能"></a>辅助功能</h4><p>添加字数统计，阅读次数</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h5 id=&quot;代码块处理&quot;&gt;&lt;a href=&quot;#代码块处理&quot; class=&quot;headerlink&quot; title=&quot;代码块处理&quot;&gt;&lt;/a&gt;代码块处理&lt;/h5&gt;&lt;h6 id=&quot;添加复制功能&quot;&gt;&lt;a href=&quot;#添加复制功能&quot; class=&quot;headerlink&quot; title=&quot;添加复制功能&quot;&gt;&lt;/a&gt;添加复制功能&lt;/h6&gt;&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/3e9d614c1e77&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
-&lt;h6 id=&quot;下载-clipboard-js&quot;&gt;&lt;a href=&quot;#下载-clipboard-js&quot; class=&quot;headerlink&quot; title=&quot;下载 clipboard.js&quot;&gt;&lt;/a&gt;下载 clipboard.js&lt;/h6&gt;&lt;p&gt;三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它&lt;a href=&quot;https://clipboardjs.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;主页&lt;/a&gt;或&lt;a href=&quot;https://github.com/zenorocha/clipboard.js&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github&lt;/a&gt;上看。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术 - WEB - 建站 - 博客" scheme="http://disanshijie.github.io/blog/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%BB%BA%E7%AB%99-%E5%8D%9A%E5%AE%A2/"/>
+      <category term="技术 - WEB - 后台 - 架构" scheme="http://disanshijie.github.io/categories/%E6%8A%80%E6%9C%AF-WEB-%E5%90%8E%E5%8F%B0-%E6%9E%B6%E6%9E%84/"/>
     
     
   </entry>

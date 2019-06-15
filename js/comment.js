@@ -225,7 +225,7 @@ if (!window['String']['prototype']['trim']) {
         box: {
             tpl: [
                 '<section class="box" id="JELON__commentBox">',
-                '<div class="com-avatar"><img id="JELON__loginAvatar" src="/blog/img/unsigned_avatar.jpg" alt="avatar"></div>',
+                '<div class="com-avatar"><img id="JELON__loginAvatar" src="/img/unsigned_avatar.jpg" alt="avatar"></div>',
                 '<div class="com-text">',
                 '<div class="main">',
                 '<textarea class="text-area-edited show" id="JELON__editBox" placeholder="欢迎评论！"></textarea>',
@@ -247,7 +247,7 @@ if (!window['String']['prototype']['trim']) {
                     userInfo = {};
                 }
                 // 默认头像路径 /img/sunbo.jpg
-                $('JELON__loginAvatar').src = userInfo.avatar_url || '/blog/img/unsigned_avatar.jpg';
+                $('JELON__loginAvatar').src = userInfo.avatar_url || '/img/unsigned_avatar.jpg';
             }
         },
         list: {
