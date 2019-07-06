@@ -457,8 +457,13 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>设置本地分支默认对应远程dev分支，方便pull和push</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
+                <script src="\blog\assets\js\APlayer.min.js"> </script><a id="more"></a>
+<blockquote>
+<p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p>
+<p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p>
+<p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p>
+</blockquote>
+
                     
                         <p class="more">
                             <a href="http://disanshijie.top/blog/post/189a6a9b.html">阅读剩下更多</a>
@@ -503,13 +508,8 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <script src="\blog\assets\js\APlayer.min.js"> </script><a id="more"></a>
-<blockquote>
-<p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p>
-<p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p>
-<p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p>
-</blockquote>
-
+                <p>设置本地分支默认对应远程dev分支，方便pull和push</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
                     
                         <p class="more">
                             <a href="http://disanshijie.top/blog/post/189a6a9b.html">阅读剩下更多</a>
@@ -690,6 +690,11 @@
     </li>
     
     <li>
+        <a href="/blog/categories/生活-计算机-window/">生活 - 计算机 - window</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
         <a href="/blog/categories/技术-服务器-Linux-nginx/">技术 - 服务器 - Linux - nginx</a>
         <span class="badge">(1)</span>
     </li>
@@ -700,23 +705,18 @@
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-window/">生活 - 计算机 - window</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
         <a href="/blog/categories/生活-计算机-软件/">生活\计算机\软件</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-后台-架构/">技术 - WEB - 后台 - 架构</a>
-        <span class="badge">(2)</span>
+        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术-工具-Git/">技术 - 工具 - Git</a>
-        <span class="badge">(4)</span>
+        <a href="/blog/categories/技术-WEB-后台-架构/">技术 - WEB - 后台 - 架构</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
@@ -735,12 +735,12 @@
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a>
+        <a href="/blog/categories/技术-服务器-Linux/">技术\服务器\Linux</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术-服务器-Linux/">技术\服务器\Linux</a>
+        <a href="/blog/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a>
         <span class="badge">(1)</span>
     </li>
     

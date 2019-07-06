@@ -70,7 +70,7 @@
   <entry>
     <title><![CDATA[git pull和pash使用]]></title>
     <url>%2Fblog%2Fpost%2F189a6a9b.html</url>
-    <content type="text"><![CDATA[设置本地分支默认对应远程dev分支，方便pull和push 1git branch --set-upstream-to=origin/dev dev]]></content>
+    <content type="text"><![CDATA[命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。便捷用法，编写 shell 脚本，disable_track.sh 内容： #!/bin/bashgit update-index –assume-unchanged 文件名把 disable_track.sh 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/disable_track.sh 即可。同理建立 enable_track.sh： #!/bin/bashgit update-index –no-assume-unchanged 文件名做逆向操作。]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
       </categories>
@@ -78,7 +78,7 @@
   <entry>
     <title><![CDATA[git pull和pash使用]]></title>
     <url>%2Fblog%2Fpost%2F189a6a9b.html</url>
-    <content type="text"><![CDATA[命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。便捷用法，编写 shell 脚本，disable_track.sh 内容： #!/bin/bashgit update-index –assume-unchanged 文件名把 disable_track.sh 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/disable_track.sh 即可。同理建立 enable_track.sh： #!/bin/bashgit update-index –no-assume-unchanged 文件名做逆向操作。]]></content>
+    <content type="text"><![CDATA[设置本地分支默认对应远程dev分支，方便pull和push 1git branch --set-upstream-to=origin/dev dev]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
       </categories>
@@ -246,19 +246,19 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[目录说明]]></title>
-    <url>%2Fblog%2Fpost%2Fe5a7471.html</url>
-    <content type="text"><![CDATA[##熟悉spring springmvc ##工具使用 vscode]]></content>
-      <categories>
-        <category>技术 - web - 服务器 - 项目</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Hexo建站]]></title>
     <url>%2Fblog%2Fpost%2F4184c8cd.html</url>
     <content type="text"><![CDATA[更新2019-03-08直接npm install hexo-asset-image即可 修正路径 应该是官方修改了 快速开始1 安装node，git 2 选择编辑工具 3 git服务器 4 安装Hexo ​ 主题模板 ​ 个人配置 ​ 发布文章 ​ 图片 ​ 搜索 ​ SEO,统计 ​ 评论 ​ RSS //TODO 5 end 一，安装node，git…略 二 Idea工具 Vscode使用说明：略… 三 服务器github或者gitee 开通git pages //TODO 四 安装Hexo官方文档前面git和nodejs安装好后，就可以安装hexo了，你可以先创建一个文件夹blog，然后cd到这个文件夹下（或者在这个文件夹下直接右键git bash打开）。 1234567#安装npm install -g hexo-cli#初始化hexo init blog#进入这个myblog文件夹cd blog npm install 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 在浏览器输入localhost:4000就可以看到你生成的博客了。 模板模板库 模板推荐 个人配置Hexo _config.yml配置相关说明eg: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110# Hexo Configuration## Docs: https://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Sitetitle: 第三世界subtitle:description:keywords:author: sun bolanguage: zh-CNtimezone: Asia/Shanghai# URL## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;url: #http://sunjinchao.gitee.io/blog/ http://localhost:4000/root: #/blog /permalink: :year/:month/:day/:title/permalink_defaults:# Directorysource_dir: sourcepublic_dir: publictag_dir: tagsarchive_dir: archivescategory_dir: categoriescode_dir: downloads/codei18n_dir: :langskip_render:# Writing#new_post_name: :year-:month-:day-:title.md # File name of new postsnew_post_name: :title.md # File name of new postsdefault_layout: posttitlecase: false # Transform title into titlecaseexternal_link: true # Open external links in new tabfilename_case: 0render_drafts: false#在建立文件时，Hexo会自动建立一个与文章同名的文件夹post_asset_folder: truerelative_link: falsefuture: truehighlight: enable: true line_number: true auto_detect: false tab_replace: # Home page setting# path: Root path for your blogs index page. (default = &apos;&apos;)# per_page: Posts displayed per page. (0 = disable pagination)# order_by: Posts order. (Order by date descending by default)index_generator: path: &apos;&apos; per_page: 10 order_by: -date # Category &amp; Tagdefault_category: uncategorizedcategory_map:tag_map:# Date / Time format## Hexo uses Moment.js to parse and display date## You can customize the date format as defined in## http://momentjs.com/docs/#/displaying/format/date_format: YYYY-MM-DDtime_format: HH:mm:ss# Pagination## Set per_page to 0 to disable paginationper_page: 10pagination_dir: page# Extensions## Plugins: https://hexo.io/plugins/## Themes: https://hexo.io/themes/theme: #cyanstyle #landscape #next-default #next-my #next-someone #pure xups#plugins:#- hexo-generator-sitemap#- hexo-generator-baidu-sitemap#baidusitemap:# path: baidusitemap.xml# Deployment## Docs: https://hexo.io/docs/deployment.htmldeploy: type: git repo: git@gitee.com:sunjinchao/blog.git branch: publish message: search: path: search.xml field: post format: html limit: 10000 自动上传到github/gitee 需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。 1npm install hexo-deployer-git --save 上传 hexo clean &amp;&amp; hexo g &amp;&amp; hexo d 主题文件config.yml 配置略… 发文章新建md hexo n newpapername 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 图片处理 首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true 在blog（hexo）目录下执行: 1npm install hexo-asset-image --save 用 hexo n 名称 生成文件，会默认给你生成一个相同名字的文件夹，用typora编辑时可以设置图片根路径为此目录下 1234567npm install hexo-asset-image或npm install hexo-asset-image --save或 （官版）npm install https://github.com/CodeFalling/hexo-asset-image --save或（官版上修改）npm install https://github.com/7ym0n/hexo-asset-image.git 123456或（sunbo修改的）npm i git+https://gitee.com/sunjinchao/blog.git#hexo-asset-image --save更新 npm update hexo-asset-image删除npm uninstall hexo-asset-image 搜索功能 安装插件 1hexo-generator-json-content SEO,统计SEO需要自己的域名百度SEO地址 google站点地图 百度统计百度统计 照样把代码复制到head.ejs文件中，然后再进行一下安装检查，半小时左右就可以在百度统计里面看到自己的网站信息了。 引入不蒜子访问量和访问人次统计不蒜子的添加非常非常方便，不蒜子 在footer.ejs中的合适位置，看你要显示在哪个地方，添加： 1234&lt;!--这一段是不蒜子的访问量统计代码--&gt;&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次 &lt;/span&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次&lt;/span&gt; 评论]]></content>
       <categories>
         <category>技术 - WEB - 建站 - 博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[目录说明]]></title>
+    <url>%2Fblog%2Fpost%2Fe5a7471.html</url>
+    <content type="text"><![CDATA[##熟悉spring springmvc ##工具使用 vscode]]></content>
+      <categories>
+        <category>技术 - web - 服务器 - 项目</category>
       </categories>
   </entry>
   <entry>
