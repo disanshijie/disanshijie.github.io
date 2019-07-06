@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[Linux文件操作]]></title>
-    <url>%2Fblog%2Fpost%2Fb67c03a2.html</url>
+    <url>%2Fpost%2Fb67c03a2.html</url>
     <content type="text"><![CDATA[复制、移动与删除 1，复制粘贴文件 cp [选项] 源文件或目录 目标文件或目录 2，剪切粘贴文件 mv [选项] 源文件或目录 目标文件或目录 3，删除文件 rm 文件 慎用 rm -rf linux下文件的复制、移动与删除命令为：cp，mv，rm一、文件复制命令cp 命令格式：cp [-adfilprsu] 源文件(source) 目标文件(destination) cp [option] source1 source2 source3 … directory 参数说明： -a:是指archive的意思，也说是指复制所有的目录 -d:若源文件为连接文件(link file)，则复制连接文件属性而非文件本身 -f:强制(force)，若有重复或其它疑问时，不会询问用户，而强制复制 -i:若目标文件(destination)已存在，在覆盖时会先询问是否真的操作 -l:建立硬连接(hard link)的连接文件，而非复制文件本身 -p:与文件的属性一起复制，而非使用默认属性 -r:递归复制，用于目录的复制操作 -s:复制成符号连接文件(symbolic link)，即“快捷方式”文件 -u:若目标文件比源文件旧，更新目标文件 如将/test1目录下的file1复制到/test3目录，并将文件名改为file2,可输入以下命令： cp /test1/file1 /test3/file2二、文件移动命令mv 命令格式：mv [-fiv] source destination 参数说明： -f:force，强制直接移动而不询问 -i:若目标文件(destination)已经存在，就会询问是否覆盖 -u:若目标文件已经存在，且源文件比较新，才会更新 如将/test1目录下的file1复制到/test3 目录，并将文件名改为file2,可输入以下命令： mv /test1/file1 /test3/file2三、文件删除命令rm 命令格式：rm [fir] 文件或目录 参数说明： -f:强制删除 -i:交互模式，在删除前询问用户是否操作 -r:递归删除，常用在目录的删除 如删除/test目录下的file1文件，可以输入以下命令： rm -i /test/file1 参考https://www.cnblogs.com/aiyr/p/7395738.html]]></content>
       <categories>
         <category>技术\服务器\Linux</category>
@@ -13,7 +13,7 @@
   </entry>
   <entry>
     <title><![CDATA[window-nginx]]></title>
-    <url>%2Fblog%2Fpost%2F375ce186.html</url>
+    <url>%2Fpost%2F375ce186.html</url>
     <content type="text"><![CDATA[Windows下Nginx的启动、停止等命令 假设你安装在 C:\server\nginx-1.0.2目录下， cmd命令进入安装文件； 1、启动： C:\server\nginx-1.0.2&gt;start nginx 或 C:\server\nginx-1.0.2&gt;nginx.exe 注：建议使用第一种，第二种会使你的cmd窗口一直处于执行中，不能进行其他命令操作。 2、停止： C:\server\nginx-1.0.2&gt;nginx.exe -s stop 或 C:\server\nginx-1.0.2&gt;nginx.exe -s quit 注：stop是快速停止nginx，可能并不保存相关信息；quit是完整有序的停止nginx，并保存相关信息。 3、重新载入Nginx： C:\server\nginx-1.0.2&gt;nginx.exe -s reload 当配置信息修改，需要重新载入这些配置时使用此命令。 4、重新打开日志文件： C:\server\nginx-1.0.2&gt;nginx.exe -s reopen 5、查看Nginx版本： C:\server\nginx-1.0.2&gt;nginx -v 作者：秋天下雨淋湿冬天 链接：https://www.jianshu.com/p/01f3626cf25d 来源：简书 简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。]]></content>
       <categories>
         <category>生活\计算机\软件</category>
@@ -24,7 +24,7 @@
   </entry>
   <entry>
     <title><![CDATA[开发常用环境变量配置]]></title>
-    <url>%2Fblog%2Fpost%2Fa67595ce.html</url>
+    <url>%2Fpost%2Fa67595ce.html</url>
     <content type="text"><![CDATA[简介]]></content>
       <categories>
         <category>生活\计算机\window</category>
@@ -35,7 +35,7 @@
   </entry>
   <entry>
     <title><![CDATA[Linux查看系统信息]]></title>
-    <url>%2Fblog%2Fpost%2Fdff104ab.html</url>
+    <url>%2Fpost%2Fdff104ab.html</url>
     <content type="text"><![CDATA[说明以下均基于Linux centos7 查看文件more cat tail 查看cup占用1top -c 查看文件夹大小查看当前目录下的文件夹大小 1du -h --max-depth=1]]></content>
       <categories>
         <category>技术 - 服务器 - Linux</category>
@@ -46,7 +46,7 @@
   </entry>
   <entry>
     <title><![CDATA[ideagit使用]]></title>
-    <url>%2Fblog%2Fpost%2F1c7f5eae.html</url>
+    <url>%2Fpost%2F1c7f5eae.html</url>
     <content type="text"><![CDATA[### 参考https://blog.csdn.net/wang_shuyu/article/details/83217211]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - idea</category>
@@ -57,7 +57,7 @@
   </entry>
   <entry>
     <title><![CDATA[vscode 自定义代码片段]]></title>
-    <url>%2Fblog%2Fpost%2Fa3325540.html</url>
+    <url>%2Fpost%2Fa3325540.html</url>
     <content type="text"><![CDATA[说明利用vscode snippet 功能，自定义代码片段 快捷生成内容 在使用hexo建自己博客的时候，一般都是自己新建md文件，hexo的head头部注释可以 快捷生成，方便写作 操作第一步：文件==&gt;首选项==&gt;用户代码片段 第二步：选择代码片段文件 markdown.json 第三步：输入要自定义的快捷键 和 模板代码段 例子 123456789101112131415161718192021222324252627282930&quot;sun hexo head&quot;: &#123; &quot;prefix&quot;: &quot;hexo-head&quot;, &quot;body&quot;: [ &quot;---&quot;, &quot;title: $&#123;TM_FILENAME_BASE&#125;&quot;, &quot;date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND&quot;, &quot;author: sun bo&quot;, &quot;notebook: blog&quot;, &quot;evernote-version: 0&quot;, &quot;source: 原创/转载&quot;, &quot;thumbnail: &quot;, &quot;tags:&quot;, &quot; - 默认&quot;, &quot;categories:&quot;, &quot;\t- $&#123;TM_DIRECTORY/(.*?)_posts\\\\(.*)/$2/g&#125;&quot;, // 截取_posts后面的内容 //&quot;$&#123;TM_DIRECTORY/[\\\\]/\t- /g&#125;&quot;, //将 \ 全部转化成 - &quot;blogexcerpt:&quot;, &quot;---&quot;, &quot;&quot;, &quot;&lt;!-- more --&gt;&quot;, &quot;&quot;, &quot;### $&#123;1|说明,简介,更新|&#125;&quot;, &quot;&quot;, &quot;&lt;!-- more --&gt;&quot;, &quot;&quot; ], &quot;description&quot;: &quot;添加hexo的head&quot;&#125; ps：想截取指定字符串后面的内容，并将/转化成 - 此功能无法实现，望高手解答 结果 补充变量(Variables)使用 $name 或者 ${name|default} 可以插入变量的值，如果变量未被赋值则插入 default 的值或者空值 。当变量未被定义，则将变量名插入，变量(Variables)将被转换为占位符(Placeholders)系统变量如下 TM_SELECTED_TEXT 当前选定的文本或空字符串 TM_CURRENT_LINE 当前行的内容 TM_CURRENT_WORD 光标下的单词的内容或空字符串 TM_LINE_INDEX 基于零索引的行号 TM_LINE_NUMBER 基于一索引的行号 TM_FILENAME 当前文档的文件名 TM_FILENAME_BASE 当前文档的文件名（不含后缀名) TM_DIRECTORY 当前文档的目录 TM_FILEPATH当前文档的完整文件路径 CLIPBOARD 剪切板里的内容 插入当前日期或时间： CURRENT_YEAR 当前年(四位数) CURRENT_YEAR_SHORT 当前年(两位数) CURRENT_MONTH 当前月 CURRENT_MONTH_NAME 本月的全名（’七月’） CURRENT_MONTH_NAME_SHORT 月份的简称（’Jul’） CURRENT_DATE 当前日 CURRENT_DAY_NAME 当天的名称（’星期一’） CURRENT_DAY_NAME_SHORT 当天的短名称（’Mon’） CURRENT_HOUR 当前小时 CURRENT_MINUTE 当前分钟 CURRENT_SECOND 当前秒 当前语言的行注释或块注释: BLOCK_COMMENT_START 块注释开始标识,如 PHP /*或 HTML &lt;!-- BLOCK_COMMENT_END 块注释结束标识,如 PHP */或 HTML --&gt; LINE_COMMENT 行注释，如： PHP // 或 HTML &lt;!-- --&gt; 变量转换(Variable transforms)变量转换(Variable transforms) 允许变量在插入前改变变量的值，变量转换(Variable transforms)由三部分组成 正则匹配：使用正则表达式匹配变量值，若变量无法解析则值为空。 格式串：允许引用正则表达式匹配组。格式串允许条件插入和做简单的修改。 正则表达式匹配选项 下面例子是使用变量转换(Variable transforms)将带后缀的文件名转换为不带后缀的文件名 1234567891011$&#123;TM_FILENAME/(.*)\\..+$/$1/&#125; | | | | | | | |-&gt; 无选项设置 | | | | | |-&gt; 引用捕获组的第一个分组内容 | | | | | |-&gt; 匹配后缀前的所有字符串 | | |-&gt; 文件名（带后缀） 参考 官网文档 https://code.visualstudio.com/docs/editor/userdefinedsnippets#_assign-keybindings-to-snippets 参考文档 https://segmentfault.com/a/1190000018457312?utm_source=tag-newest https://blog.csdn.net/qq_40191093/article/details/82915028]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - vscode</category>
@@ -69,7 +69,7 @@
   </entry>
   <entry>
     <title><![CDATA[git pull和pash使用]]></title>
-    <url>%2Fblog%2Fpost%2F189a6a9b.html</url>
+    <url>%2Fpost%2F189a6a9b.html</url>
     <content type="text"><![CDATA[命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。便捷用法，编写 shell 脚本，disable_track.sh 内容： #!/bin/bashgit update-index –assume-unchanged 文件名把 disable_track.sh 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/disable_track.sh 即可。同理建立 enable_track.sh： #!/bin/bashgit update-index –no-assume-unchanged 文件名做逆向操作。]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
@@ -77,7 +77,7 @@
   </entry>
   <entry>
     <title><![CDATA[git pull和pash使用]]></title>
-    <url>%2Fblog%2Fpost%2F189a6a9b.html</url>
+    <url>%2Fpost%2F189a6a9b.html</url>
     <content type="text"><![CDATA[设置本地分支默认对应远程dev分支，方便pull和push 1git branch --set-upstream-to=origin/dev dev]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
@@ -85,7 +85,7 @@
   </entry>
   <entry>
     <title><![CDATA[vscode使用]]></title>
-    <url>%2Fblog%2Fpost%2Fa2598390.html</url>
+    <url>%2Fpost%2Fa2598390.html</url>
     <content type="text"><![CDATA[TODOvscod 的git怎么使用 提交 amend 同步 时提交 暂存？? 源代码管理 基本使用TODO 1 随便打开一个文件，添加一个注释 2 打开git工作区可以看到就是修改的这个文件 然后点击右侧的+号，把他暂存起来。 3 再在消息框里输入消息，按ctrl+enter提交暂存 4 再点击 推送（push）提交，代码就提交到云端了。 5、克隆你的项目到本地 相关命令详细说明 ![(https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605143716.png) 同步更新到远程服务器上 拉取（变基）拉取下来的代码 到“暂存”区 操作：在visual stutia code 拉取代码，通过菜单命令执行了 拉取（变基）；问题;拉取（变基）后，发现下载的问题都成了暂存，解决：COMMIT这些暂存文件，注意不是PUSH~！问题2：再次做PULL操作（不是变基）时，提示解决：执行git branch，查看分支，执行git checkout develop切换分支 参考 版本控制攻略 https://github.com/xuanhun/vscode/blob/master/Visual%20Studio%20Code%20%E4%BD%BF%E7%94%A8Git%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md vscode git使用 https://www.cnblogs.com/ashidamana/p/6122619.html 问题vscode git 出现”没有活动的源代码控制提供程序 https://blog.csdn.net/qq_36131788/article/details/84635301]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - vscode</category>
@@ -93,7 +93,7 @@
   </entry>
   <entry>
     <title><![CDATA[git错误解决]]></title>
-    <url>%2Fblog%2Fpost%2F6350e18f.html</url>
+    <url>%2Fpost%2F6350e18f.html</url>
     <content type="text"><![CDATA[Youhave not concluded your merge (MERGE_HEAD exists). Exiting because ofunfinished merge你还没有结束你的合并(MERGE_HEAD存在)。退出,因为未完成合并。本地没有更新到最新代码， 解决方法有二个： 方法一： 123git merge --abortgit reset --mergegit pull 如果这几个命令并没有解决问题，那将就看第二个方法。开始方法二前，保证代码已经有备份，备份，备份； 方法二： 123git fetch --allgit reset --hard origin/mastergit fetch]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
@@ -101,7 +101,7 @@
   </entry>
   <entry>
     <title><![CDATA[Git stash使用]]></title>
-    <url>%2Fblog%2Fpost%2Fce3cb319.html</url>
+    <url>%2Fpost%2Fce3cb319.html</url>
     <content type="text"><![CDATA[TODOhttps://www.cnblogs.com/tocy/p/git-stash-reference.html https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89 https://blog.csdn.net/qq_32452623/article/details/76100140 基本使用 当前分支 master ，文件已做了修改 git stash 推送一个新的储藏，当前的工作目录就干净了 git checkout 随意切换到其他分支，例 dev 修改dev分支，解决dev bug问题后 提交commit git checkout master dev分支问题解决后 切换到 原来分支 master 12git stash apply (应用最新但不删除储藏)git stash pop (应用最新并删除储藏) 将缓存堆栈中的stash应用到工作目录中 其他 12git stash list //查看储藏列表git stash clear //删除所有缓存的stash 总结： 当前分支有没有提交的内容，但急需切换到其他分支 通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 其他分支内容修复后，再从储藏中将内容拿出来继续工作]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
@@ -109,23 +109,15 @@
   </entry>
   <entry>
     <title><![CDATA[如何写笔记]]></title>
-    <url>%2Fblog%2Fpost%2F2905fbe1.html</url>
+    <url>%2Fpost%2F2905fbe1.html</url>
     <content type="text"><![CDATA[公司官网下载 个人偏向zip非安装版 百度云: 左侧强大的文件资源管理 大量高效插件 1 打开解压压缩包运行vscode.exe 2 下载必要插件 推荐插件 简体中文 Chinese (Simplified) Language Pack for Visual Studio Code 发布到印象笔记工具 evermonkey 服务器上传 SFTP TODO 3 使用本地磁盘上建立一个文件夹 笔记本 拖动到左侧 资源管理中 点击文件夹 右键 —&gt; 新建文件/夹 右侧编辑文件 这样本地笔记本就完成了 扩展编辑markdown文件目前流行的笔记方式是 .md文件 vscode本身可以用markdown原始语言编排 也可以到插件库中下载md编辑插件 eg: Markdown All in One 还有一些md编辑器支持 资源管理功能 eg: Yu Writer 但均不好用 vscode 快捷键打开 typora 参考： 效果： typora 修改快捷键参考：TODO md文件/图片处理方案一 typora 可以保存图片 到指定位置 推荐在当前文件所在文件夹下建一个 和文件名同名的文件夹， 图片保存到此文件夹下 方案一 使用PicGo PicGo使用参考：TODO 推荐使用方案二配置完成后 Ctrl+shift+p剪切板一键上传，非常方便 为本地笔记设置云服务器使用github/gitee云将自己的文件夹（笔记本）同步到github或者gitee上需要熟悉 Git 的使用 Git入门：TODO Git配置：TODO Git在vscode使用（针对本文）：TODO Git命令（针对本文）：TODO 使用ftp/sftp使用ftp/sftp的方式将自己的文件夹（笔记本）同步到自己的服务器 条件： 安装vscode插件 sftp 有一台自己的云服务器 使用：TODO 上传文件到印象笔记写这个模块是因为自己用印象笔记很久了，每次搜索都习惯从印象笔记检索引擎中查找，为了将本地笔记 可以同步到印象笔记 条件： 安装vscode插件 evermonkey 有印象笔记 使用vscode插件将md文件同步至印象笔记 参考 TODO ps： 同步到印象笔记的md文件以只读方式展示 应用hexo简介： hexo适合个人博客 hexo使用需要基于git + npm + markdown 使用hexo 建立自己的网站，可以随意变换风格，以github/gitee为云床，既可以任意网络同步，又能网页查看 hexo的博客均是md文件 完全可以同步到 其他服务器 例: 印象笔记 hexo基础安装使用参考：TODO wordpress简介 搭建wordpress需要 虚拟主机+php +mysql +nginx wordpress 适合建站 wordpress 基础安装使用参考：TODO 使用插件 WP REST API+ JWT Authentication for WP-API 自动发布文章 链接 总结：笔记结构图片： 参考：]]></content>
       <categories>
         <category>生活 - 计算机 - window</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[hello-world]]></title>
-    <url>%2Fblog%2Fpost%2Fb1d4025b.html</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-      <categories>
-        <category>默认</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[nodejs搭建]]></title>
-    <url>%2Fblog%2Fpost%2F67f2c5e.html</url>
+    <url>%2Fpost%2F67f2c5e.html</url>
     <content type="text"><![CDATA[更新2019-06-04TODOnpm 源配置 安装官网下载 版本选择Windows Installer (.msi) 安装版 Windows Binary (.zip) 免安装版 个人选择：window binary 64位 / win64位免安装版 不需要修改注册表，装系统重新安装什么的 安装解压，到指定位置就可以 eg: D:\UnInstallSoft\node-v10.15.3-win-x64 配置本地系统环境变量新建 NODE_HOME 值 D:\UnInstallSoft\node-v10.15.3-win-x64 新建 NODE_PATH 值 %NODE_HOME%\node_modules\node_global\node_modules ps: 承接node_global的配置 path路径后面添加： ;%NODE_HOME%;%NODE_HOME%\node_modules\node_global; 参考 测试打开任意cmd 输入 path 查看path是否ok 输入 npm -v 查看npm版本 node -v 查看node版本 正常输入 测试通过 配置nodejs config新建文件夹再 D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules 目录下新建 node_global 和 node_cache 文件夹 设置配置方法一： cmd命令执行下面的 123npm config set prefix &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_global&quot;npm config set cache &quot;D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache&quot; 方法二： 在nodejs的安装目录中找到node_modules\npm.npmrc文件 123prefix = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_globalcache = D:\UnInstallSoft\node-v10.15.3-win-x64\node_modules\node_cache 参考 node配置 https://www.cnblogs.com/GeoChen/p/5496322.html]]></content>
       <categories>
         <category>技术 - 工具 - WEB - nodejs</category>
@@ -135,8 +127,16 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[hello-world]]></title>
+    <url>%2Fpost%2Fb1d4025b.html</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>默认</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[vscode上传笔记到印象]]></title>
-    <url>%2Fblog%2Fpost%2F34858cd5.html</url>
+    <url>%2Fpost%2F34858cd5.html</url>
     <content type="text"><![CDATA[获取印象笔记Token印象笔记Developer Token地址 Developer Token 申请获取token 1Notice：如果你的页面显示无法申请Develooper Tokens，只需要使用帐户注册邮箱直接发送邮件到 online-help@yinxiang.com ，并说明需要开启Token即可，会有印象笔记的工作人员帮你开放。 我的token 12345678Developer TokenS=s2:U=10f9900:E=16b2c283d3f:C=16b081bb8f8:P=1cd:A=en-devtoken:V=2:H=3e537a834099f687b57746ef594238b1NoteStore URL:https://app.yinxiang.com/shard/s2/notestore有效期06 June 2019, 09:39 123S=s2:U=10f9900:E=16b50586895:C=16b2c4be1f8:P=1cd:A=en-devtoken:V=2:H=cb4c6b7250a91095654b1f800e9852c8https://app.yinxiang.com/shard/s2/notestore vscode下载插件EverMonkey 使用以下打开控制面板 crtl + shift +p中执行 1234567设置token&gt;ever token创建一个md文件&gt;ever new将最新编辑的内容发布到印象笔记&gt;ever publish md头模板 12345---title: 题目tags: 标签（多个,分开）notebook: 保存到那个笔记本下--- 问题出现EVernote Error:5-Note.title说明是换行符有问题,将vc code 右下角的换行符 CRLF换成 LF,然后在重新发布就就成功了 注意：不支持 notebook: - 常用 这种格式 上传到印象笔记上时一定记得把头部 这种hexo中 一级二级… 的这种写法先去掉 在ever public到印象笔记 参考​ 文章 https://www.jianshu.com/p/fe2efe1aa6d4 插件 https://github.com/michalyao/evermonkey/blob/master/docs/zh-Hans/README.md 印象笔记开发者 https://dev.yinxiang.com/doc/articles/dev_tokens.php]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - 印象笔记</category>
@@ -147,7 +147,7 @@
   </entry>
   <entry>
     <title><![CDATA[nginx配置文件]]></title>
-    <url>%2Fblog%2Fpost%2Fd271472.html</url>
+    <url>%2Fpost%2Fd271472.html</url>
     <content type="text"><![CDATA[nginx配置文件123456789101112131415161718server &#123; listen 80; server_name _; root /var/www/wordpress; location / &#123; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; &#125; location ~ \.php(.*)$ &#123; try_files $uri =404; fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; &#125; &#125; demo 支持php （wordpress用） 1234567891011121314151617181920212223242526272829303132333435server &#123; listen 80; server_name it.hanglvda.com; #server_name 127.0.0.1; #地址没有/时自动加上/ 实现重定向 #server_name_in_redirect off; root /var/www/wordpress; #index index.php index.html index.htm; location / &#123; #root /var/www/wordpress; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; # 只有首页面根目录可以访问，其他页面地址都是404 not found #try_files $uri $uri/ /index.php?$query_string; #if (!-e $request_filename)&#123; # rewrite ^/(.*) /index.php last; #&#125; #访问目录自动到 index #autoindex on; &#125; location ~ \.php(.*)$ &#123; #错误输出 try_files $uri =404; #php-fpm服务 fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; # fastcgi_split_path_info ^((?U).+\. php)(/?.+)$; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; # include fastcgi_params; &#125; &#125; 默认nginx.conf 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118#user nobody;worker_processes 1;#error_log logs/error.log;#error_log logs/error.log notice;#error_log logs/error.log info;#pid logs/nginx.pid;events &#123; worker_connections 1024;&#125;http &#123; include mime.types; default_type application/octet-stream; #log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos; # &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos; # &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;; #access_log logs/access.log main; sendfile on; #tcp_nopush on; #keepalive_timeout 0; keepalive_timeout 65; #gzip on; server &#123; listen 80; server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html; index index.html index.htm; proxy_pass http://127.0.0.1:8080/; &#125; #error_page 404 /404.html; # redirect server error pages to the static page /50x.html # error_page 500 502 503 504 /50x.html; location = /50x.html &#123; root html; &#125; # proxy the PHP scripts to Apache listening on 127.0.0.1:80 # #location ~ \.php$ &#123; # proxy_pass http://127.0.0.1; #&#125; # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000 # #location ~ \.php$ &#123; # root html; # fastcgi_pass 127.0.0.1:9000; # fastcgi_index index.php; # fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name; # include fastcgi_params; #&#125; # deny access to .htaccess files, if Apache&apos;s document root # concurs with nginx&apos;s one # #location ~ /\.ht &#123; # deny all; #&#125; &#125; # another virtual host using mix of IP-, name-, and port-based configuration # #server &#123; # listen 8000; # listen somename:8080; # server_name somename alias another.alias; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125; # HTTPS server # #server &#123; # listen 443 ssl; # server_name localhost; # ssl_certificate cert.pem; # ssl_certificate_key cert.key; # ssl_session_cache shared:SSL:1m; # ssl_session_timeout 5m; # ssl_ciphers HIGH:!aNULL:!MD5; # ssl_prefer_server_ciphers on; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125;&#125;]]></content>
       <categories>
         <category>技术 - 服务器 - Linux - nginx</category>
@@ -160,7 +160,7 @@
   </entry>
   <entry>
     <title><![CDATA[Linux用户管理]]></title>
-    <url>%2Fblog%2Fpost%2Fef277b25.html</url>
+    <url>%2Fpost%2Fef277b25.html</url>
     <content type="text"><![CDATA[Linux 添加ssh公钥 实现免密认证 本地生成ssh的key 方法参考： 找到本地公钥文件 .pub结尾的文件 将公钥内容复制到服务器 的/root/.ssh/authorized_keys 文件中 未测试 —sunbo]]></content>
       <categories>
         <category>技术 - 服务器 - Linux</category>
@@ -168,7 +168,7 @@
   </entry>
   <entry>
     <title><![CDATA[wordpress jwt认证并发布文章]]></title>
-    <url>%2Fblog%2Fpost%2F3d7895ea.html</url>
+    <url>%2Fpost%2F3d7895ea.html</url>
     <content type="text"><![CDATA[安装插件ps：wordpress插件安装方式 ftp 安装 登录wordpress后台–&gt; 插件–&gt; 搜索–&gt;安装 服务器需要安装ftp，开启21端口 安装包 直接下载安装包 上传到服务器上 目录 为 （wordpress目录）+ wordpress/wp-content/plugins 运行 ~unzip 插件名.zip ~ 命令解压到当前文件夹 略 WP REST APIps：用于返回接口数据支持 下载安装包 –&gt; 解压 JWT Authentication for WP-API提供jwt认证支持 下载安装包 –&gt; 解压 修改配置文件 （wordpress目录）/wordpress/wp-config.php 参考 https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/ 密码盐参考： 12345678define(&apos;AUTH_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;SECURE_AUTH_KEY&apos;, &apos;giVYR&lt;9piU^l~*/`1F-VhAoZ~y@VZVK&#125;]@]od5lxXK!^t9[,a|fK&#125;$UWeG[2G*0g&apos;);define(&apos;LOGGED_IN_KEY&apos;, &apos;n11b7hlD&gt;Q&lt;2=/77SpS[,S&gt;i0]@X!_4W&#123;/U-W65lN|gJpIQa@ub-^P%o%.sb2;%D&apos;);define(&apos;NONCE_KEY&apos;, &apos;24F8qI!UCFLdIX:&lt;m?63Duu_*p$`+p!9&gt;7LdJs4p#+^=(U&gt;x)pz&lt;M-;BB=7&amp;(XGl&apos;);define(&apos;AUTH_SALT&apos;, &apos;UG=0+&gt;cM9kDK%-YhVWf|j(*u2-* s~/hY!vWF&#123;&amp;Q[;&lt;a%fT/o+/FDltX%5GzKT/5&apos;);define(&apos;SECURE_AUTH_SALT&apos;, &apos;&gt;HO|82&gt;/@([FW@VR|3L9dV^mq37Y(WYrx?--p&gt;d-b&gt;~w[8,`Y-C%c(nm4[$ -kA&#123;&apos;);define(&apos;LOGGED_IN_SALT&apos;, &apos;bfRl^SUa4MNit)#7D67 cQ#:`m[ :&#123;_*&amp;p5.*oK&#123;t;1s&#125;&lt;!L7*NO|YSV)3B)=wEK&apos;);define(&apos;NONCE_SALT&apos;, &apos;j3[,QgyE.0).&gt;L~3+Qaa+,hK4[IdASXAykf@yPIs[9C#wc&lt;gixl]7&gt;YWt:.|Wzm &apos;); 注：上面内容不需要复制到配置文件中 eg: 配置文件 define( ‘WP_DEBUG’, false ); 上添加如下内容 12define(&apos;JWT_AUTH_SECRET_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;JWT_AUTH_CORS_ENABLE&apos;, true); 配置nginx （可能会用到）1234567在设置-固定连接中 URL的显示方式修改为除朴素之外的任意一种添加伪静态 不同服务器的配置方式不同 这里以nginx服务器为例：在server模块添加代码location / &#123; try_files $uri $uri/ /index.php?$args ;&#125; 然后重启nginx服务器。 测试启用WP REST API安装后，看看配置（一般不用改） 打开链接查看是否安装成功 eg https://blog.siburuxue.com/wp-json 启用JWT Authentication for WP-API执行下面请求 eg: 1234567891011121314登录获取token接口url:https://blog.siburuxue.com/wp-json/jwt-auth/v1/tokenmethod:postparam:&#123; username:xxx, password:xxx&#125;return:&#123; &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmxvZy5zaWJ1cnV4dWUuY29tIiwiaWF0IjoxNTU4MzE4MTc4LCJuYmYiOjE1NTgzMTgxNzgsImV4cCI6MTU1ODkyMjk3OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.-2qctW3wVyyIX-RLXWXl3YH3eo2aNXIT9isNjwvsV_k&quot;, &quot;user_email&quot;: &quot;siburuxue@aliyun.com&quot;, &quot;user_nicename&quot;: &quot;siburuxue&quot;, &quot;user_display_name&quot;: &quot;siburuxue&quot; &#125; 返回成功说明OK 使用1234567891011发布文章接口：url:https://blog.siburuxue.com/wp-json/wp/v2/postsmethod:postheader:&#123; Authorization:Bearer token&#125;param:&#123; title:测试, content:测试文章&#125; 问题jwt_auth_bad_config 解决：没有配置 wp-config.php rest_cannot_create 抱歉，您不能作为此用户创建文章。 解决：重新登录 参考官网插件 https://wordpress.org/plugins/ 博客 https://blog.siburuxue.com/]]></content>
       <categories>
         <category>技术 - WEB - 建站 - wordpress</category>
@@ -179,7 +179,7 @@
   </entry>
   <entry>
     <title><![CDATA[typora创建task任务]]></title>
-    <url>%2Fblog%2Fpost%2F9d6885de.html</url>
+    <url>%2Fpost%2F9d6885de.html</url>
     <content type="text"><![CDATA[typora创建task备注2019-05-20 tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口 创建task.json打开命令窗口 注：点击配置任务后 -&gt; 随便点击一个就会生成 .vscode/tasks.json 文件 创建任务 12345678910111213141516171819202122&#123; // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format &quot;version&quot;: &quot;2.0.0&quot;, &quot;tasks&quot;: [ &#123; &quot;label&quot;: &quot;Open Typora&quot;, &quot;type&quot;: &quot;process&quot;, &quot;windows&quot;: &#123; &quot;command&quot;: &quot;F:\\ProgramFiles\\Typora\\Typora.exe&quot;,&quot;args&quot;: [ &quot;$&#123;file&#125;&quot; ] &#125;, &quot;group&quot;: &#123; &quot;kind&quot;: &quot;build&quot;, &quot;isDefault&quot;: true &#125;, &quot;presentation&quot;: &#123; &quot;reveal&quot;: &quot;always&quot;, &quot;panel&quot;: &quot;new&quot; &#125; &#125; ]&#125; 注：自己修改typora的安装目录 测试任务是否成功 修改快捷键我们可以在“文件”—-“首选项”—“键盘快捷方式”。打开设置 注：没有直接 ctrl + p 搜索 keybindings.json 内容如下 123456&#123; &quot;key&quot;: &quot;ctrl+1&quot;, &quot;command&quot;: &quot;workbench.action.tasks.runTask&quot;, &quot;args&quot;: &quot;Open Typora&quot;, &quot;when&quot;: &quot;resourceLangId == markdown&quot;&#125; 注意：此处的args与tasks.json中的label值对应 效果：快捷键 Ctrl + 1 参考 vscode 基本配置和使用 http://www.cnblogs.com/jcuan/p/5918088.html 如何建一个task任务 https://code.visualstudio.com/ vscode快捷键使用（when的用法） https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts vscode]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - typora</category>
@@ -190,24 +190,48 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[系统管理模块]]></title>
-    <url>%2Fblog%2Fpost%2F18ca0036.html</url>
-    <content type="text"><![CDATA[表用户 角色基础表 表 基础字段 权限普通菜单，按钮权限—shiro 展示/隐藏 数据权限某个角色是否 可以查看哪些部门 角色权限必须指定角色才能执行的 方法 eg: @RequiresRoles({“admin”}) 拦截器自定义aop指定信息 如管理员 可看不可改性 TODO]]></content>
-      <categories>
-        <category>技术 - WEB - 后台 - 架构</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[一个项目需要的模块]]></title>
-    <url>%2Fblog%2Fpost%2F22c0c787.html</url>
+    <url>%2Fpost%2F22c0c787.html</url>
     <content type="text"><![CDATA[项目模块 后台模块util模块公共jar，常用util 各编号规则 excel 导入导出 httpclient 请求 token权鉴 common模块本项目定制化 工具类 常量 —系统，表 权限：shiro 缓存管理：J2cache/redis 校验规则 词典 公共 实体对象 统一 异常处理 返回处理 日志处理 admin模块用户，部门，角色 相关 补充模块定时任务模块 文件上传模块 日志模块 消息通知模块 验证码模块 (session 方式，存表方式) 搜索引擎模块 个人中心模块 订单，统计模块 独立评论模块 测试模块 插件ip拦截 思想高度解耦合 模块之间引用 尽量少关联高度分离 只做我的功能,新的功能用新的表 新的模块 可以继承已有的 目标sys sys-util 项目工具类 (我的每个功能可以[jar + 自定义]) 非servlet springMVC mybatis就行 （因为sys-core中才引用这些包） sys-util-excel sys-util-httpclient sys-util-token /jwt sys-util-valid 效验 sys-util-拦截器 sys-util-结果 异常 分页 常量 … 文件操作、日期转换、数据类型转换、序列化、汉字转拼音、身份证号码验证、数字转人民币、发送短信、发送邮件、加密解密、图片处理、FTP/SFTP/fastDFS上传下载、二维码、XML读写、高精度计算 sys-core 核心模块 关联表操作 sys-core-log sys-core-shiro sys-core-cache 缓存 sys-common 插拔式公共模块 关联表操作 sys-common-dict sys-common-email sys-common-code 验证码 sys-common-支付 sys-common-第三方登录 sys-common-统计 … sys-user （jar）（API）用户 部门 角色 权限 获取 拿到系统用户相关信息 例如: 拿到部门信息 //sys-user-api 用户 部门 角色 权限处理 API sys-web （war） || sys-web-sun sys-web-admin 用户权限管理 sys-web-common quartz upload log message 消息通知 dict 词典 oss sql 监控 blog blog-web 后台管理 goods goods-web 商品 //TODO 聊天 基于 springMVC mybatis-plus 其关联逻辑不能换redis shiro etc尽量解耦 先完成用户管理模块 sys-web-admin 条件: MVC请求控制, 需要配置shiro sys-user基础用户 部门 角色 权限处理 以满足shiro需要 缓存配置 以满足shiro需要 缓存用redis,redis基础模块不做涉及表的操作, 可以类似一个工具类 结构 缓存 + 用户 部门 角色逻辑 –&gt; shiro –&gt; author–&gt; MVC 结构sys-core common base 继承类,继承mybatis-plus service dao contants exception cache 缓存 aspect annotation log sys 用户 部门 角色 权限处理 //对shiro提供支持 //TODO 向外api提供用户相关信息 shiro 权限 authc config 配置 eg: shiro规则 log规则sys-web 系统用户登录 sys-web-admin common config interceptor modules… 登录 权限编辑 相关 controller service dao entity sys-web-common common config modules… 博客系统blog-web 用户后台登录 common config modules… 博客相关 controller service dao entity 爬虫系统 论坛项目]]></content>
       <categories>
         <category>技术 - WEB - 后台 - 架构</category>
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[系统管理模块]]></title>
+    <url>%2Fpost%2F18ca0036.html</url>
+    <content type="text"><![CDATA[表用户 角色基础表 表 基础字段 权限普通菜单，按钮权限—shiro 展示/隐藏 数据权限某个角色是否 可以查看哪些部门 角色权限必须指定角色才能执行的 方法 eg: @RequiresRoles({“admin”}) 拦截器自定义aop指定信息 如管理员 可看不可改性 TODO]]></content>
+      <categories>
+        <category>技术 - WEB - 后台 - 架构</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Hex推荐]]></title>
+    <url>%2Fpost%2F5b08b6fe.html</url>
+    <content type="text"><![CDATA[手把手教你 hexo + github搭建自己的博客以及个人主页 网上有很多这样的资料素材，但是没有一个系统化的教程 使你除了搜怎么搭建个人主页外，还要搜hexo使用教程 况且中间还可能遇到多种多样的坑 本篇文章，告诉你怎么使用github提供的空间，以及搭建自己的博客 本人亲身检测，绿色无公害；一、环境准备 1.安装Git 下载地址：https://git-scm.com/downloads 2.安装Node.js 下载地址：https://nodejs.org/en/ 3.安装hexo 利用 npm 命令即可安装。（在任意位置点击鼠标右键，选择Git bash） 1npm install -g hexo hexo安装中问题： npm ERR! registry error parsing json 错误 可能需要设置npm代理,执行命令 1npm config set registry http://registry.cnpmjs.org hexo:command not found 删除刚刚安装的npm目录，重新执行命令npm install -g hexo安装hexo， -g为全局安装 二、初始化hexo项目 1.创建hexo文件夹 安装完成后，在你喜爱的文件夹下（如H:\hexo）， 执行以下指令(在H:\hexo内点击鼠标右键，选择Git bash)， Hexo 即会自动在目标文件夹建立网站所需要的所有文件。 hexo init（初始化hexo项目） 2.安装依赖包 npm install（安装npm依赖包） 现在我们已经搭建起本地的hexo博客了 hexo命令行使用 常用命令： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546hexo help #查看帮助hexo init #初始化一个目录hexo new "postName" #新建文章hexo new page "pageName" #新建页面hexo generate #生成网页，可以在 public 目录查看整个网站的文件hexo server #本地预览，'Ctrl+C'关闭hexo deploy #部署.deploy目录hexo clean #清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**简写（常用）：hexo n == hexo newhexo g == hexo generatehexo s == hexo serverhexo d == hexo deploy``` 3.本地预览执行一下命令：hexo generate 生成网页hexo server 本地预览到浏览器输入localhost:4000可以看到（系统再带的博客页面）。三、更换模板可能系统自带的模板不满足你的需求，没关系hexo提供了很多模板供你选择访问：https://hexo.io/themes/选择自己喜欢的模板吧！本人选择的模板是MiHo 主题地址 http://blog.minhow.com/2017/08/01/blog/installation-configuration/1、搭建自己喜欢的模板1.1 安装主题删除hexo自带的themes文件夹在hexo下clone MiHo 主题``` bash$ git clone https://github.com/WongMinHo/hexo-theme-miho.git themes/miho``` MiHo 主题需要Hexo 3.0或以上版本，请先升级。1.2 更新主题（提供技术支持）``` bashcd themes/miho git pull 1.3 依赖安装 生成站点文章静态数据，用于站内搜索。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586npm install hexo-generator-json-content --save``` 1.4 配置主题此处需要理解：与themes文件同级的_config.yml文件是hexo的项目配置文件（以下定义为‘主配置’）在themes/miho文件中的_config.yml文件是主题的配置文件（以下定义为‘主题配置’）注：可以在_config.yml中定义变量在模板中&lt;%- config.userurl %&gt;引入在主配置下找到theme属性将其定义为theme: miho即可主配置文件属性注释：``` bash# Hexo Configuration## Docs: http://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Site #站点信息title: #标题subtitle: #副标题description: #站点描述，给搜索引擎看的author: #作者email: #电子邮箱language: zh-CN #语言# URL #链接格式url: #网址root: / #根目录permalink: :year/:month/:day/:title/ #文章的链接格式tag_dir: tags #标签目录archive_dir: archives #存档目录category_dir: categories #分类目录code_dir: downloads/codepermalink_defaults:# Directory #目录source_dir: source #源文件目录public_dir: public #生成的网页文件目录# Writing #写作new_post_name: :title.md #新文章标题default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）titlecase: false #标题转换成大写external_link: true #在新选项卡中打开连接filename_case: 0render_drafts: falsepost_asset_folder: falserelative_link: falsehighlight: #语法高亮 enable: true #是否启用 line_number: true #显示行号 tab_replace:# Category &amp; Tag #分类和标签default_category: uncategorized #默认分类category_map:tag_map:# Archives2: 开启分页1: 禁用分页0: 全部禁用archive: 2category: 2tag: 2# Server #本地服务器port: 4000 #端口号server_ip: localhost #IP 地址logger: falselogger_format: dev# Date / Time format #日期时间格式date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/time_format: H:mm:ss# Pagination #分页per_page: 10 #每页文章数，设置成 0 禁用分页pagination_dir: page# Disqus #Disqus评论，替换为多说disqus_shortname:# Extensions #拓展插件theme: landscape-plus #主题exclude_generator:plugins: #插件，例如生成 RSS 和站点地图的- hexo-generator-feed- hexo-generator-sitemap# Deployment #部署，将 lmintlcx 改成用户名deploy: type: git repo: github创库地址.git （需要使用ssh） branch: master 不要担心主题配置文件有中文注释，根据提示走就可以轻松搞定 注意：主配置文件中的 url ，root配置url: https://hjm100.github.io/Blogsroot: /Blogs 如果你想要通过https://hjm100.github.io去访问你的博客root: /因为我的https://hjm100.github.io用来装自己的主页，所以我的博客地址架构如上 虽然选择了自己想要的主题，但是主题中显示有关主体信息，以及博客信息，看着就不舒服 特别是网页底部版权那块，教你怎么改： 修改模板标签(用于一般模板不满足个人需求)步骤：用文本编辑器打开 Hexo 所在的目录打开 themes 目录打开你想要编辑的主题所在的目录中的 layout 目录打开 layout 目录下的 _partial 目录打开 _partial 目录下的 footer.ejs 文件修改底部链接post/copyright.ejs用于修改文章页脚用户链接 好了，至此，本地博客已经搭建起来了，只是本地哦，别人看不到的。下面，我们要部署到Github。 四、外网部署（为的就是省钱–哈哈）： github为我们提供了一个放置静态资源的空间，空间不大但是足以满足你博客以及个人主页的部署 如果有后台就不行了（不过可以选择自己租服务器，一个月就50多，不差钱的同鞋可以考虑一下） 以我的为例：github放置个人主页以及博客 1.申请账号，设置公钥这些老生常谈的话题就不用多说了（直接进入主题） 2.创建代码仓库2.1 点击加号穿件仓库New repository2.2仓库名字格式必须为: yourname.github.io （yourname为你的账号名）2.3进入新建的项目点击Settings设置项目找到GitHub Pages 点击change theme选择模板这时你的项目中就有了生成文件（但是这是系统创建的）2.4 不要删除_config.yml文件直接引入你的个人主页项目即可，默认打开index.html ok此时你的个人主页已经搭建好了 Blogs的搭建，你可以新建一个代码仓库（把这个代码仓库设置为html） 在设置中的GitHub Pages 选择Source 中的下拉框为master branch做法与上一样！ 3.仓库分析（yourname.github.io放个人主页，Blogs存放博客） 4.Blogs上传：将主配置中的deploy属性添加一下代码，deploy: type: git repo: 你github上的Blogs的SSH地址（注意ssh必须是系统最先生成的） branch: master 运行命令行 hexo g 编译文件 hexo d 提交文件即可 4.发布博文 在hexo\source_posts文件夹下新建一个MD文件类型的文档 或者命令行 hexo new 博文创建1234567891011---title: 博文 （博文标题）date: 2017-09-27 14:49:15 （博文时间）categories: hexo #文章文类tags: web开发技术 （ 文章标签）cover_picture: images/exploit.jpg(图片格式)---这里正常写文章即可# 可以理解为h1(但是#后面一定要有空格)``` bash（代码要写在这里面）$ console.log('Hello hjm100') //这里写代码 123注意：博文写好之后一定要先在本地查看后在提交！！！！！！ ```bash 语法：&#123;&#123;express | 过滤器名:补充说明&#125;&#125;（一定要放在bash中） 五、域名的配置（将github提供的二级域名与自己购买的域名绑定）： 1.可以前往腾讯购买一个域名，一般cn域名一年就20多块钱 2.点击 Github 上项目的 Settings，GitHub Pages， 提示Your site is published at http://hjm100.cn (这是我买的域名) Custom domain下面的对话框填写你的域名即可 将独立域名与GitHub Pages的空间绑定 方法一：在站点source目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 方法二：在Repository的根目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 在github上面添加好自己的域名后，不要着急，此时你的域名还没有与博客完全绑定 打开cmd命令行，使用ping hjm100.github.io 查看到git对应的ip地址 前往你购买域名的平台进行ipv4域名解析，输入你ping到的域名即可， 域名解析后，去浏览器访问一下你的域名吧！就是这么神奇！！ 至此你的博客已经搭建完毕了，不要感谢我，本人博客预览hjm100.cn 域名https添加（让你的域名更加安全） 第一步首先注册一个属于自己的域名，可以选择cn域名，不贵一年就20多元我的域名是hjm100.cn 第二步域名https添加， 1.登录这个网站并注册：https://www.cloudflare.com/（直接使用邮箱注册） 2.注册完毕后登录，如果你之前没有用过，则系统会直接显示Add a website对话框，再次填写hjm100.cn(你的域名)点击scan DNS Records即可，系统会自动扫描你的域名（扫描需要等待一定时间） 3.扫描完毕后点击Continue(继续) 4.添加DNS Recordstypt:CNAME类型 name：www Value: 附件小妙招： 怎么换一台电脑仍然可以使用hexo（亲测有用） 1.在Blogs这个项目中创建hexo分支用来储存开发环境（master分支用来存储生成的静态资源） git branch hexo（新建一个hexo分支） 2.将hexo分支发布在github上(这个时候分支中可能有master分支的文件) git push origin hexo(将代码提交到hexo分支上) 3.切换到hexo分支上（如果有文件就清空分支中的内容除了.git文件） git checkout hexo（切换到hexo分支上） 4.整理你的开发环境hexo,修改hexo下面的.gitignore(限制git上传)文件 12345db.json*.lognode_modules/public/.deploy*/ 5.删除themes–&gt;miho文件中的 .git文件以及.gitignore 6.将你上述修改的hexo文件提交到hexo分支里面（不要改错奥）在hexo分之下即可git add .git commit .git push origin hexo 7.当你换电脑的时候，配置公钥以及全局安装npm install -g hexo（请参考以上说明）下载的分支默认显示的是master分支，请切换到hexo分支，cd hexo（进入到hexo文件）执行npm install 安装node模块，按照以上写博客提交博客即可同步 8.切结，修改过hexo文件中的内容后记得提交hexo分支，以免你再次换电脑的时候使用 建议使用最新的git版本以及Node版本，如有问题请留言！！！！]]></content>
+      <categories>
+        <category>技术 - WEB - 建站 - 博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Hex推荐]]></title>
+    <url>%2Fpost%2F5b08b6fe.html</url>
+    <content type="text"><![CDATA[一些好看的hexo建站https://www.zengjianfeng.com/develop 样式简约 搜索功能 代码样式没有编号 https://www.fanhaobai.com/2017/03/install-hexo.html 搜索功能不错 图片有点大 https://github.com/ppoffice/hexo-theme-hueman]]></content>
+      <categories>
+        <category>技术 - WEB - 建站 - 博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo建站-插件]]></title>
+    <url>%2Fpost%2F6b8323ff.html</url>
+    <content type="text"><![CDATA[代码块处理添加复制功能参考 下载 clipboard.js三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它主页或github上看。 clipboardjs 使用在.\source\js目录下,保存文件clipboard.js / clipboard.min.js 也是在.\source\js目录下，创建clipboard-use.js，文件内容如下： 1234567891011121314151617/*页面载入完成后，创建复制按钮*/!function (e, t, a) &#123; /* code */ var initCopyCode = function()&#123; var copyHtml = &apos;&apos;; copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;; copyHtml += &apos; &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;; copyHtml += &apos;&lt;/button&gt;&apos;; $(&quot;.highlight .code pre&quot;).before(copyHtml); new ClipboardJS(&apos;.btn-copy&apos;, &#123; target: function(trigger) &#123; return trigger.nextElementSibling; &#125; &#125;); &#125; initCopyCode();&#125;(window, document); 样式在source\css\_partial样式文件中添加下面代码： 123456789101112131415161718192021222324252627282930313233343536//代码块复制按钮.highlight&#123; //方便copy代码按钮（btn-copy）的定位 position: relative;&#125;.btn-copy &#123; display: inline-block; cursor: pointer; background-color: #eee; background-image: linear-gradient(#fcfcfc,#eee); border: 1px solid #d5d5d5; border-radius: 3px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-appearance: none; font-size: 13px; font-weight: 700; line-height: 20px; color: #333; -webkit-transition: opacity .3s ease-in-out; -o-transition: opacity .3s ease-in-out; transition: opacity .3s ease-in-out; padding: 2px 6px; position: absolute; right: 5px; top: 5px; opacity: 0;&#125;.btn-copy span &#123; margin-left: 5px;&#125;.highlight:hover .btn-copy&#123; opacity: 1;&#125; 引用引用js ==(clipboard-use需要jQuery支持)== 123&lt;!-- 代码块复制功能 --&gt;&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;&lt;%- js(&apos;js/clipboard-use&apos;) %&gt; 引用css 相应地方引入 eg：...source\css\style.styl 123// 代码块复制按钮//-----------------------------------------------@import &quot;_partial/clipboard&quot; 添加折叠效果https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/ https://blog.rmiao.top/hexo-fold-block/ 辅助功能添加字数统计，阅读次数]]></content>
+      <categories>
+        <category>技术 - WEB - 建站 - 博客</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Typora快捷键]]></title>
-    <url>%2Fblog%2Fpost%2F5e339248.html</url>
+    <url>%2Fpost%2F5e339248.html</url>
     <content type="text"><![CDATA[Typora快捷键目录 windows快捷键： 给代码块设置快捷键: Mac中的快捷键： 图片： 表情 数学公式 HTML 行内嵌数学符号 下标 高亮 参考： windows快捷键：# 无序列表：输入-之后输入空格 有序列表：输入数字+“.”之后输入空格 任务列表：-[空格]空格 文字 标题：ctrl+数字 表格：ctrl+t 生成目录：[TOC]按回车 选中一整行：ctrl+l 选中单词：ctrl+d 选中相同格式的文字：ctrl+e 跳转到文章开头：ctrl+home 跳转到文章结尾：ctrl+end 搜索：ctrl+f 替换：ctrl+h 引用：输入&gt;之后输入空格 代码块：ctrl+alt+f 加粗：ctrl+b 倾斜：ctrl+i 下划线：ctrl+u 删除线：alt+shift+5 插入图片：直接拖动到指定位置即可或者ctrl+shift+i 插入链接：ctrl + k 给代码块设置快捷键:#偏好设置-&gt;打开高级设置-&gt;conf.user.json文件 12345678Copy &quot;keyBinding&quot;: &#123; // for example: // &quot;Always on Top&quot;: &quot;Ctrl+Shift+P&quot; &quot;Always on Top&quot;: &quot;Ctrl+Shift+P&quot;, &quot;Code Fences&quot;: &quot;Ctrl+Shift+F&quot;, &quot;Ordered List&quot;:&quot;Ctrl+Alt+o&quot;, &quot;Unordered List&quot;: &quot;Ctrl+Alt+u&quot; &#125;, Code Fences 代码块 Ordered List 数字有序列表 Unordered List 无序列表 Mac中的快捷键：# 最大标题：command + 1 或者：# 大标题：command + 2 或者：## 标准标题：command + 3 或者：### 中标题：command + 4 或者：#### 小标题：command + 5 或者：##### 插入表格：command + T 插入代码：command + alt +c 行间公式 command + Alt + b 段落：command + 0 竖线 ： command + Alt +q 有序列表（1. 2.） ：输入数字+“.”之后输入空格 或者：command + Alt + o 黑点标记：command + Alt + u 隔离线shift + command + - 超链接：command + Alt + l 插入链接：command +k 下划线：command +u 加粗：command +b 搜索：command +f 图片：# 表情#输出表情需要借助 ：符号。 栗子：:smile 显示为 😄,记住是左右两边都要冒号。 使用者可以通过使用ESC键触发表情建议补全功能，也可在功能面板启用后自动触发此功能。同时，直接从菜单栏Edit -&gt; Emoji &amp; Symbols插入UTF8表情符号也是可以的。 或者使用下面的方法 访问网站 https://emojikeyboard.org/，找到需要的符号，鼠标左键单击，然后粘贴到需要的地方就行了！🆗 数学公式#你可以通过使用MathJax来实现LaTeX的数学符号的表达。 输入$$，然后按下Enter键就会弹出一个支持TeX/LaTeX语法的输入框，下面是一个栗子： V1×V2=∣∣ijk ∂X∂u∂Y∂u0 ∂X∂v∂Y∂v0 ∣∣V1×V2=|ijk ∂X∂u∂Y∂u0 ∂X∂v∂Y∂v0 | 在Markdown源文件中，数学的公式块是通过利用 1$$ 标记借用 LaTeX 语言来实现的： 1234567Copy$$\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 = \begin&#123;vmatrix&#125; \mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp; \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp; \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\\end&#123;vmatrix&#125;$$ HTML#Typora不能使用HTML元素，但是Typora可以解析和编译非常有限的HTML元素，作为Markdown功能的补充，这些有限的功能包括： 下划线： &lt;u&gt;underline&lt;/u&gt; 图片：&lt;img src=&quot;http://www.w3.org/html/logo/img/mark-word-icon.png&quot; width=&quot;200px&quot; /&gt;（HTML标签中的width, height 以及属于样式的width, height, zoom样式可以被识别和应用。） 评论：&lt;!-- This is some comments --&gt; 超链接： &lt;a href=&quot;http://typora.io&quot; target=&quot;_blank&quot;&gt;link&lt;/a&gt; 。 大多数这些属性、样式或分类会被忽略。对其他的标签，Typora会将它们以HTML片段的形式表达。 行内嵌数学符号#想要使用这个功能，需要在设置面板的 Markdown栏启用它。然后使用$来启动TeX命令，栗如：$\lim_{x \to \infty} \exp(-x) = 0$ 会以LaTeX的命令形式表达出来。 为了触发行内内嵌数学符号的实时编译你需要：输入$然后按下ESC键之后输入TeX命令，之后就会弹出一个如图所示的工具提示栏： 下标#想要使用这个功能，需要在设置面板的 Markdown 栏启动它，之后使用~来修饰下标文本。栗如： H~2~O 和X~long\ text~ 显示为 H~2~O 和X~long text~ 。 #### 13.上标 想要使用这个功能，需要在设置面板的 Markdown 栏启动它，之后使用^来修饰下标文本。栗如： X^2^ 显示为 X^2^ 。 高亮#想要使用这个功能，需要在设置面板的Markdown 栏启动它，之后使用==来修饰高亮文本，栗如： ==highlight== 显示为 ==highlight== 。 参考：#https://baka943.coding.me/2018/02/08/2018-02-08-TyporaSimpleDoc/ 在markdown中使用HTML中的特殊符号： Markdown输入Latex公式的特殊符号 Markdown For Typora 中文版使用指南 Cmd Markdown 公式指导手册 Markdown 简介]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - typora</category>
@@ -215,39 +239,15 @@
   </entry>
   <entry>
     <title><![CDATA[css在文字两边加线，文字居中效果——实战应用]]></title>
-    <url>%2Fblog%2Fpost%2F76098feb.html</url>
+    <url>%2Fpost%2F76098feb.html</url>
     <content type="text"><![CDATA[源代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; .title-text span &#123; display: block; /*设置为块级元素会独占一行形成上下居中的效果*/ position: relative; /*定位横线（当横线的父元素）*/ color: #188eee; /*居中文字的颜色*/ text-align: center; &#125; .title-text span:before, .title-text span:after &#123; content: &apos;&apos;; position: absolute; /*定位背景横线的位置*/ top: 50%; background: #8c8c8c; /*背景横线颜色*/ width: 35%; /*单侧横线的长度*/ height: 1px; &#125; .title-text span:before &#123; left: 2%; /*调整背景横线的左右距离*/ &#125; .title-text span:after &#123; right: 2%; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;work-intro&quot;&gt; &lt;div class=&quot;title&quot;&gt; &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt; &lt;/div&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt; 另外 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; html &#123; height: 100%; &#125; .work-intro &#123; background: #18c8f6; height: auto; background: url(&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190325104422.png&quot;) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; &#125; .title-text span &#123; display: block; /*设置为块级元素会独占一行形成上下居中的效果*/ position: relative; /*定位横线（当横线的父元素）*/ color: #FFFFFF; /*居中文字的颜色*/ text-align: center; &#125; .title-text span:before, .title-text span:after &#123; content: &apos;&apos;; position: absolute; /*定位背景横线的位置*/ top: 50%; background: #8c8c8c; /*背景横线颜色*/ width: 35%; /*单侧横线的长度*/ height: 1px; &#125; .title-text span:before &#123; left: 2%; /*调整背景横线的左右距离*/ &#125; .title-text span:after &#123; right: 2%; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;work-intro&quot;&gt; &lt;div class=&quot;title&quot;&gt; &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt; &lt;/div&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;]]></content>
       <categories>
         <category>技术 - WEB - 前端</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Hexo建站-插件]]></title>
-    <url>%2Fblog%2Fpost%2F6b8323ff.html</url>
-    <content type="text"><![CDATA[代码块处理添加复制功能参考 下载 clipboard.js三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它主页或github上看。 clipboardjs 使用在.\source\js目录下,保存文件clipboard.js / clipboard.min.js 也是在.\source\js目录下，创建clipboard-use.js，文件内容如下： 1234567891011121314151617/*页面载入完成后，创建复制按钮*/!function (e, t, a) &#123; /* code */ var initCopyCode = function()&#123; var copyHtml = &apos;&apos;; copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;; copyHtml += &apos; &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;; copyHtml += &apos;&lt;/button&gt;&apos;; $(&quot;.highlight .code pre&quot;).before(copyHtml); new ClipboardJS(&apos;.btn-copy&apos;, &#123; target: function(trigger) &#123; return trigger.nextElementSibling; &#125; &#125;); &#125; initCopyCode();&#125;(window, document); 样式在source\css\_partial样式文件中添加下面代码： 123456789101112131415161718192021222324252627282930313233343536//代码块复制按钮.highlight&#123; //方便copy代码按钮（btn-copy）的定位 position: relative;&#125;.btn-copy &#123; display: inline-block; cursor: pointer; background-color: #eee; background-image: linear-gradient(#fcfcfc,#eee); border: 1px solid #d5d5d5; border-radius: 3px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-appearance: none; font-size: 13px; font-weight: 700; line-height: 20px; color: #333; -webkit-transition: opacity .3s ease-in-out; -o-transition: opacity .3s ease-in-out; transition: opacity .3s ease-in-out; padding: 2px 6px; position: absolute; right: 5px; top: 5px; opacity: 0;&#125;.btn-copy span &#123; margin-left: 5px;&#125;.highlight:hover .btn-copy&#123; opacity: 1;&#125; 引用引用js ==(clipboard-use需要jQuery支持)== 123&lt;!-- 代码块复制功能 --&gt;&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;&lt;%- js(&apos;js/clipboard-use&apos;) %&gt; 引用css 相应地方引入 eg：...source\css\style.styl 123// 代码块复制按钮//-----------------------------------------------@import &quot;_partial/clipboard&quot; 添加折叠效果https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/ https://blog.rmiao.top/hexo-fold-block/ 辅助功能添加字数统计，阅读次数]]></content>
-      <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hex推荐]]></title>
-    <url>%2Fblog%2Fpost%2F5b08b6fe.html</url>
-    <content type="text"><![CDATA[一些好看的hexo建站https://www.zengjianfeng.com/develop 样式简约 搜索功能 代码样式没有编号 https://www.fanhaobai.com/2017/03/install-hexo.html 搜索功能不错 图片有点大 https://github.com/ppoffice/hexo-theme-hueman]]></content>
-      <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hex推荐]]></title>
-    <url>%2Fblog%2Fpost%2F5b08b6fe.html</url>
-    <content type="text"><![CDATA[手把手教你 hexo + github搭建自己的博客以及个人主页 网上有很多这样的资料素材，但是没有一个系统化的教程 使你除了搜怎么搭建个人主页外，还要搜hexo使用教程 况且中间还可能遇到多种多样的坑 本篇文章，告诉你怎么使用github提供的空间，以及搭建自己的博客 本人亲身检测，绿色无公害；一、环境准备 1.安装Git 下载地址：https://git-scm.com/downloads 2.安装Node.js 下载地址：https://nodejs.org/en/ 3.安装hexo 利用 npm 命令即可安装。（在任意位置点击鼠标右键，选择Git bash） 1npm install -g hexo hexo安装中问题： npm ERR! registry error parsing json 错误 可能需要设置npm代理,执行命令 1npm config set registry http://registry.cnpmjs.org hexo:command not found 删除刚刚安装的npm目录，重新执行命令npm install -g hexo安装hexo， -g为全局安装 二、初始化hexo项目 1.创建hexo文件夹 安装完成后，在你喜爱的文件夹下（如H:\hexo）， 执行以下指令(在H:\hexo内点击鼠标右键，选择Git bash)， Hexo 即会自动在目标文件夹建立网站所需要的所有文件。 hexo init（初始化hexo项目） 2.安装依赖包 npm install（安装npm依赖包） 现在我们已经搭建起本地的hexo博客了 hexo命令行使用 常用命令： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546hexo help #查看帮助hexo init #初始化一个目录hexo new "postName" #新建文章hexo new page "pageName" #新建页面hexo generate #生成网页，可以在 public 目录查看整个网站的文件hexo server #本地预览，'Ctrl+C'关闭hexo deploy #部署.deploy目录hexo clean #清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**简写（常用）：hexo n == hexo newhexo g == hexo generatehexo s == hexo serverhexo d == hexo deploy``` 3.本地预览执行一下命令：hexo generate 生成网页hexo server 本地预览到浏览器输入localhost:4000可以看到（系统再带的博客页面）。三、更换模板可能系统自带的模板不满足你的需求，没关系hexo提供了很多模板供你选择访问：https://hexo.io/themes/选择自己喜欢的模板吧！本人选择的模板是MiHo 主题地址 http://blog.minhow.com/2017/08/01/blog/installation-configuration/1、搭建自己喜欢的模板1.1 安装主题删除hexo自带的themes文件夹在hexo下clone MiHo 主题``` bash$ git clone https://github.com/WongMinHo/hexo-theme-miho.git themes/miho``` MiHo 主题需要Hexo 3.0或以上版本，请先升级。1.2 更新主题（提供技术支持）``` bashcd themes/miho git pull 1.3 依赖安装 生成站点文章静态数据，用于站内搜索。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586npm install hexo-generator-json-content --save``` 1.4 配置主题此处需要理解：与themes文件同级的_config.yml文件是hexo的项目配置文件（以下定义为‘主配置’）在themes/miho文件中的_config.yml文件是主题的配置文件（以下定义为‘主题配置’）注：可以在_config.yml中定义变量在模板中&lt;%- config.userurl %&gt;引入在主配置下找到theme属性将其定义为theme: miho即可主配置文件属性注释：``` bash# Hexo Configuration## Docs: http://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Site #站点信息title: #标题subtitle: #副标题description: #站点描述，给搜索引擎看的author: #作者email: #电子邮箱language: zh-CN #语言# URL #链接格式url: #网址root: / #根目录permalink: :year/:month/:day/:title/ #文章的链接格式tag_dir: tags #标签目录archive_dir: archives #存档目录category_dir: categories #分类目录code_dir: downloads/codepermalink_defaults:# Directory #目录source_dir: source #源文件目录public_dir: public #生成的网页文件目录# Writing #写作new_post_name: :title.md #新文章标题default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）titlecase: false #标题转换成大写external_link: true #在新选项卡中打开连接filename_case: 0render_drafts: falsepost_asset_folder: falserelative_link: falsehighlight: #语法高亮 enable: true #是否启用 line_number: true #显示行号 tab_replace:# Category &amp; Tag #分类和标签default_category: uncategorized #默认分类category_map:tag_map:# Archives2: 开启分页1: 禁用分页0: 全部禁用archive: 2category: 2tag: 2# Server #本地服务器port: 4000 #端口号server_ip: localhost #IP 地址logger: falselogger_format: dev# Date / Time format #日期时间格式date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/time_format: H:mm:ss# Pagination #分页per_page: 10 #每页文章数，设置成 0 禁用分页pagination_dir: page# Disqus #Disqus评论，替换为多说disqus_shortname:# Extensions #拓展插件theme: landscape-plus #主题exclude_generator:plugins: #插件，例如生成 RSS 和站点地图的- hexo-generator-feed- hexo-generator-sitemap# Deployment #部署，将 lmintlcx 改成用户名deploy: type: git repo: github创库地址.git （需要使用ssh） branch: master 不要担心主题配置文件有中文注释，根据提示走就可以轻松搞定 注意：主配置文件中的 url ，root配置url: https://hjm100.github.io/Blogsroot: /Blogs 如果你想要通过https://hjm100.github.io去访问你的博客root: /因为我的https://hjm100.github.io用来装自己的主页，所以我的博客地址架构如上 虽然选择了自己想要的主题，但是主题中显示有关主体信息，以及博客信息，看着就不舒服 特别是网页底部版权那块，教你怎么改： 修改模板标签(用于一般模板不满足个人需求)步骤：用文本编辑器打开 Hexo 所在的目录打开 themes 目录打开你想要编辑的主题所在的目录中的 layout 目录打开 layout 目录下的 _partial 目录打开 _partial 目录下的 footer.ejs 文件修改底部链接post/copyright.ejs用于修改文章页脚用户链接 好了，至此，本地博客已经搭建起来了，只是本地哦，别人看不到的。下面，我们要部署到Github。 四、外网部署（为的就是省钱–哈哈）： github为我们提供了一个放置静态资源的空间，空间不大但是足以满足你博客以及个人主页的部署 如果有后台就不行了（不过可以选择自己租服务器，一个月就50多，不差钱的同鞋可以考虑一下） 以我的为例：github放置个人主页以及博客 1.申请账号，设置公钥这些老生常谈的话题就不用多说了（直接进入主题） 2.创建代码仓库2.1 点击加号穿件仓库New repository2.2仓库名字格式必须为: yourname.github.io （yourname为你的账号名）2.3进入新建的项目点击Settings设置项目找到GitHub Pages 点击change theme选择模板这时你的项目中就有了生成文件（但是这是系统创建的）2.4 不要删除_config.yml文件直接引入你的个人主页项目即可，默认打开index.html ok此时你的个人主页已经搭建好了 Blogs的搭建，你可以新建一个代码仓库（把这个代码仓库设置为html） 在设置中的GitHub Pages 选择Source 中的下拉框为master branch做法与上一样！ 3.仓库分析（yourname.github.io放个人主页，Blogs存放博客） 4.Blogs上传：将主配置中的deploy属性添加一下代码，deploy: type: git repo: 你github上的Blogs的SSH地址（注意ssh必须是系统最先生成的） branch: master 运行命令行 hexo g 编译文件 hexo d 提交文件即可 4.发布博文 在hexo\source_posts文件夹下新建一个MD文件类型的文档 或者命令行 hexo new 博文创建1234567891011---title: 博文 （博文标题）date: 2017-09-27 14:49:15 （博文时间）categories: hexo #文章文类tags: web开发技术 （ 文章标签）cover_picture: images/exploit.jpg(图片格式)---这里正常写文章即可# 可以理解为h1(但是#后面一定要有空格)``` bash（代码要写在这里面）$ console.log('Hello hjm100') //这里写代码 123注意：博文写好之后一定要先在本地查看后在提交！！！！！！ ```bash 语法：&#123;&#123;express | 过滤器名:补充说明&#125;&#125;（一定要放在bash中） 五、域名的配置（将github提供的二级域名与自己购买的域名绑定）： 1.可以前往腾讯购买一个域名，一般cn域名一年就20多块钱 2.点击 Github 上项目的 Settings，GitHub Pages， 提示Your site is published at http://hjm100.cn (这是我买的域名) Custom domain下面的对话框填写你的域名即可 将独立域名与GitHub Pages的空间绑定 方法一：在站点source目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 方法二：在Repository的根目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 在github上面添加好自己的域名后，不要着急，此时你的域名还没有与博客完全绑定 打开cmd命令行，使用ping hjm100.github.io 查看到git对应的ip地址 前往你购买域名的平台进行ipv4域名解析，输入你ping到的域名即可， 域名解析后，去浏览器访问一下你的域名吧！就是这么神奇！！ 至此你的博客已经搭建完毕了，不要感谢我，本人博客预览hjm100.cn 域名https添加（让你的域名更加安全） 第一步首先注册一个属于自己的域名，可以选择cn域名，不贵一年就20多元我的域名是hjm100.cn 第二步域名https添加， 1.登录这个网站并注册：https://www.cloudflare.com/（直接使用邮箱注册） 2.注册完毕后登录，如果你之前没有用过，则系统会直接显示Add a website对话框，再次填写hjm100.cn(你的域名)点击scan DNS Records即可，系统会自动扫描你的域名（扫描需要等待一定时间） 3.扫描完毕后点击Continue(继续) 4.添加DNS Recordstypt:CNAME类型 name：www Value: 附件小妙招： 怎么换一台电脑仍然可以使用hexo（亲测有用） 1.在Blogs这个项目中创建hexo分支用来储存开发环境（master分支用来存储生成的静态资源） git branch hexo（新建一个hexo分支） 2.将hexo分支发布在github上(这个时候分支中可能有master分支的文件) git push origin hexo(将代码提交到hexo分支上) 3.切换到hexo分支上（如果有文件就清空分支中的内容除了.git文件） git checkout hexo（切换到hexo分支上） 4.整理你的开发环境hexo,修改hexo下面的.gitignore(限制git上传)文件 12345db.json*.lognode_modules/public/.deploy*/ 5.删除themes–&gt;miho文件中的 .git文件以及.gitignore 6.将你上述修改的hexo文件提交到hexo分支里面（不要改错奥）在hexo分之下即可git add .git commit .git push origin hexo 7.当你换电脑的时候，配置公钥以及全局安装npm install -g hexo（请参考以上说明）下载的分支默认显示的是master分支，请切换到hexo分支，cd hexo（进入到hexo文件）执行npm install 安装node模块，按照以上写博客提交博客即可同步 8.切结，修改过hexo文件中的内容后记得提交hexo分支，以免你再次换电脑的时候使用 建议使用最新的git版本以及Node版本，如有问题请留言！！！！]]></content>
-      <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Hexo建站]]></title>
-    <url>%2Fblog%2Fpost%2F4184c8cd.html</url>
+    <url>%2Fpost%2F4184c8cd.html</url>
     <content type="text"><![CDATA[更新2019-03-08直接npm install hexo-asset-image即可 修正路径 应该是官方修改了 快速开始1 安装node，git 2 选择编辑工具 3 git服务器 4 安装Hexo ​ 主题模板 ​ 个人配置 ​ 发布文章 ​ 图片 ​ 搜索 ​ SEO,统计 ​ 评论 ​ RSS //TODO 5 end 一，安装node，git…略 二 Idea工具 Vscode使用说明：略… 三 服务器github或者gitee 开通git pages //TODO 四 安装Hexo官方文档前面git和nodejs安装好后，就可以安装hexo了，你可以先创建一个文件夹blog，然后cd到这个文件夹下（或者在这个文件夹下直接右键git bash打开）。 1234567#安装npm install -g hexo-cli#初始化hexo init blog#进入这个myblog文件夹cd blog npm install 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 在浏览器输入localhost:4000就可以看到你生成的博客了。 模板模板库 模板推荐 个人配置Hexo _config.yml配置相关说明eg: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110# Hexo Configuration## Docs: https://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Sitetitle: 第三世界subtitle:description:keywords:author: sun bolanguage: zh-CNtimezone: Asia/Shanghai# URL## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;url: #http://sunjinchao.gitee.io/blog/ http://localhost:4000/root: #/blog /permalink: :year/:month/:day/:title/permalink_defaults:# Directorysource_dir: sourcepublic_dir: publictag_dir: tagsarchive_dir: archivescategory_dir: categoriescode_dir: downloads/codei18n_dir: :langskip_render:# Writing#new_post_name: :year-:month-:day-:title.md # File name of new postsnew_post_name: :title.md # File name of new postsdefault_layout: posttitlecase: false # Transform title into titlecaseexternal_link: true # Open external links in new tabfilename_case: 0render_drafts: false#在建立文件时，Hexo会自动建立一个与文章同名的文件夹post_asset_folder: truerelative_link: falsefuture: truehighlight: enable: true line_number: true auto_detect: false tab_replace: # Home page setting# path: Root path for your blogs index page. (default = &apos;&apos;)# per_page: Posts displayed per page. (0 = disable pagination)# order_by: Posts order. (Order by date descending by default)index_generator: path: &apos;&apos; per_page: 10 order_by: -date # Category &amp; Tagdefault_category: uncategorizedcategory_map:tag_map:# Date / Time format## Hexo uses Moment.js to parse and display date## You can customize the date format as defined in## http://momentjs.com/docs/#/displaying/format/date_format: YYYY-MM-DDtime_format: HH:mm:ss# Pagination## Set per_page to 0 to disable paginationper_page: 10pagination_dir: page# Extensions## Plugins: https://hexo.io/plugins/## Themes: https://hexo.io/themes/theme: #cyanstyle #landscape #next-default #next-my #next-someone #pure xups#plugins:#- hexo-generator-sitemap#- hexo-generator-baidu-sitemap#baidusitemap:# path: baidusitemap.xml# Deployment## Docs: https://hexo.io/docs/deployment.htmldeploy: type: git repo: git@gitee.com:sunjinchao/blog.git branch: publish message: search: path: search.xml field: post format: html limit: 10000 自动上传到github/gitee 需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。 1npm install hexo-deployer-git --save 上传 hexo clean &amp;&amp; hexo g &amp;&amp; hexo d 主题文件config.yml 配置略… 发文章新建md hexo n newpapername 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 图片处理 首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true 在blog（hexo）目录下执行: 1npm install hexo-asset-image --save 用 hexo n 名称 生成文件，会默认给你生成一个相同名字的文件夹，用typora编辑时可以设置图片根路径为此目录下 1234567npm install hexo-asset-image或npm install hexo-asset-image --save或 （官版）npm install https://github.com/CodeFalling/hexo-asset-image --save或（官版上修改）npm install https://github.com/7ym0n/hexo-asset-image.git 123456或（sunbo修改的）npm i git+https://gitee.com/sunjinchao/blog.git#hexo-asset-image --save更新 npm update hexo-asset-image删除npm uninstall hexo-asset-image 搜索功能 安装插件 1hexo-generator-json-content SEO,统计SEO需要自己的域名百度SEO地址 google站点地图 百度统计百度统计 照样把代码复制到head.ejs文件中，然后再进行一下安装检查，半小时左右就可以在百度统计里面看到自己的网站信息了。 引入不蒜子访问量和访问人次统计不蒜子的添加非常非常方便，不蒜子 在footer.ejs中的合适位置，看你要显示在哪个地方，添加： 1234&lt;!--这一段是不蒜子的访问量统计代码--&gt;&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次 &lt;/span&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次&lt;/span&gt; 评论]]></content>
       <categories>
         <category>技术 - WEB - 建站 - 博客</category>
@@ -255,7 +255,7 @@
   </entry>
   <entry>
     <title><![CDATA[目录说明]]></title>
-    <url>%2Fblog%2Fpost%2Fe5a7471.html</url>
+    <url>%2Fpost%2Fe5a7471.html</url>
     <content type="text"><![CDATA[##熟悉spring springmvc ##工具使用 vscode]]></content>
       <categories>
         <category>技术 - web - 服务器 - 项目</category>
@@ -263,7 +263,7 @@
   </entry>
   <entry>
     <title><![CDATA[window新建文件 快键方式]]></title>
-    <url>%2Fblog%2Fpost%2F2dc7605d.html</url>
+    <url>%2Fpost%2F2dc7605d.html</url>
     <content type="text"><![CDATA[经常会遇到比如新建文件夹, 以及新建文本文档之类的需要. 新建文件夹默认提供快捷键 Ctrl + Shift + N, 但新建一个文本文档还需要右键, 加鼠标操作, 显得不那么方便. 下面就提供了一种通过修改注册表的方式, 给新建文本文档注册一个快捷键: 右键 + W + T. 操作打开注册表按下win+r组合键呼出运行,输入regedit点击运行打开注册表, 查找Ctrl + F 查找搜索 文本文档 (也可以是其他) 修改方式一：双击当前行左侧，在弹出框里文本文档前加上T eg: T文本文档 注：没有字符重复情况下可以使用 方式二：可以在 XXXX 后面加 (&amp;X) eg: Microsoft Word 文档(&amp;W) 测试修改成功后，执行 右键 –&gt; W T 后即可以新建一个txt文本 （或者 右键 –&gt; W W 新建一个word文档）]]></content>
       <categories>
         <category>生活 - 计算机 - window</category>
