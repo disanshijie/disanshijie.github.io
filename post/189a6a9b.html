@@ -128,9 +128,12 @@
             <time datetime="2019-06-05T16:00:00.000Z">2019-06-06</time>
     </p>
     <div class="post-content">
-        <script src="\blog\assets\js\APlayer.min.js"> </script><p>设置本地分支默认对应远程dev分支，方便pull和push</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+        <script src="\blog\assets\js\APlayer.min.js"> </script><a id="more"></a>
+<blockquote>
+<p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p>
+<p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p>
+<p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p>
+</blockquote>
 
     </div>
     <p class="post-meta">
@@ -174,9 +177,9 @@
     
     <span class="next fr">
         下一篇<br>
-        <a href="/blog/post/ce3cb319.html">
+        <a href="/blog/post/a2598390.html">
             
-                Git stash使用
+                vscode使用
             
         </a>
     </span>
@@ -253,7 +256,7 @@
         <script>
             JELON.Comment({
                 container: 'comments',
-                label: '技术/WEB/工具/Git/git pull和pash使用' || 'post/189a6a9b.html',
+                label: '技术/WEB/工具/Git/Git命令' || 'post/189a6a9b.html',
                 owner: 'your_github_id',
                 repo: 'your_blog_comments',
                 clientId: 'your_client_id',
@@ -309,13 +312,13 @@
     </li>
     
     <li>
-        <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
-        <span class="badge">(2)</span>
+        <a href="/blog/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -324,13 +327,13 @@
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-window/">生活 - 计算机 - window</a>
-        <span class="badge">(2)</span>
+        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/blog/categories/生活-计算机-window/">生活\计算机\window</a>
-        <span class="badge">(1)</span>
+        <a href="/blog/categories/生活-计算机-window/">生活 - 计算机 - window</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
@@ -359,7 +362,17 @@
     </li>
     
     <li>
+        <a href="/blog/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
         <a href="/blog/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/blog/categories/技术-服务器-Linux/">技术\服务器\Linux</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -378,11 +391,6 @@
         <span class="badge">(1)</span>
     </li>
     
-    <li>
-        <a href="/blog/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a>
-        <span class="badge">(1)</span>
-    </li>
-    
 </ul>
     </section>
 
@@ -392,15 +400,15 @@
             <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
+    <a class="tag-item" href="/blog/tags/Linux/" title="Linux">Linux (1)</a>
+  
     <a class="tag-item" href="/blog/tags/nginx/" title="nginx">nginx (1)</a>
   
     <a class="tag-item" href="/blog/tags/php/" title="php">php (1)</a>
   
     <a class="tag-item" href="/blog/tags/wordpress/" title="wordpress">wordpress (2)</a>
   
-    <a class="tag-item" href="/blog/tags/Linux/" title="Linux">Linux (1)</a>
-  
-    <a class="tag-item" href="/blog/tags/默认/" title="默认">默认 (3)</a>
+    <a class="tag-item" href="/blog/tags/默认/" title="默认">默认 (4)</a>
   
     <a class="tag-item" href="/blog/tags/nodejs/" title="nodejs">nodejs (1)</a>
   
@@ -446,7 +454,8 @@
                 2019
                     
 
-                        <a href="/blog/">第三世界</a>
+                        <a href="/blog/">第三世界的个人博客</a>
+                        <p>京ICP备<a href="http://www.beian.miit.gov.cn/" target="_blank">19029113</a>号</p>
 </footer>
 <div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
     <!--博客js脚本 -->

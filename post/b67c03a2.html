@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>`生活 - 计算机 - 软件 - vscode`分类下的文章 | 第三世界</title>
+    <title>Linux文件操作 | 第三世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="sun, java, Web, 数据库, 集群">
     <meta name="description" content="sun bo">
@@ -55,19 +55,19 @@
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-                <li rel="/blog/categories/生活-计算机-软件-vscode/index.html" class="item ">
+                <li rel="/blog/post/b67c03a2.html" class="item ">
                     <a href="/blog/" title="首页" class="icon-home">&nbsp;首页</a>
                 </li>
                 
-                <li rel="/blog/categories/生活-计算机-软件-vscode/index.html" class="item ">
+                <li rel="/blog/post/b67c03a2.html" class="item ">
                     <a href="/blog/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
                 </li>
                 
-                <li rel="/blog/categories/生活-计算机-软件-vscode/index.html" class="item ">
+                <li rel="/blog/post/b67c03a2.html" class="item ">
                     <a href="/blog/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
-                <li rel="/blog/categories/生活-计算机-软件-vscode/index.html" class="item ">
+                <li rel="/blog/post/b67c03a2.html" class="item ">
                     <a href="/blog/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
                 </li>
                 
@@ -117,129 +117,155 @@
     <div class="container body clearfix">
         <section class="content">
             <div class="content-main widget">
-                <!-- 文章分类 -->
-
-    <h3 class="widget-hd">
-        <strong>
-            
-                `生活 - 计算机 - 软件 - vscode`分类下的文章
-            
-        </strong>
-    </h3>
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-            <a class="cat-link" href="/blog/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a>
-                
-                        <!-- 文章标题 -->
-                        
-    <h3 class="post-title">
-    	<a href="http://disanshijie.top/blog/post/a3325540.html">
-    		vscode 自定义代码片段
-    	</a>
-    </h3>
-
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>Linux文件操作</span></h3>
     </header>
-    <p class="post-meta">
+    <p class="post-meta text-center">
         sun bo 发表于
-            <time datetime="2019-06-06T07:44:41.000Z">2019-06-06</time>
-                &nbsp;&nbsp;
-                <span class="post-tags">
+            <time datetime="2019-06-16T02:33:52.000Z">2019-06-16</time>
+    </p>
+    <div class="post-content">
+        <script src="\blog\assets\js\APlayer.min.js"> </script><a id="more"></a>
+<h3 id="复制、移动与删除"><a href="#复制、移动与删除" class="headerlink" title="复制、移动与删除"></a>复制、移动与删除</h3><blockquote>
+<p>1，复制粘贴文件　　cp  [选项]  源文件或目录  目标文件或目录</p>
+<p>2，剪切粘贴文件　　mv [选项]  源文件或目录  目标文件或目录</p>
+<p>3，删除文件　　　　rm 文件　　　　　　慎用 rm -rf  </p>
+</blockquote>
+<p>linux下文件的复制、移动与删除命令为：cp，mv，rm<br>一、文件复制命令cp<br>    命令格式：cp [-adfilprsu] 源文件(source) 目标文件(destination)<br>              cp [option] source1 source2 source3 …  directory<br>    参数说明：<br>    -a:是指archive的意思，也说是指复制所有的目录<br>    -d:若源文件为连接文件(link file)，则复制连接文件属性而非文件本身<br>    -f:强制(force)，若有重复或其它疑问时，不会询问用户，而强制复制<br>    -i:若目标文件(destination)已存在，在覆盖时会先询问是否真的操作<br>    -l:建立硬连接(hard link)的连接文件，而非复制文件本身<br>    -p:与文件的属性一起复制，而非使用默认属性<br>    -r:递归复制，用于目录的复制操作<br>    -s:复制成符号连接文件(symbolic link)，即“快捷方式”文件<br>    -u:若目标文件比源文件旧，更新目标文件<br>    如将/test1目录下的file1复制到/test3目录，并将文件名改为file2,可输入以下命令：<br>    cp /test1/file1 /test3/file2<br>二、文件移动命令mv<br>    命令格式：mv [-fiv] source destination<br>    参数说明：<br>    -f:force，强制直接移动而不询问<br>    -i:若目标文件(destination)已经存在，就会询问是否覆盖<br>    -u:若目标文件已经存在，且源文件比较新，才会更新<br>    如将/test1目录下的file1复制到/test3 目录，并将文件名改为file2,可输入以下命令：<br>    mv /test1/file1 /test3/file2<br>三、文件删除命令rm<br>    命令格式：rm [fir] 文件或目录<br>    参数说明：<br>    -f:强制删除<br>    -i:交互模式，在删除前询问用户是否操作<br>    -r:递归删除，常用在目录的删除<br>    如删除/test目录下的file1文件，可以输入以下命令：<br>    rm -i /test/file1</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.cnblogs.com/aiyr/p/7395738.html" target="_blank" rel="noopener">https://www.cnblogs.com/aiyr/p/7395738.html</a></p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/blog/categories/技术-服务器-Linux/">技术\服务器\Linux</a>
+        </span>
+        <span class="post-tags">
             标签：
             
     
-        <a href="/blog/tags/vscode/" title="vscode">vscode</a> / 
-    
-        <a href="/blog/tags/hexo/" title="hexo">hexo</a>
+        <a href="/blog/tags/默认/" title="默认">默认</a>
     
 
         </span>
     </p>
+</article>
+<!-- 分享按钮 -->
 
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>利用vscode snippet 功能，自定义代码片段 快捷生成内容</p>
-<p>在使用hexo建自己博客的时候，一般都是自己新建md文件，hexo的head头部注释可以 快捷生成，方便写作</p>
-                    
-                        <p class="more">
-                            <a href="http://disanshijie.top/blog/post/a3325540.html">阅读剩下更多</a>
-                        </p>
-        </div>
-        <div class="post-thumbnail" data-img>
-            <a href="http://disanshijie.top/blog/post/a3325540.html" title="vscode 自定义代码片段">
-                
-                    <!--
-                    <img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190606154614.gif" class="thumbnail">
-                    -->
-                    <img class="thumbnail" src="/blog/img/default.png" data-echo="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190606154614.gif" alt="vscode 自定义代码片段">
-                    
-            </a>
+    <div class="article-share clearfix text-center">
+        <div class="share-area">
+            <span class="share-txt">分享到：</span>
+            <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+            <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+            <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+            <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=sunbo个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+            <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
         </div>
     </div>
-</article>
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
+
+    <!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br>
+        <a href="javascript: void(0);">没有上一篇了</a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br>
+        <a href="/blog/post/375ce186.html">
+            
+                window-nginx
+            
+        </a>
+    </span>
+    
+</div>
+
+        <!-- 文章评论 -->
         
-            <a class="cat-link" href="/blog/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a>
-                
-                        <!-- 文章标题 -->
-                        
-    <h3 class="post-title">
-    	<a href="http://disanshijie.top/blog/post/a2598390.html">
-    		vscode使用
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        sun bo 发表于
-            <time datetime="2019-06-04T16:00:00.000Z">2019-06-05</time>
-                &nbsp;&nbsp;
-                <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><p>vscod  的git怎么使用 </p>
-<p>提交 amend</p>
-<p>同步 时提交<br></p>
-                    
-                        <p class="more">
-                            <a href="http://disanshijie.top/blog/post/a2598390.html">阅读剩下更多</a>
-                        </p>
-        </div>
-        <div class="post-thumbnail" data-img>
-            <a href="http://disanshijie.top/blog/post/a2598390.html" title="vscode使用">
-                
-                    <!--
-                    <img src="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190606191519.gif" class="thumbnail">
-                    -->
-                    <img class="thumbnail" src="/blog/img/default.png" data-echo="https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190606191519.gif" alt="vscode使用">
-                    
-            </a>
-        </div>
+    <script src="/blog/js/comment.js"></script>
+        <div id="comments" class="comment">
+            <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
     </div>
-</article>
-    
-
-    
-    <nav class="page-navigator">
-        <span class="page-number current">1</span>
-    </nav>
-    
-
-
+    <section class="box">
+      <div class="com-avatar"><img src="/img/sunbo.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+        </div>
+        <script>
+            JELON.Comment({
+                container: 'comments',
+                label: '技术/服务器/Linux/系统/Linux文件操作' || 'post/b67c03a2.html',
+                owner: 'your_github_id',
+                repo: 'your_blog_comments',
+                clientId: 'your_client_id',
+                clientSecret: 'your_client_secret'
+            });
+        </script>
+        
             </div>
 
         </section>
