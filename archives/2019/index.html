@@ -60,15 +60,19 @@
                 </li>
                 
                 <li rel="/archives/2019/index.html" class="item ">
-                    <a href="/lab/" title="主题" class="icon-lab">&nbsp;主题</a>
-                </li>
-                
-                <li rel="/archives/2019/index.html" class="item ">
                     <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
                 </li>
                 
                 <li rel="/archives/2019/index.html" class="item ">
                     <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+                </li>
+                
+                <li rel="/archives/2019/index.html" class="item ">
+                    <a href="/soft/" title="软件" class="icon-lab">&nbsp;软件</a>
+                </li>
+                
+                <li rel="/archives/2019/index.html" class="item ">
+                    <a href="/utils/" title="工具箱" class="icon-cogs">&nbsp;工具箱</a>
                 </li>
                 
         </ul>
@@ -107,7 +111,7 @@
                         
             </div>
             <div class="avatar fr">
-                <img src="/blog/img/sunbo.jpg" alt="avatar" title="SUN BO">
+                <img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190808220914.jpg" alt="avatar" title="SUN BO">
             </div>
         </div>
     </section>
@@ -457,8 +461,13 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>设置本地分支默认对应远程dev分支，方便pull和push</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
+                <script src="\assets\js\APlayer.min.js"> </script><a id="more"></a>
+<blockquote>
+<p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p>
+<p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p>
+<p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p>
+</blockquote>
+
                     
                         <p class="more">
                             <a href="http://disanshijie.top/post/189a6a9b.html">阅读剩下更多</a>
@@ -503,13 +512,8 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <script src="\assets\js\APlayer.min.js"> </script><a id="more"></a>
-<blockquote>
-<p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p>
-<p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p>
-<p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p>
-</blockquote>
-
+                <p>设置本地分支默认对应远程dev分支，方便pull和push</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
                     
                         <p class="more">
                             <a href="http://disanshijie.top/post/189a6a9b.html">阅读剩下更多</a>
@@ -678,12 +682,17 @@
     </li>
     
     <li>
-        <a href="/categories/生活-计算机-window/">生活 - 计算机 - window</a>
+        <a href="/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
+        <a href="/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/生活-计算机-window/">生活 - 计算机 - window</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -705,11 +714,6 @@
     <li>
         <a href="/categories/技术-WEB-后台-架构/">技术 - WEB - 后台 - 架构</a>
         <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/技术-WEB-前端/">技术 - WEB - 前端</a>
-        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -738,17 +742,17 @@
     </li>
     
     <li>
-        <a href="/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
         <a href="/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
         <a href="/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -780,9 +784,9 @@
   
     <a class="tag-item" href="/tags/vscode/" title="vscode">vscode (3)</a>
   
-    <a class="tag-item" href="/tags/typora/" title="typora">typora (1)</a>
-  
     <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (1)</a>
+  
+    <a class="tag-item" href="/tags/typora/" title="typora">typora (1)</a>
   
 </div>
         </section>
@@ -827,8 +831,8 @@
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 <script src="/js/main.js"></script>
-    <!-- 搜索弹出框  -->
-    
+<!-- 搜索弹出框  -->
+
     <script>
     (function(window) {
         var INSIGHT_CONFIG = {
@@ -849,8 +853,11 @@
     <script src="/js/insight.js"></script>
         
             
-        <!-- 代码块复制功能 -->
-        <script src="/js/clipboard.min.js"></script>
-            <script src="/js/clipboard-use.js"></script>
+<!-- 代码块复制功能 -->
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+<!-- 看板娘 -->
+<script src="/js/autoload.js"></script>
+
 </body>
 </html>
