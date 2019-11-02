@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://disanshijie.top/"/>
-  <updated>2019-07-05T16:57:42.083Z</updated>
+  <updated>2019-11-02T15:46:20.789Z</updated>
   <id>http://disanshijie.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://disanshijie.top/post/b67c03a2.html"/>
     <id>http://disanshijie.top/post/b67c03a2.html</id>
     <published>2019-06-16T02:33:52.000Z</published>
-    <updated>2019-07-05T16:57:42.083Z</updated>
+    <updated>2019-11-02T15:46:20.789Z</updated>
     
     <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><a id="more"></a><h3 id="复制、移动与删除"><a href="#复制、移动与删除" class="headerlink" title="复制、移动与删除"></a>复制、移动与删除</h3><blockquote><p>1，复制粘贴文件　　cp  [选项]  源文件或目录  目标文件或目录</p><p>2，剪切粘贴文件　　mv [选项]  源文件或目录  目标文件或目录</p><p>3，删除文件　　　　rm 文件　　　　　　慎用 rm -rf  </p></blockquote><p>linux下文件的复制、移动与删除命令为：cp，mv，rm<br>一、文件复制命令cp<br>    命令格式：cp [-adfilprsu] 源文件(source) 目标文件(destination)<br>              cp [option] source1 source2 source3 …  directory<br>    参数说明：<br>    -a:是指archive的意思，也说是指复制所有的目录<br>    -d:若源文件为连接文件(link file)，则复制连接文件属性而非文件本身<br>    -f:强制(force)，若有重复或其它疑问时，不会询问用户，而强制复制<br>    -i:若目标文件(destination)已存在，在覆盖时会先询问是否真的操作<br>    -l:建立硬连接(hard link)的连接文件，而非复制文件本身<br>    -p:与文件的属性一起复制，而非使用默认属性<br>    -r:递归复制，用于目录的复制操作<br>    -s:复制成符号连接文件(symbolic link)，即“快捷方式”文件<br>    -u:若目标文件比源文件旧，更新目标文件<br>    如将/test1目录下的file1复制到/test3目录，并将文件名改为file2,可输入以下命令：<br>    cp /test1/file1 /test3/file2<br>二、文件移动命令mv<br>    命令格式：mv [-fiv] source destination<br>    参数说明：<br>    -f:force，强制直接移动而不询问<br>    -i:若目标文件(destination)已经存在，就会询问是否覆盖<br>    -u:若目标文件已经存在，且源文件比较新，才会更新<br>    如将/test1目录下的file1复制到/test3 目录，并将文件名改为file2,可输入以下命令：<br>    mv /test1/file1 /test3/file2<br>三、文件删除命令rm<br>    命令格式：rm [fir] 文件或目录<br>    参数说明：<br>    -f:强制删除<br>    -i:交互模式，在删除前询问用户是否操作<br>    -r:递归删除，常用在目录的删除<br>    如删除/test目录下的file1文件，可以输入以下命令：<br>    rm -i /test/file1</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.cnblogs.com/aiyr/p/7395738.html" target="_blank" rel="noopener">https://www.cnblogs.com/aiyr/p/7395738.html</a></p>]]></content>
     
@@ -35,7 +35,13 @@
     
     </summary>
     
-      <category term="技术\服务器\Linux" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux/"/>
+      <category term="技术" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="服务器" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Linux" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/Linux/"/>
+    
+      <category term="系统" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/Linux/%E7%B3%BB%E7%BB%9F/"/>
     
     
       <category term="默认" scheme="http://disanshijie.top/tags/%E9%BB%98%E8%AE%A4/"/>
@@ -100,7 +106,7 @@
     <link href="http://disanshijie.top/post/dff104ab.html"/>
     <id>http://disanshijie.top/post/dff104ab.html</id>
     <published>2019-06-06T10:13:47.000Z</published>
-    <updated>2019-06-09T03:32:39.586Z</updated>
+    <updated>2019-11-02T15:45:47.532Z</updated>
     
     <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>以下均基于Linux centos7</p><a id="more"></a><h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p>more</p><p>cat</p><p>tail</p><h5 id="查看cup占用"><a href="#查看cup占用" class="headerlink" title="查看cup占用"></a>查看cup占用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -c</span><br></pre></td></tr></table></figure><h5 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h5><p>查看当前目录下的文件夹大小</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h --max-depth=1</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -110,7 +116,11 @@
     
     </summary>
     
-      <category term="技术 - 服务器 - Linux" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux/"/>
+      <category term="技术" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="服务器" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Linux" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/Linux/"/>
     
     
       <category term="Linux" scheme="http://disanshijie.top/tags/Linux/"/>
@@ -169,6 +179,31 @@
     <link href="http://disanshijie.top/post/189a6a9b.html"/>
     <id>http://disanshijie.top/post/189a6a9b.html</id>
     <published>2019-06-05T16:00:00.000Z</published>
+    <updated>2019-06-09T03:32:39.601Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><a id="more"></a><blockquote><p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p><p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p><p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script src=&quot;\assets\js\APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不
+      
+    
+    </summary>
+    
+      <category term="技术 - 工具 - Git" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>git pull和pash使用</title>
+    <link href="http://disanshijie.top/post/189a6a9b.html"/>
+    <id>http://disanshijie.top/post/189a6a9b.html</id>
+    <published>2019-06-05T16:00:00.000Z</published>
     <updated>2019-06-09T03:32:39.596Z</updated>
     
     <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>设置本地分支默认对应远程dev分支，方便pull和push</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
@@ -186,22 +221,19 @@
   </entry>
   
   <entry>
-    <title>git pull和pash使用</title>
-    <link href="http://disanshijie.top/post/189a6a9b.html"/>
-    <id>http://disanshijie.top/post/189a6a9b.html</id>
-    <published>2019-06-05T16:00:00.000Z</published>
-    <updated>2019-06-09T03:32:39.601Z</updated>
+    <title>Git stash使用</title>
+    <link href="http://disanshijie.top/post/ce3cb319.html"/>
+    <id>http://disanshijie.top/post/ce3cb319.html</id>
+    <published>2019-06-04T16:00:00.000Z</published>
+    <updated>2019-06-09T03:32:39.592Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><a id="more"></a><blockquote><p>命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。<br>命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。<br>便捷用法，编写 shell 脚本，<br><a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 内容：</p><p>#!/bin/bash<br>git update-index –assume-unchanged 文件名<br>把 <a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/<a href="http://disable_track.sh/" target="_blank" rel="noopener">disable_track.sh</a> 即可。<br>同理建立 <a href="http://enable_track.sh/" target="_blank" rel="noopener">enable_track.sh</a>：</p><p>#!/bin/bash<br>git update-index –no-assume-unchanged 文件名<br>做逆向操作。</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p><a href="https://www.cnblogs.com/tocy/p/git-stash-reference.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-stash-reference.html</a></p><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89" target="_blank" rel="noopener">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89</a></p><p><a href="https://blog.csdn.net/qq_32452623/article/details/76100140" target="_blank" rel="noopener">https://blog.csdn.net/qq_32452623/article/details/76100140</a></p><a id="more"></a><p>基本使用</p><p>当前分支 master ，文件已做了修改</p><p>git stash </p><p>推送一个新的储藏，当前的工作目录就干净了 </p><p>git  checkout <branch> </branch></p><p>随意切换到其他分支，例 dev</p><p>修改dev分支，解决dev bug问题后 提交commit</p><p>git  checkout master</p><p>dev分支问题解决后 切换到 原来分支 master</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash apply  (应用最新但不删除储藏)</span><br><span class="line">git stash pop (应用最新并删除储藏)</span><br></pre></td></tr></table></figure><p>将缓存堆栈中的stash应用到工作目录中</p><p>其他</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash list  //查看储藏列表</span><br><span class="line">git stash clear //删除所有缓存的stash</span><br></pre></td></tr></table></figure><p>总结：</p><blockquote><p>当前分支有没有提交的内容，但急需切换到其他分支</p><p>通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 </p><p>其他分支内容修复后，再从储藏中将内容拿出来继续工作</p></blockquote>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;script src=&quot;\assets\js\APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;blockquote&gt;
-&lt;p&gt;命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不
-      
+      &lt;h2 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/tocy/p/git-stash-reference.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/tocy/p/git-stash-reference.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_32452623/article/details/76100140&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/qq_32452623/article/details/76100140&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -252,28 +284,6 @@
     </summary>
     
       <category term="生活 - 计算机 - 软件 - vscode" scheme="http://disanshijie.top/categories/%E7%94%9F%E6%B4%BB-%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%BD%AF%E4%BB%B6-vscode/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Git stash使用</title>
-    <link href="http://disanshijie.top/post/ce3cb319.html"/>
-    <id>http://disanshijie.top/post/ce3cb319.html</id>
-    <published>2019-06-04T16:00:00.000Z</published>
-    <updated>2019-06-09T03:32:39.592Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p><a href="https://www.cnblogs.com/tocy/p/git-stash-reference.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-stash-reference.html</a></p><p><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89" target="_blank" rel="noopener">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89</a></p><p><a href="https://blog.csdn.net/qq_32452623/article/details/76100140" target="_blank" rel="noopener">https://blog.csdn.net/qq_32452623/article/details/76100140</a></p><a id="more"></a><p>基本使用</p><p>当前分支 master ，文件已做了修改</p><p>git stash </p><p>推送一个新的储藏，当前的工作目录就干净了 </p><p>git  checkout <branch> </branch></p><p>随意切换到其他分支，例 dev</p><p>修改dev分支，解决dev bug问题后 提交commit</p><p>git  checkout master</p><p>dev分支问题解决后 切换到 原来分支 master</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash apply  (应用最新但不删除储藏)</span><br><span class="line">git stash pop (应用最新并删除储藏)</span><br></pre></td></tr></table></figure><p>将缓存堆栈中的stash应用到工作目录中</p><p>其他</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash list  //查看储藏列表</span><br><span class="line">git stash clear //删除所有缓存的stash</span><br></pre></td></tr></table></figure><p>总结：</p><blockquote><p>当前分支有没有提交的内容，但急需切换到其他分支</p><p>通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 </p><p>其他分支内容修复后，再从储藏中将内容拿出来继续工作</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/tocy/p/git-stash-reference.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/tocy/p/git-stash-reference.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_32452623/article/details/76100140&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/qq_32452623/article/details/76100140&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术 - 工具 - Git" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF-%E5%B7%A5%E5%85%B7-Git/"/>
     
     
   </entry>
@@ -401,7 +411,7 @@
     <link href="http://disanshijie.top/post/ef277b25.html"/>
     <id>http://disanshijie.top/post/ef277b25.html</id>
     <published>2019-06-03T07:19:03.000Z</published>
-    <updated>2019-06-09T03:32:39.591Z</updated>
+    <updated>2019-11-02T15:49:36.350Z</updated>
     
     <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h3 id="Linux-添加ssh公钥-实现免密认证"><a href="#Linux-添加ssh公钥-实现免密认证" class="headerlink" title="Linux 添加ssh公钥 实现免密认证"></a>Linux 添加ssh公钥 实现免密认证</h3><ul><li>本地生成ssh的key 方法参考：</li><li>找到本地公钥文件 .pub结尾的文件</li><li>将公钥内容复制到服务器 的/root/.ssh/authorized_keys 文件中</li></ul><p>未测试 —sunbo</p>]]></content>
     
@@ -414,7 +424,11 @@
     
     </summary>
     
-      <category term="技术 - 服务器 - Linux" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8-Linux/"/>
+      <category term="技术" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="服务器" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Linux" scheme="http://disanshijie.top/categories/%E6%8A%80%E6%9C%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/Linux/"/>
     
     
   </entry>

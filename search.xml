@@ -5,7 +5,10 @@
     <url>%2Fpost%2Fb67c03a2.html</url>
     <content type="text"><![CDATA[复制、移动与删除 1，复制粘贴文件 cp [选项] 源文件或目录 目标文件或目录 2，剪切粘贴文件 mv [选项] 源文件或目录 目标文件或目录 3，删除文件 rm 文件 慎用 rm -rf linux下文件的复制、移动与删除命令为：cp，mv，rm一、文件复制命令cp 命令格式：cp [-adfilprsu] 源文件(source) 目标文件(destination) cp [option] source1 source2 source3 … directory 参数说明： -a:是指archive的意思，也说是指复制所有的目录 -d:若源文件为连接文件(link file)，则复制连接文件属性而非文件本身 -f:强制(force)，若有重复或其它疑问时，不会询问用户，而强制复制 -i:若目标文件(destination)已存在，在覆盖时会先询问是否真的操作 -l:建立硬连接(hard link)的连接文件，而非复制文件本身 -p:与文件的属性一起复制，而非使用默认属性 -r:递归复制，用于目录的复制操作 -s:复制成符号连接文件(symbolic link)，即“快捷方式”文件 -u:若目标文件比源文件旧，更新目标文件 如将/test1目录下的file1复制到/test3目录，并将文件名改为file2,可输入以下命令： cp /test1/file1 /test3/file2二、文件移动命令mv 命令格式：mv [-fiv] source destination 参数说明： -f:force，强制直接移动而不询问 -i:若目标文件(destination)已经存在，就会询问是否覆盖 -u:若目标文件已经存在，且源文件比较新，才会更新 如将/test1目录下的file1复制到/test3 目录，并将文件名改为file2,可输入以下命令： mv /test1/file1 /test3/file2三、文件删除命令rm 命令格式：rm [fir] 文件或目录 参数说明： -f:强制删除 -i:交互模式，在删除前询问用户是否操作 -r:递归删除，常用在目录的删除 如删除/test目录下的file1文件，可以输入以下命令： rm -i /test/file1 参考https://www.cnblogs.com/aiyr/p/7395738.html]]></content>
       <categories>
-        <category>技术\服务器\Linux</category>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>系统</category>
       </categories>
       <tags>
         <tag>默认</tag>
@@ -38,7 +41,9 @@
     <url>%2Fpost%2Fdff104ab.html</url>
     <content type="text"><![CDATA[说明以下均基于Linux centos7 查看文件more cat tail 查看cup占用1top -c 查看文件夹大小查看当前目录下的文件夹大小 1du -h --max-depth=1]]></content>
       <categories>
-        <category>技术 - 服务器 - Linux</category>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -70,7 +75,7 @@
   <entry>
     <title><![CDATA[git pull和pash使用]]></title>
     <url>%2Fpost%2F189a6a9b.html</url>
-    <content type="text"><![CDATA[设置本地分支默认对应远程dev分支，方便pull和push 1git branch --set-upstream-to=origin/dev dev]]></content>
+    <content type="text"><![CDATA[命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。便捷用法，编写 shell 脚本，disable_track.sh 内容： #!/bin/bashgit update-index –assume-unchanged 文件名把 disable_track.sh 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/disable_track.sh 即可。同理建立 enable_track.sh： #!/bin/bashgit update-index –no-assume-unchanged 文件名做逆向操作。]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
       </categories>
@@ -78,7 +83,15 @@
   <entry>
     <title><![CDATA[git pull和pash使用]]></title>
     <url>%2Fpost%2F189a6a9b.html</url>
-    <content type="text"><![CDATA[命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。便捷用法，编写 shell 脚本，disable_track.sh 内容： #!/bin/bashgit update-index –assume-unchanged 文件名把 disable_track.sh 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/disable_track.sh 即可。同理建立 enable_track.sh： #!/bin/bashgit update-index –no-assume-unchanged 文件名做逆向操作。]]></content>
+    <content type="text"><![CDATA[设置本地分支默认对应远程dev分支，方便pull和push 1git branch --set-upstream-to=origin/dev dev]]></content>
+      <categories>
+        <category>技术 - 工具 - Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Git stash使用]]></title>
+    <url>%2Fpost%2Fce3cb319.html</url>
+    <content type="text"><![CDATA[TODOhttps://www.cnblogs.com/tocy/p/git-stash-reference.html https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89 https://blog.csdn.net/qq_32452623/article/details/76100140 基本使用 当前分支 master ，文件已做了修改 git stash 推送一个新的储藏，当前的工作目录就干净了 git checkout 随意切换到其他分支，例 dev 修改dev分支，解决dev bug问题后 提交commit git checkout master dev分支问题解决后 切换到 原来分支 master 12git stash apply (应用最新但不删除储藏)git stash pop (应用最新并删除储藏) 将缓存堆栈中的stash应用到工作目录中 其他 12git stash list //查看储藏列表git stash clear //删除所有缓存的stash 总结： 当前分支有没有提交的内容，但急需切换到其他分支 通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 其他分支内容修复后，再从储藏中将内容拿出来继续工作]]></content>
       <categories>
         <category>技术 - 工具 - Git</category>
       </categories>
@@ -97,14 +110,6 @@
     <content type="text"><![CDATA[TODOvscod 的git怎么使用 提交 amend 同步 时提交 暂存？? 源代码管理 基本使用TODO 1 随便打开一个文件，添加一个注释 2 打开git工作区可以看到就是修改的这个文件 然后点击右侧的+号，把他暂存起来。 3 再在消息框里输入消息，按ctrl+enter提交暂存 4 再点击 推送（push）提交，代码就提交到云端了。 5、克隆你的项目到本地 相关命令详细说明 ![(https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190605143716.png) 同步更新到远程服务器上 拉取（变基）拉取下来的代码 到“暂存”区 操作：在visual stutia code 拉取代码，通过菜单命令执行了 拉取（变基）；问题;拉取（变基）后，发现下载的问题都成了暂存，解决：COMMIT这些暂存文件，注意不是PUSH~！问题2：再次做PULL操作（不是变基）时，提示解决：执行git branch，查看分支，执行git checkout develop切换分支 参考 版本控制攻略 https://github.com/xuanhun/vscode/blob/master/Visual%20Studio%20Code%20%E4%BD%BF%E7%94%A8Git%E8%BF%9B%E8%A1%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md vscode git使用 https://www.cnblogs.com/ashidamana/p/6122619.html 问题vscode git 出现”没有活动的源代码控制提供程序 https://blog.csdn.net/qq_36131788/article/details/84635301]]></content>
       <categories>
         <category>生活 - 计算机 - 软件 - vscode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Git stash使用]]></title>
-    <url>%2Fpost%2Fce3cb319.html</url>
-    <content type="text"><![CDATA[TODOhttps://www.cnblogs.com/tocy/p/git-stash-reference.html https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89 https://blog.csdn.net/qq_32452623/article/details/76100140 基本使用 当前分支 master ，文件已做了修改 git stash 推送一个新的储藏，当前的工作目录就干净了 git checkout 随意切换到其他分支，例 dev 修改dev分支，解决dev bug问题后 提交commit git checkout master dev分支问题解决后 切换到 原来分支 master 12git stash apply (应用最新但不删除储藏)git stash pop (应用最新并删除储藏) 将缓存堆栈中的stash应用到工作目录中 其他 12git stash list //查看储藏列表git stash clear //删除所有缓存的stash 总结： 当前分支有没有提交的内容，但急需切换到其他分支 通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 其他分支内容修复后，再从储藏中将内容拿出来继续工作]]></content>
-      <categories>
-        <category>技术 - 工具 - Git</category>
       </categories>
   </entry>
   <entry>
@@ -163,7 +168,9 @@
     <url>%2Fpost%2Fef277b25.html</url>
     <content type="text"><![CDATA[Linux 添加ssh公钥 实现免密认证 本地生成ssh的key 方法参考： 找到本地公钥文件 .pub结尾的文件 将公钥内容复制到服务器 的/root/.ssh/authorized_keys 文件中 未测试 —sunbo]]></content>
       <categories>
-        <category>技术 - 服务器 - Linux</category>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -214,6 +221,14 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[Hex推荐]]></title>
+    <url>%2Fpost%2F5b08b6fe.html</url>
+    <content type="text"><![CDATA[一些好看的hexo建站https://www.zengjianfeng.com/develop 样式简约 搜索功能 代码样式没有编号 https://www.fanhaobai.com/2017/03/install-hexo.html 搜索功能不错 图片有点大 https://github.com/ppoffice/hexo-theme-hueman]]></content>
+      <categories>
+        <category>技术 - WEB - 建站 - 博客</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Typora快捷键]]></title>
     <url>%2Fpost%2F5e339248.html</url>
     <content type="text"><![CDATA[Typora快捷键目录 windows快捷键： 给代码块设置快捷键: Mac中的快捷键： 图片： 表情 数学公式 HTML 行内嵌数学符号 下标 高亮 参考： windows快捷键：# 无序列表：输入-之后输入空格 有序列表：输入数字+“.”之后输入空格 任务列表：-[空格]空格 文字 标题：ctrl+数字 表格：ctrl+t 生成目录：[TOC]按回车 选中一整行：ctrl+l 选中单词：ctrl+d 选中相同格式的文字：ctrl+e 跳转到文章开头：ctrl+home 跳转到文章结尾：ctrl+end 搜索：ctrl+f 替换：ctrl+h 引用：输入&gt;之后输入空格 代码块：ctrl+alt+f 加粗：ctrl+b 倾斜：ctrl+i 下划线：ctrl+u 删除线：alt+shift+5 插入图片：直接拖动到指定位置即可或者ctrl+shift+i 插入链接：ctrl + k 给代码块设置快捷键:#偏好设置-&gt;打开高级设置-&gt;conf.user.json文件 12345678Copy &quot;keyBinding&quot;: &#123; // for example: // &quot;Always on Top&quot;: &quot;Ctrl+Shift+P&quot; &quot;Always on Top&quot;: &quot;Ctrl+Shift+P&quot;, &quot;Code Fences&quot;: &quot;Ctrl+Shift+F&quot;, &quot;Ordered List&quot;:&quot;Ctrl+Alt+o&quot;, &quot;Unordered List&quot;: &quot;Ctrl+Alt+u&quot; &#125;, Code Fences 代码块 Ordered List 数字有序列表 Unordered List 无序列表 Mac中的快捷键：# 最大标题：command + 1 或者：# 大标题：command + 2 或者：## 标准标题：command + 3 或者：### 中标题：command + 4 或者：#### 小标题：command + 5 或者：##### 插入表格：command + T 插入代码：command + alt +c 行间公式 command + Alt + b 段落：command + 0 竖线 ： command + Alt +q 有序列表（1. 2.） ：输入数字+“.”之后输入空格 或者：command + Alt + o 黑点标记：command + Alt + u 隔离线shift + command + - 超链接：command + Alt + l 插入链接：command +k 下划线：command +u 加粗：command +b 搜索：command +f 图片：# 表情#输出表情需要借助 ：符号。 栗子：:smile 显示为 😄,记住是左右两边都要冒号。 使用者可以通过使用ESC键触发表情建议补全功能，也可在功能面板启用后自动触发此功能。同时，直接从菜单栏Edit -&gt; Emoji &amp; Symbols插入UTF8表情符号也是可以的。 或者使用下面的方法 访问网站 https://emojikeyboard.org/，找到需要的符号，鼠标左键单击，然后粘贴到需要的地方就行了！🆗 数学公式#你可以通过使用MathJax来实现LaTeX的数学符号的表达。 输入$$，然后按下Enter键就会弹出一个支持TeX/LaTeX语法的输入框，下面是一个栗子： V1×V2=∣∣ijk ∂X∂u∂Y∂u0 ∂X∂v∂Y∂v0 ∣∣V1×V2=|ijk ∂X∂u∂Y∂u0 ∂X∂v∂Y∂v0 | 在Markdown源文件中，数学的公式块是通过利用 1$$ 标记借用 LaTeX 语言来实现的： 1234567Copy$$\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 = \begin&#123;vmatrix&#125; \mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp; \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp; \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\\end&#123;vmatrix&#125;$$ HTML#Typora不能使用HTML元素，但是Typora可以解析和编译非常有限的HTML元素，作为Markdown功能的补充，这些有限的功能包括： 下划线： &lt;u&gt;underline&lt;/u&gt; 图片：&lt;img src=&quot;http://www.w3.org/html/logo/img/mark-word-icon.png&quot; width=&quot;200px&quot; /&gt;（HTML标签中的width, height 以及属于样式的width, height, zoom样式可以被识别和应用。） 评论：&lt;!-- This is some comments --&gt; 超链接： &lt;a href=&quot;http://typora.io&quot; target=&quot;_blank&quot;&gt;link&lt;/a&gt; 。 大多数这些属性、样式或分类会被忽略。对其他的标签，Typora会将它们以HTML片段的形式表达。 行内嵌数学符号#想要使用这个功能，需要在设置面板的 Markdown栏启用它。然后使用$来启动TeX命令，栗如：$\lim_{x \to \infty} \exp(-x) = 0$ 会以LaTeX的命令形式表达出来。 为了触发行内内嵌数学符号的实时编译你需要：输入$然后按下ESC键之后输入TeX命令，之后就会弹出一个如图所示的工具提示栏： 下标#想要使用这个功能，需要在设置面板的 Markdown 栏启动它，之后使用~来修饰下标文本。栗如： H~2~O 和X~long\ text~ 显示为 H~2~O 和X~long text~ 。 #### 13.上标 想要使用这个功能，需要在设置面板的 Markdown 栏启动它，之后使用^来修饰下标文本。栗如： X^2^ 显示为 X^2^ 。 高亮#想要使用这个功能，需要在设置面板的Markdown 栏启动它，之后使用==来修饰高亮文本，栗如： ==highlight== 显示为 ==highlight== 。 参考：#https://baka943.coding.me/2018/02/08/2018-02-08-TyporaSimpleDoc/ 在markdown中使用HTML中的特殊符号： Markdown输入Latex公式的特殊符号 Markdown For Typora 中文版使用指南 Cmd Markdown 公式指导手册 Markdown 简介]]></content>
@@ -233,14 +248,6 @@
     <title><![CDATA[Hex推荐]]></title>
     <url>%2Fpost%2F5b08b6fe.html</url>
     <content type="text"><![CDATA[手把手教你 hexo + github搭建自己的博客以及个人主页 网上有很多这样的资料素材，但是没有一个系统化的教程 使你除了搜怎么搭建个人主页外，还要搜hexo使用教程 况且中间还可能遇到多种多样的坑 本篇文章，告诉你怎么使用github提供的空间，以及搭建自己的博客 本人亲身检测，绿色无公害；一、环境准备 1.安装Git 下载地址：https://git-scm.com/downloads 2.安装Node.js 下载地址：https://nodejs.org/en/ 3.安装hexo 利用 npm 命令即可安装。（在任意位置点击鼠标右键，选择Git bash） 1npm install -g hexo hexo安装中问题： npm ERR! registry error parsing json 错误 可能需要设置npm代理,执行命令 1npm config set registry http://registry.cnpmjs.org hexo:command not found 删除刚刚安装的npm目录，重新执行命令npm install -g hexo安装hexo， -g为全局安装 二、初始化hexo项目 1.创建hexo文件夹 安装完成后，在你喜爱的文件夹下（如H:\hexo）， 执行以下指令(在H:\hexo内点击鼠标右键，选择Git bash)， Hexo 即会自动在目标文件夹建立网站所需要的所有文件。 hexo init（初始化hexo项目） 2.安装依赖包 npm install（安装npm依赖包） 现在我们已经搭建起本地的hexo博客了 hexo命令行使用 常用命令： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546hexo help #查看帮助hexo init #初始化一个目录hexo new "postName" #新建文章hexo new page "pageName" #新建页面hexo generate #生成网页，可以在 public 目录查看整个网站的文件hexo server #本地预览，'Ctrl+C'关闭hexo deploy #部署.deploy目录hexo clean #清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**简写（常用）：hexo n == hexo newhexo g == hexo generatehexo s == hexo serverhexo d == hexo deploy``` 3.本地预览执行一下命令：hexo generate 生成网页hexo server 本地预览到浏览器输入localhost:4000可以看到（系统再带的博客页面）。三、更换模板可能系统自带的模板不满足你的需求，没关系hexo提供了很多模板供你选择访问：https://hexo.io/themes/选择自己喜欢的模板吧！本人选择的模板是MiHo 主题地址 http://blog.minhow.com/2017/08/01/blog/installation-configuration/1、搭建自己喜欢的模板1.1 安装主题删除hexo自带的themes文件夹在hexo下clone MiHo 主题``` bash$ git clone https://github.com/WongMinHo/hexo-theme-miho.git themes/miho``` MiHo 主题需要Hexo 3.0或以上版本，请先升级。1.2 更新主题（提供技术支持）``` bashcd themes/miho git pull 1.3 依赖安装 生成站点文章静态数据，用于站内搜索。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586npm install hexo-generator-json-content --save``` 1.4 配置主题此处需要理解：与themes文件同级的_config.yml文件是hexo的项目配置文件（以下定义为‘主配置’）在themes/miho文件中的_config.yml文件是主题的配置文件（以下定义为‘主题配置’）注：可以在_config.yml中定义变量在模板中&lt;%- config.userurl %&gt;引入在主配置下找到theme属性将其定义为theme: miho即可主配置文件属性注释：``` bash# Hexo Configuration## Docs: http://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Site #站点信息title: #标题subtitle: #副标题description: #站点描述，给搜索引擎看的author: #作者email: #电子邮箱language: zh-CN #语言# URL #链接格式url: #网址root: / #根目录permalink: :year/:month/:day/:title/ #文章的链接格式tag_dir: tags #标签目录archive_dir: archives #存档目录category_dir: categories #分类目录code_dir: downloads/codepermalink_defaults:# Directory #目录source_dir: source #源文件目录public_dir: public #生成的网页文件目录# Writing #写作new_post_name: :title.md #新文章标题default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）titlecase: false #标题转换成大写external_link: true #在新选项卡中打开连接filename_case: 0render_drafts: falsepost_asset_folder: falserelative_link: falsehighlight: #语法高亮 enable: true #是否启用 line_number: true #显示行号 tab_replace:# Category &amp; Tag #分类和标签default_category: uncategorized #默认分类category_map:tag_map:# Archives2: 开启分页1: 禁用分页0: 全部禁用archive: 2category: 2tag: 2# Server #本地服务器port: 4000 #端口号server_ip: localhost #IP 地址logger: falselogger_format: dev# Date / Time format #日期时间格式date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/time_format: H:mm:ss# Pagination #分页per_page: 10 #每页文章数，设置成 0 禁用分页pagination_dir: page# Disqus #Disqus评论，替换为多说disqus_shortname:# Extensions #拓展插件theme: landscape-plus #主题exclude_generator:plugins: #插件，例如生成 RSS 和站点地图的- hexo-generator-feed- hexo-generator-sitemap# Deployment #部署，将 lmintlcx 改成用户名deploy: type: git repo: github创库地址.git （需要使用ssh） branch: master 不要担心主题配置文件有中文注释，根据提示走就可以轻松搞定 注意：主配置文件中的 url ，root配置url: https://hjm100.github.io/Blogsroot: /Blogs 如果你想要通过https://hjm100.github.io去访问你的博客root: /因为我的https://hjm100.github.io用来装自己的主页，所以我的博客地址架构如上 虽然选择了自己想要的主题，但是主题中显示有关主体信息，以及博客信息，看着就不舒服 特别是网页底部版权那块，教你怎么改： 修改模板标签(用于一般模板不满足个人需求)步骤：用文本编辑器打开 Hexo 所在的目录打开 themes 目录打开你想要编辑的主题所在的目录中的 layout 目录打开 layout 目录下的 _partial 目录打开 _partial 目录下的 footer.ejs 文件修改底部链接post/copyright.ejs用于修改文章页脚用户链接 好了，至此，本地博客已经搭建起来了，只是本地哦，别人看不到的。下面，我们要部署到Github。 四、外网部署（为的就是省钱–哈哈）： github为我们提供了一个放置静态资源的空间，空间不大但是足以满足你博客以及个人主页的部署 如果有后台就不行了（不过可以选择自己租服务器，一个月就50多，不差钱的同鞋可以考虑一下） 以我的为例：github放置个人主页以及博客 1.申请账号，设置公钥这些老生常谈的话题就不用多说了（直接进入主题） 2.创建代码仓库2.1 点击加号穿件仓库New repository2.2仓库名字格式必须为: yourname.github.io （yourname为你的账号名）2.3进入新建的项目点击Settings设置项目找到GitHub Pages 点击change theme选择模板这时你的项目中就有了生成文件（但是这是系统创建的）2.4 不要删除_config.yml文件直接引入你的个人主页项目即可，默认打开index.html ok此时你的个人主页已经搭建好了 Blogs的搭建，你可以新建一个代码仓库（把这个代码仓库设置为html） 在设置中的GitHub Pages 选择Source 中的下拉框为master branch做法与上一样！ 3.仓库分析（yourname.github.io放个人主页，Blogs存放博客） 4.Blogs上传：将主配置中的deploy属性添加一下代码，deploy: type: git repo: 你github上的Blogs的SSH地址（注意ssh必须是系统最先生成的） branch: master 运行命令行 hexo g 编译文件 hexo d 提交文件即可 4.发布博文 在hexo\source_posts文件夹下新建一个MD文件类型的文档 或者命令行 hexo new 博文创建1234567891011---title: 博文 （博文标题）date: 2017-09-27 14:49:15 （博文时间）categories: hexo #文章文类tags: web开发技术 （ 文章标签）cover_picture: images/exploit.jpg(图片格式)---这里正常写文章即可# 可以理解为h1(但是#后面一定要有空格)``` bash（代码要写在这里面）$ console.log('Hello hjm100') //这里写代码 123注意：博文写好之后一定要先在本地查看后在提交！！！！！！ ```bash 语法：&#123;&#123;express | 过滤器名:补充说明&#125;&#125;（一定要放在bash中） 五、域名的配置（将github提供的二级域名与自己购买的域名绑定）： 1.可以前往腾讯购买一个域名，一般cn域名一年就20多块钱 2.点击 Github 上项目的 Settings，GitHub Pages， 提示Your site is published at http://hjm100.cn (这是我买的域名) Custom domain下面的对话框填写你的域名即可 将独立域名与GitHub Pages的空间绑定 方法一：在站点source目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 方法二：在Repository的根目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 在github上面添加好自己的域名后，不要着急，此时你的域名还没有与博客完全绑定 打开cmd命令行，使用ping hjm100.github.io 查看到git对应的ip地址 前往你购买域名的平台进行ipv4域名解析，输入你ping到的域名即可， 域名解析后，去浏览器访问一下你的域名吧！就是这么神奇！！ 至此你的博客已经搭建完毕了，不要感谢我，本人博客预览hjm100.cn 域名https添加（让你的域名更加安全） 第一步首先注册一个属于自己的域名，可以选择cn域名，不贵一年就20多元我的域名是hjm100.cn 第二步域名https添加， 1.登录这个网站并注册：https://www.cloudflare.com/（直接使用邮箱注册） 2.注册完毕后登录，如果你之前没有用过，则系统会直接显示Add a website对话框，再次填写hjm100.cn(你的域名)点击scan DNS Records即可，系统会自动扫描你的域名（扫描需要等待一定时间） 3.扫描完毕后点击Continue(继续) 4.添加DNS Recordstypt:CNAME类型 name：www Value: 附件小妙招： 怎么换一台电脑仍然可以使用hexo（亲测有用） 1.在Blogs这个项目中创建hexo分支用来储存开发环境（master分支用来存储生成的静态资源） git branch hexo（新建一个hexo分支） 2.将hexo分支发布在github上(这个时候分支中可能有master分支的文件) git push origin hexo(将代码提交到hexo分支上) 3.切换到hexo分支上（如果有文件就清空分支中的内容除了.git文件） git checkout hexo（切换到hexo分支上） 4.整理你的开发环境hexo,修改hexo下面的.gitignore(限制git上传)文件 12345db.json*.lognode_modules/public/.deploy*/ 5.删除themes–&gt;miho文件中的 .git文件以及.gitignore 6.将你上述修改的hexo文件提交到hexo分支里面（不要改错奥）在hexo分之下即可git add .git commit .git push origin hexo 7.当你换电脑的时候，配置公钥以及全局安装npm install -g hexo（请参考以上说明）下载的分支默认显示的是master分支，请切换到hexo分支，cd hexo（进入到hexo文件）执行npm install 安装node模块，按照以上写博客提交博客即可同步 8.切结，修改过hexo文件中的内容后记得提交hexo分支，以免你再次换电脑的时候使用 建议使用最新的git版本以及Node版本，如有问题请留言！！！！]]></content>
-      <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hex推荐]]></title>
-    <url>%2Fpost%2F5b08b6fe.html</url>
-    <content type="text"><![CDATA[一些好看的hexo建站https://www.zengjianfeng.com/develop 样式简约 搜索功能 代码样式没有编号 https://www.fanhaobai.com/2017/03/install-hexo.html 搜索功能不错 图片有点大 https://github.com/ppoffice/hexo-theme-hueman]]></content>
       <categories>
         <category>技术 - WEB - 建站 - 博客</category>
       </categories>

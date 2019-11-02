@@ -2141,6 +2141,58 @@ pre .javascript .function {
 .highlight:hover .btn-copy {
   opacity: 1;
 }
+.category-block .category-list>li {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.category-block li {
+  display: block;
+  padding-top: 10px;
+  line-height: 1.5;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media mini {
+  .category-block .category-list {
+    width: 45%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+}
+@media tablet {
+  .category-block .category-list {
+    width: 100%;
+    float: none;
+    margin: 0.5em 0 0;
+  }
+}
+.category-block .category-list .categoriy-list-item {
+  padding: 0.5em 5%;
+}
+.category-block .category-list .category-list-count {
+  top: -0.5em;
+  padding-left: 0.3em;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.category-block .category-list ul,
+.category-block .category-list ol,
+.category-block .category-list dl {
+  list-style: none;
+}
+.category-block .category-list ul,
+.category-block .category-list ol,
+.category-block .category-list dl {
+  background-color: #fff;
+  margin-left: 20px;
+}
+.category-block .category-list .category-list-child {
+  border-top: 1px dashed #ccc;
+}
 /*
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -4565,14 +4617,4 @@ pre .javascript .function {
     -o-transform: rotate(359deg);
     transform: rotate(359deg);
   }
-}
-.categorieslist li {
-  border-bottom: 1px solid #ccc;
-}
-.categorieslist li a {
-  display: block;
-  padding: 0.5em 5%;
-}
-.categorieslist li a:hover {
-  color: #2ca6cb;
 }
