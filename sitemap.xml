@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://disanshijie.top/soft/index.html</loc>
+    <loc>http://disanshijie.top/utils/index.html</loc>
     
-    <lastmod>2019-09-21T11:48:12.128Z</lastmod>
+    <lastmod>2019-11-02T14:45:39.565Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://disanshijie.top/utils/index.html</loc>
+    <loc>http://disanshijie.top/soft/index.html</loc>
     
-    <lastmod>2019-08-09T04:26:49.853Z</lastmod>
+    <lastmod>2019-09-21T11:56:18.714Z</lastmod>
     
   </url>
   
@@ -226,13 +226,6 @@
   </url>
   
   <url>
-    <loc>http://disanshijie.top/categories/index.html</loc>
-    
-    <lastmod>2019-06-03T15:12:17.619Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://disanshijie.top/comment/index.html</loc>
     
     <lastmod>2019-06-03T15:12:17.619Z</lastmod>
@@ -241,6 +234,13 @@
   
   <url>
     <loc>http://disanshijie.top/lab/index.html</loc>
+    
+    <lastmod>2019-06-03T15:12:17.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://disanshijie.top/categories/index.html</loc>
     
     <lastmod>2019-06-03T15:12:17.619Z</lastmod>
     

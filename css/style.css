@@ -4566,3 +4566,13 @@ pre .javascript .function {
     transform: rotate(359deg);
   }
 }
+.categorieslist li {
+  border-bottom: 1px solid #ccc;
+}
+.categorieslist li a {
+  display: block;
+  padding: 0.5em 5%;
+}
+.categorieslist li a:hover {
+  color: #2ca6cb;
+}
