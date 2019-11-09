@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>VPS主机性能和速度测试方法 | 第三世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="sun, java, Web, 数据库, 集群">
+    <meta name="description" content="sun bo">
+
+    
+    <link rel="alternative" href="/atom.xml" title="第三世界" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4f1864f2b3b9e45560412149ea8cf935";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">第三世界</span>
+                    <span class="description"></span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+                <li rel="/post/f86045d4.html" class="item ">
+                    <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+                </li>
+                
+                <li rel="/post/f86045d4.html" class="item ">
+                    <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+                </li>
+                
+                <li rel="/post/f86045d4.html" class="item ">
+                    <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+                </li>
+                
+                <li rel="/post/f86045d4.html" class="item ">
+                    <a href="/soft/" title="软件" class="icon-lab">&nbsp;软件</a>
+                </li>
+                
+                <li rel="/post/f86045d4.html" class="item ">
+                    <a href="/utils/" title="工具箱" class="icon-cogs">&nbsp;工具箱</a>
+                </li>
+                
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                    
+                        <p class="links">
+                            
+                                <a href="https://github.com/sunjinchao" target="_blank">
+                                    Github
+                                </a>
+                                |
+                                    
+                                        
+                                <a href="https://pages.coding.me" target="_blank">
+                                    Hosted by Coding Pages
+                                </a>
+                                
+                                        
+                        </p>
+                        <p class="sns">
+                            
+                                <a href="http://weibo.com/sunjinchao" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                                
+                                <a href="https://www.facebook.com/profile.php" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                                
+                                    <a href="javascript: void(0);" class="wechat">
+                                        <b>■</b> 公众号
+                                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                                    </a>
+                        </p>
+                        
+            </div>
+            <div class="avatar fr">
+                <img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190808220914.jpg" alt="avatar" title="SUN BO">
+            </div>
+        </div>
+    </section>
+</header>
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>VPS主机性能和速度测试方法</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        sun bo 
+        发布于 
+        <time datetime="2019-08-09T04:50:10.000Z">2019-08-09</time>
+    </p>
+    <div class="post-content">
+        <script src="\assets\js\APlayer.min.js"> </script><p>这年头VPS主机太多了，好多“二手”VPS开始横行其道，让人真假莫辨，想要购买某一个VPS主机，一般是先要看看这家的VPS主机的评测数据。之前分享VPS主机时都会给出VPS的性能与速度测试报告，这次我就来专门整理一下相关的测试工具。<br><a id="more"></a></p>
+<p>一来给自己做一个备忘录，以后测试VPS就不用满大街地找百度要命令了，二来给没有用过的朋友一点帮助，这些工具都是好多站长朋友通用的，自己购买的VPS主机到底值不值这个价格，用这几个工具一测试便知，而且操作简单，只需要几个命令即可完成。</p>
+<p>需要提醒的是，关于IO读写速度的测试，根据以往的经验，像谷歌云服务器、亚马逊服务器等，IO读写速度都比较低，而SSD在IO方面表现出色。另外，国外的VPS主机的速度很大程度上取决于线路的好坏，并且晚上和白天的测试速度会差别比较大。</p>
+<p>更多的关于<a href="https://wzfou.com/vps-jiaocheng/" target="_blank" rel="noopener">VPS教程</a>和经验方法，你可以看看：</p>
+<ol>
+<li><a href="https://wzfou.com/vps-net/" target="_blank" rel="noopener">VPS.net的VPS主机使用体验-账号验证与VPS主机性能速度测评</a></li>
+<li><a href="https://wzfou.com/vestacp-wenti/" target="_blank" rel="noopener">Vestacp问题:SSL证书,HTTP/2,网站统计,在线文件管理和301重定向</a></li>
+<li><a href="https://wzfou.com/whmcs-vultr/" target="_blank" rel="noopener">WHMCS整合Vultr自动开通激活VPS主机方法-实现在WHMCS上分销VPS</a></li>
+</ol>
+<p>PS：2017年8月20日更新，补充一下VPS主机CN2线路测试方法：<a href="https://wzfou.com/cn2-vps-list/" target="_blank" rel="noopener">鉴别真假CN2线路主机参考手册</a>。</p>
+<h2 id="零、常用检测脚本汇总"><a href="#零、常用检测脚本汇总" class="headerlink" title="零、常用检测脚本汇总"></a>零、常用检测脚本汇总</h2><p>为方便使用，我在这里汇总一下用于VPS各类检测的脚本，有关脚本的详细使用及说明可参阅下文的内容。</p>
+<p><strong>1、一键测试服务器到国内的速度脚本Superspeed.sh ：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/oooldking/script/master/superspeed.sh</span><br><span class="line">chmod +x superspeed.sh</span><br><span class="line">./superspeed.sh</span><br></pre></td></tr></table></figure>
+<p><strong>2、一键检测VPS的CPU、内存、负载、IO读写、机房带宽等脚本：bench.sh</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">命令1：</span><br><span class="line">wget -qO- bench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -Lso- bench.sh | bash</span><br><span class="line"></span><br><span class="line">命令2：</span><br><span class="line">wget -qO- 86.re/bench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -so- 86.re/bench.sh | bash</span><br><span class="line"></span><br><span class="line">备注：</span><br><span class="line">bench.sh 既是脚本名，同时又是域名。如果以上失效，请使用以下地址下载再执行脚本：</span><br><span class="line">下载地址：</span><br><span class="line">https://github.com/teddysun/across/blob/master/bench.sh</span><br></pre></td></tr></table></figure>
+<p><strong>3、可以看作bench.sh强化版：SuperBench.sh</strong></p>
+<p>新增 Virt 检测服务器类型参数<strong>。</strong>常见 openvz，kvm，独服都能检测出来。同时整合上面的Superspeed.sh一键测试服务器到国内的速度脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -Lso- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash</span><br></pre></td></tr></table></figure>
+<p><strong>4、一键带宽检测工具：speedtest-cli</strong></p>
+<p>安装命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">apt-get install python-pip</span><br><span class="line">sudo pip install speedtest-cli</span><br><span class="line"></span><br><span class="line">#CentOS</span><br><span class="line">yum update</span><br><span class="line">yum -y install epel-release</span><br><span class="line">yum install python-pip</span><br><span class="line">pip install speedtest-cli</span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">speedtest-cli</span><br><span class="line">#后面也可以接以下参数：</span><br><span class="line">-h, --help show this help message and exit </span><br><span class="line">--share 分享你的网速，该命令会在speedtest网站上生成网速测试结果的图片。 </span><br><span class="line">--simple Suppress verbose output, only show basic information </span><br><span class="line">--list 根据距离显示speedtest.net的测试服务器列表。 </span><br><span class="line">--server=SERVER 指定列表中id的服务器来做测试。 </span><br><span class="line">--mini=MINI URL of the Speedtest Mini server </span><br><span class="line">--source=SOURCE Source ip address to bind to </span><br><span class="line">--version Show the version number and exit</span><br></pre></td></tr></table></figure>
+<p><strong>5、VPS性能综合跑分工具：unixbench</strong></p>
+<p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.sh</span><br><span class="line">chmod +x unixbench.sh</span><br><span class="line">./unixbench.sh</span><br></pre></td></tr></table></figure>
+<p><strong>6、一键测试回程Ping值工具：mPing</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/helloxz/mping/master/mping.sh</span><br><span class="line">bash mping.sh</span><br></pre></td></tr></table></figure>
+<p><strong>7、Serverreview-benchmark综合评测工具</strong></p>
+<p>这是一个老外写的VPS主机综合评测工具，主要评测的项目有VPS主机磁盘IO、内存读写、CPU性能以及Benchmark性能，还有美国、欧洲、亚洲等不同节点的下载速度。主页：<a href="https://github.com/sayem314/serverreview-benchmark" target="_blank" rel="noopener">https://github.com/sayem314/serverreview-benchmark</a></p>
+<p><strong>脚本使用使用方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#简略版</span><br><span class="line">yum install curl -y</span><br><span class="line">curl -LsO git.io/bench.sh; chmod +x bench.sh &amp;&amp; ./bench.sh -a share</span><br><span class="line">#完整版</span><br><span class="line">yum install curl -y</span><br><span class="line">curl -LsO git.io/bench.sh; chmod +x bench.sh &amp;&amp; ./bench.sh -a share</span><br></pre></td></tr></table></figure>
+<h2 id="一、VPS速度测试工具"><a href="#一、VPS速度测试工具" class="headerlink" title="一、VPS速度测试工具"></a>一、VPS速度测试工具</h2><p><strong>在线测试工具。</strong>使用在线测试工具，可以方便得到服务器的响应时间，这一招对于国外的VPS特别有效果。以下是搜集整理的实用在线网站速度测试工具网站：</p>
+<blockquote>
+<p><a href="http://ping.chinaz.com/" target="_blank" rel="noopener">http://ping.chinaz.com/</a></p>
+<p><a href="http://www.ipip.net/ping.php" target="_blank" rel="noopener">http://www.ipip.net/ping.php</a></p>
+<p><a href="https://www.17ce.com/" target="_blank" rel="noopener">https://www.17ce.com/</a></p>
+<p><a href="http://www.webkaka.com/" target="_blank" rel="noopener">http://www.webkaka.com/</a></p>
+<p><a href="http://ce.cloud.360.cn/" target="_blank" rel="noopener">http://ce.cloud.360.cn/</a></p>
+</blockquote>
+<p>这几个在线测速工具各有各的优缺点，推荐使用ipip.net测试服务器IP和路由追踪，用17ce.com测试网页加载速度，用ping.chinaz.com用国内不同地方的Ping值。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927233901.png" alt></p>
+<p><strong>本地测试软件。</strong>这里推荐使用WinMTR，这是一款方便易用的路由跟踪工具。该软件可以帮助用户直接查看各个节点的响应时间及丢包率，非常适合windows下客户做路由追踪及PING进行测试。</p>
+<blockquote>
+<p>下载地址：<a href="https://www.ucblog.net/wzfou/WinMTR-CN-IP.zip" target="_blank" rel="noopener">https://www.ucblog.net/wzfou/WinMTR-CN-IP.zip</a></p>
+<p>项目主页：<a href="https://github.com/oott123/WinMTR" target="_blank" rel="noopener">https://github.com/oott123/WinMTR</a></p>
+<p>带地图版：<a href="https://cdn.ipip.net/17mon/besttrace.exe" target="_blank" rel="noopener">https://cdn.ipip.net/17mon/besttrace.exe</a></p>
+</blockquote>
+<p>启用<a href="https://wzfou.com/tag/winmtr/" target="_blank" rel="noopener">WinMTR</a>，点击可以更新IP地址。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927233932.png" alt></p>
+<p>输入你想要追踪的域名或者服务器IP，接着你就可以看到数据包经过的节点还有丢包等情况，同时支持导出文本。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234012.gif" alt></p>
+<p><strong>相关的参数</strong>说明如下：</p>
+<blockquote>
+<p>Hostname：到目的服务器要经过的每个主机IP或名称<br>Nr：经过节点的数量；以上图百度为例子：一共要经过10个节点，其中第一个是出口的路由器<br>Loss%：ping 数据包回复失败的百分比；藉此判断，那个节点（线路）出现故障，是服务器所在机房还是国际路由干路<br>Sent：已传送的数据包数量<br>Recv：成功接收的数据包数量<br>Best：回应时间的最小值<br>Avrg：平均回应时间<br>Worst：回应时间的最大值<br>Last：最后一个数据包的回应时间</p>
+</blockquote>
+<p><strong>PS：2017年9月12日更新，</strong>Superspeed.sh 一键测试服务器到国内的速度脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/oooldking/script/master/superspeed.sh</span><br><span class="line">chmod +x superspeed.sh</span><br><span class="line">./superspeed.sh</span><br></pre></td></tr></table></figure>
+<h2 id="二、VPS性能测试工具"><a href="#二、VPS性能测试工具" class="headerlink" title="二、VPS性能测试工具"></a>二、VPS性能测试工具</h2><p><strong>手动检测命令。</strong>直接使用命令：cat /proc/cpuinfo 或者 lscpu，你就可以看到你使用的VPS的CPU配置如何。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234041.png" alt></p>
+<p>检测出来的CPU，你也可以进入这个网站：<a href="http://www.cpubenchmark.net/cpu_list.php，查看CPU的性能到底排行多少位，至少让自己心里有个数。" target="_blank" rel="noopener">http://www.cpubenchmark.net/cpu_list.php，查看CPU的性能到底排行多少位，至少让自己心里有个数。</a></p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234108.png" alt></p>
+<p>另外一个手动命令测试磁盘IO：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=test bs=64k count=4k oflag=dsync</span><br></pre></td></tr></table></figure>
+<p>手动命令测试VPS网络：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://cachefly.cachefly.net/100mb.test</span><br></pre></td></tr></table></figure>
+<p><strong>一键检测脚本。</strong>这里有一个一键检测VPS的CPU、内存、负载、IO读写、机房带宽等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">命令1：</span><br><span class="line">wget -qO- bench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -Lso- bench.sh | bash</span><br><span class="line"></span><br><span class="line">命令2：</span><br><span class="line">wget -qO- 86.re/bench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -so- 86.re/bench.sh | bash</span><br><span class="line"></span><br><span class="line">备注：</span><br><span class="line">bench.sh 既是脚本名，同时又是域名。如果以上失效，请使用以下地址下载再执行脚本：</span><br><span class="line">下载地址：</span><br><span class="line">https://github.com/teddysun/across/blob/master/bench.sh</span><br></pre></td></tr></table></figure>
+<p><strong>PS：2017年9月27日更新，</strong>SuperBench.sh可以看作bench.sh强化版，新增 Virt 检测服务器类型参数，常见 openvz，kvm，独服都能检测出来。同时整合上面的Superspeed.sh一键测试服务器到国内的速度脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -Lso- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash</span><br></pre></td></tr></table></figure>
+<p>运行一键检测脚本后，会显示当前测试的各种系统信息，取自世界多处的知名数据中心的测试点进行下载速度测试，支持 IPv6 下载测速，IO 测试三次并显示平均值，由于测试点都在国外，所以国内的服务器下载速度测试可能会失败。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234154.png" alt></p>
+<p><strong>一键带宽检测工具</strong>：speedtest-cli，官网：<a href="https://github.com/sivel/speedtest-cli，安装命令：" target="_blank" rel="noopener">https://github.com/sivel/speedtest-cli，安装命令：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">apt-get install python-pip</span><br><span class="line">sudo pip install speedtest-cli</span><br></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">speedtest-cli</span><br><span class="line">#后面也可以接以下参数：</span><br><span class="line">-h, --help show this help message and exit </span><br><span class="line">--share 分享你的网速，该命令会在speedtest网站上生成网速测试结果的图片。 </span><br><span class="line">--simple Suppress verbose output, only show basic information </span><br><span class="line">--list 根据距离显示speedtest.net的测试服务器列表。 </span><br><span class="line">--server=SERVER 指定列表中id的服务器来做测试。 </span><br><span class="line">--mini=MINI URL of the Speedtest Mini server </span><br><span class="line">--source=SOURCE Source ip address to bind to </span><br><span class="line">--version Show the version number and exit</span><br></pre></td></tr></table></figure>
+<p><strong>VPS性能综合跑分工具。</strong><a href="https://wzfou.com/tag/unixbench/" target="_blank" rel="noopener">UnixBench</a>是一个类unix系（Unix，BSD，Linux）统下的性能测试工具，一个开源工具，被广泛用与测试linux系统主机的性能。Unixbench的主要测试项目有：系统调用、读写、进程、图形化测试、2D、3D、管道、运算、C库等系统基准性能提供测试数据。命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.sh</span><br><span class="line">chmod +x unixbench.sh</span><br><span class="line">./unixbench.sh</span><br></pre></td></tr></table></figure>
+<p>测试项目说明如下：</p>
+<blockquote>
+<p><strong>Dhrystone 2 using register variables</strong><br>此项用于测试 string handling，因为没有浮点操作，所以深受软件和硬件设计（hardware and software design）、编译和链接（compiler and linker options）、代码优化（code optimazaton）、对内存的cache（cache memory）、等待状态（wait states）、整数数据类型（integer data types）的影响。</p>
+<p><strong>Double-Precision Whetstone</strong><br>这一项测试浮点数操作的速度和效率。这一测试包括几个模块，每个模块都包括一组用于科学计算的操作。覆盖面很广的一系列 c 函数：sin，cos，sqrt，exp，log 被用于整数和浮点数的数学运算、数组访问、条件分支（conditional branch）和程序调用。此测试同时测试了整数和浮点数算术运算。</p>
+<p><strong>Execl Throughput</strong><br>此测试考察每秒钟可以执行的 execl 系统调用的次数。 execl 系统调用是 exec 函数族的一员。它和其他一些与之相似的命令一样是 execve（） 函数的前端。</p>
+<p><strong>File copy</strong><br>测试从一个文件向另外一个文件传输数据的速率。每次测试使用不同大小的缓冲区。这一针对文件 read、write、copy 操作的测试统计规定时间（默认是 10s）内的文件 read、write、copy 操作次数。</p>
+<p><strong>Pipe Throughput</strong>管道（pipe）是进程间交流的最简单方式，这里的 Pipe throughtput 指的是一秒钟内一个进程可以向一个管道写 512 字节数据然后再读回的次数。需要注意的是，pipe throughtput 在实际编程中没有对应的真实存在。</p>
+<p><strong>Pipe-based Context Switching</strong><br>这个测试两个进程（每秒钟）通过一个管道交换一个不断增长的整数的次数。这一点很向现实编程中的一些应用，这个测试程序首先创建一个子进程，再和这个子进程进行双向的管道传输。</p>
+<p><strong>Process Creation</strong><br>测试每秒钟一个进程可以创建子进程然后收回子进程的次数（子进程一定立即退出）。process creation 的关注点是新进程进程控制块（process control block）的创建和内存分配，即一针见血地关注内存带宽。一般说来，这个测试被用于对操作系统进程创建这一系统调用的不同实现的比较。</p>
+<p><strong>System Call Overhead</strong><br>测试进入和离开操作系统内核的代价，即一次系统调用的代价。它利用一个反复地调用 getpid 函数的小程序达到此目的。</p>
+<p><strong>Shell Scripts</strong>测试一秒钟内一个进程可以并发地开始一个 shell 脚本的 n 个拷贝的次数，n 一般取值 1，2，4，8。（我在测试时取 1， 8）。这个脚本对一个数据文件进行一系列的变形操作（transformation）。</p>
+</blockquote>
+<p>根据你的VPS性能不同，一般需要半个小时以上才会得到跑分结果，分数越高就表示性能越好。（点击放大）</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234217.png" alt></p>
+<p>这里再提供另外一个VPS速度与性能综合测试工具，用它可以一键测试VPS主机的基本配置、机房带宽、Ping值、IO性能、UnixBench跑分等，测试过程花费的时间比较长，需要耐心等待。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#普通模式（测试机器配置， IO ，带宽和全国 ping 值）：</span><br><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest/master/test_91yun.sh &amp;&amp; bash test_91yun.sh</span><br><span class="line">简单模式（测试机器配置， IO ，带宽和全国 ping 值）：</span><br><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest/master/test_91yun.sh &amp;&amp; bash test_91yun.sh s</span><br><span class="line">完全模式（测试机器配置， IO ，带宽、全国 ping 值、unixbench跑分）：</span><br><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest/master/test_91yun.sh &amp;&amp; bash test_91yun.sh a</span><br></pre></td></tr></table></figure>
+<h2 id="三、VPS主机真伪检测"><a href="#三、VPS主机真伪检测" class="headerlink" title="三、VPS主机真伪检测"></a>三、VPS主机真伪检测</h2><p><strong>检测VPS真实内存。</strong>首先用命令查看真实的内存：free -m，接着切换至内存目录：cd /dev/shm，然后进行数据写入，标识 count=100 为写入100M，你可以修改为主机商标注的内存上限一点点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=./memtest bs=1M count=100</span><br><span class="line">#注意完成后，执行删除：</span><br><span class="line">rm ./memtest</span><br></pre></td></tr></table></figure>
+<p>一旦出现错误：dd: error writing ‘./memtest’: No space left on device，就说明内存大小低于我们测试的数值，你可以继续降低数值，直到得到真实的内存。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234235.png" alt></p>
+<p><strong>检测VPS虚拟技术。</strong>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/code/master/vm_check.sh &amp;&amp; bash vm_check.sh</span><br></pre></td></tr></table></figure>
+<p>测试结果会显示是KVM、Xen还是OpenVZ。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234254.png" alt></p>
+<p><strong>自建speedtest测试。</strong>这个适合VPS主机商，方便给客户测试从服务器到用户本地的下载速度。</p>
+<blockquote>
+<p>项目主页：<a href="https://github.com/adolfintel/speedtest" target="_blank" rel="noopener">https://github.com/adolfintel/speedtest</a></p>
+<p>修改版本：<a href="https://www.ucblog.net/wzfou/speedtest-lite.zip" target="_blank" rel="noopener">https://www.ucblog.net/wzfou/speedtest-lite.zip</a></p>
+</blockquote>
+<p>将程序上传到服务器上，客户打开后点击就可以测试得到服务器的速度了。</p>
+<p><img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190927234312.png" alt></p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p><strong>UnixBench性能跑分受版本影响较大。</strong>UnixBench目前有不同的版本，而网上不少的版本也是经过人工修改过的，可能测试的项目不同导致的结果也会不同。大家在测试时记得找一个参照对比。</p>
+<p><strong>IO读写速度受母机的影响比较大。</strong>有一些超售的服务器，由于用户众多，IO速度很慢，像这样的就要小心你的“邻居”了。使用一键脚本检测时，如果用在国内的VPS时，在网络测速中会出现卡死的情况。</p>
+<h3 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h3><p><a href="https://wzfou.com/vps-ceping-gongju/" target="_blank" rel="noopener">https://wzfou.com/vps-ceping-gongju/</a></p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/技术/">技术</a>|<a class="cat-link" href="/categories/技术/服务器/">服务器</a>|<a class="cat-link" href="/categories/技术/服务器/Linux/">Linux</a>|<a class="cat-link" href="/categories/技术/服务器/Linux/系统/">系统</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/默认/" title="默认">默认</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+    <div class="article-share clearfix text-center">
+        <div class="share-area">
+            <span class="share-txt">分享到：</span>
+            <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+            <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+            <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+            <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=sunbo个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+            <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+        </div>
+    </div>
+    
+
+    <!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br>
+        <a href="/post/62abe816.html">
+            
+                officeKMS激活
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br>
+        <a href="/post/5be3761a.html">
+            
+                ajax请求添加head
+            
+        </a>
+    </span>
+    
+</div>
+
+        <!-- 文章评论 -->
+        
+    <script src="/js/comment.js"></script>
+        <div id="comments" class="comment">
+            <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/sunbo.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+        </div>
+        <script>
+            JELON.Comment({
+                container: 'comments',
+                label: '技术/服务器/Linux/系统/VPS主机性能和速度测试方法' || 'post/f86045d4.html',
+                owner: 'disanshijie',
+                repo: 'disanshijie.github.io',
+                clientId: '6e2d5638fecb4b1544eb',
+                clientSecret: 'fa9cd9051a4a612e297133d727d194823c901f47'
+            });
+        </script>
+        
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="widget.search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+    </section>
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+
+    <div class="category-block">
+      <!--<h3 class="asidetitle">categories</h3> -->
+         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/">WEB</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/">后台</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/架构/">架构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/">框架</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/rabbitMQ/">rabbitMQ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/错误/">错误</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/">工具</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/">nodejs</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/模块工具包/">模块工具包</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/tomcat/">tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/消息中间件/">消息中间件</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/">建站</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/博客/">博客</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/">工具</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/Git/">Git</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/">服务器</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/">Linux</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/系统/">系统</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/">软件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/php/">php</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/">数据库</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/MySQL/">MySQL</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/">Java</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/算法/">算法</a><span class="category-list-count">6</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-web-服务器-项目/">技术 - web - 服务器 - 项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java/">技术 - 编程 - Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-后台-框架-springMVC/">技术\WEB\后台\框架\springMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-maven/">技术\WEB\工具\maven</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-tomcat/">技术\WEB\工具\tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-JDK/">技术\编程\Java\JDK</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-算法/">技术\编程\Java\算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-基础/">技术\编程\基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/">计算机</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/">window</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/bat/">bat</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/">软件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-window/">生活 - 计算机 - window</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-MySql/">生活 - 计算机 - 软件 - MySql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件/">生活\计算机\软件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活\计算机\软件\idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-nginx/">生活\计算机\软件\nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-office/">生活\计算机\软件\office</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活\计算机\软件\typora</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认/">默认</a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+    
+    
+    </section>
+
+    
+        <section class="widget">
+            <h3 class="widget-hd"><strong>热门标签</strong></h3>
+            <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/默认/" title="默认">默认 (51)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (2)</a>
+  
+    <a class="tag-item" href="/tags/nginx/" title="nginx">nginx (1)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (1)</a>
+  
+    <a class="tag-item" href="/tags/wordpress/" title="wordpress">wordpress (2)</a>
+  
+    <a class="tag-item" href="/tags/nodejs/" title="nodejs">nodejs (1)</a>
+  
+    <a class="tag-item" href="/tags/vscode/" title="vscode">vscode (3)</a>
+  
+    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (1)</a>
+  
+    <a class="tag-item" href="/tags/typora/" title="typora">typora (1)</a>
+  
+</div>
+        </section>
+        
+
+            
+
+                    
+                        <!-- 友情链接 -->
+                        <section class="widget">
+                            <h3 class="widget-hd"><strong>友情链接</strong></h3>
+                            <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://git@gitee.com:sunjinchao/blog.git" target="_blank" title="sun个人博客">第三世界</a>
+        </li>
+    
+        <li>
+            <a href="https://www.baidu.com" target="_blank" title="百度搜索">百度</a>
+        </li>
+    
+</ul>
+                        </section>
+                        
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+                2016-
+                2019
+                    
+                    
+                        <a href="/">第三世界的个人博客</a> | 
+                        博客基于<a href="https://hexo.io/zh-cn/" target="_blank">Hexo</a>创建 | 
+                        感谢<a href="https://github.com/jangdelong/hexo-theme-xups" target="_blank">xups</a>提供主题 |
+                        <p>京ICP备<a href="http://www.beian.miit.gov.cn/" target="_blank">19029113</a>号</p>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+<!-- 搜索弹出框  -->
+
+    <script>
+    (function(window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: '/',
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/jquery.min.js"></script>
+    <script src="/js/insight.js"></script>
+        
+            
+<!-- 代码块复制功能 -->
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+<!-- 看板娘 -->
+<script src="/js/autoload.js"></script>
+
+</body>
+</html>

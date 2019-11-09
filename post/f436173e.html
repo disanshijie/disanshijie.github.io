@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>Linux安装php | 第三世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="sun, java, Web, 数据库, 集群">
+    <meta name="description" content="sun bo">
+
+    
+    <link rel="alternative" href="/atom.xml" title="第三世界" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4f1864f2b3b9e45560412149ea8cf935";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">第三世界</span>
+                    <span class="description"></span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+                <li rel="/post/f436173e.html" class="item ">
+                    <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+                </li>
+                
+                <li rel="/post/f436173e.html" class="item ">
+                    <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+                </li>
+                
+                <li rel="/post/f436173e.html" class="item ">
+                    <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+                </li>
+                
+                <li rel="/post/f436173e.html" class="item ">
+                    <a href="/soft/" title="软件" class="icon-lab">&nbsp;软件</a>
+                </li>
+                
+                <li rel="/post/f436173e.html" class="item ">
+                    <a href="/utils/" title="工具箱" class="icon-cogs">&nbsp;工具箱</a>
+                </li>
+                
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                    
+                        <p class="links">
+                            
+                                <a href="https://github.com/sunjinchao" target="_blank">
+                                    Github
+                                </a>
+                                |
+                                    
+                                        
+                                <a href="https://pages.coding.me" target="_blank">
+                                    Hosted by Coding Pages
+                                </a>
+                                
+                                        
+                        </p>
+                        <p class="sns">
+                            
+                                <a href="http://weibo.com/sunjinchao" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                                
+                                <a href="https://www.facebook.com/profile.php" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                                
+                                    <a href="javascript: void(0);" class="wechat">
+                                        <b>■</b> 公众号
+                                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                                    </a>
+                        </p>
+                        
+            </div>
+            <div class="avatar fr">
+                <img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190808220914.jpg" alt="avatar" title="SUN BO">
+            </div>
+        </div>
+    </section>
+</header>
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>Linux安装php</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        sun bo 
+        发布于 
+        <time datetime="2019-06-20T15:06:58.000Z">2019-06-20</time>
+    </p>
+    <div class="post-content">
+        <script src="\assets\js\APlayer.min.js"> </script><p>TODO</p>
+<a id="more"></a>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>不如用docker</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>基于CentOS7</p>
+<h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><p>如果已安装先卸载</p>
+<p>查看php版本命令：</p>
+<blockquote>
+<p>php -v</p>
+</blockquote>
+<p>下面的命令是删除不干净的</p>
+<blockquote>
+<p>yum remove php</p>
+</blockquote>
+<p>因为使用这个命令以后再用</p>
+<blockquote>
+<p>php -v</p>
+</blockquote>
+<p>还是会看到有版本信息的。。。。。</p>
+<p>必须强制删除，使用下面命令查看全部php软件包</p>
+<blockquote>
+<p>rpm -qa|grep php</p>
+</blockquote>
+<p>提示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php-pdo-5.1.6-27.el5_5.3</span><br><span class="line">php-mysql-5.1.6-27.el5_5.3</span><br><span class="line">php-xml-5.1.6-27.el5_5.3</span><br><span class="line">php-cli-5.1.6-27.el5_5.3</span><br><span class="line">php-common-5.1.6-27.el5_5.3</span><br><span class="line">php-gd-5.1.6-27.el5_5.3</span><br><span class="line">php-fpm-5.4.16-46.el7.x86_64</span><br></pre></td></tr></table></figure>
+<p>注意卸载要先卸载没有依赖的</p>
+<p>pdo是mysql的依赖项；common是gd的依赖项；<br>例如：# rpm -e php-pdo-5.1.6-27.el5_5.3<br>error: Failed dependencies:<br>        php-pdo is needed by (installed) php-mysql-5.1.6-27.el5_5.3.i386</p>
+<p>所以正确的卸载顺序是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rpm -e php-mysql-5.1.6-27.el5_5.3 </span><br><span class="line">rpm -e php-pdo-5.1.6-27.el5_5.3 </span><br><span class="line">rpm -e php-xml-5.1.6-27.el5_5.3 </span><br><span class="line">rpm -e php-cli-5.1.6-27.el5_5.3 </span><br><span class="line">rpm -e php-gd-5.1.6-27.el5_5.3 </span><br><span class="line">rpm -e php-fpm-5.4.16-46.el7.x86_64</span><br><span class="line">rpm -e php-common-5.1.6-27.el5_5.3</span><br></pre></td></tr></table></figure>
+<p>再用</p>
+<blockquote>
+<p>rpm -qa|grep php</p>
+<p>php -v</p>
+</blockquote>
+<p>查看版本信息已经没有提示</p>
+<p>ps:其他卸载顺序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rpm -e php55-php-pecl-zip-1.15.1-1.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-gd-5.5.38-7.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-runtime-2.1-5.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-2.1-5.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-pecl-jsonc-1.3.10-1.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-xml-5.5.38-7.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-5.5.38-7.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-common-5.5.38-7.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-process-5.5.38-7.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-mbstring-5.5.38-7.el7.remi.x86_64 </span><br><span class="line">rpm -e php55-php-pear-1.10.5-2.el7.remi.noarch </span><br><span class="line">rpm -e php55-php-cli-5.5.38-7.el7.remi.x86_64</span><br></pre></td></tr></table></figure>
+<p>注意： rpm -e [自己系统的] </p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>一、安装所需环境</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; yum -y install libxml2 libxml2-devel openssl openssl-devel curl-devel libjpeg-devel libpng-devel freetype-devel libmcrypt-devel libzip-devel pcre-devel</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>二、下载及安装nginx</p>
+<p>1.下载php</p>
+<blockquote>
+<p>wget <a href="http://cn2.php.net/distributions/php-7.3.3.tar.gz" target="_blank" rel="noopener">http://cn2.php.net/distributions/php-7.3.3.tar.gz</a></p>
+</blockquote>
+<p>下载慢 翻墙   TODO 链接</p>
+<p>2.解压php</p>
+<blockquote>
+<p>tar -xzf php-7.3.3.tar.gz</p>
+</blockquote>
+<p>3.进入php目录</p>
+<blockquote>
+<p>cd php-7.3.3</p>
+</blockquote>
+<p>3.编译php（我们不提供apxs参数，相反，我们提供php-fpm相关参数）</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&gt; ./configure --prefix=/usr/local/php7 \</span><br><span class="line">&gt; --with-config-file-path=/usr/local/php7/etc \</span><br><span class="line">&gt; --with-config-file-scan-dir=/usr/local/php7/etc/php.d \</span><br><span class="line">&gt; --with-mcrypt=/usr/include \</span><br><span class="line">&gt; --enable-mysqlnd \</span><br><span class="line">&gt; --with-mysqli \</span><br><span class="line">&gt; --with-pdo-mysql \</span><br><span class="line">&gt; --enable-fpm \</span><br><span class="line">&gt; --with-fpm-user=nginx \</span><br><span class="line">&gt; --with-fpm-group=nginx \</span><br><span class="line">&gt; --with-gd \</span><br><span class="line">&gt; --with-iconv \</span><br><span class="line">&gt; --with-zlib \</span><br><span class="line">&gt; --enable-xml \</span><br><span class="line">&gt; --enable-shmop \</span><br><span class="line">&gt; --enable-sysvsem \</span><br><span class="line">&gt; --enable-inline-optimization \</span><br><span class="line">&gt; --enable-mbregex \</span><br><span class="line">&gt; --enable-mbstring \</span><br><span class="line">&gt; --enable-ftp \</span><br><span class="line">&gt; --enable-gd-native-ttf \</span><br><span class="line">&gt; --with-openssl \</span><br><span class="line">&gt; --enable-pcntl \</span><br><span class="line">&gt; --enable-sockets \</span><br><span class="line">&gt; --with-xmlrpc \</span><br><span class="line">&gt; --enable-zip \</span><br><span class="line">&gt; --enable-soap \</span><br><span class="line">&gt; --without-pear \</span><br><span class="line">&gt; --with-gettext \</span><br><span class="line">&gt; --enable-session \</span><br><span class="line">&gt; --with-curl \</span><br><span class="line">&gt; --with-jpeg-dir \</span><br><span class="line">&gt; --with-freetype-dir \</span><br><span class="line">&gt; --enable-opcache</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>注意：</p>
+<p>–prefix=安装目录</p>
+<p>–with-使用包名称[=包目录]</p>
+<p>–enable-需要激活的功能</p>
+<h6 id="可能问题"><a href="#可能问题" class="headerlink" title="可能问题"></a>可能问题</h6><p>———————–start—————————</p>
+<p>　　假如编译完成之后报错：</p>
+<p>　　“checking for libzip… configure: error: system libzip must be upgraded to v”</p>
+<p>　　执行一下，没有报错则忽略。</p>
+<blockquote>
+<p>wget <a href="https://nih.at/libzip/libzip-1.2.0.tar.gz" target="_blank" rel="noopener">https://nih.at/libzip/libzip-1.2.0.tar.gz</a></p>
+<p>tar -xzf libzip-1.2.0.tar.gz</p>
+<p>./configure</p>
+<p>make &amp;&amp; make install</p>
+</blockquote>
+<p>—————————-end————————-</p>
+<p>出现以下则表示编译成功</p>
+<blockquote>
+<p>+——————————————————————–+<br>| License: |<br>| This software is subject to the PHP License, available in this |<br>| distribution in the file LICENSE. By continuing this installation |<br>| process, you are bound by the terms of this license agreement. |<br>| If you do not agree with the terms of this license, you must abort |<br>| the installation process at this point. |<br>+——————————————————————–+</p>
+<p>Thank you for using PHP.</p>
+</blockquote>
+<p>然后执行：</p>
+<blockquote>
+<p>make test(如果出现什么问题请谷歌或百度，或者往下看看能解决不)</p>
+</blockquote>
+<h6 id="可能问题-1"><a href="#可能问题-1" class="headerlink" title="可能问题"></a>可能问题</h6><p>————–start—————-</p>
+<p>如果这里报错：</p>
+<p>/usr/local/include/zip.h:59:21: fatal error: zipconf.h: No such file or directory</p>
+<p>则执行一下命令，没有则忽略。</p>
+<blockquote>
+<p>find / -name zipconf.h</p>
+<p>cp /你zipconf.h所在的目录  //usr/local/include/zipconf.h</p>
+</blockquote>
+<p>然后重新 configure 成功之后在make test，没问题则继续执行后面的命令。</p>
+<p>—————end——————–</p>
+<p>ps: make test耗时5分钟….. </p>
+<h5 id="4-执行make"><a href="#4-执行make" class="headerlink" title="4 执行make"></a>4 执行make</h5><blockquote>
+<p>make &amp;&amp; make install -j2</p>
+</blockquote>
+<p>三、配置php</p>
+<p>1.复制ini文件</p>
+<blockquote>
+<p> cp php.ini-production /usr/local/php7/etc/php.ini</p>
+</blockquote>
+<p>2.配置fpm</p>
+<blockquote>
+<p>cd /usr/src/php-7.0.0/sapi/fpm</p>
+<p>cp init.d.php-fpm /etc/init.d/php-fpm</p>
+<p>chmod +x /etc/init.d/php-fpm</p>
+<p>chkconfig –add php-fpm</p>
+<p>chkconfig php-fpm on</p>
+</blockquote>
+<p>TODO 第四步不知道怎么做， 第三部感觉没安装上相关包 php -v成功了 但 php-fpm找find 都找不到 rpm -qa|grep php 没有任何结果</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>linux 下PHP服务操作</p>
+<p>service php-fpm start  开启</p>
+<p>service php-fpm stop   停止</p>
+<p>service php-fpm restart  重启</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>卸载php</li>
+</ul>
+<p><a href="https://www.cnblogs.com/sunshine-H/p/8117105.html" target="_blank" rel="noopener">https://www.cnblogs.com/sunshine-H/p/8117105.html</a></p>
+<p><a href="http://www.php.cn/php-weizijiaocheng-387728.html" target="_blank" rel="noopener">http://www.php.cn/php-weizijiaocheng-387728.html</a></p>
+<p>安装（主）</p>
+<p><a href="https://www.cnblogs.com/lichina/p/10556221.html" target="_blank" rel="noopener">https://www.cnblogs.com/lichina/p/10556221.html</a></p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/技术/">技术</a>|<a class="cat-link" href="/categories/技术/服务器/">服务器</a>|<a class="cat-link" href="/categories/技术/服务器/Linux/">Linux</a>|<a class="cat-link" href="/categories/技术/服务器/Linux/软件/">软件</a>|<a class="cat-link" href="/categories/技术/服务器/Linux/软件/php/">php</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/默认/" title="默认">默认</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+    <div class="article-share clearfix text-center">
+        <div class="share-area">
+            <span class="share-txt">分享到：</span>
+            <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+            <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+            <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+            <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=sunbo个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+            <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+        </div>
+    </div>
+    
+
+    <!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br>
+        <a href="/post/ca425a94.html">
+            
+                jeecg
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br>
+        <a href="/post/8a223f21.html">
+            
+                命令行参数处理
+            
+        </a>
+    </span>
+    
+</div>
+
+        <!-- 文章评论 -->
+        
+    <script src="/js/comment.js"></script>
+        <div id="comments" class="comment">
+            <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/sunbo.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+        </div>
+        <script>
+            JELON.Comment({
+                container: 'comments',
+                label: '技术/服务器/Linux/软件/php/Linux安装php' || 'post/f436173e.html',
+                owner: 'disanshijie',
+                repo: 'disanshijie.github.io',
+                clientId: '6e2d5638fecb4b1544eb',
+                clientSecret: 'fa9cd9051a4a612e297133d727d194823c901f47'
+            });
+        </script>
+        
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="widget.search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+    </section>
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+
+    <div class="category-block">
+      <!--<h3 class="asidetitle">categories</h3> -->
+         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/">WEB</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/">后台</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/架构/">架构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/">框架</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/rabbitMQ/">rabbitMQ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/错误/">错误</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/">工具</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/">nodejs</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/模块工具包/">模块工具包</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/tomcat/">tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/消息中间件/">消息中间件</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/">建站</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/博客/">博客</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/">工具</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/Git/">Git</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/">服务器</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/">Linux</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/系统/">系统</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/">软件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/php/">php</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/">数据库</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/MySQL/">MySQL</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/">Java</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/算法/">算法</a><span class="category-list-count">6</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-web-服务器-项目/">技术 - web - 服务器 - 项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java/">技术 - 编程 - Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-后台-框架-springMVC/">技术\WEB\后台\框架\springMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-maven/">技术\WEB\工具\maven</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-tomcat/">技术\WEB\工具\tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-JDK/">技术\编程\Java\JDK</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-算法/">技术\编程\Java\算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-基础/">技术\编程\基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/">计算机</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/">window</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/bat/">bat</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/">软件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-window/">生活 - 计算机 - window</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-MySql/">生活 - 计算机 - 软件 - MySql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件/">生活\计算机\软件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活\计算机\软件\idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-nginx/">生活\计算机\软件\nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-office/">生活\计算机\软件\office</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活\计算机\软件\typora</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认/">默认</a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+    
+    
+    </section>
+
+    
+        <section class="widget">
+            <h3 class="widget-hd"><strong>热门标签</strong></h3>
+            <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/默认/" title="默认">默认 (51)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (2)</a>
+  
+    <a class="tag-item" href="/tags/nginx/" title="nginx">nginx (1)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (1)</a>
+  
+    <a class="tag-item" href="/tags/wordpress/" title="wordpress">wordpress (2)</a>
+  
+    <a class="tag-item" href="/tags/nodejs/" title="nodejs">nodejs (1)</a>
+  
+    <a class="tag-item" href="/tags/vscode/" title="vscode">vscode (3)</a>
+  
+    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (1)</a>
+  
+    <a class="tag-item" href="/tags/typora/" title="typora">typora (1)</a>
+  
+</div>
+        </section>
+        
+
+            
+
+                    
+                        <!-- 友情链接 -->
+                        <section class="widget">
+                            <h3 class="widget-hd"><strong>友情链接</strong></h3>
+                            <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://git@gitee.com:sunjinchao/blog.git" target="_blank" title="sun个人博客">第三世界</a>
+        </li>
+    
+        <li>
+            <a href="https://www.baidu.com" target="_blank" title="百度搜索">百度</a>
+        </li>
+    
+</ul>
+                        </section>
+                        
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+                2016-
+                2019
+                    
+                    
+                        <a href="/">第三世界的个人博客</a> | 
+                        博客基于<a href="https://hexo.io/zh-cn/" target="_blank">Hexo</a>创建 | 
+                        感谢<a href="https://github.com/jangdelong/hexo-theme-xups" target="_blank">xups</a>提供主题 |
+                        <p>京ICP备<a href="http://www.beian.miit.gov.cn/" target="_blank">19029113</a>号</p>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+<!-- 搜索弹出框  -->
+
+    <script>
+    (function(window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: '/',
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/jquery.min.js"></script>
+    <script src="/js/insight.js"></script>
+        
+            
+<!-- 代码块复制功能 -->
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+<!-- 看板娘 -->
+<script src="/js/autoload.js"></script>
+
+</body>
+</html>

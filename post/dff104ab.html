@@ -128,23 +128,65 @@
         <h3 class="post-title"><span>Linux查看系统信息</span></h3>
     </header>
     <p class="post-meta text-center">
-        sun bo 发表于
-            <time datetime="2019-06-06T10:13:47.000Z">2019-06-06</time>
+        sun bo 
+        发布于 
+        <time datetime="2019-06-06T10:13:47.000Z">2019-06-06</time>
     </p>
     <div class="post-content">
         <script src="\assets\js\APlayer.min.js"> </script><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>以下均基于Linux centos7</p>
 <a id="more"></a>
+<p>测速<br><a href="https://github.com/haydenjames/bench-scripts" target="_blank" rel="noopener">https://github.com/haydenjames/bench-scripts</a></p>
+<h4 id="查看centOS-版本"><a href="#查看centOS-版本" class="headerlink" title="查看centOS 版本"></a>查看centOS 版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br><span class="line"></span><br><span class="line">查看Linux内核版本命令</span><br><span class="line">cat /proc/version</span><br><span class="line">或</span><br><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">这种方法只适合Redhat系的Linux：</span><br><span class="line">cat /etc/redhat-release</span><br></pre></td></tr></table></figure>
 <h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p>more</p>
+<p>less</p>
+<p>head</p>
 <p>cat</p>
 <p>tail</p>
+<p>参考：<a href="https://blog.csdn.net/hellozpc/article/details/72859152" target="_blank" rel="noopener">https://blog.csdn.net/hellozpc/article/details/72859152</a><br><a href="https://blog.csdn.net/qq_31617637/article/details/71426904" target="_blank" rel="noopener">https://blog.csdn.net/qq_31617637/article/details/71426904</a></p>
 <h5 id="查看cup占用"><a href="#查看cup占用" class="headerlink" title="查看cup占用"></a>查看cup占用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -c</span><br></pre></td></tr></table></figure>
 <h5 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h5><p>查看当前目录下的文件夹大小</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h --max-depth=1</span><br></pre></td></tr></table></figure>
+<p>查看系统文件大小<br>df -k </p>
+<p>可执行程序的绝对路径<br>which [名称]<br>eg<br>which bash  #bash可执行程序的绝对路径 </p>
+<h4 id="文件-夹操作"><a href="#文件-夹操作" class="headerlink" title="文件/夹操作"></a>文件/夹操作</h4><h5 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h5><blockquote>
+<p>cp  [选项]  源文件或目录  目标文件或目录</p>
+</blockquote>
+<p>将文件夹blog  递归复制到test3下 并重命名为dir</p>
+<p>cp  -r /test1/blog  /test3/dir</p>
+<h5 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h5><blockquote>
+<p>mv [选项]  源文件或目录  目标文件或目录</p>
+</blockquote>
+<p>（同cp）</p>
+<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><p>rm 文件　　　　　　慎用 rm -rf  </p>
+<h5 id="查看路径"><a href="#查看路径" class="headerlink" title="查看路径"></a>查看路径</h5><p>pwd<br>详情：<a href="https://blog.csdn.net/gnail_oug/article/details/70664458" target="_blank" rel="noopener">https://blog.csdn.net/gnail_oug/article/details/70664458</a></p>
+<hr>
+<ol>
+<li>sudo service apache start-stop-restart   开启-关闭-重启apache服务，记得加上sudo，不然权限不够无法启动，如果要开启别的服务比如mysql，直接把apache改成mysql即可（如果不记得mysql密码，cat /etc/mysql/debian.cnf 里面明文存储mysql密码）</li>
+<li>sudo /etc/init.d/apahce start-stop-restart   同上，如果要开启别的服务比如mysql，直接把apache改成mysql即可</li>
+<li>uname -a                 查看内核版本</li>
+<li>cat /etc/issue           查看系统版本</li>
+<li>hostname                 查看系统</li>
+<li>cat /proc/cpuinfo        查看CPU信息</li>
+<li>sudo ethtool eth0        查看网卡状态</li>
+<li>sudo fdisk -l            查看磁盘信息</li>
+<li>lshw                     查看硬件信息</li>
+<li>df -h                   查看剩余空间</li>
+<li>free -m                 查看内存使用情况</li>
+<li>ps -A                   查看所有进程</li>
+<li>kill pid&amp;kill name      结束进程，pid是在ps -A查看对应的数字，name即是进程名</li>
+<li>du -hs                  查看当前目录大小</li>
+<li>find . -name ‘xxx.py’   寻找文件，文件名可以使用通配符*</li>
+<li>mysql .                登陆mysql后，输入\. var/sqlsetup.sql(sql文件路径)即可安装sql文件 </li>
+<li>top/w                   查看负载，w后面三个值表示近1分钟，10,15分钟的负载，一般来说0.6是标准健康值</li>
+<li>grep                    匹配文件</li>
+<li>wc -l                   统计文件个数</li>
+<li>|                       把上一个命令的值传递个下一个命令，比如grep ‘11’ xxx.txt|wc -l</li>
+</ol>
 
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
-            <a class="cat-link" href="/categories/技术/">技术</a>|<a class="cat-link" href="/categories/技术/服务器/">服务器</a>|<a class="cat-link" href="/categories/技术/服务器/Linux/">Linux</a>
+            <a class="cat-link" href="/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a>
         </span>
         <span class="post-tags">
             标签：
@@ -176,9 +218,9 @@
     
     <span class="prev fl">
         上一篇<br>
-        <a href="/post/a67595ce.html">
+        <a href="/post/dff104ab.html">
             
-                开发常用环境变量配置
+                Linux查看系统信息
             
         </a>
     </span>
@@ -266,7 +308,7 @@
         <script>
             JELON.Comment({
                 container: 'comments',
-                label: '技术/服务器/Linux/Linux查看系统信息' || 'post/dff104ab.html',
+                label: '技术/服务器/Linux/系统/Linux查看系统信息' || 'post/dff104ab.html',
                 owner: 'disanshijie',
                 repo: 'disanshijie.github.io',
                 clientId: '6e2d5638fecb4b1544eb',
@@ -312,7 +354,7 @@
 
     <div class="category-block">
       <!--<h3 class="asidetitle">categories</h3> -->
-         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/">服务器</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/">Linux</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/系统/">系统</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-前端/">技术 - WEB - 前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-后台-架构/">技术 - WEB - 后台 - 架构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-web-服务器-项目/">技术 - web - 服务器 - 项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-工具-Git/">技术 - 工具 - Git</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-服务器-Linux-nginx/">技术 - 服务器 - Linux - nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-window/">生活 - 计算机 - window</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-window/">生活\计算机\window</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件/">生活\计算机\软件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认/">默认</a><span class="category-list-count">1</span></li></ul>
+         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/">WEB</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/">后台</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/架构/">架构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/">框架</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/rabbitMQ/">rabbitMQ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/错误/">错误</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/">工具</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/">nodejs</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/模块工具包/">模块工具包</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/tomcat/">tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/消息中间件/">消息中间件</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/">建站</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/博客/">博客</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/">工具</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/Git/">Git</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/">服务器</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/">Linux</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/系统/">系统</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/">软件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/php/">php</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/">数据库</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/MySQL/">MySQL</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/">Java</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/算法/">算法</a><span class="category-list-count">6</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-web-服务器-项目/">技术 - web - 服务器 - 项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java/">技术 - 编程 - Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-后台-框架-springMVC/">技术\WEB\后台\框架\springMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-maven/">技术\WEB\工具\maven</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-tomcat/">技术\WEB\工具\tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-JDK/">技术\编程\Java\JDK</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-算法/">技术\编程\Java\算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-基础/">技术\编程\基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/">计算机</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/">window</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/bat/">bat</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/">软件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-window/">生活 - 计算机 - window</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-MySql/">生活 - 计算机 - 软件 - MySql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件/">生活\计算机\软件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活\计算机\软件\idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-nginx/">生活\计算机\软件\nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-office/">生活\计算机\软件\office</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活\计算机\软件\typora</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认/">默认</a><span class="category-list-count">1</span></li></ul>
     </div>
 
     
@@ -325,9 +367,9 @@
             <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (1)</a>
+    <a class="tag-item" href="/tags/默认/" title="默认">默认 (51)</a>
   
-    <a class="tag-item" href="/tags/默认/" title="默认">默认 (4)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (2)</a>
   
     <a class="tag-item" href="/tags/nginx/" title="nginx">nginx (1)</a>
   
@@ -339,9 +381,9 @@
   
     <a class="tag-item" href="/tags/vscode/" title="vscode">vscode (3)</a>
   
-    <a class="tag-item" href="/tags/typora/" title="typora">typora (1)</a>
-  
     <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (1)</a>
+  
+    <a class="tag-item" href="/tags/typora/" title="typora">typora (1)</a>
   
 </div>
         </section>
@@ -378,8 +420,10 @@
                 2016-
                 2019
                     
-
-                        <a href="/">第三世界的个人博客</a>
+                    
+                        <a href="/">第三世界的个人博客</a> | 
+                        博客基于<a href="https://hexo.io/zh-cn/" target="_blank">Hexo</a>创建 | 
+                        感谢<a href="https://github.com/jangdelong/hexo-theme-xups" target="_blank">xups</a>提供主题 |
                         <p>京ICP备<a href="http://www.beian.miit.gov.cn/" target="_blank">19029113</a>号</p>
 </footer>
 <div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>

@@ -1,14 +1,631 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Linux文件操作]]></title>
-    <url>%2Fpost%2Fb67c03a2.html</url>
-    <content type="text"><![CDATA[复制、移动与删除 1，复制粘贴文件 cp [选项] 源文件或目录 目标文件或目录 2，剪切粘贴文件 mv [选项] 源文件或目录 目标文件或目录 3，删除文件 rm 文件 慎用 rm -rf linux下文件的复制、移动与删除命令为：cp，mv，rm一、文件复制命令cp 命令格式：cp [-adfilprsu] 源文件(source) 目标文件(destination) cp [option] source1 source2 source3 … directory 参数说明： -a:是指archive的意思，也说是指复制所有的目录 -d:若源文件为连接文件(link file)，则复制连接文件属性而非文件本身 -f:强制(force)，若有重复或其它疑问时，不会询问用户，而强制复制 -i:若目标文件(destination)已存在，在覆盖时会先询问是否真的操作 -l:建立硬连接(hard link)的连接文件，而非复制文件本身 -p:与文件的属性一起复制，而非使用默认属性 -r:递归复制，用于目录的复制操作 -s:复制成符号连接文件(symbolic link)，即“快捷方式”文件 -u:若目标文件比源文件旧，更新目标文件 如将/test1目录下的file1复制到/test3目录，并将文件名改为file2,可输入以下命令： cp /test1/file1 /test3/file2二、文件移动命令mv 命令格式：mv [-fiv] source destination 参数说明： -f:force，强制直接移动而不询问 -i:若目标文件(destination)已经存在，就会询问是否覆盖 -u:若目标文件已经存在，且源文件比较新，才会更新 如将/test1目录下的file1复制到/test3 目录，并将文件名改为file2,可输入以下命令： mv /test1/file1 /test3/file2三、文件删除命令rm 命令格式：rm [fir] 文件或目录 参数说明： -f:强制删除 -i:交互模式，在删除前询问用户是否操作 -r:递归删除，常用在目录的删除 如删除/test目录下的file1文件，可以输入以下命令： rm -i /test/file1 参考https://www.cnblogs.com/aiyr/p/7395738.html]]></content>
+    <title><![CDATA[list去重]]></title>
+    <url>%2Fpost%2F21bd8e5b.html</url>
+    <content type="text"><![CDATA[TODO 方案二待验证 方案一对象 12345678910111213/** * hashset是如何保持元素的唯一性呢？ * 是通过元素的hashcode和equals来表示： * 如果hashCode值一样，则比较equals是否为true * 如果hashCode值不一样，不用比较equals *//** * List是如何集合中元素相同的呢？ * 是通过元素的hashcode和equals来表示： * 如果hashCode值一样，则比较equals是否为true * 如果hashCode值不一样，不用比较equals */ 12345678910111213141516171819202122232425262728package entity;import java.util.Objects;import lombok.Data; @Datapublic class Person &#123; private Integer id; private String name; public Person(Integer id, String name) &#123; this.id = id; this.name = name; &#125; @Override public boolean equals(Object o) &#123; if (this == o) return true; if (o == null || getClass() != o.getClass()) return false; Person person = (Person) o; return Objects.equals(id, person.id) &amp;&amp; Objects.equals(name, person.name); &#125; @Override public int hashCode() &#123; return Objects.hash(id, name); &#125;&#125; eg2: 或者 12345678910111213141516@Datapublic class ProjectVo extends Project &#123; private String userOrderId; @Override public boolean equals(Object o) &#123; if (this == o) return true; if (o == null || getClass() != o.getClass()) return false; ProjectVo per = (ProjectVo) o; return this.getId().equals(per.getId()); &#125; @Override public int hashCode() &#123; return this.getId().hashCode(); &#125;&#125; 使用 情景一：List合并去重 （A和B都是同一个对象的list集合） 12A.removeAll(B); //由于对象的hashCode和equal重写了，根据重写条件来 判断删除A.addAll(B); 情景二： 利用java8的新特性 1234Collection&lt;Person&gt; list = Arrays.asList(person1,person2,person3,person4);List&lt;Person&gt; distinctElements = list.stream() .distinct() .collect( Collectors.toList() ); 方案二重写equals和hashCode方法不是很灵活，利用java8采用新方案 形式一 1、定义一个Predicate返回值方法 12345public static &lt;T&gt; Predicate&lt;T&gt; distinctByKey(Function&lt;? super T, Object&gt; keyExtractor)&#123; Map&lt;Object, Boolean&gt; map = new ConcurrentHashMap&lt;&gt;(); return t -&gt; map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;&#125; 2、结合Stream的filter方法 1234567891011121314151617public static void main(String[] args) &#123; Person lokesh = new Person(1, &quot;Lokesh&quot;, &quot;Gupta&quot;); Person brian = new Person(2, &quot;Brian&quot;, &quot;Clooney&quot;); Person alex = new Person(3, &quot;Alex&quot;, &quot;Kolen&quot;); //Add some random persons Collection&lt;Person&gt; list = Arrays.asList(lokesh,brian,alex,lokesh,brian,lokesh); // Get distinct objects by key List&lt;Person&gt; distinctElements = list.stream() .filter( distinctByKey(p -&gt; p.getId()) ) .collect( Collectors.toList() ); // Let&apos;s verify distinct elements System.out.println( distinctElements ); &#125; ps： person对象不需要任何修改 形式二 根据id去重 12345// 根据name去重List&lt;Person&gt; unique = persons.stream().collect( Collectors.collectingAndThen( Collectors.toCollection(() -&gt; new TreeSet&lt;&gt;(Comparator.comparing(Person::getId))), ArrayList::new)); 根据id和name去重 12345// 根据name,sex两个属性去重List&lt;Person&gt; unique = persons.stream().collect( Collectors. collectingAndThen( Collectors.toCollection(() -&gt; new TreeSet&lt;&gt;(Comparator.comparing(o -&gt; o.getId() + &quot;;&quot; + o.getName()))), ArrayList::new)); 总结参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>编程</category>
+        <category>Java</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[二分法查找]]></title>
+    <url>%2Fpost%2F49f727d5.html</url>
+    <content type="text"><![CDATA[使用二分法查找的数组必须是已经进行排序好的数组，首先定义一个初始下标，一个结尾下标，然后用需要查找的数同数组中的中间元素进行对比，如果相等，则返回中间数组元素下标，如果大于此元素，则让初始下标等于中间下标加一，再次进行对比，直到返回一个中间下标或者未找到，反之亦然。（中间下标 = （初始下标 + 结尾下标） / 2） 1234567891011121314151617181920212223242526272829/** * 二分法查找 * @param a 需要进行检索的数组 * @param idx 需要检索的值 * @return 检索结果（该值下标或-1：未找到） */public static int index(int[] a,int idx) &#123; int min = 0;//低位 int max = a.length-1;//高位 //只要高位边不比低位小，就继续二分 while(min &lt;= max) &#123; int middle = (min + max)/2; //可以随便给中位赋值下标 //结束条件判断 if(a[middle] == idx) &#123; //当中位和find值相等时，找到find值所对应的下标，二分结束 return middle; &#125; //二分判断 val在中位的左边还是右边 if(idx &gt; a[middle]) &#123; //二分后中位比find值小，说明find值在中位的右边，那么低位就是此时的中位，然后继续二分 min = middle+1; &#125;else &#123; //二分之后中位比find值大，说明find值在中位的左边，那么高位就是此时的中位，然后继续二分 max = middle - 1; &#125; &#125; return -1;&#125; 测试 123456 public static void main(String[] args) &#123; int [] arr=&#123;5,13,19,21,37,56,64,75,80,88,92&#125;; //数组必须是有序的 System.out.println(index(arr,21)); &#125;//输出：3 参考https://blog.csdn.net/li1376417539/article/details/82728713]]></content>
+      <categories>
+        <category>技术</category>
+        <category>编程</category>
+        <category>Java</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[返回稳定值]]></title>
+    <url>%2Fpost%2F7018acf6.html</url>
+    <content type="text"><![CDATA[公司项目有一个需求，通过称重货架来计算 物资的数量，在实际使用的过程中 人员每次从 称重货架上拿区的物品过程是 不稳定且确定性的如果使用定时的方式获取称重货架的值 可能取到的值是某个时间点的瞬时重量 不是实际的重量 现通过算法实现 获取到的是称重货架 在稳定一个固定时间段 后返回的值 记录一个时间点的稳定值，下一次 变量波动后，记录第n次 后最终稳定下来的值 m5 实现方案创建 StabeDataHandle 类 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148import java.util.ArrayList;import java.util.HashMap;import java.util.List;import java.util.Map;public class StabeDataHandle &#123; /** * 指定时间范围 t * 这个值需要大于秤盘发送数据的时间间隔 */ public final static Long dealyTime = 6L; /** * 误差范围 */ public final static Double scope = 10.00; public static Map&lt;String, List&lt;StabeDataModel&gt;&gt; lists = new HashMap&lt;&gt;(); private static StabeDataHandle stabeDataUtil = new StabeDataHandle(); private StabeDataHandle() &#123; &#125; public static StabeDataHandle getInstance() &#123; return stabeDataUtil; &#125; public Double[] getData(String id, Double val) &#123; Double[] res = new Double[2]; //返回数组 上一次稳定值和当前稳定值 Long time = System.currentTimeMillis() / 1000; List&lt;StabeDataModel&gt; data = lists.get(id); if (data == null) &#123; //初始化 data = new ArrayList&lt;StabeDataModel&gt;(); data.add(new StabeDataModel(time, val,0L)); &#125; else &#123; StabeDataModel original = data.get(0); Long dt = time - dealyTime; //先把当前传过来的值 放到数组中，和以前的数据一起做处理 data.add(new StabeDataModel(time, val,time-original.getTime())); //当前时间-指定时间 &gt; 最开始时间 说明有足够时间范围,可以计算了 if (dt &gt;= original.getTime()) &#123; //获取指定时间范围内的值 即A4点的数据 int index = BinarySearch(data, dt); if(index == -1)&#123; //没找到 继续添加值 (这个情况 可能是秤盘 坏了,没有在固定时间内返回值给我) System.out.println(&quot;没找到 继续添加；可能是秤盘 坏了,没有在固定时间内发送值给我&quot;); //data.add(new StabeDataModel(time, val,time-original.getTime())); &#125;else&#123; //data.add(new StabeDataModel(time, val,time-original.getTime())); //判断这个时间范围内的值 是否全部相等 (差值在一定误差范围内默认是相等的 ) boolean flag = stableVerify(data, index, scope); if (flag) &#123; //如果相等，证明找到了 第二个稳定值 //重置 data data = new ArrayList&lt;StabeDataModel&gt;(); data.add(new StabeDataModel(time, val,0L)); res[0] = original.getVal(); res[1] = val; &#125; &#125; &#125; &#125; lists.put(id, data); testData(id); return res; &#125; /** * 计算 某段时间范围内的数据 是否都在误差范围内 * @param datas * @param index 开始位置 * @param scope 误差范围 * @return */ private static boolean stableVerify(List&lt;StabeDataModel&gt; datas, int index, Double scope) &#123; Double max = datas.get(index).getVal(); Double min = datas.get(index).getVal(); //计算最值 for (int i = index; i &lt; datas.size(); i++) &#123; if (datas.get(i).getVal() &gt; max) &#123; max = datas.get(i).getVal(); &#125; if (datas.get(i).getVal() &lt; min) &#123; min = datas.get(i).getVal(); &#125; &#125; if (max - min &lt;= scope) &#123; return true; &#125; return false; &#125; /** * 二分法查找 获取在某个时间点上的 下标&lt;br/&gt; * ps: 如果 datas.size()==2 说明秤盘在稳定时间范围外发给我的一条数据 将被认为是有效数据 系统将进入第二次循环 * @param datas, * @param val * @return */ private static int BinarySearch(List&lt;StabeDataModel&gt; datas, Long val) &#123; int min = 0; int max = datas.size() - 1; while (min &lt;= max) &#123; int middle = (min + max) / 2; //条件判断 if (val &gt;= datas.get(middle).getTime()) &#123; //int next = (middle + 1 &gt; max)?max:middle + 1; if (val &lt;= datas.get(middle + 1).getTime()) &#123; return middle; &#125; &#125; //二分判断 val在中位的左边还是右边 if (val &gt; datas.get(middle).getTime()) &#123; min = middle + 1; &#125; else &#123; max = middle - 1; &#125; &#125; return -1; &#125; private void testData(String id) &#123; System.out.println(&quot;------1-------&quot;); List&lt;StabeDataModel&gt; data = lists.get(id); for (StabeDataModel datum : data) &#123; System.out.println(datum); &#125; System.out.println(&quot;------2-------&quot;); &#125;&#125; 实体类 StabeDataModel 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657package com.xue.util;public class StabeDataModel &#123; private String id; private Long key; private Double val; private Long time; public StabeDataModel(Long time, Double val, Long key) &#123; this.key = key; this.val = val; this.time = time; &#125; @Override public String toString() &#123; return &quot;StabeDataModel&#123;&quot; + &quot;id=&apos;&quot; + id + &apos;\&apos;&apos; + &quot;, key=&quot; + key + &quot;, val=&quot; + val + &quot;, time=&quot; + time + &apos;&#125;&apos;; &#125; public String getId() &#123; return id; &#125; public void setId(String id) &#123; this.id = id; &#125; public Long getKey() &#123; return key; &#125; public void setKey(Long key) &#123; this.key = key; &#125; public Double getVal() &#123; return val; &#125; public void setVal(Double val) &#123; this.val = val; &#125; public Long getTime() &#123; return time; &#125; public void setTime(Long time) &#123; this.time = time; &#125;&#125; 测试12345678910111213//测试@RequestMapping(&quot;/dataTest&quot;)@ResponseBodypublic Object dataTest(@RequestParam HashMap params)&#123; HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;(); String id = (String) params.get(&quot;id&quot;); Double val = Double.valueOf(params.get(&quot;val&quot;).toString()); Double[] res = StabeDataHandle.getInstance().getData(id, val); map.put(&quot;data&quot;,StabeDataHandle.lists); map.put(&quot;result&quot;,res); return map;&#125; 结果12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&#123; &quot;result&quot;: [ null, null ], &quot;data&quot;: &#123; &quot;123&quot;: [ &#123; &quot;id&quot;: null, &quot;key&quot;: 0, &quot;val&quot;: 562, &quot;time&quot;: 1573312026 &#125;, &#123; &quot;id&quot;: null, &quot;key&quot;: 6, &quot;val&quot;: 2, &quot;time&quot;: 1573312032 &#125;, &#123; &quot;id&quot;: null, &quot;key&quot;: 10, &quot;val&quot;: 2, &quot;time&quot;: 1573312036 &#125;, &#123; &quot;id&quot;: null, &quot;key&quot;: 13, &quot;val&quot;: 255, &quot;time&quot;: 1573312039 &#125;, &#123; &quot;id&quot;: null, &quot;key&quot;: 20, &quot;val&quot;: 2524, &quot;time&quot;: 1573312046 &#125;, &#123; &quot;id&quot;: null, &quot;key&quot;: 24, &quot;val&quot;: 25247, &quot;time&quot;: 1573312050 &#125;, &#123; &quot;id&quot;: null, &quot;key&quot;: 27, &quot;val&quot;: 25247, &quot;time&quot;: 1573312053 &#125; ] &#125;&#125; 下一次 重置数据，并返回变化值 参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>编程</category>
+        <category>Java</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tomcat控制台输出方法出现堵塞]]></title>
+    <url>%2Fpost%2F489cb7c0.html</url>
+    <content type="text"><![CDATA[tomcat脚本启动 调用带控制台输出方法出现堵塞 tomcat控制台输出信息时会卡住的原因 tomcat 启动窗口卡住 网页无法打开 在帮同事解决问题的时候碰到一个问题：（windows系统下）在tomcat部署webservice，脚本启动tomcat，调用接口（接口中有控制台打印代码）会出现堵塞现象，然而在tomcat控制台中按crtl+c(空格、回车或者其他按键也可以)后，堵塞就会消失，接口顺利执行完毕。网上搜索了一下应该是powershell中“快速编辑模式”开启的问题。将“快速编辑模式”关闭就会解决此前的问题。 经过自己反复测试，发现出现堵塞需要如下条件： （1）.调用接口执行路径中有System.out.println （2）.快速编辑模式下的tomcat控制台选择了其他已输出内容 猜测如下：在快速编辑模式下，可以随意选取控制台已输出的内容，导致控制台窗口失焦或光标不在尾端，从而导致System.out.println语句堵塞 关闭快速编辑模式方法：右击窗口-选择属性-选择选项-取消勾选快速编辑模式 另附PowerShell的两种模式： powershell控制台有两种模式，一个是快速编辑模式，一个是标准模式。快速编辑模式和标准模式的切换可以通过控制台标题栏-&gt;鼠标右击-&gt;属性-&gt;选项-&gt;编辑选项 。 Powershell标准模式鼠标右击选择标记后才能实现复制和粘切功能。Powershell快速编辑模式可以通过鼠标左键选择任意矩形区域内的文本，并且鼠标右击实现复制功能。 参考https://blog.csdn.net/yandiyu/article/details/82460328]]></content>
+      <categories>
+        <category>技术\WEB\工具\tomcat</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql基本信息]]></title>
+    <url>%2Fpost%2Fcfafb02a.html</url>
+    <content type="text"><![CDATA[MySQL版本 获取字段名，注释，数据类型 查看MySQL版本 登录MySQL方法 1234mysql&gt; status;mysql&gt; select version();mysql&gt; select @@version;mysql&gt; show variables like &quot;%version%&quot;; 不登录直接查询方法 1234567891011$ mysql -u root -p #连接mysql$ mysqladmin -uroot -p version; $ mysql -V$ mysql --version $ mysql --help | grep Distrib$ mysql -? | grep Distrib$ mysql -I | grep Distrib $ rpm -qa|grep mysql 参考：https://www.cnblogs.com/mehome/p/9428175.html 获取字段名，注释，数据类型1select column_name,column_comment,data_type,column_type from information_schema.columns where table_name=表名; eg： 1select column_name,column_comment,data_type,column_type from information_schema.columns where table_schema =&apos;wztppt-fuyang&apos; and table_name = &apos;wms_measuring_unit&apos; ; 参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>数据库</category>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tomcat调优]]></title>
+    <url>%2Fpost%2Fd7577236.html</url>
+    <content type="text"><![CDATA[一般都是下载加压版，直接用就行，可能出现的问题：tomcat启动很慢（Linux上常见）tomcat启动内存溢出 tomcat启动很慢待写 tomcat启动内存溢出结论：在catalina.bat第二行添加如下代码 1set JAVA_OPTS=%JAVA_OPTS% -server -Xms512m -Xmx512m -XX:MaxNewSize=256m -XX:PermSize=512M -XX:MaxPermSize=512m 设置tomcat内存 1-Xms128M -Xmx256M -XmsJVM初始化堆的大小-XmxJVM堆的最大值 类似这样的设置，是设置tomcat可用的最大内存为256m，默认初始化是128m，这样设置会造成jvm进行gc，所以一般为了减少gc，会将这两个值设置为同样大小 设置jvm 永久代内存 1set JAVA_OPTS=%JAVA_OPTS% -server -XX:PermSize=512M -XX:MaxPermSize=512m ps：以上都在 catalina.bat/catalina.sh 文件中设置 参考https://www.cnblogs.com/zhangchengzi/p/9759890.html https://blog.csdn.net/unesco3187/article/details/48290469]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>工具</category>
+        <category>tomcat</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo分类栏子父类多级分类]]></title>
+    <url>%2Fpost%2F6d0d7dd.html</url>
+    <content type="text"><![CDATA[hexo 文章分类栏 实现多级 子父类排列，基于xups主题 效果： 实现： https://blog.csdn.net/SeayXu/article/details/51580568 js页面 1234567&lt;!-- 文章分类 --&gt;&lt;% if (site.categories.length)&#123; %&gt; &lt;div class=&quot;category-block&quot;&gt; &lt;!--&lt;h3 class=&quot;asidetitle&quot;&gt;&lt;%= __(&apos;categories&apos;) %&gt;&lt;/h3&gt; --&gt; &lt;%- list_categories(site.categories) %&gt; &lt;/div&gt;&lt;% &#125; %&gt; 样式： 1234567891011121314151617181920212223242526272829303132333435363738394041//categories.category-block .category-list&gt;li border-bottom 1px solid #eee padding-bottom 10px.category-block li //border-bottom 1px solid #ccc display block padding-top 10px line-height 1.5 font-size 12px overflow hidden text-overflow ellipsis white-space nowrap.category-block .category-list @media mini width 45% float left margin 0 5% 0 0 @media tablet width 100% float none margin .5em 0 0 .categoriy-list-item padding .5em 5% .category-list-count top -.5em padding-left .3em font-size 75% line-height 0 position relative vertical-align baseline ul, ol, dl list-style none ul, ol, dl background-color #ffffff margin-left 20px li //border-bottom 1px dashed #ccc .category-list-child border-top 1px dashed #ccc 参考https://www.jianshu.com/p/e6e54389c88f]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>建站</category>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven中指定jdk]]></title>
+    <url>%2Fpost%2Fd0f64878.html</url>
+    <content type="text"><![CDATA[maven项目会用maven-compiler-plugin默认的JDK版本来进行编译，如果不指明版本就容易出现版本不匹配的问题，可能导致编译不通过的问题。 解决办法：在pom文件中配置maven-compiler-plugin插件。 有两种方式： 方式一： properties标签添加： 12&lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;&lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt; 方式二： 12345678910111213&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt; &lt;version&gt;3.6.1&lt;/version&gt; &lt;configuration&gt; &lt;source&gt;1.8&lt;/source&gt; &lt;target&gt;1.8&lt;/target&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;/plugins&gt;&lt;/build&gt; 参考https://blog.csdn.net/u010019566/article/details/99725850 https://www.jianshu.com/p/a14ace43b9d3]]></content>
+      <categories>
+        <category>技术\WEB\工具\maven</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven引入本地jar]]></title>
+    <url>%2Fpost%2Fa7075883.html</url>
+    <content type="text"><![CDATA[TODO maven引入本地jar 方案一 直接路径引入step1pom.xml 1234567 &lt;dependency&gt; &lt;groupId&gt;sun.javax.websocket&lt;/groupId&gt; &lt;artifactId&gt;javax.websocket-api&lt;/artifactId&gt; &lt;version&gt;1.1&lt;/version&gt; &lt;scope&gt;system&lt;/scope&gt; &lt;systemPath&gt;$&#123;project.basedir&#125;/lib/javax.websocket-api-1.1.jar&lt;/systemPath&gt; &lt;/dependency&gt; ${project.basedir} 指的是项目目录，可以理解为pom.xml所在目录， eclipse上操作参考：https://blog.csdn.net/TrayLei/article/details/88867834 step2maven打包的过程中加入我们这个jar包 pom.xml 123456789101112131415161718&lt;!-- 加载本地jar包 --&gt;&lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt; &lt;configuration&gt; &lt;webResources&gt; &lt;resource&gt; &lt;directory&gt;$&#123;project.basedir&#125;/lib&lt;/directory&gt; &lt;targetPath&gt;WEB-INF/lib&lt;/targetPath&gt; &lt;filtering&gt;false&lt;/filtering&gt; &lt;includes&gt; &lt;include&gt;**/*.jar&lt;/include&gt; &lt;/includes&gt; &lt;/resource&gt; &lt;/webResources&gt; &lt;/configuration&gt; &lt;version&gt;2.1.1&lt;/version&gt;&lt;/plugin&gt; ps：TODO 待测试 参考：https://www.cnblogs.com/Weagle/p/5358480.html 方法三（将jar包安装至本地仓库后使用pom文件直接引入）不推荐step11mvn install:install-file -Dfile=&lt;path-to-file&gt; -DgroupId=&lt;group-id&gt; -DartifactId=&lt;artifact-id&gt; -Dversion=&lt;version&gt; -Dpackaging=&lt;packaging&gt; mvn install:install-file-Dfile=jar包的位置-DgroupId=pom文件里的groupId-DartifactId=pom文件里的artifactId-Dversion=pom文件里的version-Dpackaging=jar eg： 1mvn install:install-file -Dfile=javax.websocket-api-1.1.jar -DgroupId=sun.javax.websocket -DartifactId=javax.websocket-api -Dversion=1.1 -Dpackaging=jar setp2pom.xml中添加： &lt;dependency&gt; &lt;groupId&gt;sun.javax.websocket&lt;/groupId&gt; &lt;artifactId&gt;javax.websocket-api&lt;/artifactId&gt; &lt;version&gt;1.1&lt;/version&gt; &lt;/dependency&gt; 参考：https://www.cnblogs.com/sueyyyy/p/10571473.html 总结：这种方法弊端较大，程序的可维护性以及移植性较低。例如当你改变本地Maven仓库时需要重新安装。如果引用此JAR的项目是多人协调工作的项目，则每个人都要将其安装在自己的本地仓库。 方案三 JAR文件被安装在一个单独的仓库step11mvn deploy:deploy-file -Dfile=&lt;path-to-file&gt; -DgroupId=&lt;group-id&gt; -DartifactId=&lt;artifact-id&gt; -Dversion=&lt;version&gt; -Dpackaging=jar -Durl=file:./maven-repository/ -DrepositoryId=maven-repository -DupdateReleaseInfo=true 解释参考上面 step2在pom.xml中如下使用申明仓库 123456&lt;repositories&gt; &lt;repository&gt; &lt;id&gt;maven-repository&lt;/id&gt; &lt;url&gt;file:///$&#123;project.basedir&#125;/maven-repository&lt;/url&gt; &lt;/repository&gt;&lt;/repositories&gt; 然后添加引用 12345&lt;dependency&gt; &lt;groupId&gt;com.baidu.app&lt;/groupId&gt; &lt;artifactId&gt;bdpush&lt;/artifactId&gt; &lt;version&gt;3.0.1&lt;/version&gt;&lt;/dependency&gt; 方案四 发布到自己的私服上 推荐同方案三 -Durl地址设置为自己的私服地址，注意在pom.xml中自己的私服仓库声明 参考https://blog.csdn.net/ShuSheng0007/article/details/78547264/]]></content>
+      <categories>
+        <category>技术\WEB\工具\maven</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SpringMVC接收数组请求参数]]></title>
+    <url>%2Fpost%2F6555af5b.html</url>
+    <content type="text"><![CDATA[TODO 测试 简单实现123456789101112$(&quot;#test&quot;).click(function()&#123; var testData=&#123;&quot;nameIds&quot;: [1,2,3], &quot;age&quot;: 18&#125; $.ajax(&#123; type:&quot;POST&quot;, url: basePath + &quot;/test/testInOut&quot;, dataType:&quot;json&quot;, contentType:&quot;application/x-www-form-urlencoded&quot;, // 指定这个协议很重要 data:faultList, //只有这一个参数，json格式，后台解析为实体，后台可以直接用 success:function(data)&#123; &#125; &#125;);&#125;) 123456//controller层 @RequestMapping(value = &quot;/test/testInOut&quot;) @ResponseBody public void testInOut(Integer[] nameIds, Integer age)&#123; System.out.println(nameIds, age) ; &#125; 基于@RequestBody方案1：推荐： * 123456789101112131415161718var allFilePaths = new Array(); for (var i = 0; i &lt; 10; i++) &#123; allFilePaths.push(&quot;xx&quot;+i);&#125;$.ajax(&#123; url : url, type : &apos;POST&apos;, dataType: &apos;json&apos;, contentType: &quot;application/json&quot;, data : JSON.stringify(allFilePaths),//转为json格式 success : function(col) &#123; &#125; &#125;, error : function(col)&#123; &#125;&#125;); 1234567891011@RequestMapping(&quot;/delFileInfo&quot;)@ResponseBodypublic void delFileInfo(@RequestBody String[] macroPath) throws IOException &#123; for(String sPath :macroPath) &#123; System.out.println(sPath); &#125; &#125;//也可以 @RequestBody List&lt;String&gt; macroPath 方案1-1：页面js代码：12345678910111213141516var userList = new Array(); userList.push(&#123;name: &quot;李四&quot;,pwd: &quot;123&quot;&#125;); userList.push(&#123;name: &quot;张三&quot;,pwd: &quot;332&quot;&#125;); $.ajax(&#123; type: &quot;POST&quot;, url: &quot;&lt;%=path%&gt;/catalog.do?fn=saveUsers&quot;, data: JSON.stringify(userList),//将对象序列化成JSON字符串 dataType:&quot;json&quot;, contentType : &apos;application/json;charset=utf-8&apos;, //设置请求头信息 success: function(data)&#123; … &#125;, error: function(res)&#123; … &#125; &#125;); Controller方法：1234567891011@Controller @RequestMapping(&quot;/catalog.do&quot;) public class CatalogController &#123; @RequestMapping(params = &quot;fn=saveUsers&quot;) @ResponseBody public AjaxJson saveUsers(@RequestBody User[] userList) &#123; … &#125; &#125; //也可以用 @RequestBody List&lt;User&gt; userList 重点： data: JSON.stringify(userList) contentType : ‘application/json;charset=utf-8’ @RequestBody List userList 方案1-2：接收List&lt;Map&lt;String,Object&gt;&gt;集合参数： 12345678910111213141516var userList = new Array(); userList.push(&#123;name: &quot;李四&quot;,pwd: &quot;123&quot;&#125;); userList.push(&#123;name: &quot;张三&quot;,pwd: &quot;332&quot;&#125;); $.ajax(&#123; type: &quot;POST&quot;, url: &quot;&lt;%=path%&gt;/catalog.do?fn=saveUsers&quot;, data: JSON.stringify(userList),//将对象序列化成JSON字符串 dataType:&quot;json&quot;, contentType : &apos;application/json;charset=utf-8&apos;, //设置请求头信息 success: function(data)&#123; … &#125;, error: function(res)&#123; … &#125; &#125;); 12345678910@Controller @RequestMapping(&quot;/catalog.do&quot;) public class CatalogController &#123; @RequestMapping(params = &quot;fn=saveUsers&quot;) @ResponseBody public AjaxJson saveUsers(@RequestBody List&lt;Map&lt;String,Object&gt;&gt; listMap) &#123; … &#125; &#125; 基于@RequestParam方案1：12345678910111213141516171819202122//发送请求到后台，带数组形式的数据。function testList() &#123; var data = getTreeViewCheckedData(); $.ajax(&#123; url: APP_NAME + &quot;xxxx/testList&quot;, data: &#123; list:data &#125;, dataType: &quot;json&quot;, success: function (data) &#123; &#125; &#125;);&#125;//获得数据---以数组的形式存储function getTreeViewCheckedData() &#123; var checkedData = []; $(&apos;#shareSetting&apos;).find(&apos;ol.bonsai input:checkbox:checked&apos;).each(function () &#123; checkedData.push($(this).val()) &#125; ); return checkedData;&#125; 123456789101112131415//方式一:用list接收前台的数组参数。 @RequestMapping(value = &quot;/testList&quot;) @ResponseBody public JsonResult testList(@RequestParam(required = false, value = &quot;list[]&quot;) List&lt;String&gt; list)&#123; return new JsonResult(true,&quot;ok &quot;,null); &#125;//方式二:用数组接收前台的数组参数。然后转化成list。 @RequestMapping(value = &quot;/testList&quot;) @ResponseBody public JsonResult testList(@RequestParam(required = false, value = &quot;list[]&quot;) String[] list)&#123; List&lt;String&gt; newList = Lists.newArrayList(Arrays.asList(list)); return new JsonResult(true,&quot;ok &quot;,null); &#125; 方案2：123456789101112131415161718192021222324$(&quot;input[name=&apos;request&apos;]&quot;).click(function () &#123; var data = []; $(&quot;input[name=&apos;se&apos;]&quot;).each(function () &#123; if ($(this).prop(&quot;checked&quot;)) &#123; data.push($(this).val()); &#125; &#125;); $.ajax(&#123; type: &quot;post&quot;, url: &quot;/test/index&quot;, data: &#123;&quot;datas&quot;: data.join()&#125; dataType: &quot;json&quot;, success: function (data) &#123; var str = &quot;&quot;; for (var i = 0; i &lt; data.length; i++) &#123; str += &quot;;name=&quot; + data[i]; &#125; $(&quot;div[name=&apos;rs&apos;]&quot;).html(str); &#125;, error: function () &#123; alert(&quot;出错啦&quot;); &#125; &#125;);&#125;); 1234567@RequestMapping(value = &quot;/index&quot;, method = RequestMethod.POST)@ResponseBodypublic List test(@RequestParam(&quot;datas&quot;) List&lt;Integer&gt; ids) &#123; System.out.println(&quot;ids=&quot; + ids); return ids;&#125;//或者 @RequestParam(&quot;datas&quot;) Integer[] ids 扩展：在使用@RequestBody注解时，在SpringMVC环境中，@RequestBody接收的是一个Json对象的字符串，而不是一个Json对象。然而在ajax请求往往传的都是Json对象，用 JSON.stringify(data)的方式就能将对象变成字符串。同时ajax请求的时候也要指定dataType: “json”,contentType:”application/json” 这样就可以轻易的将一个对象或者List传到Java端。 @RequestBody与contentType:&quot;application/json&quot;必需配合使用，且数据是字符串。 参考https://blog.csdn.net/sweetgirl520/article/details/79127223 https://blog.csdn.net/achenyuan/article/details/81114517]]></content>
+      <categories>
+        <category>技术\WEB\后台\框架\springMVC</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Shell引号区别]]></title>
+    <url>%2Fpost%2F39823868.html</url>
+    <content type="text"><![CDATA[shell ‘ ‘, “ “ 和 的区别 单引号’’和双引号”” 控制台执行： 1n=3 输入：echo ‘$n’ 输出：$n 输入：echo “$n” 输出：3 反引号 反引号是命令替换，**命令替换是指Shell可以先执行中的命令，将输出结果暂时保存，在适当的地方输出**。语法:command 12345678910#!/bin/bashDATE=`date`echo &quot;Date is $DATE&quot;USERS=`who | wc -l`echo &quot;Logged in user are $USERS&quot;UP=`date ; uptime`echo &quot;Uptime is $UP&quot; 运行结果： 1234Date is Thu Jul 2 03:59:57 MST 2009Logged in user are 1Uptime is Thu Jul 2 03:59:57 MST 200903:59:57 up 20 days, 14:03, 1 user, load avg: 0.13, 0.07, 0.15 参考https://blog.csdn.net/suifengpiao_2011/article/details/72453034]]></content>
       <categories>
         <category>技术</category>
         <category>服务器</category>
         <category>Linux</category>
         <category>系统</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Shell重定向区别]]></title>
+    <url>%2Fpost%2Ff9fec369.html</url>
+    <content type="text"><![CDATA[shell中输入输出重定向，＞、＞＞、＜、＜＜、＞/dev/null、2＞&amp;1、＜＜end、＜＜EOF等 单个 &gt; 覆盖重写 &gt;&gt; 尾部追加内容 使用nohup command &amp;命令形式来启动一些后台程序 command &gt;/dev/null 2&gt;&amp;1 将两个输出（标准和错误）绑定在一起，并重定向到 &gt;/dev/null 也就是丢弃输出 前言 相信大家经常能在shell脚本中发现&gt;/dev/null 2&gt;&amp;1这样的语句。以前的我并没有去深入地理解这段命令的作用，照搬照用，直到上周我将这段命令不小心写成了2&gt;&amp;1 &gt;/dev/null，出了一点小问题之后，我才开始去了解这段命令背后的“玄机”。 shell重定向介绍 就像我们平时写的程序一样，一段程序会处理外部的输入，然后将运算结果输出到指定的位置。在交互式的程序中，输入来自用户的键盘和鼠标，结果输出到用户的屏幕，甚至播放设备中。而对于某些后台运行的程序，输入可能来自于外部的一些文件，运算的结果通常又写到其他的文件中。而且程序在运行的过程中，会有一些关键性的信息，比如异常堆栈，外部接口调用情况等，这些都会统统写到日志文件里。 shell脚本也一样，但是我们一般在使用shell命令的时候，更多地还是通过键盘输入，然后在屏幕上查看命令的执行结果。如果某些情况下，我们需要将shell命令的执行结果存储到文件中，那么我们就需要使用输入输出的重定向功能。 文件描述符 当执行shell命令时，会默认打开3个文件，每个文件有对应的文件描述符来方便我们使用： 类型 文件描述符 默认情况 对应文件句柄位置 标准输入（standard input） 0 从键盘获得输入 /proc/self/fd/0 标准输出（standard output） 1 输出到屏幕（即控制台） /proc/self/fd/1 错误输出（error output） 2 输出到屏幕（即控制台） /proc/self/fd/2 所以我们平时在执行shell命令中，都默认是从键盘获得输入，并且将结果输出到控制台上。但是我们可以通过更改文件描述符默认的指向，从而实现输入输出的重定向。比如我们将1指向文件，那么标准的输出就会输出到文件中。 输出重定向 输出重定向的使用方式很简单，基本的一些命令如下： 命令 介绍 command &gt;filename 把标准输出重定向到新文件中 command 1&gt;filename 同上 command &gt;&gt;filename 把标准输出追加到文件中 command 1&gt;&gt;filename 同上 command 2&gt;filename 把标准错误重定向到新文件中 command 2&gt;&gt;filename 把标准错误追加到新文件中 我们使用&gt;或者&gt;&gt;对输出进行重定向。符号的左边表示文件描述符，如果没有的话表示1，也就是标准输出，符号的右边可以是一个文件，也可以是一个输出设备。当使用&gt;时，会判断右边的文件存不存在，如果存在的话就先删除，然后创建一个新的文件，不存在的话则直接创建。但是当使用&gt;&gt;进行追加时，则不会删除原来已经存在的文件。 为了更好地理解输出重定向，感受重定向的“魅力”，我们看一下以下的例子：我们创建一个测试目录，目录下面仅有一个a.txt文件。 1234567# tree.└── a.txt0 directories, 1 file# ls a.txt b.txtls: 无法访问b.txt: 没有那个文件或目录a.txt 在我们执行ls a.txt b.txt之后，一共有两种输出，其中ls:无法访问b.txt: 没有那个文件或目录是错误输出，a.txt是标准输出。 123456789# ls a.txt b.txt 1&gt;outls: 无法访问b.txt: 没有那个文件或目录# cat outa.txt# ls a.txt b.txt &gt;&gt;outls: 无法访问b.txt: 没有那个文件或目录# cat outa.txta.txt 在上述命令中，我们将原来的标准输出重定向到了out文件中，所以控制台只剩下了错误提示。并且当执行了追加操作时，out文件的内容非但没有被清空，反而又多了一条a.txt。 同理，我们也可以将错误输出重定向到文件中： 123456789# ls a.txt b.txt 2&gt;erra.txt# cat errls: 无法访问b.txt: 没有那个文件或目录# ls a.txt b.txt &gt;out 2&gt;err# cat outa.txt# cat errls: 无法访问b.txt: 没有那个文件或目录 看到这里，朋友们可能会发现&gt;out 2&gt;err和我们在一开头提到的&gt;/dev/null 2&gt;&amp;1已经很像了，别急，这待会再说。 输入重定向 在理解了输出重定向之后，理解输入重定向就会容易得多。对输入重定向的基本命令如下： 命令 介绍 command &lt;filename 以filename文件作为标准输入 command 0&lt;filename 同上 command &lt;&lt;delimiter 从标准输入中读入，直到遇到delimiter分隔符 我们使用&lt;对输入做重定向，如果符号左边没有写值，那么默认就是0。 我们这次以cat命令为例，如果cat后面没有跟文件名的话，那它的作用就是将标准输入（比如键盘）回显到标准输出（比如屏幕）上： 12345# cat123123testtest 我们可以将利用输入重定向，将我们在键盘上敲入的字符写入到文件中。我们需要使用ctrl+c来结束输入： 1`# cat &gt;out``123``test``^C``# cat out``123``test` 好了，此时我们觉得自己在键盘上敲比较累，还是直接让cat读取一个文件吧。那么我们需要利用输入重定向： 1234567# cat inputaaa111# cat &gt;out &lt;input# cat outaaa111 神奇的事情发生了，out文件里面的内容被替换成了input文件里的内容。那么&lt;&lt;又是什么作用呢？我们再看： 1`# cat &gt;out &lt;&lt;end``&gt; 123``&gt; ``test``&gt; end``# cat out``123``test` 我们看到，当我们输入完cat &gt;out &lt;&lt;end，然后敲下回车之后，命令并没有结束，此时cat命令像一开始一样，等待你给它输入数据。然后当我们敲入end之后，cat命令就结束了。end之前输入的字符都已经被写入到了out文件中。这就是输入分割符的作用。 高级用法 重定向绑定 好了，在有了以上知识的基础上，我们再来看开头提到的&gt;/dev/null 2&gt;&amp;1。这条命令其实分为两命令，一个是&gt;/dev/null，另一个是2&gt;&amp;1。 1. &gt;/dev/null 这条命令的作用是将标准输出1重定向到/dev/null中。 /dev/null代表linux的空设备文件，所有往这个文件里面写入的内容都会丢失，俗称“黑洞”。那么执行了&gt;/dev/null之后，标准输出就会不再存在，没有任何地方能够找到输出的内容。 2. 2 &gt;&amp;1 这条命令用到了重定向绑定，采用&amp;可以将两个输出绑定在一起。这条命令的作用是错误输出将和标准输出同用一个文件描述符，说人话就是错误输出将会和标准输出输出到同一个地方。 2&gt;&amp;1，可以这样理解：按照前面讲解的知识，“2&gt;”表示要把标准错误信息进行重定向，一般来说，重定向的目标是某个文件，而这条语句把重定向的目标设置成了文件描述符1的输入了，也即“&amp;1”，也即，fd2的输出会被送到fd1的输入中去，后果就是，fd2的输入从fd1的输出口送了出来，流程是这样的：fd2输入 -&gt; fd2输出 -&gt; fd1的输入 -&gt; fd的输出。 linux在执行shell命令之前，就会确定好所有的输入输出位置，并且从左到右依次执行重定向的命令，所以&gt;/dev/null 2&gt;&amp;1的作用就是让标准输出重定向到/dev/null中（丢弃标准输出），然后错误输出由于重用了标准输出的描述符，所以错误输出也被定向到了/dev/null中，错误输出同样也被丢弃了。执行了这条命令之后，该条shell命令将不会输出任何信息到控制台，也不会有任何信息输出到文件中。 &gt;/dev/null 2&gt;&amp;1 VS 2&gt;&amp;1 &gt;/dev/null 再回到文章的开头，我说我弄反了&gt;/dev/null和2&gt;&amp;1拼装的顺序，导致出了一点小问题。乍眼看这两条命令貌似是等同的，但其实大为不同。刚才提到了，linux在执行shell命令之前，就会确定好所有的输入输出位置，并且从左到右依次执行重定向的命令。那么我们同样从左到右地来分析2&gt;&amp;1 &gt;/dev/null： 2&gt;&amp;1，将错误输出绑定到标准输出上。由于此时的标准输出是默认值，也就是输出到屏幕，所以错误输出会输出到屏幕。&gt;/dev/null，将标准输出1重定向到/dev/null中。 我们用一个表格来更好地说明这两条命令的区别： 命令 标准输出 错误输出 &gt;/dev/null 2&gt;&amp;1 丢弃 丢弃 2&gt;&amp;1 &gt;/dev/null 丢弃 屏幕 &gt;/dev/null 2&gt;&amp;1 VS &gt;/dev/null 2&gt;/dev/null 那么可能会有些同学会疑问，为什么要用重定向绑定，而不是像&gt;/dev/null 2&gt;/dev/null这样子重复一遍呢。 为了回答这个问题，我们回到刚才介绍输出重定向的场景。我们尝试将标准输出和错误输出都定向到out文件中： 1`# ls a.txt b.txt &gt;out 2&gt;out``# cat out``a.txt``无法访问b.txt: 没有那个文件或目录` WTF？竟然出现了乱码，这是为啥呢？这是因为采用这种写法，标准输出和错误输出会抢占往out文件的管道，所以可能会导致输出内容的时候出现缺失、覆盖等情况。现在是出现了乱码，有时候也有可能出现只有error信息或者只有正常信息的情况。不管怎么说，采用这种写法，最后的情况是无法预估的。 而且，由于out文件被打开了两次，两个文件描述符会抢占性的往文件中输出内容，所以整体IO效率不如&gt;/dev/null 2&gt;&amp;1来得高。 nohup结合 我们经常使用nohup command &amp;命令形式来启动一些后台程序，比如一些java服务： 1`# nohup java -jar xxxx.jar &amp;` 为了不让一些执行信息输出到前台（控制台），我们还会加上刚才提到的&gt;/dev/null 2&gt;&amp;1命令来丢弃所有的输出： 1`# nohup java -jar xxxx.jar &gt;/dev/null 2&gt;&amp;1 &amp;` 总结 本文主要介绍了linux重定向的原理以及一些基本命令，并且详细地分析了&gt;/dev/null 2&gt;&amp;1这个命令以及一些注意点。 总而言之，在工作中用到最多的就是nohup command &gt;/dev/null 2&gt;&amp;1 &amp;命令，希望大家能够好好掌握。 参考https://blog.csdn.net/qq_31073871/article/details/80810306]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>系统</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Shell判断是否包含某个字符串]]></title>
+    <url>%2Fpost%2F3a7ba840.html</url>
+    <content type="text"><![CDATA[Shell脚本中判断字符串是否被包含在内 使用操作符~1234567str1=&quot;abcdefgh&quot;str2=&quot;def&quot;if [[ $str1 =~ $str2 ]];then echo &quot;包含&quot;else echo &quot;不包含&quot;fi 字段 grep12345678str1=&quot;abcdefgh&quot;str2=&quot;def&quot;result=$(echo $str1 | grep &quot;$&#123;str2&#125;&quot;)if [[ &quot;$result&quot; != &quot;&quot; ]];then echo &quot;包含&quot;else echo &quot;不包含&quot;fi 正则表达式中的通配符 *1234567str1=&quot;abcdefgh&quot;str2=&quot;def&quot;if [[ $str1 == *$str2* ]];then echo &quot;包含&quot;else echo &quot;不包含&quot;fi 参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>系统</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[idea删除项目]]></title>
+    <url>%2Fpost%2Fa92a2990.html</url>
+    <content type="text"><![CDATA[IntelliJ IDEA删除项目 总共三步 File -&gt; Close Poject 关掉你需要删除的项目 File -&gt; Open Recent -&gt; Manage Projects 如下图 出现弹出框 鼠标移到你要删除的项目上面，点击右上角的叉号 找到你项目的存放位置（如果没有做其他设置就在workspace），然后删除文件夹即可 参考https://www.cnblogs.com/zhangqian27/p/7698148.html]]></content>
+      <categories>
+        <category>生活\计算机\软件\idea</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[计算平房根]]></title>
+    <url>%2Fpost%2Ffe56fd9a.html</url>
+    <content type="text"><![CDATA[二分法计算 平方根 123456789101112131415161718192021222324252627282930313233343536373839/** * 二分法计算 平方根 * @param val 需要的数 * @param low 结果区间的小边界 * @param high 结果区间的大边界 * @param e 保留几位 * @return */public static double sqrt2(double val,double low,double high,int e) &#123; double EPSILON = 0.01; //默认保留2位 if(e!=0)&#123; int c=1; while (e&gt;0)&#123; c =c*10; e--; &#125; EPSILON = 1.0 / c; &#125; System.out.println(&quot;精确度：&quot;+EPSILON); //double val=2, low = 1.4, high = 1.5; double mid = (low + high) / 2; while (high - low &gt; EPSILON) &#123; if (mid * mid &gt; val) &#123; high = mid; &#125; else &#123; low = mid; &#125; mid = (high + low) / 2; &#125; return mid;&#125;public static void main(String[] args) &#123; //3的平方根为：1.7320508075688772935274463415059 double res = sqrt2(3,1.5, 2.0,8); System.out.println(res); //结果：1.7320508107542991&#125; ps：double运算结果后9位是不准确的 参考https://www.jianshu.com/p/0cb23d985189]]></content>
+      <categories>
+        <category>技术\编程\Java\算法</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[冒泡排序]]></title>
+    <url>%2Fpost%2F14e6f1eb.html</url>
+    <content type="text"><![CDATA[TODO 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980/** * &lt;br&gt; * 〈〉&lt;br&gt; * * @author sunbo * @create 2019/9/14 * @since 1.0.0 */public class BubbleSort &#123; private static int[] arr=&#123;2,1,5,6,4,8,3&#125;; /** * 冒泡排序 ![](https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190914230252.png) * 此方式每次交换后 都把数组最后一个位置的数据找到了 * 例子：2,1,5,6,4,8,3 * 结果：1,2,3,4,5,6,8 * @param arr */ public static void bubbleSort1(int[] arr)&#123; int len=arr.length; //每次外循环结束都会将最后一位确定，循环len-1次，最后一次不需要交换了 //ps：也可以i&lt;len 这样内层循环最后一次不会执行的，结果都一样 for (int i = 0; i &lt; len-1; i++) &#123; boolean flag=false; //每次交换都会将第（len-i）位数据确定 //for控制交换次数 从下标0开始 到len-i-1位 for (int j = 0; j &lt;len-i-1; j++) &#123; //比较 if(arr[j] &gt;arr[j+1])&#123; int temp=arr[j]; arr[j] =arr[j+1]; arr[j+1]=temp; flag=true; &#125; &#125; //如果交换算法中 没有需要交换的说明 数组已经有序了，结束全部循环 if(!flag)&#123;break;&#125; &#125; &#125; /** * 冒泡排序 * 此方式每次交换后 都把数组最前一个位置的最小数据找到了 * @param arr */ public static void bubbleSort2(int[] arr)&#123; //每次内循环确定 最前一个位置的最小数据 for (int i = 0; i &lt; arr.length; i++) &#123; boolean flag=false; //比较下标 第i+1 到 arr.length-1 的数组 for(int j=arr.length-1;j&gt;=i+1;j--)&#123; if(arr[j] &lt; arr[j-1])&#123; //交换 int t=arr[j];arr[j]=arr[j-1];arr[j-1]=t; flag=true; &#125; &#125; //如果交换算法中 没有需要交换的说明 数组已经有序了，结束全部循环 if(!flag)&#123;break;&#125; &#125; &#125; public static void print(int[] arr)&#123; String str=&quot;&quot;; for (int o : arr) &#123; str += o+&quot;,&quot;; &#125; System.out.println(str); &#125; public static void main(String[] args) &#123; print(arr); //bubbleSort1(arr); bubbleSort2(arr); print(arr); &#125;&#125; 参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>编程</category>
+        <category>Java</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[多个线程顺序输出]]></title>
+    <url>%2Fpost%2F80989b29.html</url>
+    <content type="text"><![CDATA[多个线程顺序输出面试题 题目：编写一个程序，开启 3 个线程，这三个线程 分别输出 A、B、C，每个线程将自己的内容在屏幕上打印 10 遍，要求输出的结果必须按顺序显示。如：ABCABCABC…… 方案一思路：先定义一个公共标志numId=1 范围1~3，定义三个线程， 每个线程内部：自循环10次，循环内加锁(ps：保证这个线程内的每个循环执行是原子的)，锁内判断当前 while(numId ==1 ) 输出A，设置numId=2 唤醒 线程2 ，while(numId !=1 ) await() 等待 实现方式1： 使用了 ReentrantLock 公平锁 ；用newCondition来指定具体某个线程的唤醒 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110package concurrent;import java.util.concurrent.locks.Condition;import java.util.concurrent.locks.Lock;import java.util.concurrent.locks.ReentrantLock;class AlternateDemo &#123; //标志当前由哪一个线程输出，1代表A，2代表B，3代表C private int number = 1; Lock lock = new ReentrantLock(); //Condition的强大之处在于它可以为多个线程间建立不同的Condition Condition condition1 = lock.newCondition(); Condition condition2 = lock.newCondition(); Condition condition3 = lock.newCondition(); // loopNum:当前循环轮数 public void loopA(int loopNum) &#123; //上锁 lock.lock(); try &#123; while (number != 1) &#123; //等待 condition1.await(); &#125; System.out.println(Thread.currentThread().getName() + &quot;, currentLoopNum is &quot; + loopNum); number = 2; //唤醒 condition2.signal(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; finally &#123; //确保释放锁 lock.unlock(); &#125; &#125; public void loopB(int loopNum) &#123; lock.lock(); try &#123; while (number != 2) &#123; condition2.await(); &#125; System.out.println(Thread.currentThread().getName() + &quot;, currentLoopNum is &quot; + loopNum); number = 3; condition3.signal(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; finally &#123; lock.unlock(); &#125; &#125; public void loopC(int loopNum) &#123; lock.lock(); try &#123; while (number != 3) &#123; condition3.await(); &#125; System.out.println(Thread.currentThread().getName() + &quot;, currentLoopNum is &quot; + loopNum); number = 1; condition1.signal(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; finally &#123; lock.unlock(); &#125; &#125;&#125;public class TestABCAlternate &#123; public static void main(String[] args) &#123; AlternateDemo ad = new AlternateDemo(); new Thread(new Runnable() &#123; @Override public void run() &#123; for (int i = 0; i &lt; 10; i++) ad.loopA(i); &#125; &#125;, &quot;A&quot;).start(); new Thread(new Runnable() &#123; @Override public void run() &#123; for (int i = 0; i &lt; 10; i++) ad.loopB(i); &#125; &#125;, &quot;B&quot;).start(); new Thread(new Runnable() &#123; @Override public void run() &#123; for (int i = 0; i &lt; 10; i++) ad.loopC(i); &#125; &#125;, &quot;C&quot;).start(); &#125;&#125; 实现方式2： 推荐 使用 synchronized 锁住执行方法体；使用 notifyAll 来唤醒其他线程 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788package www.java.test;import java.io.OutputStream;class Print&#123; int flag = 1; int count = 0; public int getCount() &#123; return count; &#125; public synchronized void printA()&#123; while(flag != 1)&#123; try &#123; wait(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; System.out.print(Thread.currentThread().getName()); count++; flag = 2; notifyAll(); &#125; public synchronized void printB()&#123; while(flag != 2)&#123; try &#123; wait(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; System.out.print(Thread.currentThread().getName()); count++; flag = 3; notifyAll(); &#125; public synchronized void printC()&#123; while(flag != 3)&#123; try &#123; wait(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; System.out.print(Thread.currentThread().getName()); count++; flag = 1; notifyAll(); &#125;&#125;class MyThread implements Runnable&#123; private Print print; public MyThread(Print print) &#123; this.print = print; &#125; @Override public void run() &#123; int i = 1; while (i &lt;= 10) &#123; //while(print.getCount() &lt; 16)&#123;//确保每个打印5遍 if(Thread.currentThread().getName().equals(&quot;A&quot;))&#123; print.printA(); &#125;else if(Thread.currentThread().getName().equals(&quot;B&quot;))&#123; print.printB(); &#125;else if(Thread.currentThread().getName().equals(&quot;C&quot;))&#123; print.printC(); &#125; i++; &#125; &#125;&#125;public class Test&#123; public static void main(String[] args) &#123; Print print = new Print(); MyThread mt = new MyThread(print); Thread th1 = new Thread(mt,&quot;A&quot;); Thread th2 = new Thread(mt,&quot;B&quot;); Thread th3 = new Thread(mt,&quot;C&quot;); th1.start(); th2.start(); th3.start(); &#125;&#125; 方案二：思路：加锁用ReentrantLock/synchronized或者 volatile 修饰变量；取余的方式判断是否轮到当前线程执行 实现一： 推荐 ReentrantLock来解决, 还有个state整数用来判断轮到谁执行了。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970public class PrintTwo &#123; private static Lock lock = new ReentrantLock();//通过JDK5中的锁来保证线程的访问的互斥 private static int state = 0; static class First extends Thread &#123; @Override public void run() &#123; while (true) &#123; lock.lock(); if (state % 4 == 0) &#123; System.out.println(&quot;1&quot;); state++; &#125; lock.unlock(); &#125; &#125; &#125; static class Second extends Thread &#123; @Override public void run() &#123; while (true) &#123; lock.lock(); if (state % 4 == 1) &#123; System.out.println(&quot;2&quot;); state++; &#125; lock.unlock(); &#125; &#125; &#125; static class Third extends Thread &#123; @Override public void run() &#123; while (true) &#123; lock.lock(); if (state % 4 == 2) &#123; System.out.println(&quot;3&quot;); state++; &#125; lock.unlock(); &#125; &#125; &#125; static class Forth extends Thread &#123; @Override public void run() &#123; while (true) &#123; lock.lock(); if (state % 4 == 3) &#123; System.out.println(&quot;4&quot;); state++; &#125; lock.unlock(); &#125; &#125; &#125; public static void main(String[] args) &#123; First first = new First(); Second second = new Second(); Third third = new Third(); Forth forth = new Forth(); first.start(); second.start(); third.start(); forth.start(); &#125; &#125; 实现二： 特别推荐 volatile，保证被修饰的变量在读写前都会与主存交互更新。一个变量被volatile修饰后，则不同线程对这个变量进行操作时，总是从内存中读取最新值，即每次更新对其他线程都是立即可见的。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162public class PrintThree &#123; volatile static int state = 0; static class First extends Thread &#123; @Override public void run() &#123; while (true) &#123; if (state % 4 == 0) &#123; System.out.println(&quot;1&quot;); state++; &#125; &#125; &#125; &#125; static class Second extends Thread &#123; @Override public void run() &#123; while (true) &#123; if (state % 4 == 1) &#123; System.out.println(&quot;2&quot;); state++; &#125; &#125; &#125; &#125; static class Third extends Thread &#123; @Override public void run() &#123; while (true) &#123; if (state % 4 == 2) &#123; System.out.println(&quot;3&quot;); state++; &#125; &#125; &#125; &#125; static class Forth extends Thread &#123; @Override public void run() &#123; while (true) &#123; if (state % 4 == 3) &#123; System.out.println(&quot;4&quot;); state++; &#125; &#125; &#125; &#125; public static void main(String[] args) &#123; First first = new First(); Second second = new Second(); Third third = new Third(); Forth forth = new Forth(); first.start(); second.start(); third.start(); forth.start(); &#125;&#125; 实现三： Semphore,完成对信号量的控制，可以控制某个资源可以被同时访问的个数，通过acquire()获取一个许可，如果没有就等待，而release()释放一个许可。（另外，semphore还可以用来控制同时访问一个方法的线程数： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687package Thread; import java.util.concurrent.Semaphore; public class Print1234 &#123; public static Semaphore sem1; public static Semaphore sem2; public static Semaphore sem3; public static Semaphore sem4; static class FirstThread extends Thread &#123; public void run() &#123; try &#123; while (true) &#123; sem1.acquire(); System.out.println(&quot;1&quot;); sem2.release(); &#125; &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; &#125; static class SecondThread extends Thread &#123; public void run() &#123; try &#123; while (true) &#123; sem2.acquire(); System.out.println(&quot;2&quot;); sem3.release(); &#125; &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; &#125; static class ThirdThread extends Thread &#123; public void run() &#123; try &#123; while (true) &#123; sem3.acquire(); System.out.println(&quot;3&quot;); sem4.release(); &#125; &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; &#125; static class ForthThread extends Thread &#123; public void run() &#123; try &#123; while (true) &#123; sem4.acquire(); System.out.println(&quot;4&quot;); sem1.release(); &#125; &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; &#125; public static void main(String[] args) &#123; sem1 = new Semaphore(1); sem2 = new Semaphore(1); sem3 = new Semaphore(1); sem4 = new Semaphore(1); try &#123; // 不要有sem1.acquire() sem2.acquire(); sem3.acquire(); sem4.acquire(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; new FirstThread().start(); new SecondThread().start(); new ThirdThread().start(); new ForthThread().start(); &#125;&#125; 题目：写两个线程，一个线程打印1~52，另一个线程打印A~Z，打印顺序是12A34B….5152Z 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051package www.java.test;class Print&#123; int flag = 1; int count = 1; public synchronized void printNum()&#123; while(flag != 1)&#123; //此时应该打印字母，让打印数字线程等待 try &#123; wait(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; //打印数字 System.out.print(2*count - 1); System.out.print(2*count); flag = 2; notify(); &#125; public synchronized void printChar()&#123; while(flag != 2)&#123; //此时应该打印数字,字母打印线程等待 try &#123; wait(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; System.out.print((char)(count-1 + &apos;A&apos;)); //继续前行 count++; flag = 1; notify(); &#125;&#125;public class Test&#123; public static void main(String[] args) &#123; Print print = new Print(); new Thread(()-&gt;&#123; for(int i = 0; i &lt; 26; i++)&#123; print.printNum(); &#125; &#125;).start(); new Thread(()-&gt;&#123; for(int i = 0; i &lt; 26; i++)&#123; print.printChar(); &#125; &#125;).start(); &#125;&#125; 输出：12A34B56C78D910E1112F1314G1516H1718I1920J2122K2324L2526M2728N293003132P3334Q3536R3738S3940T4142U4344V4546W4748X4950Y5152z 在每一次打印完之后要把flag的值改掉，并且唤醒下一个线程 count什么时候++呢？在它打印完一个字母后这才算一个小流程完了，所以是在字母打印线程之后count++ 还有就是在进行字母打印的时候，要对count-1，因为count的初值是1，再加’A’就是B了，所以要先对count-1,完了之后要把它强转成char 参考https://blog.csdn.net/anhenzhufeng/article/details/80348400 https://blog.csdn.net/huaijiu123/article/details/86370451]]></content>
+      <categories>
+        <category>技术</category>
+        <category>编程</category>
+        <category>Java</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JDK8JVM虚拟机(二)]]></title>
+    <url>%2Fpost%2Fc013e9e0.html</url>
+    <content type="text"><![CDATA[TODO java虚拟机对象分配规则：对象优先分配在Eden区，如果Eden区没有足够的空间时，虚拟机执行一次Minor GC。 大对象直接进入老年代（大对象是指需要大量连续内存空间的对象）。这样做的目的是避免在Eden区和两个Survivor区之间发生大量的内存拷贝（新生代采用复制算法收集内存）。 长期存活的对象进入老年代。虚拟机为每个对象定义了一个年龄计数器，如果对象经过了1次Minor GC那么对象会进入Survivor区，之后每经过一次Minor GC那么对象的年龄加1，知道达到阀值对象进入老年区。 动态判断对象的年龄。如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入老年代。 空间分配担保。每次进行Minor GC时，JVM会计算Survivor区移至老年区的对象的平均大小，如果这个值大于老年区的剩余值大小则进行一次Full GC，如果小于检查HandlePromotionFailure设置，如果true则只进行Monitor GC,如果false则进行Full GC。 GC收集： 1.GC执行的时间点：具体来讲，这个时间并不是由我们控制，而是由JVM里面设置的GC策略决定的，即使我们调用System.gc（）也没法保证即时生效。 2.GC执行针对的目标：简单来说，GC针对的目标时被GC收集器判定为死亡的对象，通常我们使用可达性分析算法来判定。以一系列GC Roots为起点，如果有某个对象没有任何一个GC Roots对其可达（无引用关联）的时候，就会判定这个对象已是可回收的对象，但是这时候对象并没有被完全回收。 3.GC执行的流程：接着2来说，当GC拿到一个‘死亡’对象的时候会给其添加一个标记，然后进行筛选，筛选的条件是该对象是否有必要执行finalize（）方法，如果该方法已经被虚拟机执行过finalize方法或者没有覆盖finlize方法，则立即回收，否则将它置于一个F-Queue队列里面并由一个低优先级的Finalizer线程执行它。 4.GC使用的算法： ①标记清除算法：算法执行过程和名字一致，后果是会带来大量内存碎片，如果碰到要放大对象的时候就不得不触发GC ②复制算法：将内存的可用对象同等的复制到另一块相同大小的内存里，这种方法是使用空间换时间的做法。通常我们的新生代的GC收集都是采用此方法，这也就是为什么Eden：From：To=8：1：1的原因之一 ③标记整理算法：先标记，再将存活对象移动到一块变成连续的，再清除边界外的部分。 5.内存回收的具体实现（针对HotSpot VM）： ①Serial 收集器 ：单线程（Stop The World） 使用标记整理算法，新生代收集器 ②ParNew收集器：Serial的多线程版本，新生代收集器 ③Parallel Scavenge收集器：以吞吐量为目标的收集器。Throughtout=运行用户代码时间/（垃圾收集时间+运行用户代码时间） ④Serial Old 收集器：Serial 的老年代版本 ⑤Parallel Old收集器：Parallel Scavenge收集器的老年代版本 ⑥CMS收集器：以获取最短回收停顿时间为目标，使用标记清除算法，整个过程是跟随余户线程并发执行的，包含4个步骤： 1）初始标记 2）并发标记 3）重新标记 4)并发清除 其中重新标记是为了修正在用户程序运作而导致变动的那部分对象的标记记录。。它的缺点是对CPU资源敏感和会产生大量内存碎片，还有就是在标记过后用户线程产生的垃圾没法及时清理，必须等待下一次GC ⑦G1 收集器：目标是取代CMS收集器并且能独立进行对整个堆空间GC。 优点： ​ 1）能使用多cpu缩短停顿，通过并发使得用户线程不需要停顿 ​ 2）空间整合：整体基于标记整理算法，局部使用复制算法–不产生内存碎片 ​ 3）停顿可预测，并且能由用户指定 ​ 4）分代收集 第三点的实现实际上是把全区域分割成多个Region进行回收并跟踪，并将各个Region垃圾堆积的价值大小建立优先级并按照优先级回收。 运作流程： ​ 每个Region维护一个Remembered Set，里面记录了该Region里面对象的引用关系，使得即便新生代的对象引用了老年代的对象也不用全堆扫描。具体流程：1）初始标记2）并发标记3）最终标记4）筛选回收 与CMS的流程的区别在于最后在回收的时候会建立优先级列表，然后根据不同的策略分级回收。 参考https://blog.csdn.net/qq_36243399/article/details/79776888]]></content>
+      <categories>
+        <category>技术\编程\Java\JDK</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[按位或,按位异或,按位与]]></title>
+    <url>%2Fpost%2F62826a47.html</url>
+    <content type="text"><![CDATA[|，^，&amp;(按位或,按位异或,按位与) 说明 与1进行位与&amp;运算，值保持不变； 与0进行位与&amp;运算，值清0； 按位与&amp;常用于将整型变量中某些位清0，而其他位保持不变。 与1进行位或|运算，值置1； 与0进行位或|运算，值保持不变； 按位或|常用于将整型变量中某些位置1，而其他位保持不变。 与1进行位异或^运算，值取反； 与0进行位异或^运算，值保持不变； 按位异或^常用于将整型变量中某些位取反，而其他位保持不变。 例子：| 按位或: 参与运算的两数各对应的二进位相或.只要对应的二个二进位有一个为1时,结果位就为1 例如: 1|2 : 0001 | 0010 = 0011 9|5 : 1001 | 0101 = 1101 所以9|5=13 &amp; 按位与: 参与运算的两数各对应的二进位相与.只有对应的两个二进位均为1时,结果位才为1,否则为0 例如: 1&amp;2 : 0001 &amp; 0010 = 0000 9&amp;5 : 1001 &amp; 0101 = 0001 所以9&amp;5=1 ^ 按位异或: 参与运算的两数各对应的二进位相异或,当两对应的二进位相异时,结果为1 例如: 1^2 : 0001 ^ 0010 = 0011 9^5 : 1001 ^ 0101 = 1100 所以9^5=12 来源https://blog.csdn.net/Super_Me_Jason/article/details/79707992]]></content>
+      <categories>
+        <category>技术\编程\基础</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[bat脚本设置开机启动软件]]></title>
+    <url>%2Fpost%2F887206f7.html</url>
+    <content type="text"><![CDATA[更新 2019-09-02不是很好，还是用win自带的定时任务吧 创建一个文本文档 mystart.txt 编辑12345678910111213@echo off::延时20秒启动navicatping localhost -n 20start &quot;&quot; &quot;D:\Project\SQL\PremiumSoft\Navicat Premium 12\navicat.exe&quot;::再延时25秒启动WinSCPping localhost -n 25start &quot;&quot; &quot;D:\Project\SSH\WinSCP\WinSCP.exe&quot;::再延时4秒启动Idea工具ping localhost -n 4rem start &quot;&quot; &quot;D:\Software\IntelliJ IDEA 2018.3.4\bin\idea64.exe&quot;::执行完命令后关闭cmd命令窗口taskkill /f /im cmd.exeexit ps：ping localhost -n 2可以当做是定时器，2 是两秒的意思。根据自己的需求，也可以不设置延时，去掉&amp; ping localhost -n 2即可 保存，重命名为mystart.bat测试 双击运行 原始 12345678910111213141516@echo off::延时2秒启动QQstart &quot;&quot; &quot;C:\Program Files (x86)\Tencent\QQ\Bin\QQScLauncher.exe&quot; &amp; ping localhost -n 2::延时3秒启动搜狗浏览器start &quot;&quot; &quot;C:\Users\Administrator\AppData\Local\SogouExplorer\SogouExplorer.exe&quot; &amp; ping localhost -n 3::延时4秒启动Idea工具start &quot;&quot; &quot;D:\Software\IntelliJ IDEA 2018.3.4\bin\idea64.exe&quot; &amp; ping localhost -n 4::启动cmd.exe程序，因后面启动分布式服务需要执行cmd命令start &quot;&quot; &quot;C:\Windows\System32\cmd.exe&quot; ::启动分布式服务（开发模式）d:cd D:\Software\consulconsul agent -dev -client 0.0.0.0 -ui::执行完命令后关闭cmd命令窗口taskkill /f /im cmd.exeexit 来源https://blog.csdn.net/qq_37552993/article/details/88547065]]></content>
+      <categories>
+        <category>生活</category>
+        <category>计算机</category>
+        <category>window</category>
+        <category>bat</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySql安装启动服务问题]]></title>
+    <url>%2Fpost%2Fa5350044.html</url>
+    <content type="text"><![CDATA[MySql服务无法安装 或者安装后无法启动 终极解法 安装MySQL遇到问题 启动MySQL服务时，发送系统错误 3。系统找不到指定路径 开始如果已创建，先删除MySQL服务 123SC DELETE MYSQL或者mysqld --remove 方案一、MySQL默认安装服务方式1mysqld --install MySQL --defaults-file=&quot;D:\Project\SQL\mysql\mysql-8.0.16-winx64\my.ini&quot; ps： 123456789NT and Win32 specific options: --install Install the default service (NT). --install-manual Install the default service started manually (NT). --install service_name Install an optional service (NT). --install-manual service_name Install an optional service started manually (NT). --remove Remove the default service from the service list (NT). --remove service_name Remove the service_name from the service list (NT). --enable-named-pipe Only to be used for the default server (NT). --standalone Dummy option to start as a standalone server (NT). 方案二、自己手动安装服务step1 管理员运行cmd 输入 1sc create MySQL binpath= &quot;%MYSQL_HOME%\bin\mysqld&quot; step2 regedit 打开注册表 定位到 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MySQL 修改ImagePath 值为 1&quot;%MYSQL_HOME%\bin\mysqld&quot; --defaults-file=&quot;%MYSQL_HOME%\my.ini&quot; mysql ps：如果没有配置MYSQL_HOME 请修改为mysql安装目录 方案三、直接运行注册表新建文本文档——&gt; 以下复制,保存——&gt; 重命名为 mysql.reg——&gt; 运行mysql.reg文件 12345678910111213Windows Registry Editor Version 5.00[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MySQL]&quot;Type&quot;=dword:00000010&quot;Start&quot;=dword:00000003&quot;ErrorControl&quot;=dword:00000001&quot;ImagePath&quot;=hex(2):22,00,25,00,4d,00,59,00,53,00,51,00,4c,00,5f,00,48,00,4f,00,\ 4d,00,45,00,25,00,5c,00,62,00,69,00,6e,00,5c,00,6d,00,79,00,73,00,71,00,6c,\ 00,64,00,22,00,20,00,2d,00,2d,00,64,00,65,00,66,00,61,00,75,00,6c,00,74,00,\ 73,00,2d,00,66,00,69,00,6c,00,65,00,3d,00,22,00,25,00,4d,00,59,00,53,00,51,\ 00,4c,00,5f,00,48,00,4f,00,4d,00,45,00,25,00,5c,00,6d,00,79,00,2e,00,69,00,\ 6e,00,69,00,22,00,20,00,6d,00,79,00,73,00,71,00,6c,00,00,00&quot;ObjectName&quot;=&quot;LocalSystem&quot; regedit 打开注册表 定位到 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MySQL 查看是否创建成功 ps：如果创建失败 禁用所有安全类管家 或者 msconfig 启动安全模式，安全模式下运行 mysql.reg 注册服务参考 总结：推荐方案三 参考]]></content>
+      <categories>
+        <category>生活 - 计算机 - 软件 - MySql</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL解压版安装]]></title>
+    <url>%2Fpost%2Fb2d8a10d.html</url>
+    <content type="text"><![CDATA[MySQL硬盘版安装使用 官网 https://dev.mysql.com/downloads/mysql/ Window下 mysql-8.0.17-winx64.zip 解压版下载地址 MD5: d120bb0513c2ccfaeee74b0e99217bb7 mysql-installer-community-8.0.17.0.msi 安装版下载 MD5: 3aa8d6470fb6b58f517d3efb46e5472b 解压版安装环境变量1234#创建 MYSQL_HOME 例：MYSQL_HOME=D:\Project\SQL\mysql\mysql-8.0.17-winx64#修改path 添加 ;%MYSQL_HOME%\bin 配置文件MYSQL_HOME目录下创建 my.ini 文件 例 1234567891011121314151617181920212223242526272829303132[Client]port = 3306[mysqld]#自己指定的临时文件目录#tmpdir=E:\Data\SQL\mysql\temp#设置3306端口port = 3306#跳过密码 8无效#skip-grant-tables# 设置mysql的安装目录basedir=D:\Project\SQL\mysql\mysql-8.0.17-winx64# 设置mysql数据库的数据的存放目录datadir=E:\Data\SQL\mysql\data# 允许最大连接数max_connections=200# 服务端使用的字符集默认为8比特编码的latin1字符集#character-set-server=utf8character-set-server=UTF8MB4# 创建新表时将使用的默认存储引擎default-storage-engine=INNODBsql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES[mysql]# 设置mysql客户端默认字符集default-character-set=utf8#下面好像没用#[WinMySQLAdmin]#Server=D:\Project\SQL\mysql\mysql-8.0.16-winx64\bin\mysqld.exe 创建data 数据库1mysqld --initialize-insecure --user=mysql --console ps：修改配置文件 datadir 需要删掉全部 重新解压安装包 创建服务12# 创建MySQL系统服务，指定配置文件路径mysqld --install MySQL --defaults-file=&quot;D:\Project\SQL\mysql\mysql-8.0.16-winx64\my.ini&quot; ps：删除MySQL服务 123SC DELETE MYSQL或者mysqld --remove 启动mysql服务1234#启动net start mysql#停止服务net stop mysql 登陆1mysql -uroot -p 修改密码mysql -uroot -p 回车登陆 方案一 8用 12345678#修改加密规则ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;password&apos; PASSWORD EXPIRE NEVER;#更新一下用户的密码ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;password&apos;;#刷新权限FLUSH PRIVILEGES;#再重置下密码alter user &apos;root&apos;@&apos;localhost&apos; identified by &apos;123456&apos;; 方案二 123set password = password(&apos;root&apos;);或者set password for 用户名@localhost = password(&apos;新密码&apos;); 方案三 123use mysql;update user set Password=PASSWORD(&quot;123456&quot;) where User=&quot;root&quot;;flush privileges; 跳过密码：step1：打开一个管理员cmd窗口 1234#关闭服务net stop mysql# 跳过密码mysqld --console --skip-grant-tables --shared-memory step2：再新打开一个cmd窗口 mysql -uroot -p 回车登陆 相关查看安装帮助 1mysqld --verbose --help 参考mysql免安装版从下载到安装到使用 https://blog.csdn.net/weixin_39936341/article/details/82701357 mySQL优化 my.ini 配置说明https://yq.aliyun.com/articles/604592?utm_content=m_1000004612 MySQL5.7.23解压版安装教程 https://blog.csdn.net/rucia/article/details/81288235]]></content>
+      <categories>
+        <category>生活 - 计算机 - 软件 - MySql</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在任务栏查看电池状态]]></title>
+    <url>%2Fpost%2Fb0875263.html</url>
+    <content type="text"><![CDATA[若要将电池图标添加到任务栏，请依次选择“开始”按钮 &gt; “设置” &gt; “个性化” &gt; “任务栏”，然后查看通知区域。选择“选择在任务栏上显示的图标”，然后将“电源”切换到“开”。 可通过选择任务栏中的电池图标查看电池状态。 参考https://support.microsoft.com/zh-cn/help/29280/windows-10-how-to-use-the-taskbar]]></content>
+      <categories>
+        <category>生活 - 计算机 - window</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[rabbitMQ介绍]]></title>
+    <url>%2Fpost%2F9a8647a6.html</url>
+    <content type="text"><![CDATA[TODO 参考RabbitMQ：消息发送确认 与 消息接收确认（ACK）https://www.jianshu.com/p/2c5eebfd0e95 RabbitMQ的消息丢失解决方案https://www.jianshu.com/p/19e0927315da RabbitMQ学习(六)——消息确认机制(Confirm模式)https://blog.csdn.net/anumbrella/article/details/81321701 RabbitMQ可靠性投递及高可用集群https://www.cnblogs.com/wuzhenzhao/p/10329348.html springboot+rabbitmq整合示例程https://blog.csdn.net/weixin_30951389/article/details/98144906]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>工具</category>
+        <category>消息中间件</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[字符串是否对称]]></title>
+    <url>%2Fpost%2Fc76b36a9.html</url>
+    <content type="text"><![CDATA[方案一字符串转化为char数组，循环比较 方案二StringBuffer对象中有个reverse() 方法，可以反转字符串 参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>编程</category>
+        <category>Java</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kali破解wifi密码]]></title>
+    <url>%2Fpost%2Fb0effc6e.html</url>
+    <content type="text"><![CDATA[Kali Linux能做很多事，但是它主要以渗透测试及’破解wifi密码’闻名。 如果你使用Macbook，看这里：使用macbook破解WPA/WPA2 wifi密码 要求： 安装有Kali Linux的计算机 支持监控模式的网卡，笔记本电脑一般都支持 字典文件 时间和耐心 更新2019-08-15 获取相关命令 123mkdir -p ~/wifi/capcd ~/wifiwget http://disanshijie.top:6000/tools/cali-wifi.txt 上传服务器如果cap放到其他地方执行，需要复制到虚拟机外ps：生成.cap 握手包放到 ~/wifi/cap 文件夹下 下载脚本 123cd ~/wifiwget http://disanshijie.top:6000/tools/expect_scp.shchmod 777 expect_scp.sh 上传.cap文件 1./expect_scp.sh [ip] [username] [password] ~/wifi/cap [保存到服务器路径] 破解https://gpuhash.me/ 正文这种攻击需要字典文件，一个好的字典至关重要。我以Kali Linux自带的rockyou字典为例，位于/user/share/wordlists/rockyou.txt.gz。 使用前先解压： 1# gzip -d /usr/share/wordlists/rockyou.txt.gz 注意：破解其他人的wifi密码是“犯罪”，so，don’t；我使用自己的无线路由器演示。 知道了攻击方法，你自然就知道怎么防范了。 1）首先断开连接的wifi。在终端中执行： 1# airmon-ng 上面命令列出了支持监控模式的无线网卡。如果没有任何输出，表示无线网卡不支持监控模式。你可以看到我的wlan0支持监控模式。 2）开启无线网卡的监控模式1# airmon-ng start wlan0 执行成功之后网卡接口变为wlan0mon；可以使用ifconfig命令查看。 3）查看wifi网络1# airodump-ng wlan0mon 上面列出了周围的wifi和它们的详细信息，包括信号强度、加密类型、频道等。要记住要破解wifi的频道号和BSSID。 按Ctrl-C结束。 4）抓取握手包使用网卡的监听模式抓取周围的无线网络数据包。其中，对我们最重要的数据包是：包含密码的包－也叫握手包。当有新用户或断开用户自动连接wifi时，会发送握手包。 开始抓包： 1# airodump-ng -c 6 --bssid C8:3A:35:30:3E:C8 -w ~/ wlan0mon 参数解释： -c指定频道号 –bssid指定路由器bssid -w指定抓取的数据包保存位置 5）强制连接到wifi的设备重新连接路由器现在我们只要等用户连接/重连接wifi了，运气不好也许要很长时间。 但是我们是不会等的，这不是耐心黑客该干的事。有一个叫aireplay-ng的工具，它可以强制用户断开wifi连接；原理是，给连接到wifi的一个设备发送一个deauth（反认证）包，让那个设备断开wifi，随后它自然会再次连接wifi。 aireplay-ng的生效前提是，wifi网络中至少有一个连接的设备。从上图(4)可以看到哪些设备连接到了wifi，STATION就是连接设备的MAC地址，记住一个。 aircrack-ng官网 打开新终端执行： 1# aireplay-ng -0 2 -a C8:3A:35:30:3E:C8 -c B8:E8:56:09:CC:9C wlan0mon 参数解释： -0表示发起deauthentication攻击 -a指定无线路由器BSSID -c指定强制断开的设备 步骤04中获取到的设备STATION信息 如果成功： 按Ctrl-C结束抓包。 我们已经得到了想要的握手包了，可以结束无线网卡的监控模式了： 1# airmon-ng stop wlan0mon 6) 开始破解密码1# aircrack-ng -a2 -b C8:3A:35:30:3E:C8 -w /usr/share/wordlists/rockyou.txt ~/*.cap 参数解释： -a2代表WPA的握手包 -b指定要破解的wifi BSSID。 -w指定字典文件 最后是抓取的包 可选）使用显卡的运算能力如果你有一个强大的GPU，为什么不使用GPU跑字典呢？ Hashcat可以借助GPU的运算力破解各种不同算法的hash值。 下载时要注意选择正确的显卡类型（AMD、NVidia）。Kali Linux自带这个工具。 在破解cap文件之前，要把它转换为hccap文件： 1# aircrack-ng file.cap -J out.hccap 使用GPU破解hash： 1# hashcat -m 2500 out.hccap 字典文件 总结：防止这种攻击最简单的方法是设置贼复杂贼长的密码； 不要使用WEP加密方式，非常容易被破解： Kali Linux破解wifi密码(WEP) 现在的无线路由器都有WPS功能，关了吧： 使用Reaver破解开启了WPS功能的wifi密码(wpa/wpa2) Written on April 21, 2016 来源http://topspeedsnail.com/kali-linux-crack-wifi-wpa/ https://www.jianshu.com/p/6622d80bcc15 https://www.jianshu.com/p/32e19a365534 https://www.cnblogs.com/qiyeboy/p/5792927.html http://topspeedsnail.com/kali-linux-crack-wifi-wpa/ https://blog.csdn.net/yuyingkuang4973/article/details/82290565]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>系统</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[officeKMS激活]]></title>
+    <url>%2Fpost%2F62abe816.html</url>
+    <content type="text"><![CDATA[office使用KMS快速激活 KMS激活使用方法一般来说，只要确保的下载的是VL批量版本并且没有手动安装过任何key， 你只需要使用管理员权限运行cmd执行一句命令就足够： 1slmgr /skms kms.luody.info 然后去计算机属性或者控制面板其他的什么的地方点一下激活就好了。 当然，如果你懒得点，可以多打一句命令手动激活： 1slmgr /ato 这句命令的意思是，马上对当前设置的key和服务器地址等进行尝试激活操作。 kms激活的前提是你的系统是批量授权版本，即VL版，一般企业版都是VL版，专业版有零售和VL版，家庭版旗舰版OEM版等等那就肯定不能用kms激活。一般建议从http://msdn.itellyou.cn上面下载系统 VL版本的镜像一般内置GVLK key，用于kms激活。如果你手动输过其他key，那么这个内置的key就会被替换掉，这个时候如果你想用kms，那么就需要把GVLK key输回去。首先， 到https://technet.microsoft.com/en-us/library/jj612867.aspx 获取你对应版本的KEY 如果打不开下面有对应的 如果不知道自己的系统是什么版本，可以运行以下命令查看系统版本： 1wmic os get caption 得到对应key之后，使用管理员权限运行cmd执行安装key： 1slmgr /ipk xxxxx-xxxxx-xxxxx-xxxxx 然后跟上面说的一样设置kms服务器地址，激活。 一句命令激活OFFICE首先你的OFFICE必须是VOL版本，否则无法激活。 找到你的office安装目录，比如 1C:\Program Files (x86)\Microsoft Office\Office16 64位的就是 1C:\Program Files\Microsoft Office\Office16 office16是office2016，office15就是2013，office14就是2010. 然后目录对的话，该目录下面应该有个OSPP.VBS。 接下来我们就cd到这个目录下面，例如： 1cd C:\Program Files (x86)\Microsoft Office\Office16 然后执行注册kms服务器地址： 1cscript ospp.vbs /sethst:kms.luody.info /sethst参数就是指定kms服务器地址。 一般ospp.vbs可以拖进去cmd窗口，所以也可以这么弄： 1cscript &quot;C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS&quot; /sethst:kms.luody.info 一般来说，“一句命令已经完成了”，但一般office不会马上连接kms服务器进行激活，所以我们额外补充一条手动激活命令： 1cscript ospp.vbs /act 如果提示看到successful的字样，那么就是激活成功了，重新打开office就好。 ## 如果遇到报错，请检查： 你的系统/OFFICE是否是批量VL版本 是否以管理员权限运行CMD 你的系统/OFFICE是否修改过KEY/未安装GVLK KEY 检查你的网络连接 服务器繁忙，多试试（点击检查KMS服务是否可用） 根据出错代码自己搜索出错原因 Windows GVLK密钥对照表（KMS激活专用） 以下key来源于微软官网：https://technet.microsoft.com/en-us/library/jj612867.aspx Windows Server 2016 操作系统 KMS激活序列号 Windows Server 2016 Datacenter CB7KF-BWN84-R7R2Y-793K2-8XDDG Windows Server 2016 Standard WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY Windows Server 2016 Essentials JCKRF-N37P4-C2D82-9YXRT-4M63B Windows 10 操作系统 KMS激活序列号 Windows 10 Professional W269N-WFGWX-YVC9B-4J6C9-T83GX Windows 10 Professional N MH37W-N47XK-V7XM9-C7227-GCQG9 Windows 10 Enterprise NPPR9-FWDCX-D2C8J-H872K-2YT43 Windows 10 Enterprise N DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 Windows 10 Education NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 Windows 10 Education N 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ Windows 10 Enterprise 2015 LTSB WNMTR-4C88C-JK8YV-HQ7T2-76DF9 Windows 10 Enterprise 2015 LTSB N 2F77B-TNFGY-69QQF-B8YKP-D69TJ Windows 10 Enterprise 2016 LTSB DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ Windows 10 Enterprise 2016 LTSB N QFFDN-GRT3P-VKWWX-X7T3R-8B639 Windows Server 2012 R2 和 Windows 8.1 操作系统 KMS激活序列号 Windows 8.1 Professional GCRJD-8NW9H-F2CDX-CCM8D-9D6T9 Windows 8.1 Professional N HMCNV-VVBFX-7HMBH-CTY9B-B4FXY Windows 8.1 Enterprise MHF9N-XY6XB-WVXMC-BTDCT-MKKG7 Windows 8.1 Enterprise N TT4HM-HN7YT-62K67-RGRQJ-JFFXW Windows Server 2012 R2 Server Standard D2N9P-3P6X9-2R39C-7RTCD-MDVJX Windows Server 2012 R2 Datacenter W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9 Windows Server 2012 R2 Essentials KNC87-3J2TX-XB4WP-VCPJV-M4FWM Windows Server 2012 和 Windows 8 操作系统 KMS激活序列号 Windows 8 Professional NG4HW-VH26C-733KW-K6F98-J8CK4 Windows 8 Professional N XCVCF-2NXM9-723PB-MHCB7-2RYQQ Windows 8 Enterprise 32JNW-9KQ84-P47T8-D8GGY-CWCK7 Windows 8 Enterprise N JMNMF-RHW7P-DMY6X-RF3DR-X2BQT Windows Server 2012 BN3D2-R7TKB-3YPBD-8DRP2-27GG4 Windows Server 2012 N 8N2M2-HWPGY-7PGT9-HGDD8-GVGGY Windows Server 2012 Single Language 2WN2H-YGCQR-KFX6K-CD6TF-84YXQ Windows Server 2012 Country Specific 4K36P-JN4VD-GDC6V-KDT89-DYFKP Windows Server 2012 Server Standard XC9B7-NBPP2-83J2H-RHMBY-92BT4 Windows Server 2012 MultiPoint Standard HM7DN-YVMH3-46JC3-XYTG7-CYQJJ Windows Server 2012 MultiPoint Premium XNH6W-2V9GX-RGJ4K-Y8X6F-QGJ2G Windows Server 2012 Datacenter 48HP8-DN98B-MYWDG-T2DCC-8W83P Windows 7 and Windows Server 2008 R2 操作系统 KMS激活序列号 Windows 7 Professional FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4 Windows 7 Professional N MRPKT-YTG23-K7D7T-X2JMM-QY7MG Windows 7 Professional E W82YF-2Q76Y-63HXB-FGJG9-GF7QX Windows 7 Enterprise 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH Windows 7 Enterprise N YDRBP-3D83W-TY26F-D46B2-XCKRJ Windows 7 Enterprise E C29WB-22CC8-VJ326-GHFJW-H9DH4 Windows Server 2008 R2 Web 6TPJF-RBVHG-WBW2R-86QPH-6RTM4 Windows Server 2008 R2 HPC edition TT8MH-CG224-D3D7Q-498W2-9QCTX Windows Server 2008 R2 Standard YC6KT-GKW9T-YTKYR-T4X34-R7VHC Windows Server 2008 R2 Enterprise 489J6-VHDMP-X63PK-3K798-CPX3Y Windows Server 2008 R2 Datacenter 74YFP-3QFB3-KQT8W-PMXWJ-7M648 Windows Server 2008 R2 for Itanium-based Systems GT63C-RJFQ3-4GMB6-BRFB9-CB83V Windows Vista and Windows Server 2008 操作系统 KMS激活序列号 Windows Vista Business YFKBB-PQJJV-G996G-VWGXY-2V3X8 Windows Vista Business N HMBQG-8H2RH-C77VX-27R82-VMQBT Windows Vista Enterprise VKK3X-68KWM-X2YGT-QR4M6-4BWMV Windows Vista Enterprise N VTC42-BM838-43QHV-84HX6-XJXKV Windows Web Server 2008 WYR28-R7TFJ-3X2YQ-YCY4H-M249D Windows Server 2008 Standard TM24T-X9RMF-VWXK6-X8JC9-BFGM2 Windows Server 2008 Standard without Hyper-V W7VD6-7JFBR-RX26B-YKQ3Y-6FFFJ Windows Server 2008 Enterprise YQGMW-MPWTJ-34KDK-48M3W-X4Q6V Windows Server 2008 Enterprise without Hyper-V 39BXF-X8Q23-P2WWT-38T2F-G3FPG Windows Server 2008 HPC RCTX3-KWVHP-BR6TB-RB6DM-6X7HP Windows Server 2008 Datacenter 7M67G-PC374-GR742-YH8V4-TCBY3 Windows Server 2008 Datacenter without Hyper-V 22XQ2-VRXRG-P8D42-K34TD-G3QQC Windows Server 2008 for Itanium-Based Systems 4DWFP-JF3DJ-B7DTH-78FJB-PDRHK 来源https://github.com/luodaoyi/kms-server]]></content>
+      <categories>
+        <category>生活\计算机\软件\office</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VPS主机性能和速度测试方法]]></title>
+    <url>%2Fpost%2Ff86045d4.html</url>
+    <content type="text"><![CDATA[这年头VPS主机太多了，好多“二手”VPS开始横行其道，让人真假莫辨，想要购买某一个VPS主机，一般是先要看看这家的VPS主机的评测数据。之前分享VPS主机时都会给出VPS的性能与速度测试报告，这次我就来专门整理一下相关的测试工具。 一来给自己做一个备忘录，以后测试VPS就不用满大街地找百度要命令了，二来给没有用过的朋友一点帮助，这些工具都是好多站长朋友通用的，自己购买的VPS主机到底值不值这个价格，用这几个工具一测试便知，而且操作简单，只需要几个命令即可完成。 需要提醒的是，关于IO读写速度的测试，根据以往的经验，像谷歌云服务器、亚马逊服务器等，IO读写速度都比较低，而SSD在IO方面表现出色。另外，国外的VPS主机的速度很大程度上取决于线路的好坏，并且晚上和白天的测试速度会差别比较大。 更多的关于VPS教程和经验方法，你可以看看： VPS.net的VPS主机使用体验-账号验证与VPS主机性能速度测评 Vestacp问题:SSL证书,HTTP/2,网站统计,在线文件管理和301重定向 WHMCS整合Vultr自动开通激活VPS主机方法-实现在WHMCS上分销VPS PS：2017年8月20日更新，补充一下VPS主机CN2线路测试方法：鉴别真假CN2线路主机参考手册。 零、常用检测脚本汇总为方便使用，我在这里汇总一下用于VPS各类检测的脚本，有关脚本的详细使用及说明可参阅下文的内容。 1、一键测试服务器到国内的速度脚本Superspeed.sh ： 123wget https://raw.githubusercontent.com/oooldking/script/master/superspeed.shchmod +x superspeed.sh./superspeed.sh 2、一键检测VPS的CPU、内存、负载、IO读写、机房带宽等脚本：bench.sh 1234567891011121314命令1：wget -qO- bench.sh | bash或者curl -Lso- bench.sh | bash命令2：wget -qO- 86.re/bench.sh | bash或者curl -so- 86.re/bench.sh | bash备注：bench.sh 既是脚本名，同时又是域名。如果以上失效，请使用以下地址下载再执行脚本：下载地址：https://github.com/teddysun/across/blob/master/bench.sh 3、可以看作bench.sh强化版：SuperBench.sh 新增 Virt 检测服务器类型参数。常见 openvz，kvm，独服都能检测出来。同时整合上面的Superspeed.sh一键测试服务器到国内的速度脚本： 123wget -qO- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash或者curl -Lso- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash 4、一键带宽检测工具：speedtest-cli 安装命令： 123456789sudo apt-get updateapt-get install python-pipsudo pip install speedtest-cli#CentOSyum updateyum -y install epel-releaseyum install python-pippip install speedtest-cli 使用方法： 12345678910speedtest-cli#后面也可以接以下参数：-h, --help show this help message and exit --share 分享你的网速，该命令会在speedtest网站上生成网速测试结果的图片。 --simple Suppress verbose output, only show basic information --list 根据距离显示speedtest.net的测试服务器列表。 --server=SERVER 指定列表中id的服务器来做测试。 --mini=MINI URL of the Speedtest Mini server --source=SOURCE Source ip address to bind to --version Show the version number and exit 5、VPS性能综合跑分工具：unixbench 命令如下： 123wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.shchmod +x unixbench.sh./unixbench.sh 6、一键测试回程Ping值工具：mPing 12wget https://raw.githubusercontent.com/helloxz/mping/master/mping.shbash mping.sh 7、Serverreview-benchmark综合评测工具 这是一个老外写的VPS主机综合评测工具，主要评测的项目有VPS主机磁盘IO、内存读写、CPU性能以及Benchmark性能，还有美国、欧洲、亚洲等不同节点的下载速度。主页：https://github.com/sayem314/serverreview-benchmark 脚本使用使用方法 123456#简略版yum install curl -ycurl -LsO git.io/bench.sh; chmod +x bench.sh &amp;&amp; ./bench.sh -a share#完整版yum install curl -ycurl -LsO git.io/bench.sh; chmod +x bench.sh &amp;&amp; ./bench.sh -a share 一、VPS速度测试工具在线测试工具。使用在线测试工具，可以方便得到服务器的响应时间，这一招对于国外的VPS特别有效果。以下是搜集整理的实用在线网站速度测试工具网站： http://ping.chinaz.com/ http://www.ipip.net/ping.php https://www.17ce.com/ http://www.webkaka.com/ http://ce.cloud.360.cn/ 这几个在线测速工具各有各的优缺点，推荐使用ipip.net测试服务器IP和路由追踪，用17ce.com测试网页加载速度，用ping.chinaz.com用国内不同地方的Ping值。 本地测试软件。这里推荐使用WinMTR，这是一款方便易用的路由跟踪工具。该软件可以帮助用户直接查看各个节点的响应时间及丢包率，非常适合windows下客户做路由追踪及PING进行测试。 下载地址：https://www.ucblog.net/wzfou/WinMTR-CN-IP.zip 项目主页：https://github.com/oott123/WinMTR 带地图版：https://cdn.ipip.net/17mon/besttrace.exe 启用WinMTR，点击可以更新IP地址。 输入你想要追踪的域名或者服务器IP，接着你就可以看到数据包经过的节点还有丢包等情况，同时支持导出文本。 相关的参数说明如下： Hostname：到目的服务器要经过的每个主机IP或名称Nr：经过节点的数量；以上图百度为例子：一共要经过10个节点，其中第一个是出口的路由器Loss%：ping 数据包回复失败的百分比；藉此判断，那个节点（线路）出现故障，是服务器所在机房还是国际路由干路Sent：已传送的数据包数量Recv：成功接收的数据包数量Best：回应时间的最小值Avrg：平均回应时间Worst：回应时间的最大值Last：最后一个数据包的回应时间 PS：2017年9月12日更新，Superspeed.sh 一键测试服务器到国内的速度脚本： 123wget https://raw.githubusercontent.com/oooldking/script/master/superspeed.shchmod +x superspeed.sh./superspeed.sh 二、VPS性能测试工具手动检测命令。直接使用命令：cat /proc/cpuinfo 或者 lscpu，你就可以看到你使用的VPS的CPU配置如何。 检测出来的CPU，你也可以进入这个网站：http://www.cpubenchmark.net/cpu_list.php，查看CPU的性能到底排行多少位，至少让自己心里有个数。 另外一个手动命令测试磁盘IO： 1dd if=/dev/zero of=test bs=64k count=4k oflag=dsync 手动命令测试VPS网络： 1wget http://cachefly.cachefly.net/100mb.test 一键检测脚本。这里有一个一键检测VPS的CPU、内存、负载、IO读写、机房带宽等。 1234567891011121314命令1：wget -qO- bench.sh | bash或者curl -Lso- bench.sh | bash命令2：wget -qO- 86.re/bench.sh | bash或者curl -so- 86.re/bench.sh | bash备注：bench.sh 既是脚本名，同时又是域名。如果以上失效，请使用以下地址下载再执行脚本：下载地址：https://github.com/teddysun/across/blob/master/bench.sh PS：2017年9月27日更新，SuperBench.sh可以看作bench.sh强化版，新增 Virt 检测服务器类型参数，常见 openvz，kvm，独服都能检测出来。同时整合上面的Superspeed.sh一键测试服务器到国内的速度脚本： 123wget -qO- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash或者curl -Lso- https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash 运行一键检测脚本后，会显示当前测试的各种系统信息，取自世界多处的知名数据中心的测试点进行下载速度测试，支持 IPv6 下载测速，IO 测试三次并显示平均值，由于测试点都在国外，所以国内的服务器下载速度测试可能会失败。 一键带宽检测工具：speedtest-cli，官网：https://github.com/sivel/speedtest-cli，安装命令： 123sudo apt-get updateapt-get install python-pipsudo pip install speedtest-cli 使用方法： 12345678910speedtest-cli#后面也可以接以下参数：-h, --help show this help message and exit --share 分享你的网速，该命令会在speedtest网站上生成网速测试结果的图片。 --simple Suppress verbose output, only show basic information --list 根据距离显示speedtest.net的测试服务器列表。 --server=SERVER 指定列表中id的服务器来做测试。 --mini=MINI URL of the Speedtest Mini server --source=SOURCE Source ip address to bind to --version Show the version number and exit VPS性能综合跑分工具。UnixBench是一个类unix系（Unix，BSD，Linux）统下的性能测试工具，一个开源工具，被广泛用与测试linux系统主机的性能。Unixbench的主要测试项目有：系统调用、读写、进程、图形化测试、2D、3D、管道、运算、C库等系统基准性能提供测试数据。命令如下： 123wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.shchmod +x unixbench.sh./unixbench.sh 测试项目说明如下： Dhrystone 2 using register variables此项用于测试 string handling，因为没有浮点操作，所以深受软件和硬件设计（hardware and software design）、编译和链接（compiler and linker options）、代码优化（code optimazaton）、对内存的cache（cache memory）、等待状态（wait states）、整数数据类型（integer data types）的影响。 Double-Precision Whetstone这一项测试浮点数操作的速度和效率。这一测试包括几个模块，每个模块都包括一组用于科学计算的操作。覆盖面很广的一系列 c 函数：sin，cos，sqrt，exp，log 被用于整数和浮点数的数学运算、数组访问、条件分支（conditional branch）和程序调用。此测试同时测试了整数和浮点数算术运算。 Execl Throughput此测试考察每秒钟可以执行的 execl 系统调用的次数。 execl 系统调用是 exec 函数族的一员。它和其他一些与之相似的命令一样是 execve（） 函数的前端。 File copy测试从一个文件向另外一个文件传输数据的速率。每次测试使用不同大小的缓冲区。这一针对文件 read、write、copy 操作的测试统计规定时间（默认是 10s）内的文件 read、write、copy 操作次数。 Pipe Throughput管道（pipe）是进程间交流的最简单方式，这里的 Pipe throughtput 指的是一秒钟内一个进程可以向一个管道写 512 字节数据然后再读回的次数。需要注意的是，pipe throughtput 在实际编程中没有对应的真实存在。 Pipe-based Context Switching这个测试两个进程（每秒钟）通过一个管道交换一个不断增长的整数的次数。这一点很向现实编程中的一些应用，这个测试程序首先创建一个子进程，再和这个子进程进行双向的管道传输。 Process Creation测试每秒钟一个进程可以创建子进程然后收回子进程的次数（子进程一定立即退出）。process creation 的关注点是新进程进程控制块（process control block）的创建和内存分配，即一针见血地关注内存带宽。一般说来，这个测试被用于对操作系统进程创建这一系统调用的不同实现的比较。 System Call Overhead测试进入和离开操作系统内核的代价，即一次系统调用的代价。它利用一个反复地调用 getpid 函数的小程序达到此目的。 Shell Scripts测试一秒钟内一个进程可以并发地开始一个 shell 脚本的 n 个拷贝的次数，n 一般取值 1，2，4，8。（我在测试时取 1， 8）。这个脚本对一个数据文件进行一系列的变形操作（transformation）。 根据你的VPS性能不同，一般需要半个小时以上才会得到跑分结果，分数越高就表示性能越好。（点击放大） 这里再提供另外一个VPS速度与性能综合测试工具，用它可以一键测试VPS主机的基本配置、机房带宽、Ping值、IO性能、UnixBench跑分等，测试过程花费的时间比较长，需要耐心等待。 123456#普通模式（测试机器配置， IO ，带宽和全国 ping 值）：wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest/master/test_91yun.sh &amp;&amp; bash test_91yun.sh简单模式（测试机器配置， IO ，带宽和全国 ping 值）：wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest/master/test_91yun.sh &amp;&amp; bash test_91yun.sh s完全模式（测试机器配置， IO ，带宽、全国 ping 值、unixbench跑分）：wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/91yuntest/master/test_91yun.sh &amp;&amp; bash test_91yun.sh a 三、VPS主机真伪检测检测VPS真实内存。首先用命令查看真实的内存：free -m，接着切换至内存目录：cd /dev/shm，然后进行数据写入，标识 count=100 为写入100M，你可以修改为主机商标注的内存上限一点点： 123dd if=/dev/zero of=./memtest bs=1M count=100#注意完成后，执行删除：rm ./memtest 一旦出现错误：dd: error writing ‘./memtest’: No space left on device，就说明内存大小低于我们测试的数值，你可以继续降低数值，直到得到真实的内存。 检测VPS虚拟技术。命令如下： 1wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/code/master/vm_check.sh &amp;&amp; bash vm_check.sh 测试结果会显示是KVM、Xen还是OpenVZ。 自建speedtest测试。这个适合VPS主机商，方便给客户测试从服务器到用户本地的下载速度。 项目主页：https://github.com/adolfintel/speedtest 修改版本：https://www.ucblog.net/wzfou/speedtest-lite.zip 将程序上传到服务器上，客户打开后点击就可以测试得到服务器的速度了。 四、总结UnixBench性能跑分受版本影响较大。UnixBench目前有不同的版本，而网上不少的版本也是经过人工修改过的，可能测试的项目不同导致的结果也会不同。大家在测试时记得找一个参照对比。 IO读写速度受母机的影响比较大。有一些超售的服务器，由于用户众多，IO速度很慢，像这样的就要小心你的“邻居”了。使用一键脚本检测时，如果用在国内的VPS时，在网络测速中会出现卡死的情况。 来源https://wzfou.com/vps-ceping-gongju/]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>系统</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ajax请求添加head]]></title>
+    <url>%2Fpost%2F5be3761a.html</url>
+    <content type="text"><![CDATA[ajax请求添加head 两种方案 123456789101112131415161718192021222324252627function ajaxGet(url, params, callback) &#123; $.ajax(&#123; url: url, data: params, dataType: &apos;JSON&apos;, async: false, //请求是否异步，默认为异步 type: &apos;GET&apos;, //方案一 /* headers: &#123; //Accept: &quot;application/json; charset=utf-8&quot;, &quot;API-Key&quot;: getApiKey() &#125;, */ //方案二 beforeSend: function(request) &#123; request.setRequestHeader(&quot;API-Key&quot;, getApiKey()); // request.setRequestHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;); &#125;, success: function(list) &#123; callback(list); &#125;, error: function() &#123; console.error(&quot;请求失败&quot;); &#125; &#125;);&#125; 参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux后台操作]]></title>
+    <url>%2Fpost%2Fa06e4c25.html</url>
+    <content type="text"><![CDATA[TODO 后台运行/root/test.php &amp; 后台不挂断地运行，关闭终端也能在后台运行nohup /root/test.php &amp; 将运行的日志输出到指定的文件nohup /root/test.php &gt;file1 2&gt;file2 &amp;file1脚本正确输出的日志，file2脚本运行过程出错日志 将日志输出nohup /root/test.php &gt; test.log 2&gt;&amp;1 &amp;后台运行，正确日志、出错日志输出到test.log文件内 不需要将日志输出nohup /root/test.php &gt;/dev/null 2&gt;&amp;1 &amp;/dev/null，或称空设备，是一个特殊的设备文件，它丢弃一切写入其中的数据（但报告写入操作成功），读取它则会立即得到一个EOF脚本正确输出的日志，2&gt;&amp;1表示脚本运行过程出错日志输出到&amp;1（/dev/null） 参考]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>系统</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[bat制作exe文件]]></title>
+    <url>%2Fpost%2F232b114c.html</url>
+    <content type="text"><![CDATA[众所周知,批处理在执行的时候无论是否在开头加了@echo off或每条语句前加@,都会出现个一闪而过的窗口.那么如何才能去掉这个窗口,让批处理隐藏运行呢? 只要是批处理,都会先调用CMD来执行.即使在批处理里加上隐藏窗口的命令,由于是先调用CMD后执行命令,所以还是会出现一个闪过的窗口.那么我们就先用命令来隐藏窗口,再执行批处理,这样就不会出现那窗口了! 我们可以先在记事本上输入如下内容： Set ws = CreateObject(“Wscript.Shell”) ws.run “cmd /c ql.bat”,vbhide 或者 CreateObject(“WScript.Shell”).Run “cmd /c ql.bat”,0 （注：ql.bat 为你要执行的批处理的名字。ql.bat里最后处最好添加 @ del ql.bat和@del yc.vbs这两行内容） 保存为yc.vbs文件。 eg： 12345&apos;发生错误时，程序继续执行下一句代码on error resume next&apos;定义一系统变量Set WshShell = createobject(&quot;wscript.shell&quot;)WshShell.run &quot;getwf\localUp.bat&quot;,0 然后用RAR文件把yc.vbs文件和ql.bat文件压缩， 在常规项–&gt;创建自解压压缩文件 和 锁定压缩文件 两项前打勾 高级——自解压选项——设置——解压后运行输入yc.vbs 模式—— 临时模式 –&gt; 个人情况而定 //如果不选中会直接解压到当前文件夹下，需要脚本内删除(如果必要的话) 模式——安静模式 –&gt; 全部隐藏 更新–&gt;覆盖方式（覆盖所有文件）//可不用 文本和图标–&gt; 从文件加载自解压文件图标 –&gt; 选择图标 确定–执行压缩，生成EXE可执行文件 运行这个EXE文件，你将把CMD的窗口隐藏了。 例：rar创建自解压文件 rar临时文件保存位置 打开rar(rar安装位置打开WinRAR.exe)–&gt;选项–&gt;设置–&gt;路径 参考https://blog.csdn.net/u012482273/article/details/25865113]]></content>
+      <categories>
+        <category>生活</category>
+        <category>计算机</category>
+        <category>window</category>
+        <category>bat</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[bat根据当前时间生成文件名称]]></title>
+    <url>%2Fpost%2F7dfb1c54.html</url>
+    <content type="text"><![CDATA[bat根据当前时间生成文件名称 bat 批处理－取年、月、日、时、分、秒、毫秒 12345678取年份：echo %date:~0,4% 取月份：echo %date:~5,2% 取日期：echo %date:~8,2% 取星期：echo %date:~10,6% 取小时：echo %time:~0,2% 取分钟：echo %time:~3,2% 取秒：echo %time:~6,2% 取毫秒：echo %time:~9,2% 例： 12345678910111213141516171819202122232425rem 根据当前日期获取，年月日串set yyyy=%date:~,4%set mm=%date:~5,2%set day=%date:~8,2% set &quot;YYYYmmdd=%yyyy%%mm%%day%&quot;rem 把年月日串中的空格替换为0set &quot;YYYYmmdd=%YYYYmmdd: =0%&quot;echo &quot;YYYYmmdd%YYYYmmdd%YYYYmmdd&quot;rem 根据当前时间获取，时分秒串set hh=%time:~0,2%set mi=%time:~3,2%set ss=%time:~6,2% set &quot;hhmiss=%hh%%mi%%ss%&quot;set &quot;hhmiss=%hhmiss: =0%&quot;echo &quot;hhmiss%Time%hhmiss&quot;echo %hhmiss%rem 把时间串中的:替换为0set &quot;hhmiss=%hhmiss::=0%&quot;rem 把时间串中的空格替换为0set &quot;hhmiss=%hhmiss: =0%&quot;rem 根据日期时间生成文件名称，中间以HH区分日期和时间部分set &quot;filename=%YYYYmmdd%HH%hhmiss%.rar&quot;echo %filename%pause 12345echo 根据当前日期时间，生成文件名称，......set YYYYmmdd=%date:~0,4%%date:~5,2%%date:~8,2%set hhmiss=%time:~0,2%%time:~3,2%%time:~6,2%set &quot;filename=WebSite3copy%YYYYmmdd%_%hhmiss%.zip&quot;echo %filename% 解释比如在windowscmd命令行窗口执行date命令后这个环境变量的值为那么如下的各个操作的意义如下：%date:~0,4% 表示从左向右指针向右偏0位，然后从指针偏移到的位置开始提取4位字符，结果是2014（年的值）%date:~5,2% 表示指针从左向右偏移5位，然后从偏移处开始提取2位字符，结果是03（月的值）%date:~8,2% 表示指针从左向右偏移8位，然后从偏移处开始提取2位字符，结果是01（日的值）%date:~5% 表示指针从左向右偏移5位，然后提取所有的值%date:~-5% 表示指针反方向偏移，从最右端开始，偏移5位，然后从指针处提取左边的所有数值。注意：“2014-03-01 星期六”是个字符串，在计算机里指针是从0开始计数的，所以这串字符的指针意义上的第5位是0，月份的0，取两位刚好是03. 同理，比如当前系统的time变量的值如下：那么如下的各个操作的意义如下：%time:~0,2% 表示从左向右指针向右偏0位，然后从指针偏移到的位置开始提取2位字符，结果是小时字段数值%time:~3,2% 表示指针从左向右偏移3位，然后从偏移处开始提取2位字符，结果是分钟字段数值%time:~6,2% 表示指针从左向右偏移6位，然后从偏移处开始提取2位字符，结果是秒字段数值 实战操作： 参考https://blog.csdn.net/xuexiaodong009/article/details/53462592 https://blog.csdn.net/liruxing1715/article/details/18215177 https://blog.csdn.net/jinhoward/article/details/20213213]]></content>
+      <categories>
+        <category>生活</category>
+        <category>计算机</category>
+        <category>window</category>
+        <category>bat</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Dockerfile-tomcat-1.0]]></title>
+    <url>%2Fpost%2Fca2e0e0a.html</url>
+    <content type="text"><![CDATA[Dockerfile 文件123456789101112131415161718192021222324252627282930313233#jdk + tomcat #该镜像基于centosFROM centos:7#MAINTAINER_INFOMAINTAINER disanshijie &quot;878455649@qq.com&quot;ENV tomcat_name apache-tomcat-9.0.7#把java,tomcat添加到镜像中ADD jdk-8u171-linux-x64.tar.gz /usr/localADD $&#123;tomcat_name&#125;.tar.gz /usr/local#在基于centos的镜像中安装vim编辑器RUN yum -y install vim#安装清理缓存文件RUN yum clean allENV MYPATH /usr/localWORKDIR $MYPATH#配置java与tomcat环境变量ENV JAVA_HOME /usr/local/jdk1.8.0_171ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jarENV CATALINA_HOME /usr/local/$&#123;tomcat_name&#125;ENV CATALINA_BASE $CATALINA_HOMEENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin#容器运行时监听的端口EXPOSE 8080#启动时运行tomcatCMD /usr/local/$&#123;tomcat_name&#125;/bin/startup.sh &amp;&amp; tail -F /usr/local/usr/local/$&#123;tomcat_name&#125;/bin/logs/catalina.out ps: cd 到某个目录创建上面的文件，其中jdk和tomcat也放在这个目录中 1234567#docker构建 注意Dockerfile文件所在文件夹下docker build -t centos-tomcat:v1 .#查看是否构建成功docker images#创建tomcat的容器,并做端口映射docker run -d --name tomcat -p 8081:8080 centos-tomcat:v1 报错的话 docker rm tomcat 12345#进入 docker ps 拿到iddocker exec -it 2199321b2c4d /bin/bash查看：java -version 挂载容器中 webapp路径 /usr/local/apache-tomcat-9.0.7/webapps conf路径 /usr/local/apache-tomcat-9.0.7/conf 123docker run -d -p 8081:8080 --name tomcat \-v /soft/Tomcat/apache-tomcat-8.0.51/webapps/TokenKnows:/usr/local/apache-tomcat-9.0.7/webapps/TokenKnows \--restart=always centos-tomcat:v1 -d：表示以“守护模式”执行 #查看docker ps #停止容器docker kill [id] 参考https://blog.csdn.net/thlzjfefe/article/details/82590421]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>软件</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[nginx请求数据大小]]></title>
+    <url>%2Fpost%2F1418cbb5.html</url>
+    <content type="text"><![CDATA[获取省市区接口本地运行正常部署到服务器后查看接口失败， net::ERR_INCOMPLETE_CHUNKED_ENCODING 200 但直接用浏览器打开成功，说明接口没有问题， 由于用的是nginx 考虑json数据太大的问题 在 /tec/nginx/nginx.conf下 编辑, http中添加下面内容 http{ # 设置 128k #proxy_buffer_size 128k; #proxy_buffers 32 128k; #proxy_busy_buffers_size 128k; proxy_buffering off; proxy_buffer_size 128k; proxy_buffers 100 128k; } 参考https://www.cnblogs.com/AloneSword/p/4458236.html]]></content>
+      <categories>
+        <category>生活\计算机\软件\nginx</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[dockfile-nginx-1.0]]></title>
+    <url>%2Fpost%2F88f1750.html</url>
+    <content type="text"><![CDATA[创建并编写Dockerfile文件1234567891011121314151617181920212223242526272829303132333435363738394041# This my first nginx Dockerfile# Version 1.0 # Base images 基础镜像FROM centos:7#MAINTAINER_INFOMAINTAINER disanshijie &quot;878455649@qq.com&quot;ENV nginx_name nginx-1.16.0ENV MYPATH /usr/localWORKDIR $MYPATH#ADD 获取url中的文件,放在当前目录下#ADD http://nginx.org/download/nginx-1.16.0.tar.gz /usr/local#本机当前文件夹内就用安装包ADD $&#123;nginx_name&#125;.tar.gz /usr/local#将自己的配置和静态文件复制进去(本案例用挂载方式)#COPY nginx.conf /usr/local/nginx/conf/nginx.conf#COPY yst /usr/local/nginx/yst#RUN 执行以下命令 RUN yum install -y pcre-devel wget net-tools gcc zlib zlib-devel make openssl-devel#网上下载 （本机有注释下两行）#RUN wget http://nginx.org/download/$&#123;nginx_name&#125;.tar.gz#RUN tar -zxvf $&#123;nginx_name&#125;.tar.gzRUN useradd -M -s /sbin/nologin nginx#RUN mkdir -p /usr/local/nginxRUN cd $&#123;nginx_name&#125; &amp;&amp; ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx --with-http_stub_status_module &amp;&amp; make &amp;&amp; make installRUN ln -s /usr/local/nginx/sbin/* /usr/local/sbin/ #EXPOSE 映射端口EXPOSE 80 #CMD 运行以下命令#CMD [&quot;nginx&quot;]#或者WORKDIR /RUN nginxCMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;] ps:推荐nginx先官网下载下来 要不太卡了 123456#docker构建 注意Dockerfile文件所在文件夹下docker build -t centos-nginx:test .#创建nginx的容器,并做端口映射docker run -d --name nginx1 -p 7080:80 centos-nginx:test#docker run -itd --name nginx1 -p 7080:80 9b9494bee7cc（镜像ID） 挂载1234567891011不挂载文件(进入容器):docker run -itd -p 192.168.182.110:80:80 centos_nginx /bin/bash 挂载文件:docker run -d --name nginx \-p 7080:80 \-p 6080:8000 \-v /soft/docker/nginx/static/html:/html \-v /soft/docker/nginx/static/log:/var/log/nginx \-v /soft/docker/nginx/static/nginx.conf:/usr/local/nginx/conf/nginx.conf \centos-nginx:test ps: -p 宿主机端口：容器端口 ​ -v 宿主机文件/夹路径：容器文件/夹路径 第一个 -v 静态文件路径，第二个 -v 日志文件路径（没啥用），第三个 -vnginx配置文件路径 容器的nginx.conf配置文件默认位置：/usr/local/nginx/conf/nginx.conf 自定义/soft/docker/nginx/static/nginx.conf文件内容 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374#user nobody;worker_processes 1;#error_log logs/error.log;#error_log logs/error.log notice;#error_log logs/error.log info;#pid logs/nginx.pid;events &#123; worker_connections 1024;&#125;http &#123; include mime.types; default_type application/octet-stream; #log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos; # &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos; # &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;; #access_log logs/access.log main; sendfile on; #tcp_nopush on; #keepalive_timeout 0; keepalive_timeout 65; #gzip on; server &#123; listen 8000; server_name _; #后台服务配置，配置了这个location便可以通过http://域名/jeecg-boot/xxxx 访问 location ^~ /optimus-prime &#123; proxy_pass http://127.0.0.1:8080/optimus-prime/; proxy_set_header Host 127.0.0.1; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; &#125; #解决Router(mode: &apos;history&apos;)模式下，刷新路由地址不能找到页面的问题 location / &#123; root /html/yst; index index.html index.htm; if (!-e $request_filename) &#123; rewrite ^(.*)$ /index.html?s=$1 last; break; &#125; &#125; &#125; server &#123; listen 80; server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html; index index.html index.htm; &#125; #error_page 404 /404.html; # redirect server error pages to the static page /50x.html # error_page 500 502 503 504 /50x.html; location = /50x.html &#123; root html; &#125; &#125;&#125; 参考 123456789101112不挂载文件(进入容器):docker run -itd -p 192.168.182.110:80:80 centos_nginx /bin/bash 挂载文件:docker run \--name centos_nginx \-d -p 80:80 \-v /home/nginx/html:/usr/share/nginx/html \-v /home/nginx/log:/var/log/nginx \-v /home/nginx/nginx.conf:/usr/local/nginx/nginx.conf:ro \-v /home/nginx/conf.d:/usr/local/nginx/conf.d \nginx 参考Dockerfile搭建Nginx环境与文件挂载 https://blog.csdn.net/u011781521/article/details/80464220 https://blog.csdn.net/qq_36762677/article/details/82252940#Dockerfile_65]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>软件</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[dockfile-redis-1.0]]></title>
+    <url>%2Fpost%2Fb5cc121.html</url>
+    <content type="text"><![CDATA[Dockerfile文件方案一： cd /soft/docker/source vi Dockerfile 123456789101112131415161718192021222324252627#该镜像基于centosFROM centos:7#MAINTAINER_INFOMAINTAINER disanshijie &quot;878455649@qq.com&quot;#宿主机/usr/share/zoneinfo/Asia/Shanghai 链接到 容器/etc/localtimeRUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime#安装YUM源RUN yum -y update &amp;&amp; yum -y install epel-release &amp;&amp; yum -y install redis#安装清理缓存文件RUN yum clean all#修改绑定IP地址RUN sed -i -e &apos;s@bind 127.0.0.1@bind 0.0.0.0@g&apos; /etc/redis.conf#关闭保护模式RUN sed -i -e &apos;s@protected-mode yes@protected-mode no@g&apos; /etc/redis.conf#设置密码#RUN echo &quot;requirepass 1234567&quot; &gt;&gt; /etc/redis.confEXPOSE 6379#启动ENTRYPOINT [ &quot;/usr/bin/redis-server&quot;,&quot;/etc/redis.conf&quot;]CMD [] 12345678910#cd 到Dockerfile目录#创建容器docker build -t my_redis:v1 .#后台运行镜像docker run -d --name=ops_redis -p 6399:6379 my_redis:v1#以挂在容器卷的方式启动#docker run -p 6379:6379 -v /xdp/myredis/data:/data/ -d redis --appendonly yes#输出控制台运行#docker run -it --name ops_redis -p 6399:6379 my_redis:v1 /bin/bash 方案二： ps：从官网拉取最新的 安装包 然后运行make &amp;&amp; make install 12345678910111213141516171819202122232425#该镜像基于centosFROM centos:7#MAINTAINER_INFOMAINTAINER disanshijie &quot;878455649@qq.com&quot;WORKDIR /homeRUN yum install -y wget gcc &amp;&amp; \ rpm --rebuilddb &amp;&amp; \ yum -y install gcc automake autoconf libtool make &amp;&amp; \ yum -y install net-tools &amp;&amp; \ yum -y install tar &amp;&amp; \ wget http://download.redis.io/redis-stable.tar.gz &amp;&amp; \ tar -xvzf redis-stable.tar.gz &amp;&amp; \ mv redis-stable/ redis &amp;&amp; \ rm -f redis-stable.tar.gz &amp;&amp; \ yum clean all &amp;&amp; \ cd redis &amp;&amp; \ make &amp;&amp; make install &amp;&amp; make clean EXPOSE 6379ENTRYPOINT redis-server /home/redis/redis.confCMD [&quot;redis-server&quot;] 说明： 因为有make命令 所以要 yum -y install gcc automake autoconf libtool make 想要查看ifconfig，所以安装net-tools yum -y install net-tools 1234567891011121314151617181920212223242526利用这个Dockerfile构建镜像命令：docker build -t redis:v2 .启动容器： docker run -d -p 6366:6379 redis:v2查看容器：docker ps进入容器内部：docker exec -it 9ba3cfd331ef /bin/bash对redis进行操作：[root@84ea1a89ef01 redis]# redis-cli127.0.0.1:6379&gt; set name hongdadaOK127.0.0.1:6379&gt; set age 22OK127.0.0.1:6379&gt; keys *1) &quot;age&quot;2) &quot;name&quot;127.0.0.1:6379&gt; 查看版本redis-cli -v 查看的是客户端版本；redis-server -v查看的才是server版本，但很多时候无法ssh到server，所以最好用下面的info命令查询 ./redis-cli -h 127.0.0.1:6379 info | grep &apos;redis_version&apos; 参考 更多 https://www.jianshu.com/p/ede209c259a9]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>软件</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[nginx命令]]></title>
+    <url>%2Fpost%2F8dae72c9.html</url>
+    <content type="text"><![CDATA[TODO 1.停止Nginx服务的四种方法 从容停止服务这种方法较stop相比就比较温和一些了，需要进程完成当前工作后再停止。 nginx -s quit 立即停止服务这种方法比较强硬，无论进程是否在工作，都直接停止进程。 nginx -s stop systemctl 停止systemctl属于Linux命令 systemctl stop nginx.service 2.启动Nginx nginx直接启动 nginx systemctl命令启动 systemctl start nginx.service 3.查看启动后记录 ps aux | grep nginx 4.重启Nginx服务 systemctl restart nginx.service 5.重新载入配置文件当有系统配置文件有修改，用此命令，建议不要停止再重启，以防报错！ nginx -s reload 启动 启动代码格式：nginx安装目录地址 -c nginx配置文件地址 例如： [root@LinuxServer sbin]# /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf 1、验证nginx配置文件是否正确方法一：进入nginx安装目录sbin下，输入命令 ./nginx -t看到如下显示nginx.conf syntax is ok nginx.conf test is successful 说明配置文件正确！ 参考]]></content>
+      <categories>
+        <category>生活</category>
+        <category>计算机</category>
+        <category>软件</category>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[jeecg]]></title>
+    <url>%2Fpost%2Fca425a94.html</url>
+    <content type="text"><![CDATA[TODO 问题12345678910111213141516171819202122232425262728292019-06-25 15:34:10.042 [http-nio-8080-exec-1] ERROR o.jeecg.modules.yst.controller.OrderItemController:495 - ### Error updating database. Cause: org.apache.ibatis.binding.BindingException: Parameter &apos;param1&apos; not found. Available parameters are [et]### Cause: org.apache.ibatis.binding.BindingException: Parameter &apos;param1&apos; not found. Available parameters are [et]org.apache.ibatis.exceptions.PersistenceException: ### Error updating database. Cause: org.apache.ibatis.binding.BindingException: Parameter &apos;param1&apos; not found. Available parameters are [et]### Cause: org.apache.ibatis.binding.BindingException: Parameter &apos;param1&apos; not found. Available parameters are [et] at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:200) at com.baomidou.mybatisplus.extension.service.impl.ServiceImpl.updateBatchById(ServiceImpl.java:245) at com.baomidou.mybatisplus.extension.service.IService.updateBatchById(IService.java:152) at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(&lt;generated&gt;) at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:684) at org.jeecg.modules.yst.service.impl.OrderItemServiceImpl$$EnhancerBySpringCGLIB$$654010a8.updateBatchById(&lt;generated&gt;) at com.baomidou.mybatisplus.extension.service.IService$$FastClassBySpringCGLIB$$f8525d18.invoke(&lt;generated&gt;) at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)。。。。 at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) at java.lang.Thread.run(Thread.java:748)Caused by: org.apache.ibatis.binding.BindingException: Parameter &apos;param1&apos; not found. Available parameters are [et] at org.apache.ibatis.binding.MapperMethod$ParamMap.get(MapperMethod.java:204) at org.jeecg.config.mybatis.MybatisInterceptor.intercept(MybatisInterceptor.java:109) at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61) at com.sun.proxy.$Proxy252.update(Unknown Source) at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198) ... 118 common frames omittedCreating a new SqlSession 解决 自定义MybatisInterceptor拦截器中将内容写死了 mybatis-plus的updateBatchById key是et 参考https://github.com/baomidou/mybatis-plus/issues/1012]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>后台</category>
+        <category>错误</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux安装php]]></title>
+    <url>%2Fpost%2Ff436173e.html</url>
+    <content type="text"><![CDATA[TODO 更新不如用docker 简介基于CentOS7 卸载如果已安装先卸载 查看php版本命令： php -v 下面的命令是删除不干净的 yum remove php 因为使用这个命令以后再用 php -v 还是会看到有版本信息的。。。。。 必须强制删除，使用下面命令查看全部php软件包 rpm -qa|grep php 提示如下： 1234567php-pdo-5.1.6-27.el5_5.3php-mysql-5.1.6-27.el5_5.3php-xml-5.1.6-27.el5_5.3php-cli-5.1.6-27.el5_5.3php-common-5.1.6-27.el5_5.3php-gd-5.1.6-27.el5_5.3php-fpm-5.4.16-46.el7.x86_64 注意卸载要先卸载没有依赖的 pdo是mysql的依赖项；common是gd的依赖项；例如：# rpm -e php-pdo-5.1.6-27.el5_5.3error: Failed dependencies: php-pdo is needed by (installed) php-mysql-5.1.6-27.el5_5.3.i386 所以正确的卸载顺序是： 1234567rpm -e php-mysql-5.1.6-27.el5_5.3 rpm -e php-pdo-5.1.6-27.el5_5.3 rpm -e php-xml-5.1.6-27.el5_5.3 rpm -e php-cli-5.1.6-27.el5_5.3 rpm -e php-gd-5.1.6-27.el5_5.3 rpm -e php-fpm-5.4.16-46.el7.x86_64rpm -e php-common-5.1.6-27.el5_5.3 再用 rpm -qa|grep php php -v 查看版本信息已经没有提示 ps:其他卸载顺序 123456789101112rpm -e php55-php-pecl-zip-1.15.1-1.el7.remi.x86_64 rpm -e php55-php-gd-5.5.38-7.el7.remi.x86_64 rpm -e php55-runtime-2.1-5.el7.remi.x86_64 rpm -e php55-2.1-5.el7.remi.x86_64 rpm -e php55-php-pecl-jsonc-1.3.10-1.el7.remi.x86_64 rpm -e php55-php-xml-5.5.38-7.el7.remi.x86_64 rpm -e php55-php-5.5.38-7.el7.remi.x86_64 rpm -e php55-php-common-5.5.38-7.el7.remi.x86_64 rpm -e php55-php-process-5.5.38-7.el7.remi.x86_64 rpm -e php55-php-mbstring-5.5.38-7.el7.remi.x86_64 rpm -e php55-php-pear-1.10.5-2.el7.remi.noarch rpm -e php55-php-cli-5.5.38-7.el7.remi.x86_64 注意： rpm -e [自己系统的] 安装一、安装所需环境 12&gt; yum -y install libxml2 libxml2-devel openssl openssl-devel curl-devel libjpeg-devel libpng-devel freetype-devel libmcrypt-devel libzip-devel pcre-devel&gt; 二、下载及安装nginx 1.下载php wget http://cn2.php.net/distributions/php-7.3.3.tar.gz 下载慢 翻墙 TODO 链接 2.解压php tar -xzf php-7.3.3.tar.gz 3.进入php目录 cd php-7.3.3 3.编译php（我们不提供apxs参数，相反，我们提供php-fpm相关参数） 1234567891011121314151617181920212223242526272829303132333435&gt; ./configure --prefix=/usr/local/php7 \&gt; --with-config-file-path=/usr/local/php7/etc \&gt; --with-config-file-scan-dir=/usr/local/php7/etc/php.d \&gt; --with-mcrypt=/usr/include \&gt; --enable-mysqlnd \&gt; --with-mysqli \&gt; --with-pdo-mysql \&gt; --enable-fpm \&gt; --with-fpm-user=nginx \&gt; --with-fpm-group=nginx \&gt; --with-gd \&gt; --with-iconv \&gt; --with-zlib \&gt; --enable-xml \&gt; --enable-shmop \&gt; --enable-sysvsem \&gt; --enable-inline-optimization \&gt; --enable-mbregex \&gt; --enable-mbstring \&gt; --enable-ftp \&gt; --enable-gd-native-ttf \&gt; --with-openssl \&gt; --enable-pcntl \&gt; --enable-sockets \&gt; --with-xmlrpc \&gt; --enable-zip \&gt; --enable-soap \&gt; --without-pear \&gt; --with-gettext \&gt; --enable-session \&gt; --with-curl \&gt; --with-jpeg-dir \&gt; --with-freetype-dir \&gt; --enable-opcache&gt; 注意： –prefix=安装目录 –with-使用包名称[=包目录] –enable-需要激活的功能 可能问题———————–start————————— 假如编译完成之后报错： “checking for libzip… configure: error: system libzip must be upgraded to v” 执行一下，没有报错则忽略。 wget https://nih.at/libzip/libzip-1.2.0.tar.gz tar -xzf libzip-1.2.0.tar.gz ./configure make &amp;&amp; make install —————————-end————————- 出现以下则表示编译成功 +——————————————————————–+| License: || This software is subject to the PHP License, available in this || distribution in the file LICENSE. By continuing this installation || process, you are bound by the terms of this license agreement. || If you do not agree with the terms of this license, you must abort || the installation process at this point. |+——————————————————————–+ Thank you for using PHP. 然后执行： make test(如果出现什么问题请谷歌或百度，或者往下看看能解决不) 可能问题————–start—————- 如果这里报错： /usr/local/include/zip.h:59:21: fatal error: zipconf.h: No such file or directory 则执行一下命令，没有则忽略。 find / -name zipconf.h cp /你zipconf.h所在的目录 //usr/local/include/zipconf.h 然后重新 configure 成功之后在make test，没问题则继续执行后面的命令。 —————end——————– ps: make test耗时5分钟….. 4 执行make make &amp;&amp; make install -j2 三、配置php 1.复制ini文件 cp php.ini-production /usr/local/php7/etc/php.ini 2.配置fpm cd /usr/src/php-7.0.0/sapi/fpm cp init.d.php-fpm /etc/init.d/php-fpm chmod +x /etc/init.d/php-fpm chkconfig –add php-fpm chkconfig php-fpm on TODO 第四步不知道怎么做， 第三部感觉没安装上相关包 php -v成功了 但 php-fpm找find 都找不到 rpm -qa|grep php 没有任何结果 使用linux 下PHP服务操作 service php-fpm start 开启 service php-fpm stop 停止 service php-fpm restart 重启 参考 卸载php https://www.cnblogs.com/sunshine-H/p/8117105.html http://www.php.cn/php-weizijiaocheng-387728.html 安装（主） https://www.cnblogs.com/lichina/p/10556221.html]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>软件</category>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[命令行参数处理]]></title>
+    <url>%2Fpost%2F8a223f21.html</url>
+    <content type="text"><![CDATA[简介TODO 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970const sunbo = require(&apos;../util/file&apos;);const path = require(&apos;path&apos;);// 格式化路径var root = path.normalize(&quot;E:\\opt\\服务器&quot;);var destRoot = path.normalize(&quot;E:\\opt\\我的&quot;);//解析需要遍历的文件夹，我这以E盘根目录为例var filePath = path.resolve(root);//是否覆盖原文件 （true覆盖）var flag = false;var str = &quot;share: true&quot;;//const str = &quot; &quot;;function handleArgs() &#123; if (process.argv.length &gt; 0) &#123; //console.log(process.argv); process.argv.forEach(function(arg, index) &#123; let param = &quot;&quot;; switch (arg.trim()) &#123; case &apos;-f&apos;: param = process.argv.slice(index + 1)[0]; // console.log(param); filePath = path.resolve(path.normalize(param)); console.log(&quot;源文件/夹 &quot; + filePath); break; case &apos;-s&apos;: param = process.argv.slice(index + 1)[0]; str = param; console.log(&quot;字符串 &quot; + str); break; case &apos;-o&apos;: param = process.argv.slice(index + 1)[0]; console.log(param); if (param == &quot;true&quot;) &#123; flag = true; &#125; console.log(&quot;覆盖 &quot; + flag); break; case &apos;-r&apos;: param = process.argv.slice(index + 1)[0]; root = param; console.log(&quot;源文件/夹的根目录 &quot; + root); break; case &apos;-d&apos;: param = process.argv.slice(index + 1)[0]; destRoot = param; console.log(&quot;源文件/夹的根目录&quot; + destRoot); break; case &apos;-h&apos;: console.log(&apos;-f &apos;); console.log(&apos;-s &apos;); console.log(&apos;-o &apos;); console.log(&apos;-r &apos;); console.log(&apos;-d &apos;); console.log(&apos;----------------------&apos;); break; default: break; &#125; &#125;); &#125;&#125;handleArgs(); 测试 1node www.js -o true -f E:\\opt\\服务器 输出 12覆盖 true源文件/夹 E:\opt\服务器 说明参考文档：slice/splice 123const args = process.argv.slice(2);//const args = process.argv.splice(2);console.log(&quot;args=&quot; + args); //运行 node test.js zhou jason china //结果如下 1args=zhou,jason,china 第三方模块 commanderhttps://blog.csdn.net/weixin_40817115/article/details/81699737 参考https://blog.csdn.net/tyler_download/article/details/51066285 https://blog.csdn.net/corner2030/article/details/78528153]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>工具</category>
+        <category>nodejs</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[文件读取]]></title>
+    <url>%2Fpost%2F8ea8d109.html</url>
+    <content type="text"><![CDATA[### 普通复制 123456789101112131415161718192021/** * 复制文件 (异步,覆盖原文件) * @param &#123;*&#125; source 源文件 * @param &#123;*&#125; dest 目标文件 */function mycopy(path1, path2) &#123; fs.readFile(path1, function(err, data) &#123; if (err) &#123; console.log(err); &#125; else &#123; var data1 = data.toString(); fs.writeFile(path2, data1, function(err) &#123; if (err) &#123; console.log(err); &#125; else &#123; console.log(&quot;复制成功&quot;); &#125; &#125;) &#125; &#125;)&#125; pipe复制文件 例子: 123456789// 1.引入模块let fs =require(&apos;fs&apos;);var request = require(&apos;request&apos;);//2.创建读入流let rs = fs.createReadStream(&apos;D:/Pictures/Saved Pictures/testSP.mp4&apos;); //要读取视频的位置let ws = fs.createWriteStream(&apos;testSP.mp4&apos;); //视屏要写入的位置//创建管道rs.pipe(ws); 详细 12345678910111213141516171819202122232425// 1.引入模块let fs =require(&apos;fs&apos;);//2.创建读入流let rs = fs.createReadStream(&apos;D:/Pictures/Saved Pictures/testSP.mp4&apos;); //要读取视频的位置let ws = fs.createWriteStream(&apos;testSP.mp4&apos;); //视屏要写入的位置，我这里是默认的项目文件夹下的 //3.监听流的打开和关闭ws.once(&apos;open&apos; ,()=&gt;&#123; console.log(&quot;读入通道打开&quot;);&#125;);ws.once(&apos;close&apos; ,()=&gt;&#123; console.log(&quot;读入通道以关闭&quot;);&#125;); rs.once(&apos;open&apos; ,()=&gt;&#123; console.log(&quot;写出通道已打开&quot;);&#125;);rs.once(&apos;close&apos; ,()=&gt;&#123; console.log(&quot;写出通道已关闭&quot;);&#125;);//4.绑定datars.on(&quot;data&quot;, (data)=&gt;&#123; ws.write(data);&#125;); 参考:https://blog.csdn.net/qq_41542894/article/details/82291555 https://www.jianshu.com/p/21c7db836836 文件操作https://www.jianshu.com/p/482a2d272a21?utm_source=oschina-app 文件的同步和异步写入操作https://blog.csdn.net/qq_41542894/article/details/82229607 官网 http://nodejs.cn/api/stream.html#stream_event_pipe]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>工具</category>
+        <category>nodejs</category>
+        <category>模块工具包</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node递归文件夹]]></title>
+    <url>%2Fpost%2F9310ed64.html</url>
+    <content type="text"><![CDATA[###TODO 方案1 123456789101112131415161718192021222324252627282930313233343536373839404142var fs = require(&apos;fs&apos;);var path = require(&apos;path&apos;);//解析需要遍历的文件夹，我这以E盘根目录为例var filePath = path.resolve(&apos;E:&apos;);//调用文件遍历方法fileDisplay(filePath);/** * 文件遍历方法 * @param filePath 需要遍历的文件路径 */function fileDisplay(filePath)&#123; //根据文件路径读取文件，返回文件列表 fs.readdir(filePath,function(err,files)&#123; if(err)&#123; console.warn(err) &#125;else&#123; //遍历读取到的文件列表 files.forEach(function(filename)&#123; //获取当前文件的绝对路径 var filedir = path.join(filePath,filename); //根据文件路径获取文件信息，返回一个fs.Stats对象 fs.stat(filedir,function(eror,stats)&#123; if(eror)&#123; console.warn(&apos;获取文件stats失败&apos;); &#125;else&#123; var isFile = stats.isFile();//是文件 var isDir = stats.isDirectory();//是文件夹 if(isFile)&#123; console.log(filedir); &#125; if(isDir)&#123; fileDisplay(filedir);//递归，如果是文件夹，就继续遍历该文件夹下面的文件 &#125; &#125; &#125;) &#125;); &#125; &#125;);&#125; 123456如果碰到有中文不能解析的html，这样写var cheerio = require(&apos;cheerio&apos;);var iconv = require(&apos;iconv-lite&apos;);var myHtml = fs.readFileSync(&quot;index.html&quot;);var myHtml2 = iconv.decode(myHtml, &apos;gbk&apos;);console.log(myHtml2); 说明：异步的方式读取 方案2 123456789101112131415161718192021222324var fs = require(&apos;fs&apos;);var path = require(&apos;path&apos;);var exec = require(&apos;child_process&apos;).exec; function readFileList(dir, filesList = []) &#123;//同步读取 const files = fs.readdirSync(dir); console.log(files); files.forEach((item, index) =&gt; &#123; var fullPath = path.join(dir, item); const stat = fs.statSync(fullPath); if (stat.isDirectory()) &#123; readFileList(path.join(dir, item), filesList); //递归读取文件 &#125; else &#123; filesList.push(fullPath); &#125; &#125;); return filesList;&#125; var filesList = [];readFileList(__dirname,filesList);console.log(filesList); 说明：同步的方式读取 参考https://blog.csdn.net/younglao/article/details/77046830 https://blog.csdn.net/liyazhen2011/article/details/87882180]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>工具</category>
+        <category>nodejs</category>
+        <category>模块工具包</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[npm使用]]></title>
+    <url>%2Fpost%2F75879b31.html</url>
+    <content type="text"><![CDATA[npm 更新至最新版1命令行输入 npm install -g npm]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>工具</category>
+        <category>nodejs</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux文件操作]]></title>
+    <url>%2Fpost%2Fb67c03a2.html</url>
+    <content type="text"><![CDATA[复制、移动与删除 1，复制粘贴文件 cp [选项] 源文件或目录 目标文件或目录 2，剪切粘贴文件 mv [选项] 源文件或目录 目标文件或目录 3，删除文件 rm 文件 慎用 rm -rf linux下文件的复制、移动与删除命令为：cp，mv，rm一、文件复制命令cp 命令格式：cp [-adfilprsu] 源文件(source) 目标文件(destination) cp [option] source1 source2 source3 … directory 参数说明： -a:是指archive的意思，也说是指复制所有的目录 -d:若源文件为连接文件(link file)，则复制连接文件属性而非文件本身 -f:强制(force)，若有重复或其它疑问时，不会询问用户，而强制复制 -i:若目标文件(destination)已存在，在覆盖时会先询问是否真的操作 -l:建立硬连接(hard link)的连接文件，而非复制文件本身 -p:与文件的属性一起复制，而非使用默认属性 -r:递归复制，用于目录的复制操作 -s:复制成符号连接文件(symbolic link)，即“快捷方式”文件 -u:若目标文件比源文件旧，更新目标文件 如将/test1目录下的file1复制到/test3目录，并将文件名改为file2,可输入以下命令： cp /test1/file1 /test3/file2二、文件移动命令mv 命令格式：mv [-fiv] source destination 参数说明： -f:force，强制直接移动而不询问 -i:若目标文件(destination)已经存在，就会询问是否覆盖 -u:若目标文件已经存在，且源文件比较新，才会更新 如将/test1目录下的file1复制到/test3 目录，并将文件名改为file2,可输入以下命令： mv /test1/file1 /test3/file2三、文件删除命令rm 命令格式：rm [fir] 文件或目录 参数说明： -f:强制删除 -i:交互模式，在删除前询问用户是否操作 -r:递归删除，常用在目录的删除 如删除/test目录下的file1文件，可以输入以下命令： rm -i /test/file1 创建文件夹/目录1mkdir [选项] 目录 命令参数： 1234567891011-m, --mode=模式，设定权限&lt;模式&gt; (类似 chmod)，而不是 rwxrwxrwx 减 umask-p, --parents 可以是一个路径名称。 此时若路径中的某些目录尚不存在,加上此选项后, 系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录; -v, --verbose 每次创建新目录都显示信息 --help 显示此帮助信息并退出 --version 输出版本信息并退出 创建一个空目录 1mkdir file1 递归创建多个目录 1mkdir -p file1/file2 参考https://www.cnblogs.com/aiyr/p/7395738.html mkdir 创建文件夹/目录 https://www.cnblogs.com/qingmingsang/articles/6409466.html]]></content>
+      <categories>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github-pages的使用]]></title>
+    <url>%2Fpost%2F2313e80c.html</url>
+    <content type="text"><![CDATA[简介仓库名称设置为得到的pages 如果这样设置 结果]]></content>
+      <categories>
+        <category>技术</category>
+        <category>工具</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[入门]]></title>
+    <url>%2Fpost%2Fb4c6216f.html</url>
+    <content type="text"><![CDATA[简介官方下载地址：https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.15 window安装https://yq.aliyun.com/articles/647403 https://gitee.com/Jicklin/rabbitMq/blob/master/rabbitMQ_producer/src/main/resources/application.propertieshttps://blog.csdn.net/u011059021/article/details/79827793 https://blog.csdn.net/zhangyuxuan2/article/details/82986702https://blog.csdn.net/u013871100/article/details/82717110 https://www.cnblogs.com/vipstone/p/9275256.html]]></content>
+      <categories>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>后台</category>
+        <category>框架</category>
+        <category>rabbitMQ</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[typora图床设置]]></title>
+    <url>%2Fpost%2F14a69c62.html</url>
+    <content type="text"><![CDATA[简介方式一 编辑–&gt; 图片工具–&gt; 当插入本地图片时 –&gt; 复制图片到文件夹 此设置将会 在你向文中插入本地图片时将本地图片复制到你说指的文件夹内 编辑–&gt; 图片工具–&gt; 设置图片根目录 此设置将会 使你的图片路径为以你设置的根目录为基础的相对路径() 方式二文件–&gt;偏好设置 –&gt; 图片插入 此设置将会 在你向文中插入本地图片时将本地图片复制到 ./${filename} 文件夹内 优先使用相对路径 将会使用相对的路径 异同两种方式都可以设置图片的路径 达到相同的效果 因此在使用中 两种方式 只需要二选一就行 但是方式一只针对当前文件，方式二的设置时全局的 不论你打开哪个文件到用这个配置 推荐使用方式二 主要是省事不需要重复设置 备注在使用时 会发现前面是/ 而不是 ./ 所以 需要在head部分加入 eg: 12345---略typora-root-url: ./---]]></content>
+      <categories>
+        <category>生活\计算机\软件\typora</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[手机验证码]]></title>
+    <url>%2Fpost%2F5959f3ce.html</url>
+    <content type="text"><![CDATA[发送验证码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253import com.alibaba.fastjson.JSONObject; /** * 获取验证码 * * @param phone * @param request * @return */ @AutoLog(value = &quot;用户-获取验证码&quot;) @ApiOperation(value = &quot;用户-获取验证码&quot;, notes = &quot;用户-获取验证码&quot;) @PostMapping(&quot;sendSmsCode&quot;) public Object sendSmsCode(@RequestParam(name = &quot;phone&quot;) String phone, HttpServletRequest request) &#123; Result&lt;Object&gt; result = new Result&lt;&gt;(); //TODO 图形验证码 JSONObject obj = (JSONObject) request.getSession().getAttribute(&quot;verifyCode&quot;); if (obj != null) &#123; Long createTime = obj.getLong(&quot;createTime&quot;); if (createTime != null &amp;&amp; (System.currentTimeMillis() - createTime &lt; 60 * 1000)) &#123; result.setMessage(&quot;短信已发送&quot;); return result; &#125; &#125; //手机号去重 //生成验证码 //String sms_code = CharUtil.getRandomNum(4); String sms_code = String.valueOf(new Random().nextInt(899999) + 100000); String msgContent = &quot;您的验证码是：&quot; + sms_code + &quot;，请在页面中提交验证码完成验证。&quot;; // 发送短信 Integer flag = 0; flag = DysmsUtil.SendAuthCode(phone, SmsConstant.SIGNNAME, SmsConstant.CODE_202, SmsConstant.CODE_202(sms_code), &quot;&quot;); //验证码存入session JSONObject json = null; //将验证码存到session中,同时存入创建时间 //以json存放，这里使用的是阿里的fastjson HttpSession session = request.getSession(); json = new JSONObject(); json.put(&quot;code&quot;, sms_code); json.put(&quot;phone&quot;, phone); json.put(&quot;createTime&quot;, System.currentTimeMillis()); // 将认证码存入SESSION request.getSession().setAttribute(&quot;verifyCode&quot;, json); result.setResult(msgContent); result.setSuccess(true); return result; &#125; 验证验证码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950 @PostMapping(&quot;smsCodeVerify&quot;)public Object smsCodeVerify(@RequestParam(name = &quot;code&quot;) String code, @RequestParam(name = &quot;phone&quot;,required = false) String phone, HttpServletRequest request) &#123; Result&lt;Object&gt; result = new Result&lt;&gt;(); String str=this.verify(code,phone,request); if(!&quot;0&quot;.equals(str))&#123; result.error500(str); return result; &#125; else&#123; result.setSuccess(true); result.setResult(phone); result.setResult(str); &#125; return result;&#125;/** * 验证 TODO enum * @param code * @param request * @return */private String verify( String code,String phone,HttpServletRequest request) &#123; String info=&quot;0&quot;; JSONObject obj = (JSONObject) request.getSession().getAttribute(&quot;verifyCode&quot;); if (obj == null) &#123; info=&quot;没有验证码&quot;; return info; &#125; Long sessionphone = obj.getLong(&quot;phone&quot;); if (sessionphone == null || !sessionphone.equals(phone)) &#123; info=&quot;前后手机号不一致&quot;; return info; &#125; Long createTime = obj.getLong(&quot;createTime&quot;); if (createTime == null || (System.currentTimeMillis() - createTime &gt; 5 * 60 * 1000)) &#123; info=&quot;验证码过时&quot;; return info; &#125; String sessionCode = obj.getString(&quot;code&quot;); if (sessionCode == null || !sessionCode.equals(code)) &#123; info=&quot;验证码错误&quot;; return info; &#125; request.getSession().setAttribute(&quot;verifyCode&quot;, null); return info;&#125;]]></content>
+      <categories>
+        <category>技术 - 编程 - Java</category>
       </categories>
       <tags>
         <tag>默认</tag>
@@ -30,7 +647,9 @@
     <url>%2Fpost%2Fa67595ce.html</url>
     <content type="text"><![CDATA[简介]]></content>
       <categories>
-        <category>生活\计算机\window</category>
+        <category>生活</category>
+        <category>计算机</category>
+        <category>window</category>
       </categories>
       <tags>
         <tag>默认</tag>
@@ -44,6 +663,17 @@
         <category>技术</category>
         <category>服务器</category>
         <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux查看系统信息]]></title>
+    <url>%2Fpost%2Fdff104ab.html</url>
+    <content type="text"><![CDATA[说明以下均基于Linux centos7 测速https://github.com/haydenjames/bench-scripts 查看centOS 版本123456789cat /etc/redhat-release查看Linux内核版本命令cat /proc/version或uname -a这种方法只适合Redhat系的Linux：cat /etc/redhat-release 查看文件more less head cat tail 参考：https://blog.csdn.net/hellozpc/article/details/72859152https://blog.csdn.net/qq_31617637/article/details/71426904 查看cup占用1top -c 查看文件夹大小查看当前目录下的文件夹大小 1du -h --max-depth=1 查看系统文件大小df -k 可执行程序的绝对路径which [名称]egwhich bash #bash可执行程序的绝对路径 文件/夹操作复制 cp [选项] 源文件或目录 目标文件或目录 将文件夹blog 递归复制到test3下 并重命名为dir cp -r /test1/blog /test3/dir 移动 mv [选项] 源文件或目录 目标文件或目录 （同cp） 删除rm 文件 慎用 rm -rf 查看路径pwd详情：https://blog.csdn.net/gnail_oug/article/details/70664458 sudo service apache start-stop-restart 开启-关闭-重启apache服务，记得加上sudo，不然权限不够无法启动，如果要开启别的服务比如mysql，直接把apache改成mysql即可（如果不记得mysql密码，cat /etc/mysql/debian.cnf 里面明文存储mysql密码） sudo /etc/init.d/apahce start-stop-restart 同上，如果要开启别的服务比如mysql，直接把apache改成mysql即可 uname -a 查看内核版本 cat /etc/issue 查看系统版本 hostname 查看系统 cat /proc/cpuinfo 查看CPU信息 sudo ethtool eth0 查看网卡状态 sudo fdisk -l 查看磁盘信息 lshw 查看硬件信息 df -h 查看剩余空间 free -m 查看内存使用情况 ps -A 查看所有进程 kill pid&amp;kill name 结束进程，pid是在ps -A查看对应的数字，name即是进程名 du -hs 查看当前目录大小 find . -name ‘xxx.py’ 寻找文件，文件名可以使用通配符* mysql . 登陆mysql后，输入\. var/sqlsetup.sql(sql文件路径)即可安装sql文件 top/w 查看负载，w后面三个值表示近1分钟，10,15分钟的负载，一般来说0.6是标准健康值 grep 匹配文件 wc -l 统计文件个数 | 把上一个命令的值传递个下一个命令，比如grep ‘11’ xxx.txt|wc -l]]></content>
+      <categories>
+        <category>技术 - 服务器 - Linux</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -77,7 +707,9 @@
     <url>%2Fpost%2F189a6a9b.html</url>
     <content type="text"><![CDATA[命令：git update-index –assume-unchanged 文件名，作用：忽略文件的改动，但是不加入.gitignore 文件中，这样可以达到仅在本地目录中忽略，不影响其他团队成员的工作。命令：git update-index –no-assume-unchanged 文件名，作用：上一个命令的逆操作，重新追踪文件改动。便捷用法，编写 shell 脚本，disable_track.sh 内容： #!/bin/bashgit update-index –assume-unchanged 文件名把 disable_track.sh 放在项目的.git/hooks 文件夹中（如果需要把脚本加入版本管理分享可以放在别的目录），然后打开 git bash 命令行，执行$ ./.git/hooks/disable_track.sh 即可。同理建立 enable_track.sh： #!/bin/bashgit update-index –no-assume-unchanged 文件名做逆向操作。]]></content>
       <categories>
-        <category>技术 - 工具 - Git</category>
+        <category>技术</category>
+        <category>工具</category>
+        <category>Git</category>
       </categories>
   </entry>
   <entry>
@@ -85,7 +717,9 @@
     <url>%2Fpost%2F189a6a9b.html</url>
     <content type="text"><![CDATA[设置本地分支默认对应远程dev分支，方便pull和push 1git branch --set-upstream-to=origin/dev dev]]></content>
       <categories>
-        <category>技术 - 工具 - Git</category>
+        <category>技术</category>
+        <category>工具</category>
+        <category>Git</category>
       </categories>
   </entry>
   <entry>
@@ -93,15 +727,9 @@
     <url>%2Fpost%2Fce3cb319.html</url>
     <content type="text"><![CDATA[TODOhttps://www.cnblogs.com/tocy/p/git-stash-reference.html https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89 https://blog.csdn.net/qq_32452623/article/details/76100140 基本使用 当前分支 master ，文件已做了修改 git stash 推送一个新的储藏，当前的工作目录就干净了 git checkout 随意切换到其他分支，例 dev 修改dev分支，解决dev bug问题后 提交commit git checkout master dev分支问题解决后 切换到 原来分支 master 12git stash apply (应用最新但不删除储藏)git stash pop (应用最新并删除储藏) 将缓存堆栈中的stash应用到工作目录中 其他 12git stash list //查看储藏列表git stash clear //删除所有缓存的stash 总结： 当前分支有没有提交的内容，但急需切换到其他分支 通过stash命令 储藏当前分支修改内容，切换到其他分支进行工作 其他分支内容修复后，再从储藏中将内容拿出来继续工作]]></content>
       <categories>
-        <category>技术 - 工具 - Git</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[git错误解决]]></title>
-    <url>%2Fpost%2F6350e18f.html</url>
-    <content type="text"><![CDATA[Youhave not concluded your merge (MERGE_HEAD exists). Exiting because ofunfinished merge你还没有结束你的合并(MERGE_HEAD存在)。退出,因为未完成合并。本地没有更新到最新代码， 解决方法有二个： 方法一： 123git merge --abortgit reset --mergegit pull 如果这几个命令并没有解决问题，那将就看第二个方法。开始方法二前，保证代码已经有备份，备份，备份； 方法二： 123git fetch --allgit reset --hard origin/mastergit fetch]]></content>
-      <categories>
-        <category>技术 - 工具 - Git</category>
+        <category>技术</category>
+        <category>工具</category>
+        <category>Git</category>
       </categories>
   </entry>
   <entry>
@@ -113,12 +741,9 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[如何写笔记]]></title>
-    <url>%2Fpost%2F2905fbe1.html</url>
-    <content type="text"><![CDATA[公司官网下载 个人偏向zip非安装版 百度云: 左侧强大的文件资源管理 大量高效插件 1 打开解压压缩包运行vscode.exe 2 下载必要插件 推荐插件 简体中文 Chinese (Simplified) Language Pack for Visual Studio Code 发布到印象笔记工具 evermonkey 服务器上传 SFTP TODO 3 使用本地磁盘上建立一个文件夹 笔记本 拖动到左侧 资源管理中 点击文件夹 右键 —&gt; 新建文件/夹 右侧编辑文件 这样本地笔记本就完成了 扩展编辑markdown文件目前流行的笔记方式是 .md文件 vscode本身可以用markdown原始语言编排 也可以到插件库中下载md编辑插件 eg: Markdown All in One 还有一些md编辑器支持 资源管理功能 eg: Yu Writer 但均不好用 vscode 快捷键打开 typora 参考： 效果： typora 修改快捷键参考：TODO md文件/图片处理方案一 typora 可以保存图片 到指定位置 推荐在当前文件所在文件夹下建一个 和文件名同名的文件夹， 图片保存到此文件夹下 方案一 使用PicGo PicGo使用参考：TODO 推荐使用方案二配置完成后 Ctrl+shift+p剪切板一键上传，非常方便 为本地笔记设置云服务器使用github/gitee云将自己的文件夹（笔记本）同步到github或者gitee上需要熟悉 Git 的使用 Git入门：TODO Git配置：TODO Git在vscode使用（针对本文）：TODO Git命令（针对本文）：TODO 使用ftp/sftp使用ftp/sftp的方式将自己的文件夹（笔记本）同步到自己的服务器 条件： 安装vscode插件 sftp 有一台自己的云服务器 使用：TODO 上传文件到印象笔记写这个模块是因为自己用印象笔记很久了，每次搜索都习惯从印象笔记检索引擎中查找，为了将本地笔记 可以同步到印象笔记 条件： 安装vscode插件 evermonkey 有印象笔记 使用vscode插件将md文件同步至印象笔记 参考 TODO ps： 同步到印象笔记的md文件以只读方式展示 应用hexo简介： hexo适合个人博客 hexo使用需要基于git + npm + markdown 使用hexo 建立自己的网站，可以随意变换风格，以github/gitee为云床，既可以任意网络同步，又能网页查看 hexo的博客均是md文件 完全可以同步到 其他服务器 例: 印象笔记 hexo基础安装使用参考：TODO wordpress简介 搭建wordpress需要 虚拟主机+php +mysql +nginx wordpress 适合建站 wordpress 基础安装使用参考：TODO 使用插件 WP REST API+ JWT Authentication for WP-API 自动发布文章 链接 总结：笔记结构图片： 参考：]]></content>
-      <categories>
-        <category>生活 - 计算机 - window</category>
-      </categories>
+    <title></title>
+    <url>%2Fpost%2F0.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[nodejs搭建]]></title>
@@ -151,11 +776,29 @@
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>%2Fpost%2F0.html</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2Fpost%2F0.html</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2Fpost%2F0.html</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[nginx配置文件]]></title>
     <url>%2Fpost%2Fd271472.html</url>
     <content type="text"><![CDATA[nginx配置文件123456789101112131415161718server &#123; listen 80; server_name _; root /var/www/wordpress; location / &#123; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; &#125; location ~ \.php(.*)$ &#123; try_files $uri =404; fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; &#125; &#125; demo 支持php （wordpress用） 1234567891011121314151617181920212223242526272829303132333435server &#123; listen 80; server_name it.hanglvda.com; #server_name 127.0.0.1; #地址没有/时自动加上/ 实现重定向 #server_name_in_redirect off; root /var/www/wordpress; #index index.php index.html index.htm; location / &#123; #root /var/www/wordpress; try_files $uri $uri/ /index.php$is_args$args; index index.php index.html index.htm; # 只有首页面根目录可以访问，其他页面地址都是404 not found #try_files $uri $uri/ /index.php?$query_string; #if (!-e $request_filename)&#123; # rewrite ^/(.*) /index.php last; #&#125; #访问目录自动到 index #autoindex on; &#125; location ~ \.php(.*)$ &#123; #错误输出 try_files $uri =404; #php-fpm服务 fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; # fastcgi_split_path_info ^((?U).+\. php)(/?.+)$; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi.conf; # include fastcgi_params; &#125; &#125; 默认nginx.conf 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118#user nobody;worker_processes 1;#error_log logs/error.log;#error_log logs/error.log notice;#error_log logs/error.log info;#pid logs/nginx.pid;events &#123; worker_connections 1024;&#125;http &#123; include mime.types; default_type application/octet-stream; #log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos; # &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos; # &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;; #access_log logs/access.log main; sendfile on; #tcp_nopush on; #keepalive_timeout 0; keepalive_timeout 65; #gzip on; server &#123; listen 80; server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html; index index.html index.htm; proxy_pass http://127.0.0.1:8080/; &#125; #error_page 404 /404.html; # redirect server error pages to the static page /50x.html # error_page 500 502 503 504 /50x.html; location = /50x.html &#123; root html; &#125; # proxy the PHP scripts to Apache listening on 127.0.0.1:80 # #location ~ \.php$ &#123; # proxy_pass http://127.0.0.1; #&#125; # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000 # #location ~ \.php$ &#123; # root html; # fastcgi_pass 127.0.0.1:9000; # fastcgi_index index.php; # fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name; # include fastcgi_params; #&#125; # deny access to .htaccess files, if Apache&apos;s document root # concurs with nginx&apos;s one # #location ~ /\.ht &#123; # deny all; #&#125; &#125; # another virtual host using mix of IP-, name-, and port-based configuration # #server &#123; # listen 8000; # listen somename:8080; # server_name somename alias another.alias; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125; # HTTPS server # #server &#123; # listen 443 ssl; # server_name localhost; # ssl_certificate cert.pem; # ssl_certificate_key cert.key; # ssl_session_cache shared:SSL:1m; # ssl_session_timeout 5m; # ssl_ciphers HIGH:!aNULL:!MD5; # ssl_prefer_server_ciphers on; # location / &#123; # root html; # index index.html index.htm; # &#125; #&#125;&#125;]]></content>
       <categories>
-        <category>技术 - 服务器 - Linux - nginx</category>
+        <category>技术</category>
+        <category>服务器</category>
+        <category>Linux</category>
+        <category>nginx</category>
       </categories>
       <tags>
         <tag>nginx</tag>
@@ -174,17 +817,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[wordpress jwt认证并发布文章]]></title>
-    <url>%2Fpost%2F3d7895ea.html</url>
-    <content type="text"><![CDATA[安装插件ps：wordpress插件安装方式 ftp 安装 登录wordpress后台–&gt; 插件–&gt; 搜索–&gt;安装 服务器需要安装ftp，开启21端口 安装包 直接下载安装包 上传到服务器上 目录 为 （wordpress目录）+ wordpress/wp-content/plugins 运行 ~unzip 插件名.zip ~ 命令解压到当前文件夹 略 WP REST APIps：用于返回接口数据支持 下载安装包 –&gt; 解压 JWT Authentication for WP-API提供jwt认证支持 下载安装包 –&gt; 解压 修改配置文件 （wordpress目录）/wordpress/wp-config.php 参考 https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/ 密码盐参考： 12345678define(&apos;AUTH_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;SECURE_AUTH_KEY&apos;, &apos;giVYR&lt;9piU^l~*/`1F-VhAoZ~y@VZVK&#125;]@]od5lxXK!^t9[,a|fK&#125;$UWeG[2G*0g&apos;);define(&apos;LOGGED_IN_KEY&apos;, &apos;n11b7hlD&gt;Q&lt;2=/77SpS[,S&gt;i0]@X!_4W&#123;/U-W65lN|gJpIQa@ub-^P%o%.sb2;%D&apos;);define(&apos;NONCE_KEY&apos;, &apos;24F8qI!UCFLdIX:&lt;m?63Duu_*p$`+p!9&gt;7LdJs4p#+^=(U&gt;x)pz&lt;M-;BB=7&amp;(XGl&apos;);define(&apos;AUTH_SALT&apos;, &apos;UG=0+&gt;cM9kDK%-YhVWf|j(*u2-* s~/hY!vWF&#123;&amp;Q[;&lt;a%fT/o+/FDltX%5GzKT/5&apos;);define(&apos;SECURE_AUTH_SALT&apos;, &apos;&gt;HO|82&gt;/@([FW@VR|3L9dV^mq37Y(WYrx?--p&gt;d-b&gt;~w[8,`Y-C%c(nm4[$ -kA&#123;&apos;);define(&apos;LOGGED_IN_SALT&apos;, &apos;bfRl^SUa4MNit)#7D67 cQ#:`m[ :&#123;_*&amp;p5.*oK&#123;t;1s&#125;&lt;!L7*NO|YSV)3B)=wEK&apos;);define(&apos;NONCE_SALT&apos;, &apos;j3[,QgyE.0).&gt;L~3+Qaa+,hK4[IdASXAykf@yPIs[9C#wc&lt;gixl]7&gt;YWt:.|Wzm &apos;); 注：上面内容不需要复制到配置文件中 eg: 配置文件 define( ‘WP_DEBUG’, false ); 上添加如下内容 12define(&apos;JWT_AUTH_SECRET_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;JWT_AUTH_CORS_ENABLE&apos;, true); 配置nginx （可能会用到）1234567在设置-固定连接中 URL的显示方式修改为除朴素之外的任意一种添加伪静态 不同服务器的配置方式不同 这里以nginx服务器为例：在server模块添加代码location / &#123; try_files $uri $uri/ /index.php?$args ;&#125; 然后重启nginx服务器。 测试启用WP REST API安装后，看看配置（一般不用改） 打开链接查看是否安装成功 eg https://blog.siburuxue.com/wp-json 启用JWT Authentication for WP-API执行下面请求 eg: 1234567891011121314登录获取token接口url:https://blog.siburuxue.com/wp-json/jwt-auth/v1/tokenmethod:postparam:&#123; username:xxx, password:xxx&#125;return:&#123; &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmxvZy5zaWJ1cnV4dWUuY29tIiwiaWF0IjoxNTU4MzE4MTc4LCJuYmYiOjE1NTgzMTgxNzgsImV4cCI6MTU1ODkyMjk3OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.-2qctW3wVyyIX-RLXWXl3YH3eo2aNXIT9isNjwvsV_k&quot;, &quot;user_email&quot;: &quot;siburuxue@aliyun.com&quot;, &quot;user_nicename&quot;: &quot;siburuxue&quot;, &quot;user_display_name&quot;: &quot;siburuxue&quot; &#125; 返回成功说明OK 使用1234567891011发布文章接口：url:https://blog.siburuxue.com/wp-json/wp/v2/postsmethod:postheader:&#123; Authorization:Bearer token&#125;param:&#123; title:测试, content:测试文章&#125; 问题jwt_auth_bad_config 解决：没有配置 wp-config.php rest_cannot_create 抱歉，您不能作为此用户创建文章。 解决：重新登录 参考官网插件 https://wordpress.org/plugins/ 博客 https://blog.siburuxue.com/]]></content>
-      <categories>
-        <category>技术 - WEB - 建站 - wordpress</category>
-      </categories>
-      <tags>
-        <tag>wordpress</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[typora创建task任务]]></title>
     <url>%2Fpost%2F9d6885de.html</url>
     <content type="text"><![CDATA[typora创建task备注2019-05-20 tasks.json中windows 命令需要改进，目前每open一次就创建一个窗口 创建task.json打开命令窗口 注：点击配置任务后 -&gt; 随便点击一个就会生成 .vscode/tasks.json 文件 创建任务 12345678910111213141516171819202122&#123; // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format &quot;version&quot;: &quot;2.0.0&quot;, &quot;tasks&quot;: [ &#123; &quot;label&quot;: &quot;Open Typora&quot;, &quot;type&quot;: &quot;process&quot;, &quot;windows&quot;: &#123; &quot;command&quot;: &quot;F:\\ProgramFiles\\Typora\\Typora.exe&quot;,&quot;args&quot;: [ &quot;$&#123;file&#125;&quot; ] &#125;, &quot;group&quot;: &#123; &quot;kind&quot;: &quot;build&quot;, &quot;isDefault&quot;: true &#125;, &quot;presentation&quot;: &#123; &quot;reveal&quot;: &quot;always&quot;, &quot;panel&quot;: &quot;new&quot; &#125; &#125; ]&#125; 注：自己修改typora的安装目录 测试任务是否成功 修改快捷键我们可以在“文件”—-“首选项”—“键盘快捷方式”。打开设置 注：没有直接 ctrl + p 搜索 keybindings.json 内容如下 123456&#123; &quot;key&quot;: &quot;ctrl+1&quot;, &quot;command&quot;: &quot;workbench.action.tasks.runTask&quot;, &quot;args&quot;: &quot;Open Typora&quot;, &quot;when&quot;: &quot;resourceLangId == markdown&quot;&#125; 注意：此处的args与tasks.json中的label值对应 效果：快捷键 Ctrl + 1 参考 vscode 基本配置和使用 http://www.cnblogs.com/jcuan/p/5918088.html 如何建一个task任务 https://code.visualstudio.com/ vscode快捷键使用（when的用法） https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts vscode]]></content>
@@ -197,19 +829,36 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[wordpress jwt认证并发布文章]]></title>
+    <url>%2Fpost%2F3d7895ea.html</url>
+    <content type="text"><![CDATA[安装插件ps：wordpress插件安装方式 ftp 安装 登录wordpress后台–&gt; 插件–&gt; 搜索–&gt;安装 服务器需要安装ftp，开启21端口 安装包 直接下载安装包 上传到服务器上 目录 为 （wordpress目录）+ wordpress/wp-content/plugins 运行 ~unzip 插件名.zip ~ 命令解压到当前文件夹 略 WP REST APIps：用于返回接口数据支持 下载安装包 –&gt; 解压 JWT Authentication for WP-API提供jwt认证支持 下载安装包 –&gt; 解压 修改配置文件 （wordpress目录）/wordpress/wp-config.php 参考 https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/ 密码盐参考： 12345678define(&apos;AUTH_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;SECURE_AUTH_KEY&apos;, &apos;giVYR&lt;9piU^l~*/`1F-VhAoZ~y@VZVK&#125;]@]od5lxXK!^t9[,a|fK&#125;$UWeG[2G*0g&apos;);define(&apos;LOGGED_IN_KEY&apos;, &apos;n11b7hlD&gt;Q&lt;2=/77SpS[,S&gt;i0]@X!_4W&#123;/U-W65lN|gJpIQa@ub-^P%o%.sb2;%D&apos;);define(&apos;NONCE_KEY&apos;, &apos;24F8qI!UCFLdIX:&lt;m?63Duu_*p$`+p!9&gt;7LdJs4p#+^=(U&gt;x)pz&lt;M-;BB=7&amp;(XGl&apos;);define(&apos;AUTH_SALT&apos;, &apos;UG=0+&gt;cM9kDK%-YhVWf|j(*u2-* s~/hY!vWF&#123;&amp;Q[;&lt;a%fT/o+/FDltX%5GzKT/5&apos;);define(&apos;SECURE_AUTH_SALT&apos;, &apos;&gt;HO|82&gt;/@([FW@VR|3L9dV^mq37Y(WYrx?--p&gt;d-b&gt;~w[8,`Y-C%c(nm4[$ -kA&#123;&apos;);define(&apos;LOGGED_IN_SALT&apos;, &apos;bfRl^SUa4MNit)#7D67 cQ#:`m[ :&#123;_*&amp;p5.*oK&#123;t;1s&#125;&lt;!L7*NO|YSV)3B)=wEK&apos;);define(&apos;NONCE_SALT&apos;, &apos;j3[,QgyE.0).&gt;L~3+Qaa+,hK4[IdASXAykf@yPIs[9C#wc&lt;gixl]7&gt;YWt:.|Wzm &apos;); 注：上面内容不需要复制到配置文件中 eg: 配置文件 define( ‘WP_DEBUG’, false ); 上添加如下内容 12define(&apos;JWT_AUTH_SECRET_KEY&apos;, &apos;eGFNl.=N+.&amp;5dHIYAu6xB^Rpn&#123;vx^H&#125;vk@fiv8])4BO8&gt;&gt;U:7J7bcBR&#123;y7JuZ6-F&apos;);define(&apos;JWT_AUTH_CORS_ENABLE&apos;, true); 配置nginx （可能会用到）1234567在设置-固定连接中 URL的显示方式修改为除朴素之外的任意一种添加伪静态 不同服务器的配置方式不同 这里以nginx服务器为例：在server模块添加代码location / &#123; try_files $uri $uri/ /index.php?$args ;&#125; 然后重启nginx服务器。 测试启用WP REST API安装后，看看配置（一般不用改） 打开链接查看是否安装成功 eg https://blog.siburuxue.com/wp-json 启用JWT Authentication for WP-API执行下面请求 eg: 1234567891011121314登录获取token接口url:https://blog.siburuxue.com/wp-json/jwt-auth/v1/tokenmethod:postparam:&#123; username:xxx, password:xxx&#125;return:&#123; &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmxvZy5zaWJ1cnV4dWUuY29tIiwiaWF0IjoxNTU4MzE4MTc4LCJuYmYiOjE1NTgzMTgxNzgsImV4cCI6MTU1ODkyMjk3OCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.-2qctW3wVyyIX-RLXWXl3YH3eo2aNXIT9isNjwvsV_k&quot;, &quot;user_email&quot;: &quot;siburuxue@aliyun.com&quot;, &quot;user_nicename&quot;: &quot;siburuxue&quot;, &quot;user_display_name&quot;: &quot;siburuxue&quot; &#125; 返回成功说明OK 使用1234567891011发布文章接口：url:https://blog.siburuxue.com/wp-json/wp/v2/postsmethod:postheader:&#123; Authorization:Bearer token&#125;param:&#123; title:测试, content:测试文章&#125; 问题jwt_auth_bad_config 解决：没有配置 wp-config.php rest_cannot_create 抱歉，您不能作为此用户创建文章。 解决：重新登录 参考官网插件 https://wordpress.org/plugins/ 博客 https://blog.siburuxue.com/]]></content>
+      <categories>
+        <category>技术 - WEB - 建站 - wordpress</category>
+      </categories>
+      <tags>
+        <tag>wordpress</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一个项目需要的模块]]></title>
     <url>%2Fpost%2F22c0c787.html</url>
     <content type="text"><![CDATA[项目模块 后台模块util模块公共jar，常用util 各编号规则 excel 导入导出 httpclient 请求 token权鉴 common模块本项目定制化 工具类 常量 —系统，表 权限：shiro 缓存管理：J2cache/redis 校验规则 词典 公共 实体对象 统一 异常处理 返回处理 日志处理 admin模块用户，部门，角色 相关 补充模块定时任务模块 文件上传模块 日志模块 消息通知模块 验证码模块 (session 方式，存表方式) 搜索引擎模块 个人中心模块 订单，统计模块 独立评论模块 测试模块 插件ip拦截 思想高度解耦合 模块之间引用 尽量少关联高度分离 只做我的功能,新的功能用新的表 新的模块 可以继承已有的 目标sys sys-util 项目工具类 (我的每个功能可以[jar + 自定义]) 非servlet springMVC mybatis就行 （因为sys-core中才引用这些包） sys-util-excel sys-util-httpclient sys-util-token /jwt sys-util-valid 效验 sys-util-拦截器 sys-util-结果 异常 分页 常量 … 文件操作、日期转换、数据类型转换、序列化、汉字转拼音、身份证号码验证、数字转人民币、发送短信、发送邮件、加密解密、图片处理、FTP/SFTP/fastDFS上传下载、二维码、XML读写、高精度计算 sys-core 核心模块 关联表操作 sys-core-log sys-core-shiro sys-core-cache 缓存 sys-common 插拔式公共模块 关联表操作 sys-common-dict sys-common-email sys-common-code 验证码 sys-common-支付 sys-common-第三方登录 sys-common-统计 … sys-user （jar）（API）用户 部门 角色 权限 获取 拿到系统用户相关信息 例如: 拿到部门信息 //sys-user-api 用户 部门 角色 权限处理 API sys-web （war） || sys-web-sun sys-web-admin 用户权限管理 sys-web-common quartz upload log message 消息通知 dict 词典 oss sql 监控 blog blog-web 后台管理 goods goods-web 商品 //TODO 聊天 基于 springMVC mybatis-plus 其关联逻辑不能换redis shiro etc尽量解耦 先完成用户管理模块 sys-web-admin 条件: MVC请求控制, 需要配置shiro sys-user基础用户 部门 角色 权限处理 以满足shiro需要 缓存配置 以满足shiro需要 缓存用redis,redis基础模块不做涉及表的操作, 可以类似一个工具类 结构 缓存 + 用户 部门 角色逻辑 –&gt; shiro –&gt; author–&gt; MVC 结构sys-core common base 继承类,继承mybatis-plus service dao contants exception cache 缓存 aspect annotation log sys 用户 部门 角色 权限处理 //对shiro提供支持 //TODO 向外api提供用户相关信息 shiro 权限 authc config 配置 eg: shiro规则 log规则sys-web 系统用户登录 sys-web-admin common config interceptor modules… 登录 权限编辑 相关 controller service dao entity sys-web-common common config modules… 博客系统blog-web 用户后台登录 common config modules… 博客相关 controller service dao entity 爬虫系统 论坛项目]]></content>
       <categories>
-        <category>技术 - WEB - 后台 - 架构</category>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>后台</category>
+        <category>架构</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[系统管理模块]]></title>
-    <url>%2Fpost%2F18ca0036.html</url>
-    <content type="text"><![CDATA[表用户 角色基础表 表 基础字段 权限普通菜单，按钮权限—shiro 展示/隐藏 数据权限某个角色是否 可以查看哪些部门 角色权限必须指定角色才能执行的 方法 eg: @RequiresRoles({“admin”}) 拦截器自定义aop指定信息 如管理员 可看不可改性 TODO]]></content>
+    <title><![CDATA[Hex推荐]]></title>
+    <url>%2Fpost%2F5b08b6fe.html</url>
+    <content type="text"><![CDATA[手把手教你 hexo + github搭建自己的博客以及个人主页 网上有很多这样的资料素材，但是没有一个系统化的教程 使你除了搜怎么搭建个人主页外，还要搜hexo使用教程 况且中间还可能遇到多种多样的坑 本篇文章，告诉你怎么使用github提供的空间，以及搭建自己的博客 本人亲身检测，绿色无公害；一、环境准备 1.安装Git 下载地址：https://git-scm.com/downloads 2.安装Node.js 下载地址：https://nodejs.org/en/ 3.安装hexo 利用 npm 命令即可安装。（在任意位置点击鼠标右键，选择Git bash） 1npm install -g hexo hexo安装中问题： npm ERR! registry error parsing json 错误 可能需要设置npm代理,执行命令 1npm config set registry http://registry.cnpmjs.org hexo:command not found 删除刚刚安装的npm目录，重新执行命令npm install -g hexo安装hexo， -g为全局安装 二、初始化hexo项目 1.创建hexo文件夹 安装完成后，在你喜爱的文件夹下（如H:\hexo）， 执行以下指令(在H:\hexo内点击鼠标右键，选择Git bash)， Hexo 即会自动在目标文件夹建立网站所需要的所有文件。 hexo init（初始化hexo项目） 2.安装依赖包 npm install（安装npm依赖包） 现在我们已经搭建起本地的hexo博客了 hexo命令行使用 常用命令： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546hexo help #查看帮助hexo init #初始化一个目录hexo new "postName" #新建文章hexo new page "pageName" #新建页面hexo generate #生成网页，可以在 public 目录查看整个网站的文件hexo server #本地预览，'Ctrl+C'关闭hexo deploy #部署.deploy目录hexo clean #清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**简写（常用）：hexo n == hexo newhexo g == hexo generatehexo s == hexo serverhexo d == hexo deploy``` 3.本地预览执行一下命令：hexo generate 生成网页hexo server 本地预览到浏览器输入localhost:4000可以看到（系统再带的博客页面）。三、更换模板可能系统自带的模板不满足你的需求，没关系hexo提供了很多模板供你选择访问：https://hexo.io/themes/选择自己喜欢的模板吧！本人选择的模板是MiHo 主题地址 http://blog.minhow.com/2017/08/01/blog/installation-configuration/1、搭建自己喜欢的模板1.1 安装主题删除hexo自带的themes文件夹在hexo下clone MiHo 主题``` bash$ git clone https://github.com/WongMinHo/hexo-theme-miho.git themes/miho``` MiHo 主题需要Hexo 3.0或以上版本，请先升级。1.2 更新主题（提供技术支持）``` bashcd themes/miho git pull 1.3 依赖安装 生成站点文章静态数据，用于站内搜索。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586npm install hexo-generator-json-content --save``` 1.4 配置主题此处需要理解：与themes文件同级的_config.yml文件是hexo的项目配置文件（以下定义为‘主配置’）在themes/miho文件中的_config.yml文件是主题的配置文件（以下定义为‘主题配置’）注：可以在_config.yml中定义变量在模板中&lt;%- config.userurl %&gt;引入在主配置下找到theme属性将其定义为theme: miho即可主配置文件属性注释：``` bash# Hexo Configuration## Docs: http://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Site #站点信息title: #标题subtitle: #副标题description: #站点描述，给搜索引擎看的author: #作者email: #电子邮箱language: zh-CN #语言# URL #链接格式url: #网址root: / #根目录permalink: :year/:month/:day/:title/ #文章的链接格式tag_dir: tags #标签目录archive_dir: archives #存档目录category_dir: categories #分类目录code_dir: downloads/codepermalink_defaults:# Directory #目录source_dir: source #源文件目录public_dir: public #生成的网页文件目录# Writing #写作new_post_name: :title.md #新文章标题default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）titlecase: false #标题转换成大写external_link: true #在新选项卡中打开连接filename_case: 0render_drafts: falsepost_asset_folder: falserelative_link: falsehighlight: #语法高亮 enable: true #是否启用 line_number: true #显示行号 tab_replace:# Category &amp; Tag #分类和标签default_category: uncategorized #默认分类category_map:tag_map:# Archives2: 开启分页1: 禁用分页0: 全部禁用archive: 2category: 2tag: 2# Server #本地服务器port: 4000 #端口号server_ip: localhost #IP 地址logger: falselogger_format: dev# Date / Time format #日期时间格式date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/time_format: H:mm:ss# Pagination #分页per_page: 10 #每页文章数，设置成 0 禁用分页pagination_dir: page# Disqus #Disqus评论，替换为多说disqus_shortname:# Extensions #拓展插件theme: landscape-plus #主题exclude_generator:plugins: #插件，例如生成 RSS 和站点地图的- hexo-generator-feed- hexo-generator-sitemap# Deployment #部署，将 lmintlcx 改成用户名deploy: type: git repo: github创库地址.git （需要使用ssh） branch: master 不要担心主题配置文件有中文注释，根据提示走就可以轻松搞定 注意：主配置文件中的 url ，root配置url: https://hjm100.github.io/Blogsroot: /Blogs 如果你想要通过https://hjm100.github.io去访问你的博客root: /因为我的https://hjm100.github.io用来装自己的主页，所以我的博客地址架构如上 虽然选择了自己想要的主题，但是主题中显示有关主体信息，以及博客信息，看着就不舒服 特别是网页底部版权那块，教你怎么改： 修改模板标签(用于一般模板不满足个人需求)步骤：用文本编辑器打开 Hexo 所在的目录打开 themes 目录打开你想要编辑的主题所在的目录中的 layout 目录打开 layout 目录下的 _partial 目录打开 _partial 目录下的 footer.ejs 文件修改底部链接post/copyright.ejs用于修改文章页脚用户链接 好了，至此，本地博客已经搭建起来了，只是本地哦，别人看不到的。下面，我们要部署到Github。 四、外网部署（为的就是省钱–哈哈）： github为我们提供了一个放置静态资源的空间，空间不大但是足以满足你博客以及个人主页的部署 如果有后台就不行了（不过可以选择自己租服务器，一个月就50多，不差钱的同鞋可以考虑一下） 以我的为例：github放置个人主页以及博客 1.申请账号，设置公钥这些老生常谈的话题就不用多说了（直接进入主题） 2.创建代码仓库2.1 点击加号穿件仓库New repository2.2仓库名字格式必须为: yourname.github.io （yourname为你的账号名）2.3进入新建的项目点击Settings设置项目找到GitHub Pages 点击change theme选择模板这时你的项目中就有了生成文件（但是这是系统创建的）2.4 不要删除_config.yml文件直接引入你的个人主页项目即可，默认打开index.html ok此时你的个人主页已经搭建好了 Blogs的搭建，你可以新建一个代码仓库（把这个代码仓库设置为html） 在设置中的GitHub Pages 选择Source 中的下拉框为master branch做法与上一样！ 3.仓库分析（yourname.github.io放个人主页，Blogs存放博客） 4.Blogs上传：将主配置中的deploy属性添加一下代码，deploy: type: git repo: 你github上的Blogs的SSH地址（注意ssh必须是系统最先生成的） branch: master 运行命令行 hexo g 编译文件 hexo d 提交文件即可 4.发布博文 在hexo\source_posts文件夹下新建一个MD文件类型的文档 或者命令行 hexo new 博文创建1234567891011---title: 博文 （博文标题）date: 2017-09-27 14:49:15 （博文时间）categories: hexo #文章文类tags: web开发技术 （ 文章标签）cover_picture: images/exploit.jpg(图片格式)---这里正常写文章即可# 可以理解为h1(但是#后面一定要有空格)``` bash（代码要写在这里面）$ console.log('Hello hjm100') //这里写代码 123注意：博文写好之后一定要先在本地查看后在提交！！！！！！ ```bash 语法：&#123;&#123;express | 过滤器名:补充说明&#125;&#125;（一定要放在bash中） 五、域名的配置（将github提供的二级域名与自己购买的域名绑定）： 1.可以前往腾讯购买一个域名，一般cn域名一年就20多块钱 2.点击 Github 上项目的 Settings，GitHub Pages， 提示Your site is published at http://hjm100.cn (这是我买的域名) Custom domain下面的对话框填写你的域名即可 将独立域名与GitHub Pages的空间绑定 方法一：在站点source目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 方法二：在Repository的根目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 在github上面添加好自己的域名后，不要着急，此时你的域名还没有与博客完全绑定 打开cmd命令行，使用ping hjm100.github.io 查看到git对应的ip地址 前往你购买域名的平台进行ipv4域名解析，输入你ping到的域名即可， 域名解析后，去浏览器访问一下你的域名吧！就是这么神奇！！ 至此你的博客已经搭建完毕了，不要感谢我，本人博客预览hjm100.cn 域名https添加（让你的域名更加安全） 第一步首先注册一个属于自己的域名，可以选择cn域名，不贵一年就20多元我的域名是hjm100.cn 第二步域名https添加， 1.登录这个网站并注册：https://www.cloudflare.com/（直接使用邮箱注册） 2.注册完毕后登录，如果你之前没有用过，则系统会直接显示Add a website对话框，再次填写hjm100.cn(你的域名)点击scan DNS Records即可，系统会自动扫描你的域名（扫描需要等待一定时间） 3.扫描完毕后点击Continue(继续) 4.添加DNS Recordstypt:CNAME类型 name：www Value: 附件小妙招： 怎么换一台电脑仍然可以使用hexo（亲测有用） 1.在Blogs这个项目中创建hexo分支用来储存开发环境（master分支用来存储生成的静态资源） git branch hexo（新建一个hexo分支） 2.将hexo分支发布在github上(这个时候分支中可能有master分支的文件) git push origin hexo(将代码提交到hexo分支上) 3.切换到hexo分支上（如果有文件就清空分支中的内容除了.git文件） git checkout hexo（切换到hexo分支上） 4.整理你的开发环境hexo,修改hexo下面的.gitignore(限制git上传)文件 12345db.json*.lognode_modules/public/.deploy*/ 5.删除themes–&gt;miho文件中的 .git文件以及.gitignore 6.将你上述修改的hexo文件提交到hexo分支里面（不要改错奥）在hexo分之下即可git add .git commit .git push origin hexo 7.当你换电脑的时候，配置公钥以及全局安装npm install -g hexo（请参考以上说明）下载的分支默认显示的是master分支，请切换到hexo分支，cd hexo（进入到hexo文件）执行npm install 安装node模块，按照以上写博客提交博客即可同步 8.切结，修改过hexo文件中的内容后记得提交hexo分支，以免你再次换电脑的时候使用 建议使用最新的git版本以及Node版本，如有问题请留言！！！！]]></content>
       <categories>
-        <category>技术 - WEB - 后台 - 架构</category>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>建站</category>
+        <category>博客</category>
       </categories>
   </entry>
   <entry>
@@ -217,15 +866,10 @@
     <url>%2Fpost%2F6b8323ff.html</url>
     <content type="text"><![CDATA[代码块处理添加复制功能参考 下载 clipboard.js三方插件 clipboardjs ，相关介绍和兼容性我就不赘述了，去它主页或github上看。 clipboardjs 使用在.\source\js目录下,保存文件clipboard.js / clipboard.min.js 也是在.\source\js目录下，创建clipboard-use.js，文件内容如下： 1234567891011121314151617/*页面载入完成后，创建复制按钮*/!function (e, t, a) &#123; /* code */ var initCopyCode = function()&#123; var copyHtml = &apos;&apos;; copyHtml += &apos;&lt;button class=&quot;btn-copy&quot; data-clipboard-snippet=&quot;&quot;&gt;&apos;; copyHtml += &apos; &lt;i class=&quot;fa fa-globe&quot;&gt;&lt;/i&gt;&lt;span&gt;copy&lt;/span&gt;&apos;; copyHtml += &apos;&lt;/button&gt;&apos;; $(&quot;.highlight .code pre&quot;).before(copyHtml); new ClipboardJS(&apos;.btn-copy&apos;, &#123; target: function(trigger) &#123; return trigger.nextElementSibling; &#125; &#125;); &#125; initCopyCode();&#125;(window, document); 样式在source\css\_partial样式文件中添加下面代码： 123456789101112131415161718192021222324252627282930313233343536//代码块复制按钮.highlight&#123; //方便copy代码按钮（btn-copy）的定位 position: relative;&#125;.btn-copy &#123; display: inline-block; cursor: pointer; background-color: #eee; background-image: linear-gradient(#fcfcfc,#eee); border: 1px solid #d5d5d5; border-radius: 3px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-appearance: none; font-size: 13px; font-weight: 700; line-height: 20px; color: #333; -webkit-transition: opacity .3s ease-in-out; -o-transition: opacity .3s ease-in-out; transition: opacity .3s ease-in-out; padding: 2px 6px; position: absolute; right: 5px; top: 5px; opacity: 0;&#125;.btn-copy span &#123; margin-left: 5px;&#125;.highlight:hover .btn-copy&#123; opacity: 1;&#125; 引用引用js ==(clipboard-use需要jQuery支持)== 123&lt;!-- 代码块复制功能 --&gt;&lt;%- js(&apos;js/clipboard.min&apos;) %&gt;&lt;%- js(&apos;js/clipboard-use&apos;) %&gt; 引用css 相应地方引入 eg：...source\css\style.styl 123// 代码块复制按钮//-----------------------------------------------@import &quot;_partial/clipboard&quot; 添加折叠效果https://qiming.info/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD/ https://blog.rmiao.top/hexo-fold-block/ 辅助功能添加字数统计，阅读次数]]></content>
       <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Hex推荐]]></title>
-    <url>%2Fpost%2F5b08b6fe.html</url>
-    <content type="text"><![CDATA[一些好看的hexo建站https://www.zengjianfeng.com/develop 样式简约 搜索功能 代码样式没有编号 https://www.fanhaobai.com/2017/03/install-hexo.html 搜索功能不错 图片有点大 https://github.com/ppoffice/hexo-theme-hueman]]></content>
-      <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>建站</category>
+        <category>博客</category>
       </categories>
   </entry>
   <entry>
@@ -241,13 +885,15 @@
     <url>%2Fpost%2F76098feb.html</url>
     <content type="text"><![CDATA[源代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; .title-text span &#123; display: block; /*设置为块级元素会独占一行形成上下居中的效果*/ position: relative; /*定位横线（当横线的父元素）*/ color: #188eee; /*居中文字的颜色*/ text-align: center; &#125; .title-text span:before, .title-text span:after &#123; content: &apos;&apos;; position: absolute; /*定位背景横线的位置*/ top: 50%; background: #8c8c8c; /*背景横线颜色*/ width: 35%; /*单侧横线的长度*/ height: 1px; &#125; .title-text span:before &#123; left: 2%; /*调整背景横线的左右距离*/ &#125; .title-text span:after &#123; right: 2%; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;work-intro&quot;&gt; &lt;div class=&quot;title&quot;&gt; &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt; &lt;/div&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt; 另外 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; html &#123; height: 100%; &#125; .work-intro &#123; background: #18c8f6; height: auto; background: url(&quot;https://raw.githubusercontent.com/disanshijie/cloudfile_A01/master/img/20190325104422.png&quot;) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; &#125; .title-text span &#123; display: block; /*设置为块级元素会独占一行形成上下居中的效果*/ position: relative; /*定位横线（当横线的父元素）*/ color: #FFFFFF; /*居中文字的颜色*/ text-align: center; &#125; .title-text span:before, .title-text span:after &#123; content: &apos;&apos;; position: absolute; /*定位背景横线的位置*/ top: 50%; background: #8c8c8c; /*背景横线颜色*/ width: 35%; /*单侧横线的长度*/ height: 1px; &#125; .title-text span:before &#123; left: 2%; /*调整背景横线的左右距离*/ &#125; .title-text span:after &#123; right: 2%; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;work-intro&quot;&gt; &lt;div class=&quot;title&quot;&gt; &lt;h2 class=&quot;title-text&quot;&gt;&lt;span&gt;假日优选供销平台&lt;/span&gt;&lt;/h2&gt; &lt;/div&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;]]></content>
       <categories>
-        <category>技术 - WEB - 前端</category>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>前端</category>
       </categories>
   </entry>
   <entry>
     <title><![CDATA[Hex推荐]]></title>
     <url>%2Fpost%2F5b08b6fe.html</url>
-    <content type="text"><![CDATA[手把手教你 hexo + github搭建自己的博客以及个人主页 网上有很多这样的资料素材，但是没有一个系统化的教程 使你除了搜怎么搭建个人主页外，还要搜hexo使用教程 况且中间还可能遇到多种多样的坑 本篇文章，告诉你怎么使用github提供的空间，以及搭建自己的博客 本人亲身检测，绿色无公害；一、环境准备 1.安装Git 下载地址：https://git-scm.com/downloads 2.安装Node.js 下载地址：https://nodejs.org/en/ 3.安装hexo 利用 npm 命令即可安装。（在任意位置点击鼠标右键，选择Git bash） 1npm install -g hexo hexo安装中问题： npm ERR! registry error parsing json 错误 可能需要设置npm代理,执行命令 1npm config set registry http://registry.cnpmjs.org hexo:command not found 删除刚刚安装的npm目录，重新执行命令npm install -g hexo安装hexo， -g为全局安装 二、初始化hexo项目 1.创建hexo文件夹 安装完成后，在你喜爱的文件夹下（如H:\hexo）， 执行以下指令(在H:\hexo内点击鼠标右键，选择Git bash)， Hexo 即会自动在目标文件夹建立网站所需要的所有文件。 hexo init（初始化hexo项目） 2.安装依赖包 npm install（安装npm依赖包） 现在我们已经搭建起本地的hexo博客了 hexo命令行使用 常用命令： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546hexo help #查看帮助hexo init #初始化一个目录hexo new "postName" #新建文章hexo new page "pageName" #新建页面hexo generate #生成网页，可以在 public 目录查看整个网站的文件hexo server #本地预览，'Ctrl+C'关闭hexo deploy #部署.deploy目录hexo clean #清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**简写（常用）：hexo n == hexo newhexo g == hexo generatehexo s == hexo serverhexo d == hexo deploy``` 3.本地预览执行一下命令：hexo generate 生成网页hexo server 本地预览到浏览器输入localhost:4000可以看到（系统再带的博客页面）。三、更换模板可能系统自带的模板不满足你的需求，没关系hexo提供了很多模板供你选择访问：https://hexo.io/themes/选择自己喜欢的模板吧！本人选择的模板是MiHo 主题地址 http://blog.minhow.com/2017/08/01/blog/installation-configuration/1、搭建自己喜欢的模板1.1 安装主题删除hexo自带的themes文件夹在hexo下clone MiHo 主题``` bash$ git clone https://github.com/WongMinHo/hexo-theme-miho.git themes/miho``` MiHo 主题需要Hexo 3.0或以上版本，请先升级。1.2 更新主题（提供技术支持）``` bashcd themes/miho git pull 1.3 依赖安装 生成站点文章静态数据，用于站内搜索。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586npm install hexo-generator-json-content --save``` 1.4 配置主题此处需要理解：与themes文件同级的_config.yml文件是hexo的项目配置文件（以下定义为‘主配置’）在themes/miho文件中的_config.yml文件是主题的配置文件（以下定义为‘主题配置’）注：可以在_config.yml中定义变量在模板中&lt;%- config.userurl %&gt;引入在主配置下找到theme属性将其定义为theme: miho即可主配置文件属性注释：``` bash# Hexo Configuration## Docs: http://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Site #站点信息title: #标题subtitle: #副标题description: #站点描述，给搜索引擎看的author: #作者email: #电子邮箱language: zh-CN #语言# URL #链接格式url: #网址root: / #根目录permalink: :year/:month/:day/:title/ #文章的链接格式tag_dir: tags #标签目录archive_dir: archives #存档目录category_dir: categories #分类目录code_dir: downloads/codepermalink_defaults:# Directory #目录source_dir: source #源文件目录public_dir: public #生成的网页文件目录# Writing #写作new_post_name: :title.md #新文章标题default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）titlecase: false #标题转换成大写external_link: true #在新选项卡中打开连接filename_case: 0render_drafts: falsepost_asset_folder: falserelative_link: falsehighlight: #语法高亮 enable: true #是否启用 line_number: true #显示行号 tab_replace:# Category &amp; Tag #分类和标签default_category: uncategorized #默认分类category_map:tag_map:# Archives2: 开启分页1: 禁用分页0: 全部禁用archive: 2category: 2tag: 2# Server #本地服务器port: 4000 #端口号server_ip: localhost #IP 地址logger: falselogger_format: dev# Date / Time format #日期时间格式date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/time_format: H:mm:ss# Pagination #分页per_page: 10 #每页文章数，设置成 0 禁用分页pagination_dir: page# Disqus #Disqus评论，替换为多说disqus_shortname:# Extensions #拓展插件theme: landscape-plus #主题exclude_generator:plugins: #插件，例如生成 RSS 和站点地图的- hexo-generator-feed- hexo-generator-sitemap# Deployment #部署，将 lmintlcx 改成用户名deploy: type: git repo: github创库地址.git （需要使用ssh） branch: master 不要担心主题配置文件有中文注释，根据提示走就可以轻松搞定 注意：主配置文件中的 url ，root配置url: https://hjm100.github.io/Blogsroot: /Blogs 如果你想要通过https://hjm100.github.io去访问你的博客root: /因为我的https://hjm100.github.io用来装自己的主页，所以我的博客地址架构如上 虽然选择了自己想要的主题，但是主题中显示有关主体信息，以及博客信息，看着就不舒服 特别是网页底部版权那块，教你怎么改： 修改模板标签(用于一般模板不满足个人需求)步骤：用文本编辑器打开 Hexo 所在的目录打开 themes 目录打开你想要编辑的主题所在的目录中的 layout 目录打开 layout 目录下的 _partial 目录打开 _partial 目录下的 footer.ejs 文件修改底部链接post/copyright.ejs用于修改文章页脚用户链接 好了，至此，本地博客已经搭建起来了，只是本地哦，别人看不到的。下面，我们要部署到Github。 四、外网部署（为的就是省钱–哈哈）： github为我们提供了一个放置静态资源的空间，空间不大但是足以满足你博客以及个人主页的部署 如果有后台就不行了（不过可以选择自己租服务器，一个月就50多，不差钱的同鞋可以考虑一下） 以我的为例：github放置个人主页以及博客 1.申请账号，设置公钥这些老生常谈的话题就不用多说了（直接进入主题） 2.创建代码仓库2.1 点击加号穿件仓库New repository2.2仓库名字格式必须为: yourname.github.io （yourname为你的账号名）2.3进入新建的项目点击Settings设置项目找到GitHub Pages 点击change theme选择模板这时你的项目中就有了生成文件（但是这是系统创建的）2.4 不要删除_config.yml文件直接引入你的个人主页项目即可，默认打开index.html ok此时你的个人主页已经搭建好了 Blogs的搭建，你可以新建一个代码仓库（把这个代码仓库设置为html） 在设置中的GitHub Pages 选择Source 中的下拉框为master branch做法与上一样！ 3.仓库分析（yourname.github.io放个人主页，Blogs存放博客） 4.Blogs上传：将主配置中的deploy属性添加一下代码，deploy: type: git repo: 你github上的Blogs的SSH地址（注意ssh必须是系统最先生成的） branch: master 运行命令行 hexo g 编译文件 hexo d 提交文件即可 4.发布博文 在hexo\source_posts文件夹下新建一个MD文件类型的文档 或者命令行 hexo new 博文创建1234567891011---title: 博文 （博文标题）date: 2017-09-27 14:49:15 （博文时间）categories: hexo #文章文类tags: web开发技术 （ 文章标签）cover_picture: images/exploit.jpg(图片格式)---这里正常写文章即可# 可以理解为h1(但是#后面一定要有空格)``` bash（代码要写在这里面）$ console.log('Hello hjm100') //这里写代码 123注意：博文写好之后一定要先在本地查看后在提交！！！！！！ ```bash 语法：&#123;&#123;express | 过滤器名:补充说明&#125;&#125;（一定要放在bash中） 五、域名的配置（将github提供的二级域名与自己购买的域名绑定）： 1.可以前往腾讯购买一个域名，一般cn域名一年就20多块钱 2.点击 Github 上项目的 Settings，GitHub Pages， 提示Your site is published at http://hjm100.cn (这是我买的域名) Custom domain下面的对话框填写你的域名即可 将独立域名与GitHub Pages的空间绑定 方法一：在站点source目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 方法二：在Repository的根目录下面，新建一个名为CNAME的文本文件， 里面写入你要绑定的域名，比如hjm100.cn 在github上面添加好自己的域名后，不要着急，此时你的域名还没有与博客完全绑定 打开cmd命令行，使用ping hjm100.github.io 查看到git对应的ip地址 前往你购买域名的平台进行ipv4域名解析，输入你ping到的域名即可， 域名解析后，去浏览器访问一下你的域名吧！就是这么神奇！！ 至此你的博客已经搭建完毕了，不要感谢我，本人博客预览hjm100.cn 域名https添加（让你的域名更加安全） 第一步首先注册一个属于自己的域名，可以选择cn域名，不贵一年就20多元我的域名是hjm100.cn 第二步域名https添加， 1.登录这个网站并注册：https://www.cloudflare.com/（直接使用邮箱注册） 2.注册完毕后登录，如果你之前没有用过，则系统会直接显示Add a website对话框，再次填写hjm100.cn(你的域名)点击scan DNS Records即可，系统会自动扫描你的域名（扫描需要等待一定时间） 3.扫描完毕后点击Continue(继续) 4.添加DNS Recordstypt:CNAME类型 name：www Value: 附件小妙招： 怎么换一台电脑仍然可以使用hexo（亲测有用） 1.在Blogs这个项目中创建hexo分支用来储存开发环境（master分支用来存储生成的静态资源） git branch hexo（新建一个hexo分支） 2.将hexo分支发布在github上(这个时候分支中可能有master分支的文件) git push origin hexo(将代码提交到hexo分支上) 3.切换到hexo分支上（如果有文件就清空分支中的内容除了.git文件） git checkout hexo（切换到hexo分支上） 4.整理你的开发环境hexo,修改hexo下面的.gitignore(限制git上传)文件 12345db.json*.lognode_modules/public/.deploy*/ 5.删除themes–&gt;miho文件中的 .git文件以及.gitignore 6.将你上述修改的hexo文件提交到hexo分支里面（不要改错奥）在hexo分之下即可git add .git commit .git push origin hexo 7.当你换电脑的时候，配置公钥以及全局安装npm install -g hexo（请参考以上说明）下载的分支默认显示的是master分支，请切换到hexo分支，cd hexo（进入到hexo文件）执行npm install 安装node模块，按照以上写博客提交博客即可同步 8.切结，修改过hexo文件中的内容后记得提交hexo分支，以免你再次换电脑的时候使用 建议使用最新的git版本以及Node版本，如有问题请留言！！！！]]></content>
+    <content type="text"><![CDATA[一些好看的hexo建站https://www.zengjianfeng.com/develop 样式简约 搜索功能 代码样式没有编号 https://www.fanhaobai.com/2017/03/install-hexo.html 搜索功能不错 图片有点大 https://github.com/ppoffice/hexo-theme-hueman]]></content>
       <categories>
         <category>技术 - WEB - 建站 - 博客</category>
       </categories>
@@ -257,7 +903,10 @@
     <url>%2Fpost%2F4184c8cd.html</url>
     <content type="text"><![CDATA[更新2019-03-08直接npm install hexo-asset-image即可 修正路径 应该是官方修改了 快速开始1 安装node，git 2 选择编辑工具 3 git服务器 4 安装Hexo ​ 主题模板 ​ 个人配置 ​ 发布文章 ​ 图片 ​ 搜索 ​ SEO,统计 ​ 评论 ​ RSS //TODO 5 end 一，安装node，git…略 二 Idea工具 Vscode使用说明：略… 三 服务器github或者gitee 开通git pages //TODO 四 安装Hexo官方文档前面git和nodejs安装好后，就可以安装hexo了，你可以先创建一个文件夹blog，然后cd到这个文件夹下（或者在这个文件夹下直接右键git bash打开）。 1234567#安装npm install -g hexo-cli#初始化hexo init blog#进入这个myblog文件夹cd blog npm install 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 在浏览器输入localhost:4000就可以看到你生成的博客了。 模板模板库 模板推荐 个人配置Hexo _config.yml配置相关说明eg: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110# Hexo Configuration## Docs: https://hexo.io/docs/configuration.html## Source: https://github.com/hexojs/hexo/# Sitetitle: 第三世界subtitle:description:keywords:author: sun bolanguage: zh-CNtimezone: Asia/Shanghai# URL## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;url: #http://sunjinchao.gitee.io/blog/ http://localhost:4000/root: #/blog /permalink: :year/:month/:day/:title/permalink_defaults:# Directorysource_dir: sourcepublic_dir: publictag_dir: tagsarchive_dir: archivescategory_dir: categoriescode_dir: downloads/codei18n_dir: :langskip_render:# Writing#new_post_name: :year-:month-:day-:title.md # File name of new postsnew_post_name: :title.md # File name of new postsdefault_layout: posttitlecase: false # Transform title into titlecaseexternal_link: true # Open external links in new tabfilename_case: 0render_drafts: false#在建立文件时，Hexo会自动建立一个与文章同名的文件夹post_asset_folder: truerelative_link: falsefuture: truehighlight: enable: true line_number: true auto_detect: false tab_replace: # Home page setting# path: Root path for your blogs index page. (default = &apos;&apos;)# per_page: Posts displayed per page. (0 = disable pagination)# order_by: Posts order. (Order by date descending by default)index_generator: path: &apos;&apos; per_page: 10 order_by: -date # Category &amp; Tagdefault_category: uncategorizedcategory_map:tag_map:# Date / Time format## Hexo uses Moment.js to parse and display date## You can customize the date format as defined in## http://momentjs.com/docs/#/displaying/format/date_format: YYYY-MM-DDtime_format: HH:mm:ss# Pagination## Set per_page to 0 to disable paginationper_page: 10pagination_dir: page# Extensions## Plugins: https://hexo.io/plugins/## Themes: https://hexo.io/themes/theme: #cyanstyle #landscape #next-default #next-my #next-someone #pure xups#plugins:#- hexo-generator-sitemap#- hexo-generator-baidu-sitemap#baidusitemap:# path: baidusitemap.xml# Deployment## Docs: https://hexo.io/docs/deployment.htmldeploy: type: git repo: git@gitee.com:sunjinchao/blog.git branch: publish message: search: path: search.xml field: post format: html limit: 10000 自动上传到github/gitee 需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。 1npm install hexo-deployer-git --save 上传 hexo clean &amp;&amp; hexo g &amp;&amp; hexo d 主题文件config.yml 配置略… 发文章新建md hexo n newpapername 本地启动 hexo clean &amp;&amp; hexo g &amp;&amp; hexo s 图片处理 首先把blog（hexo）目录下的_config.yml里的psot_asset_folder:设置为true 在blog（hexo）目录下执行: 1npm install hexo-asset-image --save 用 hexo n 名称 生成文件，会默认给你生成一个相同名字的文件夹，用typora编辑时可以设置图片根路径为此目录下 1234567npm install hexo-asset-image或npm install hexo-asset-image --save或 （官版）npm install https://github.com/CodeFalling/hexo-asset-image --save或（官版上修改）npm install https://github.com/7ym0n/hexo-asset-image.git 123456或（sunbo修改的）npm i git+https://gitee.com/sunjinchao/blog.git#hexo-asset-image --save更新 npm update hexo-asset-image删除npm uninstall hexo-asset-image 搜索功能 安装插件 1hexo-generator-json-content SEO,统计SEO需要自己的域名百度SEO地址 google站点地图 百度统计百度统计 照样把代码复制到head.ejs文件中，然后再进行一下安装检查，半小时左右就可以在百度统计里面看到自己的网站信息了。 引入不蒜子访问量和访问人次统计不蒜子的添加非常非常方便，不蒜子 在footer.ejs中的合适位置，看你要显示在哪个地方，添加： 1234&lt;!--这一段是不蒜子的访问量统计代码--&gt;&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;&lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次 &lt;/span&gt;&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次&lt;/span&gt; 评论]]></content>
       <categories>
-        <category>技术 - WEB - 建站 - 博客</category>
+        <category>技术</category>
+        <category>WEB</category>
+        <category>建站</category>
+        <category>博客</category>
       </categories>
   </entry>
   <entry>
@@ -266,14 +915,6 @@
     <content type="text"><![CDATA[##熟悉spring springmvc ##工具使用 vscode]]></content>
       <categories>
         <category>技术 - web - 服务器 - 项目</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[window新建文件 快键方式]]></title>
-    <url>%2Fpost%2F2dc7605d.html</url>
-    <content type="text"><![CDATA[经常会遇到比如新建文件夹, 以及新建文本文档之类的需要. 新建文件夹默认提供快捷键 Ctrl + Shift + N, 但新建一个文本文档还需要右键, 加鼠标操作, 显得不那么方便. 下面就提供了一种通过修改注册表的方式, 给新建文本文档注册一个快捷键: 右键 + W + T. 操作打开注册表按下win+r组合键呼出运行,输入regedit点击运行打开注册表, 查找Ctrl + F 查找搜索 文本文档 (也可以是其他) 修改方式一：双击当前行左侧，在弹出框里文本文档前加上T eg: T文本文档 注：没有字符重复情况下可以使用 方式二：可以在 XXXX 后面加 (&amp;X) eg: Microsoft Word 文档(&amp;W) 测试修改成功后，执行 右键 –&gt; W T 后即可以新建一个txt文本 （或者 右键 –&gt; W W 新建一个word文档）]]></content>
-      <categories>
-        <category>生活 - 计算机 - window</category>
       </categories>
   </entry>
 </search>
