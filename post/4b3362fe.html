@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>常用工具类整理 | 第三世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="sun, java, Web, 数据库, 集群">
+    <meta name="description" content="sun bo">
+
+    
+    <link rel="alternative" href="/atom.xml" title="第三世界" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4f1864f2b3b9e45560412149ea8cf935";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">第三世界</span>
+                    <span class="description"></span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+                <li rel="/post/4b3362fe.html" class="item ">
+                    <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+                </li>
+                
+                <li rel="/post/4b3362fe.html" class="item ">
+                    <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+                </li>
+                
+                <li rel="/post/4b3362fe.html" class="item ">
+                    <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+                </li>
+                
+                <li rel="/post/4b3362fe.html" class="item ">
+                    <a href="/soft/" title="软件" class="icon-lab">&nbsp;软件</a>
+                </li>
+                
+                <li rel="/post/4b3362fe.html" class="item ">
+                    <a href="/utils/" title="工具箱" class="icon-cogs">&nbsp;工具箱</a>
+                </li>
+                
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                    
+                        <p class="links">
+                            
+                                <a href="https://github.com/sunjinchao" target="_blank">
+                                    Github
+                                </a>
+                                |
+                                    
+                                        
+                                <a href="https://pages.coding.me" target="_blank">
+                                    Hosted by Coding Pages
+                                </a>
+                                
+                                        
+                        </p>
+                        <p class="sns">
+                            
+                                <a href="http://weibo.com/sunjinchao" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                                
+                                <a href="https://www.facebook.com/profile.php" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                                
+                                    <a href="javascript: void(0);" class="wechat">
+                                        <b>■</b> 公众号
+                                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                                    </a>
+                        </p>
+                        
+            </div>
+            <div class="avatar fr">
+                <img src="https://gitee.com/sunjinchao/cloudfile_C01/raw/master/img/20190808220914.jpg" alt="avatar" title="SUN BO">
+            </div>
+        </div>
+    </section>
+</header>
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>常用工具类整理</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        sun bo 
+        转载于 
+        <time datetime="2019-11-16T14:51:57.000Z">2019-11-16</time>
+    </p>
+    <div class="post-content">
+        <script src="\assets\js\APlayer.min.js"> </script><p>web项目常用的一些jar包中 可以拿来使用的 工具类</p>
+<a id="more"></a>
+<p>一、org.apache.commons.io.IOUtils<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">closeQuietly 关闭一个IO流、socket、或者selector且不抛出异常。通常放在finally块。</span><br><span class="line">toString 转换IO流、 Uri、 byte[]为String。</span><br><span class="line">copy IO流数据复制，从输入流写到输出流中，最大支持2GB。</span><br><span class="line">toByteArray 从输入流、URI获取byte[]。</span><br><span class="line">write 把字节. 字符等写入输出流。</span><br><span class="line">toInputStream 把字符转换为输入流。</span><br><span class="line">readLines 从输入流中读取多行数据，返回List</span><br><span class="line">copyLarge 同copy，支持2GB以上数据的复制。</span><br><span class="line">lineIterator 从输入流返回一个迭代器，根据参数要求读取的数据量，全部读取，如果数据不够，则失败。</span><br></pre></td></tr></table></figure></p>
+<p>二、 org.apache.commons.io.FileUtils<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deleteDirectory 删除文件夹</span><br><span class="line">readFileToString 以字符形式读取文件内容。</span><br><span class="line">deleteQueitly 删除文件或文件夹且不会抛出异常。</span><br><span class="line">copyFile 复制文件</span><br><span class="line">writeStringToFile 把字符写到目标文件，如果文件不存在，则创建。</span><br><span class="line">forceMkdir 强制创建文件夹，如果该文件夹父级目录不存在，则创建父级。</span><br><span class="line">write 把字符写到指定文件中</span><br><span class="line">listFiles 列举某个目录下的文件(根据过滤器)</span><br><span class="line">copyDirectory 复制文件夹</span><br><span class="line">forceDelete 强制删除文件</span><br></pre></td></tr></table></figure></p>
+<p>三、org.apache.commons.lang.StringUtils<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">isBlank 字符串是否为空 (trim后判断)</span><br><span class="line">isEmpty 字符串是否为空 (不trim并判断)</span><br><span class="line">equals 字符串是否相等</span><br><span class="line">join 合并数组为单一字符串，可传分隔符</span><br><span class="line">split 分割字符串</span><br><span class="line">empty 空字符串</span><br><span class="line">trimToNull trim后为空字符串则转换为null</span><br><span class="line">replace 替换字符串</span><br></pre></td></tr></table></figure></p>
+<p>四、org.apache.http.util.EntityUtils<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">toString 把Entity转换为字符串</span><br><span class="line">consume 确保Entity中的内容全部被消费。可以看到源码里又一次消费了Entity的内容，假如用户没有消费，那调用Entity时候将会把它消费掉。</span><br><span class="line">toByteArray 把Entity转换为字节流</span><br><span class="line">consumeQuietly 和consume一样，但不抛异常</span><br><span class="line">getContentCharset 获取内容的编码</span><br></pre></td></tr></table></figure></p>
+<p>五、org.apache.commons.io.FilenameUtils<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getExtension 返回文件后缀名</span><br><span class="line">getBaseName 返回文件名，不包含后缀名</span><br><span class="line">getName 返回文件全名</span><br><span class="line">concat 按命令行风格组合文件路径(详见方法注释)</span><br><span class="line">removeExtension 删除后缀名</span><br><span class="line">normalize 使路径正常化</span><br><span class="line">wildcardMatch 匹配通配符</span><br><span class="line">seperatorToUnix 路径分隔符改成unix系统格式的，即/</span><br><span class="line">getFullPath 获取文件路径，不包括文件名</span><br><span class="line">isExtension 检查文件后缀名是不是传入参数(List)中的一个</span><br></pre></td></tr></table></figure></p>
+<p>六、org.springframework.util.StringUtils<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hasText 检查字符串中是否包含文本</span><br><span class="line">hasLength 检测字符串是否长度大于0</span><br><span class="line">isEmpty 检测字符串是否为空（若传入为对象，则判断对象是否为null）</span><br><span class="line">commaDelimitedStringToArray 逗号分隔的String转换为数组</span><br><span class="line">collectionToDelimitedString 把集合转为CSV格式字符串</span><br><span class="line">replace 替换字符串</span><br></pre></td></tr></table></figure></p>
+<p>七、org.apache.commons.lang.ArrayUtils<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">contains 是否包含某字符串</span><br><span class="line">addAll 添加所有</span><br><span class="line">clone 克隆一个数组</span><br><span class="line">isEmpty 是否空数组</span><br><span class="line">add 向数组添加元素</span><br><span class="line">subarray 截取数组</span><br><span class="line">indexOf 查找下标</span><br><span class="line">isEquals 比较数组是否相等</span><br><span class="line">toObject 基础类型数据数组转换为对应的Object数组</span><br></pre></td></tr></table></figure></p>
+<p>八、org.apache.commons.codec.digest.DigestUtils</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">md5Hex MD5加密，返回32位</span><br><span class="line">sha1Hex SHA-1加密</span><br><span class="line">sha256Hex SHA-256加密</span><br><span class="line">sha512Hex SHA-512加密</span><br><span class="line">md5 MD5加密，返回16位</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/born_mad/article/details/79753811" target="_blank" rel="noopener">https://blog.csdn.net/born_mad/article/details/79753811</a></p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/技术/">技术</a>|<a class="cat-link" href="/categories/技术/编程/">编程</a>|<a class="cat-link" href="/categories/技术/编程/Java/">Java</a>|<a class="cat-link" href="/categories/技术/编程/Java/工具/">工具</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/默认/" title="默认">默认</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+    <div class="article-share clearfix text-center">
+        <div class="share-area">
+            <span class="share-txt">分享到：</span>
+            <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+            <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+            <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+            <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=sunbo个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+            <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+        </div>
+    </div>
+    
+
+    <!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br>
+        <a href="javascript: void(0);">没有上一篇了</a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br>
+        <a href="/post/a1fdaf90.html">
+            
+                称重货架返回稳定值
+            
+        </a>
+    </span>
+    
+</div>
+
+        <!-- 文章评论 -->
+        
+    <script src="/js/comment.js"></script>
+        <div id="comments" class="comment">
+            <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/sunbo.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/sunbo.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+        </div>
+        <script>
+            JELON.Comment({
+                container: 'comments',
+                label: '技术/编程/Java/工具/常用工具类整理' || 'post/4b3362fe.html',
+                owner: 'disanshijie',
+                repo: 'disanshijie.github.io',
+                clientId: '6e2d5638fecb4b1544eb',
+                clientSecret: 'fa9cd9051a4a612e297133d727d194823c901f47'
+            });
+        </script>
+        
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="widget.search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+    </section>
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+
+    <div class="category-block">
+      <!--<h3 class="asidetitle">categories</h3> -->
+         <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">43</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/">WEB</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/">后台</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/架构/">架构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/">框架</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/框架/rabbitMQ/">rabbitMQ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/后台/错误/">错误</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/">工具</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/">nodejs</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/nodejs/模块工具包/">模块工具包</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/tomcat/">tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/工具/消息中间件/">消息中间件</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/">建站</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/WEB/建站/博客/">博客</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/">工具</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/工具/Git/">Git</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/">服务器</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/">Linux</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/系统/">系统</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/">软件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/Linux/软件/php/">php</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/">数据库</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/服务器/数据库/MySQL/">MySQL</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/">Java</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/工具/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/Java/算法/">算法</a><span class="category-list-count">7</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-wordpress/">技术 - WEB - 建站 - wordpress</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-建站-博客/">技术 - WEB - 建站 - 博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-web-服务器-项目/">技术 - web - 服务器 - 项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-工具-WEB-nodejs/">技术 - 工具 - WEB - nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-服务器-Linux/">技术 - 服务器 - Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java/">技术 - 编程 - Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-后台-框架-springMVC/">技术\WEB\后台\框架\springMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-maven/">技术\WEB\工具\maven</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-WEB-工具-tomcat/">技术\WEB\工具\tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-JDK/">技术\编程\Java\JDK</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-Java-算法/">技术\编程\Java\算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-编程-基础/">技术\编程\基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/">计算机</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/">window</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/window/bat/">bat</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/">软件</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/计算机/软件/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-window/">生活 - 计算机 - window</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-MySql/">生活 - 计算机 - 软件 - MySql</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活 - 计算机 - 软件 - idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活 - 计算机 - 软件 - typora</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-vscode/">生活 - 计算机 - 软件 - vscode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-印象笔记/">生活 - 计算机 - 软件 - 印象笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件/">生活\计算机\软件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-idea/">生活\计算机\软件\idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-nginx/">生活\计算机\软件\nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-office/">生活\计算机\软件\office</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活-计算机-软件-typora/">生活\计算机\软件\typora</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认/">默认</a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+    
+    
+    </section>
+
+    
+        <section class="widget">
+            <h3 class="widget-hd"><strong>热门标签</strong></h3>
+            <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/默认/" title="默认">默认 (54)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (2)</a>
+  
+    <a class="tag-item" href="/tags/nginx/" title="nginx">nginx (1)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (1)</a>
+  
+    <a class="tag-item" href="/tags/wordpress/" title="wordpress">wordpress (2)</a>
+  
+    <a class="tag-item" href="/tags/nodejs/" title="nodejs">nodejs (1)</a>
+  
+    <a class="tag-item" href="/tags/vscode/" title="vscode">vscode (3)</a>
+  
+    <a class="tag-item" href="/tags/typora/" title="typora">typora (1)</a>
+  
+    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (1)</a>
+  
+</div>
+        </section>
+        
+
+            
+
+                    
+                        <!-- 友情链接 -->
+                        <section class="widget">
+                            <h3 class="widget-hd"><strong>友情链接</strong></h3>
+                            <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://git@gitee.com:sunjinchao/blog.git" target="_blank" title="sun个人博客">第三世界</a>
+        </li>
+    
+        <li>
+            <a href="https://www.baidu.com" target="_blank" title="百度搜索">百度</a>
+        </li>
+    
+</ul>
+                        </section>
+                        
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+                2016-
+                2020
+                    
+                    
+                        <a href="/">第三世界的个人博客</a> | 
+                        博客基于<a href="https://hexo.io/zh-cn/" target="_blank">Hexo</a>创建 | 
+                        感谢<a href="https://github.com/jangdelong/hexo-theme-xups" target="_blank">xups</a>提供主题 |
+                        <p>京ICP备<a href="http://www.beian.miit.gov.cn/" target="_blank">19029113</a>号</p>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+<!-- 搜索弹出框  -->
+
+    <script>
+    (function(window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: '/',
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/jquery.min.js"></script>
+    <script src="/js/insight.js"></script>
+        
+            
+<!-- 代码块复制功能 -->
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+<!-- 看板娘 -->
+<script src="/js/autoload.js"></script>
+
+</body>
+</html>
